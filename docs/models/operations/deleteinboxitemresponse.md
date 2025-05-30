@@ -1,0 +1,9 @@
+# DeleteInboxItemResponse
+
+
+## Fields
+
+| Field                                                                                             | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `HTTPMeta`                                                                                        | [components.HTTPMetadata](../../models/components/httpmetadata.md)                                | :heavy_check_mark:                                                                                | N/A                                                                                               |
+| `Object`                                                                                          | [*operations.DeleteInboxItemResponseBody](../../models/operations/deleteinboxitemresponsebody.md) | :heavy_minus_sign:                                                                                | Delete a inbox item by its ID.                                                                    |

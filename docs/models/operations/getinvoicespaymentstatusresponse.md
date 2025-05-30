@@ -1,0 +1,9 @@
+# GetInvoicesPaymentStatusResponse
+
+
+## Fields
+
+| Field                                                                                                               | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `HTTPMeta`                                                                                                          | [components.HTTPMetadata](../../models/components/httpmetadata.md)                                                  | :heavy_check_mark:                                                                                                  | N/A                                                                                                                 |
+| `Object`                                                                                                            | [*operations.GetInvoicesPaymentStatusResponseBody](../../models/operations/getinvoicespaymentstatusresponsebody.md) | :heavy_minus_sign:                                                                                                  | Payment status for the authenticated team.                                                                          |

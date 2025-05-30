@@ -1,0 +1,9 @@
+# UpdateInboxItemResponse
+
+
+## Fields
+
+| Field                                                                                             | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `HTTPMeta`                                                                                        | [components.HTTPMetadata](../../models/components/httpmetadata.md)                                | :heavy_check_mark:                                                                                | N/A                                                                                               |
+| `Object`                                                                                          | [*operations.UpdateInboxItemResponseBody](../../models/operations/updateinboxitemresponsebody.md) | :heavy_minus_sign:                                                                                | Update fields of an inbox item by its unique identifier for the authenticated team.               |

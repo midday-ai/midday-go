@@ -1,0 +1,18 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    Midday-OAS:
+        inputs:
+            - location: registry.speakeasyapi.dev/midday/midday/midday-api:main
+        registry:
+            location: registry.speakeasyapi.dev/midday/midday/midday-oas
+targets:
+    midday:
+        target: go
+        source: Midday-OAS
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/midday/midday/midday-oas-go-code-samples
+            labelOverride:
+                fixedValue: Go (SDK)
+            blocking: false

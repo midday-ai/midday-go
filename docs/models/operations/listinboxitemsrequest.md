@@ -1,0 +1,12 @@
+# ListInboxItemsRequest
+
+
+## Fields
+
+| Field                                                                               | Type                                                                                | Required                                                                            | Description                                                                         |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `Cursor`                                                                            | **string*                                                                           | :heavy_minus_sign:                                                                  | N/A                                                                                 |
+| `Order`                                                                             | **string*                                                                           | :heavy_minus_sign:                                                                  | N/A                                                                                 |
+| `PageSize`                                                                          | **float64*                                                                          | :heavy_minus_sign:                                                                  | N/A                                                                                 |
+| `Q`                                                                                 | **string*                                                                           | :heavy_minus_sign:                                                                  | N/A                                                                                 |
+| `Status`                                                                            | [*operations.ListInboxItemsStatus](../../models/operations/listinboxitemsstatus.md) | :heavy_minus_sign:                                                                  | N/A                                                                                 |

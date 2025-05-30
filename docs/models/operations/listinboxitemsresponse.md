@@ -1,0 +1,9 @@
+# ListInboxItemsResponse
+
+
+## Fields
+
+| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `HTTPMeta`                                                                                      | [components.HTTPMetadata](../../models/components/httpmetadata.md)                              | :heavy_check_mark:                                                                              | N/A                                                                                             |
+| `Object`                                                                                        | [*operations.ListInboxItemsResponseBody](../../models/operations/listinboxitemsresponsebody.md) | :heavy_minus_sign:                                                                              | Retrieve a list of inbox items for the authenticated team.                                      |

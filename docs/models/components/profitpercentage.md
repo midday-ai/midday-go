@@ -1,0 +1,9 @@
+# ProfitPercentage
+
+
+## Fields
+
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            | Example                                                                                |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `Value`                                                                                | *float64*                                                                              | :heavy_check_mark:                                                                     | Percentage change compared to previous period                                          | 25                                                                                     |
+| `Status`                                                                               | [components.ProfitPercentageStatus](../../models/components/profitpercentagestatus.md) | :heavy_check_mark:                                                                     | Status of the change                                                                   | positive                                                                               |

@@ -1,0 +1,9 @@
+# ListTransactionsResponse
+
+
+## Fields
+
+| Field                                                                                               | Type                                                                                                | Required                                                                                            | Description                                                                                         |
+| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `HTTPMeta`                                                                                          | [components.HTTPMetadata](../../models/components/httpmetadata.md)                                  | :heavy_check_mark:                                                                                  | N/A                                                                                                 |
+| `Object`                                                                                            | [*operations.ListTransactionsResponseBody](../../models/operations/listtransactionsresponsebody.md) | :heavy_minus_sign:                                                                                  | Retrieve a list of transactions for the authenticated team.                                         |

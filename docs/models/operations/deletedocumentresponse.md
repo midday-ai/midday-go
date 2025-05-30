@@ -1,0 +1,9 @@
+# DeleteDocumentResponse
+
+
+## Fields
+
+| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `HTTPMeta`                                                                                      | [components.HTTPMetadata](../../models/components/httpmetadata.md)                              | :heavy_check_mark:                                                                              | N/A                                                                                             |
+| `Object`                                                                                        | [*operations.DeleteDocumentResponseBody](../../models/operations/deletedocumentresponsebody.md) | :heavy_minus_sign:                                                                              | Document deleted successfully                                                                   |

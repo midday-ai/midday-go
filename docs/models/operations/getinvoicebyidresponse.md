@@ -1,0 +1,9 @@
+# GetInvoiceByIDResponse
+
+
+## Fields
+
+| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `HTTPMeta`                                                                                      | [components.HTTPMetadata](../../models/components/httpmetadata.md)                              | :heavy_check_mark:                                                                              | N/A                                                                                             |
+| `Object`                                                                                        | [*operations.GetInvoiceByIDResponseBody](../../models/operations/getinvoicebyidresponsebody.md) | :heavy_minus_sign:                                                                              | Retrieve a invoice by its unique identifier for the authenticated team.                         |

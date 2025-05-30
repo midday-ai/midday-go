@@ -1,0 +1,44 @@
+configVersion: 2.0.0
+generation:
+  devContainers:
+    enabled: true
+    schemaPath: registry.speakeasyapi.dev/midday/midday/midday-api:main
+  sdkClassName: Midday
+  maintainOpenAPIOrder: true
+  usageSnippets:
+    optionalPropertyRendering: withExample
+    sdkInitStyle: constructor
+  useClassNamesForArrayFields: true
+  fixes:
+    nameResolutionDec2023: true
+    nameResolutionFeb2025: true
+    parameterOrderingFeb2024: true
+    requestResponseComponentNamesFeb2024: true
+    securityFeb2025: true
+    sharedErrorComponentsApr2025: true
+  auth:
+    oAuth2ClientCredentialsEnabled: true
+    oAuth2PasswordEnabled: true
+  sdkHooksConfigAccess: true
+go:
+  version: 0.0.1
+  additionalDependencies: {}
+  allowUnknownFieldsInWeakUnions: false
+  clientServerStatusCodesAsErrors: true
+  defaultErrorName: APIError
+  envVarPrefix: MIDDAY
+  flattenGlobalSecurity: true
+  imports:
+    option: openapi
+    paths:
+      callbacks: models/callbacks
+      errors: models/apierrors
+      operations: models/operations
+      shared: models/components
+      webhooks: models/webhooks
+  inputModelSuffix: input
+  maxMethodParams: 4
+  methodArguments: require-security-and-request
+  outputModelSuffix: output
+  packageName: github.com/midday-ai/midday-go
+  responseFormat: envelope-http

@@ -1,0 +1,9 @@
+# UpdateTransactionsResponse
+
+
+## Fields
+
+| Field                                                                                                   | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `HTTPMeta`                                                                                              | [components.HTTPMetadata](../../models/components/httpmetadata.md)                                      | :heavy_check_mark:                                                                                      | N/A                                                                                                     |
+| `Object`                                                                                                | [*operations.UpdateTransactionsResponseBody](../../models/operations/updatetransactionsresponsebody.md) | :heavy_minus_sign:                                                                                      | Transactions updated                                                                                    |

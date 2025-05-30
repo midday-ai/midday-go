@@ -1,0 +1,35 @@
+speakeasyVersion: 1.554.1
+sources:
+    Midday-OAS:
+        sourceNamespace: midday-api
+        sourceRevisionDigest: sha256:f2ea4d2b25b5ec58c8e5426028728f1c20a7bbea105679e6e0b452d37fe3e18f
+        sourceBlobDigest: sha256:a0e6eecb2e29484d1407a8a6ea72ceec83b3c921d52872eddf62e79fc62721b7
+        tags:
+            - latest
+targets:
+    midday:
+        source: Midday-OAS
+        sourceNamespace: midday-api
+        sourceRevisionDigest: sha256:f2ea4d2b25b5ec58c8e5426028728f1c20a7bbea105679e6e0b452d37fe3e18f
+        sourceBlobDigest: sha256:a0e6eecb2e29484d1407a8a6ea72ceec83b3c921d52872eddf62e79fc62721b7
+        codeSamplesNamespace: midday-oas-go-code-samples
+        codeSamplesRevisionDigest: sha256:3e70b434d892d46d6244da13f9e817f15f2e5266610613ef985981e1ad3908da
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        Midday-OAS:
+            inputs:
+                - location: registry.speakeasyapi.dev/midday/midday/midday-api:main
+            registry:
+                location: registry.speakeasyapi.dev/midday/midday/midday-oas
+    targets:
+        midday:
+            target: go
+            source: Midday-OAS
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/midday/midday/midday-oas-go-code-samples
+                labelOverride:
+                    fixedValue: Go (SDK)
+                blocking: false

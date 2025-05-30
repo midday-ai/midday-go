@@ -1,0 +1,9 @@
+# GetCustomerByIDResponse
+
+
+## Fields
+
+| Field                                                                                             | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `HTTPMeta`                                                                                        | [components.HTTPMetadata](../../models/components/httpmetadata.md)                                | :heavy_check_mark:                                                                                | N/A                                                                                               |
+| `Object`                                                                                          | [*operations.GetCustomerByIDResponseBody](../../models/operations/getcustomerbyidresponsebody.md) | :heavy_minus_sign:                                                                                | Retrieve a customer by ID for the authenticated team.                                             |

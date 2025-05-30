@@ -1,0 +1,9 @@
+# RevenuePercentage
+
+
+## Fields
+
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              | Example                                                                                  |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `Value`                                                                                  | *float64*                                                                                | :heavy_check_mark:                                                                       | Percentage change compared to previous period                                            | 25                                                                                       |
+| `Status`                                                                                 | [components.RevenuePercentageStatus](../../models/components/revenuepercentagestatus.md) | :heavy_check_mark:                                                                       | Status of the change                                                                     | positive                                                                                 |

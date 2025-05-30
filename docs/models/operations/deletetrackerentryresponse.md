@@ -1,0 +1,9 @@
+# DeleteTrackerEntryResponse
+
+
+## Fields
+
+| Field                                                                                                   | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `HTTPMeta`                                                                                              | [components.HTTPMetadata](../../models/components/httpmetadata.md)                                      | :heavy_check_mark:                                                                                      | N/A                                                                                                     |
+| `Object`                                                                                                | [*operations.DeleteTrackerEntryResponseBody](../../models/operations/deletetrackerentryresponsebody.md) | :heavy_minus_sign:                                                                                      | Tracker entry deleted successfully.                                                                     |

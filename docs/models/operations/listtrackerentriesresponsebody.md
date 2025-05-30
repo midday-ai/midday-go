@@ -1,0 +1,11 @@
+# ListTrackerEntriesResponseBody
+
+List all tracker entries for the authenticated team.
+
+
+## Fields
+
+| Field                                                                                                                                     | Type                                                                                                                                      | Required                                                                                                                                  | Description                                                                                                                               |
+| ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `Meta`                                                                                                                                    | [operations.ListTrackerEntriesMeta](../../models/operations/listtrackerentriesmeta.md)                                                    | :heavy_check_mark:                                                                                                                        | Metadata about the tracker entries response including totals and date range                                                               |
+| `Result`                                                                                                                                  | map[string][][operations.Result](../../models/operations/result.md)                                                                       | :heavy_check_mark:                                                                                                                        | Tracker entries grouped by date, where each key is a date in YYYY-MM-DD format and the value is an array of tracker entries for that date |

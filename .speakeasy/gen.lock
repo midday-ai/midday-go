@@ -1,0 +1,890 @@
+lockVersion: 2.0.0
+id: 594731ce-66d4-43e3-8c52-6bf07481e7bf
+management:
+  docChecksum: 43aa22c88b2565b587e5e225476ddc89
+  docVersion: 0.0.1
+  speakeasyVersion: 1.554.1
+  generationVersion: 2.616.1
+  releaseVersion: 0.0.1
+  configChecksum: 5c42be4fa77e1eb72ebdfa05fbab23b6
+features:
+  go:
+    additionalDependencies: 0.1.0
+    constsAndDefaults: 0.1.12
+    core: 3.7.5
+    defaultEnabledRetries: 0.2.0
+    devContainers: 2.90.0
+    enums: 2.81.1
+    envVarSecurityUsage: 0.3.2
+    examples: 2.81.4
+    flattening: 2.81.1
+    globalSecurity: 2.82.11
+    globalSecurityCallbacks: 0.1.0
+    globalSecurityFlattening: 0.1.0
+    globalServerURLs: 2.82.3
+    intellisenseMarkdownSupport: 0.1.0
+    nameOverrides: 2.81.2
+    nullables: 0.1.1
+    responseFormat: 0.1.2
+    retries: 2.83.2
+    sdkHooks: 0.2.0
+generatedFiles:
+  - .devcontainer/README.md
+  - .devcontainer/devcontainer.json
+  - .devcontainer/setup.sh
+  - .gitattributes
+  - /models/components/createtag.go
+  - /models/components/expensesresultarray.go
+  - /models/components/getburnrateresponseschema.go
+  - /models/components/getexpensesresponseschema.go
+  - /models/components/getprofitresponseschema.go
+  - /models/components/getrevenueresponseschema.go
+  - /models/components/httpmetadata.go
+  - /models/components/profitcurrent.go
+  - /models/components/profitmeta.go
+  - /models/components/profitpercentage.go
+  - /models/components/profitprevious.go
+  - /models/components/profitresultitem.go
+  - /models/components/profitsummary.go
+  - /models/components/revenuecurrent.go
+  - /models/components/revenuemeta.go
+  - /models/components/revenuepercentage.go
+  - /models/components/revenueprevious.go
+  - /models/components/revenueresultitem.go
+  - /models/components/revenuesummary.go
+  - /models/components/security.go
+  - /models/components/spendingresultarray.go
+  - /models/components/tagresponse.go
+  - /models/components/tagsresponse.go
+  - /models/components/trackerprojectresponse.go
+  - /models/components/trackerprojectsresponse.go
+  - /models/components/transactionresponse.go
+  - /models/operations/createbankaccount.go
+  - /models/operations/createcustomer.go
+  - /models/operations/createtag.go
+  - /models/operations/createtrackerproject.go
+  - /models/operations/createtransaction.go
+  - /models/operations/createtransactions.go
+  - /models/operations/deletebankaccount.go
+  - /models/operations/deletecustomer.go
+  - /models/operations/deletedocument.go
+  - /models/operations/deleteinboxitem.go
+  - /models/operations/deleteinvoice.go
+  - /models/operations/deletetag.go
+  - /models/operations/deletetrackerentry.go
+  - /models/operations/deletetrackerproject.go
+  - /models/operations/deletetransaction.go
+  - /models/operations/deletetransactions.go
+  - /models/operations/getbankaccountbyid.go
+  - /models/operations/getburnratemetrics.go
+  - /models/operations/getcurrentuser.go
+  - /models/operations/getcustomerbyid.go
+  - /models/operations/getdocumentbyid.go
+  - /models/operations/getexpensesmetrics.go
+  - /models/operations/getinboxitembyid.go
+  - /models/operations/getinvoicebyid.go
+  - /models/operations/getinvoicespaymentstatus.go
+  - /models/operations/getinvoicesummary.go
+  - /models/operations/getprofitmetrics.go
+  - /models/operations/getrevenuemetrics.go
+  - /models/operations/getrunwaymetrics.go
+  - /models/operations/getspendingmetrics.go
+  - /models/operations/gettagbyid.go
+  - /models/operations/getteambyid.go
+  - /models/operations/gettrackerprojectbyid.go
+  - /models/operations/gettransactionbyid.go
+  - /models/operations/listbankaccounts.go
+  - /models/operations/listcustomers.go
+  - /models/operations/listdocuments.go
+  - /models/operations/listinboxitems.go
+  - /models/operations/listinvoices.go
+  - /models/operations/listtags.go
+  - /models/operations/listteammembers.go
+  - /models/operations/listteams.go
+  - /models/operations/listtrackerentries.go
+  - /models/operations/listtrackerprojects.go
+  - /models/operations/listtransactions.go
+  - /models/operations/search.go
+  - /models/operations/updatebankaccount.go
+  - /models/operations/updatecurrentuser.go
+  - /models/operations/updatecustomer.go
+  - /models/operations/updateinboxitem.go
+  - /models/operations/updatetag.go
+  - /models/operations/updateteambyid.go
+  - /models/operations/updatetrackerproject.go
+  - /models/operations/updatetransaction.go
+  - /models/operations/updatetransactions.go
+  - USAGE.md
+  - bankaccounts.go
+  - customers.go
+  - docs/models/components/account.md
+  - docs/models/components/attachment.md
+  - docs/models/components/category.md
+  - docs/models/components/connection.md
+  - docs/models/components/createtag.md
+  - docs/models/components/customer.md
+  - docs/models/components/expensesresultarray.md
+  - docs/models/components/getburnrateresponseschema.md
+  - docs/models/components/getexpensesresponseschema.md
+  - docs/models/components/getexpensesresponseschemameta.md
+  - docs/models/components/getprofitresponseschema.md
+  - docs/models/components/getrevenueresponseschema.md
+  - docs/models/components/httpmetadata.md
+  - docs/models/components/profitcurrent.md
+  - docs/models/components/profitmeta.md
+  - docs/models/components/profitmetatype.md
+  - docs/models/components/profitpercentage.md
+  - docs/models/components/profitpercentagestatus.md
+  - docs/models/components/profitprevious.md
+  - docs/models/components/profitresultitem.md
+  - docs/models/components/profitsummary.md
+  - docs/models/components/revenuecurrent.md
+  - docs/models/components/revenuemeta.md
+  - docs/models/components/revenuemetatype.md
+  - docs/models/components/revenuepercentage.md
+  - docs/models/components/revenuepercentagestatus.md
+  - docs/models/components/revenueprevious.md
+  - docs/models/components/revenueresultitem.md
+  - docs/models/components/revenuesummary.md
+  - docs/models/components/security.md
+  - docs/models/components/spendingresultarray.md
+  - docs/models/components/summary.md
+  - docs/models/components/tagresponse.md
+  - docs/models/components/tagsresponse.md
+  - docs/models/components/trackerprojectresponse.md
+  - docs/models/components/trackerprojectresponsestatus.md
+  - docs/models/components/trackerprojectresponsetag.md
+  - docs/models/components/trackerprojectsresponse.md
+  - docs/models/components/trackerprojectsresponsemeta.md
+  - docs/models/components/transactionresponse.md
+  - docs/models/components/transactionresponsetag.md
+  - docs/models/components/user.md
+  - docs/models/operations/attachments.md
+  - docs/models/operations/createbankaccountrequest.md
+  - docs/models/operations/createbankaccountresponse.md
+  - docs/models/operations/createbankaccountresponsebody.md
+  - docs/models/operations/createcustomerrequest.md
+  - docs/models/operations/createcustomerresponse.md
+  - docs/models/operations/createcustomerresponsebody.md
+  - docs/models/operations/createcustomertagrequest.md
+  - docs/models/operations/createcustomertagresponse.md
+  - docs/models/operations/createtagresponse.md
+  - docs/models/operations/createtrackerprojectrequest.md
+  - docs/models/operations/createtrackerprojectresponse.md
+  - docs/models/operations/createtrackerprojectstatus.md
+  - docs/models/operations/createtrackerprojecttag.md
+  - docs/models/operations/createtransactionattachment.md
+  - docs/models/operations/createtransactionrequest.md
+  - docs/models/operations/createtransactionresponse.md
+  - docs/models/operations/createtransactionsattachment.md
+  - docs/models/operations/createtransactionsresponse.md
+  - docs/models/operations/dateformatrequest.md
+  - docs/models/operations/deletebankaccountrequest.md
+  - docs/models/operations/deletebankaccountresponse.md
+  - docs/models/operations/deletebankaccountresponsebody.md
+  - docs/models/operations/deletecustomerrequest.md
+  - docs/models/operations/deletecustomerresponse.md
+  - docs/models/operations/deletecustomerresponsebody.md
+  - docs/models/operations/deletecustomertag.md
+  - docs/models/operations/deletedocumentrequest.md
+  - docs/models/operations/deletedocumentresponse.md
+  - docs/models/operations/deletedocumentresponsebody.md
+  - docs/models/operations/deleteinboxitemrequest.md
+  - docs/models/operations/deleteinboxitemresponse.md
+  - docs/models/operations/deleteinboxitemresponsebody.md
+  - docs/models/operations/deleteinvoicerequest.md
+  - docs/models/operations/deleteinvoiceresponse.md
+  - docs/models/operations/deleteinvoiceresponsebody.md
+  - docs/models/operations/deletetagrequest.md
+  - docs/models/operations/deletetagresponse.md
+  - docs/models/operations/deletetrackerentryrequest.md
+  - docs/models/operations/deletetrackerentryresponse.md
+  - docs/models/operations/deletetrackerentryresponsebody.md
+  - docs/models/operations/deletetrackerprojectrequest.md
+  - docs/models/operations/deletetrackerprojectresponse.md
+  - docs/models/operations/deletetrackerprojectresponsebody.md
+  - docs/models/operations/deletetransactionrequest.md
+  - docs/models/operations/deletetransactionresponse.md
+  - docs/models/operations/deletetransactionresponsebody.md
+  - docs/models/operations/deletetransactionsresponse.md
+  - docs/models/operations/deletetransactionsresponsebody.md
+  - docs/models/operations/getbankaccountbyidrequest.md
+  - docs/models/operations/getbankaccountbyidresponse.md
+  - docs/models/operations/getbankaccountbyidresponsebody.md
+  - docs/models/operations/getburnratemetricsrequest.md
+  - docs/models/operations/getburnratemetricsresponse.md
+  - docs/models/operations/getcurrentuserdateformat.md
+  - docs/models/operations/getcurrentuserresponse.md
+  - docs/models/operations/getcurrentuserresponsebody.md
+  - docs/models/operations/getcurrentuserteam.md
+  - docs/models/operations/getcustomerbyidrequest.md
+  - docs/models/operations/getcustomerbyidresponse.md
+  - docs/models/operations/getcustomerbyidresponsebody.md
+  - docs/models/operations/getcustomerbyidtag.md
+  - docs/models/operations/getdocumentbyidmetadata.md
+  - docs/models/operations/getdocumentbyidrequest.md
+  - docs/models/operations/getdocumentbyidresponse.md
+  - docs/models/operations/getdocumentbyidresponsebody.md
+  - docs/models/operations/getexpensesmetricsrequest.md
+  - docs/models/operations/getexpensesmetricsresponse.md
+  - docs/models/operations/getinboxitembyidrequest.md
+  - docs/models/operations/getinboxitembyidresponse.md
+  - docs/models/operations/getinboxitembyidresponsebody.md
+  - docs/models/operations/getinboxitembyidtransaction.md
+  - docs/models/operations/getinvoicebyidcustomer.md
+  - docs/models/operations/getinvoicebyidrequest.md
+  - docs/models/operations/getinvoicebyidresponse.md
+  - docs/models/operations/getinvoicebyidresponsebody.md
+  - docs/models/operations/getinvoicebyidstatus.md
+  - docs/models/operations/getinvoicespaymentstatusresponse.md
+  - docs/models/operations/getinvoicespaymentstatusresponsebody.md
+  - docs/models/operations/getinvoicesummaryrequest.md
+  - docs/models/operations/getinvoicesummaryresponse.md
+  - docs/models/operations/getinvoicesummaryresponsebody.md
+  - docs/models/operations/getinvoicesummarystatus.md
+  - docs/models/operations/getprofitmetricsrequest.md
+  - docs/models/operations/getprofitmetricsresponse.md
+  - docs/models/operations/getrevenuemetricsrequest.md
+  - docs/models/operations/getrevenuemetricsresponse.md
+  - docs/models/operations/getrunwaymetricsrequest.md
+  - docs/models/operations/getrunwaymetricsresponse.md
+  - docs/models/operations/getspendingmetricsrequest.md
+  - docs/models/operations/getspendingmetricsresponse.md
+  - docs/models/operations/gettagbyidrequest.md
+  - docs/models/operations/gettagbyidresponse.md
+  - docs/models/operations/getteambyidplan.md
+  - docs/models/operations/getteambyidrequest.md
+  - docs/models/operations/getteambyidresponse.md
+  - docs/models/operations/getteambyidresponsebody.md
+  - docs/models/operations/gettrackerprojectbyidrequest.md
+  - docs/models/operations/gettrackerprojectbyidresponse.md
+  - docs/models/operations/gettransactionbyidrequest.md
+  - docs/models/operations/gettransactionbyidresponse.md
+  - docs/models/operations/listbankaccountsdata.md
+  - docs/models/operations/listbankaccountsrequest.md
+  - docs/models/operations/listbankaccountsresponse.md
+  - docs/models/operations/listbankaccountsresponsebody.md
+  - docs/models/operations/listcustomersdata.md
+  - docs/models/operations/listcustomersmeta.md
+  - docs/models/operations/listcustomersrequest.md
+  - docs/models/operations/listcustomersresponse.md
+  - docs/models/operations/listcustomersresponsebody.md
+  - docs/models/operations/listcustomerstag.md
+  - docs/models/operations/listdocumentsdata.md
+  - docs/models/operations/listdocumentsmeta.md
+  - docs/models/operations/listdocumentsmetadata.md
+  - docs/models/operations/listdocumentsrequest.md
+  - docs/models/operations/listdocumentsresponse.md
+  - docs/models/operations/listdocumentsresponsebody.md
+  - docs/models/operations/listinboxitemsdata.md
+  - docs/models/operations/listinboxitemsmeta.md
+  - docs/models/operations/listinboxitemsrequest.md
+  - docs/models/operations/listinboxitemsresponse.md
+  - docs/models/operations/listinboxitemsresponsebody.md
+  - docs/models/operations/listinboxitemsstatus.md
+  - docs/models/operations/listinboxitemstransaction.md
+  - docs/models/operations/listinvoicescustomer.md
+  - docs/models/operations/listinvoicesdata.md
+  - docs/models/operations/listinvoicesmeta.md
+  - docs/models/operations/listinvoicesrequest.md
+  - docs/models/operations/listinvoicesresponse.md
+  - docs/models/operations/listinvoicesresponsebody.md
+  - docs/models/operations/listinvoicesstatus.md
+  - docs/models/operations/listtagsresponse.md
+  - docs/models/operations/listteammembersdata.md
+  - docs/models/operations/listteammembersrequest.md
+  - docs/models/operations/listteammembersresponse.md
+  - docs/models/operations/listteammembersresponsebody.md
+  - docs/models/operations/listteamsdata.md
+  - docs/models/operations/listteamsplan.md
+  - docs/models/operations/listteamsresponse.md
+  - docs/models/operations/listteamsresponsebody.md
+  - docs/models/operations/listtrackerentriescustomer.md
+  - docs/models/operations/listtrackerentriesmeta.md
+  - docs/models/operations/listtrackerentriesrequest.md
+  - docs/models/operations/listtrackerentriesresponse.md
+  - docs/models/operations/listtrackerentriesresponsebody.md
+  - docs/models/operations/listtrackerprojectsrequest.md
+  - docs/models/operations/listtrackerprojectsresponse.md
+  - docs/models/operations/listtrackerprojectsstatus.md
+  - docs/models/operations/listtransactionsmeta.md
+  - docs/models/operations/listtransactionsrequest.md
+  - docs/models/operations/listtransactionsresponse.md
+  - docs/models/operations/listtransactionsresponsebody.md
+  - docs/models/operations/listtransactionstype.md
+  - docs/models/operations/option.md
+  - docs/models/operations/project.md
+  - docs/models/operations/requestbody.md
+  - docs/models/operations/result.md
+  - docs/models/operations/role.md
+  - docs/models/operations/searchrequest.md
+  - docs/models/operations/searchresponse.md
+  - docs/models/operations/searchresponsebody.md
+  - docs/models/operations/updatebankaccountrequest.md
+  - docs/models/operations/updatebankaccountrequestbody.md
+  - docs/models/operations/updatebankaccountresponse.md
+  - docs/models/operations/updatebankaccountresponsebody.md
+  - docs/models/operations/updatebankaccounttype.md
+  - docs/models/operations/updatecurrentuserdateformatresponse.md
+  - docs/models/operations/updatecurrentuserrequest.md
+  - docs/models/operations/updatecurrentuserresponse.md
+  - docs/models/operations/updatecurrentuserresponsebody.md
+  - docs/models/operations/updatecurrentuserteam.md
+  - docs/models/operations/updatecustomerrequest.md
+  - docs/models/operations/updatecustomerrequestbody.md
+  - docs/models/operations/updatecustomerresponse.md
+  - docs/models/operations/updatecustomerresponsebody.md
+  - docs/models/operations/updatecustomertagrequest.md
+  - docs/models/operations/updatecustomertagresponse.md
+  - docs/models/operations/updateinboxitemrequest.md
+  - docs/models/operations/updateinboxitemrequestbody.md
+  - docs/models/operations/updateinboxitemresponse.md
+  - docs/models/operations/updateinboxitemresponsebody.md
+  - docs/models/operations/updateinboxitemstatus.md
+  - docs/models/operations/updateinboxitemtransaction.md
+  - docs/models/operations/updatetagrequest.md
+  - docs/models/operations/updatetagrequestbody.md
+  - docs/models/operations/updatetagresponse.md
+  - docs/models/operations/updateteambyidplan.md
+  - docs/models/operations/updateteambyidrequest.md
+  - docs/models/operations/updateteambyidrequestbody.md
+  - docs/models/operations/updateteambyidresponse.md
+  - docs/models/operations/updateteambyidresponsebody.md
+  - docs/models/operations/updatetrackerprojectrequest.md
+  - docs/models/operations/updatetrackerprojectrequestbody.md
+  - docs/models/operations/updatetrackerprojectresponse.md
+  - docs/models/operations/updatetrackerprojectstatus.md
+  - docs/models/operations/updatetrackerprojecttag.md
+  - docs/models/operations/updatetransactionfrequency.md
+  - docs/models/operations/updatetransactionrequest.md
+  - docs/models/operations/updatetransactionrequestbody.md
+  - docs/models/operations/updatetransactionresponse.md
+  - docs/models/operations/updatetransactionsfrequency.md
+  - docs/models/operations/updatetransactionsmeta.md
+  - docs/models/operations/updatetransactionsrequest.md
+  - docs/models/operations/updatetransactionsresponse.md
+  - docs/models/operations/updatetransactionsresponsebody.md
+  - docs/models/operations/updatetransactionsstatus.md
+  - docs/models/operations/updatetransactionstatus.md
+  - docs/models/operations/user.md
+  - docs/sdks/bankaccounts/README.md
+  - docs/sdks/customers/README.md
+  - docs/sdks/documents/README.md
+  - docs/sdks/inbox/README.md
+  - docs/sdks/invoices/README.md
+  - docs/sdks/metrics/README.md
+  - docs/sdks/midday/README.md
+  - docs/sdks/search/README.md
+  - docs/sdks/tags/README.md
+  - docs/sdks/teams/README.md
+  - docs/sdks/tracker/README.md
+  - docs/sdks/trackerentries/README.md
+  - docs/sdks/trackerprojects/README.md
+  - docs/sdks/transactions/README.md
+  - docs/sdks/users/README.md
+  - documents.go
+  - go.mod
+  - inbox.go
+  - internal/config/sdkconfiguration.go
+  - internal/hooks/hooks.go
+  - internal/utils/contenttype.go
+  - internal/utils/env.go
+  - internal/utils/form.go
+  - internal/utils/headers.go
+  - internal/utils/json.go
+  - internal/utils/pathparams.go
+  - internal/utils/queryparams.go
+  - internal/utils/requestbody.go
+  - internal/utils/retries.go
+  - internal/utils/security.go
+  - internal/utils/utils.go
+  - invoices.go
+  - metrics.go
+  - midday.go
+  - models/apierrors/apierror.go
+  - models/operations/options.go
+  - retry/config.go
+  - search.go
+  - tags.go
+  - teams.go
+  - tracker.go
+  - trackerentries.go
+  - trackerprojects.go
+  - transactions.go
+  - types/bigint.go
+  - types/date.go
+  - types/datetime.go
+  - types/decimal.go
+  - types/pointers.go
+  - users.go
+examples:
+  listTransactions:
+    speakeasy-default-list-transactions:
+      parameters:
+        query:
+          cursor: "eyJpZCI6IjEyMyJ9"
+          sort: ["date", "desc"]
+          pageSize: 50
+          q: "office supplies"
+          categories: ["office-supplies", "travel"]
+          tags: ["tag-1", "tag-2"]
+          start: "2024-04-01T00:00:00.000Z"
+          end: "2024-04-30T23:59:59.999Z"
+          accounts: ["account-1", "account-2"]
+          assignees: ["user-1", "user-2"]
+          statuses: ["pending", "completed"]
+          recurring: ["monthly", "annually"]
+          attachments: "include"
+          amountRange: [100, 1000]
+          amount: ["150.75", "299.99"]
+          type: "expense"
+      responses:
+        "200":
+          application/json: {"meta": {"cursor": "eyJpZCI6IjQ1NiJ9", "hasPreviousPage": false, "hasNextPage": true}, "data": [{"id": "b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f", "name": "Office Supplies Purchase", "amount": 150.75, "currency": "USD", "date": "2024-05-01T12:00:00.000Z", "category": {"id": "office-supplies", "name": "Office Supplies", "color": "#FF5733", "slug": "office-supplies"}, "status": "completed", "internal": false, "recurring": false, "manual": false, "frequency": "monthly", "isFulfilled": true, "note": "Paid with company credit card for office renovation", "account": {"id": "a43dc3a5-6925-4d91-ac9c-4c1a34bdb388", "name": "Company Credit Card", "currency": "USD", "connection": {"id": "a43dc3a5-6925-4d91-ac9c-4c1a34bdb388", "name": "Chase Bank", "logoUrl": "https://cdn.midday.ai/logos/chase-bank.png"}}, "tags": [{"id": "b7e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7b", "name": "invoice"}, {"id": "c8e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7c", "name": "travel"}], "attachments": [{"id": "b7e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7b", "path": ["e1f2d3c4-b5a6-7d8e-9f0a-1b2c3d4e5f6a", "transactions", "9a8b7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d", "receipt.pdf"], "size": 1928716, "type": "application/pdf", "filename": "receipt.pdf"}]}, {"id": "b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f", "name": "Office Supplies Purchase", "amount": 150.75, "currency": "USD", "date": "2024-05-01T12:00:00.000Z", "category": {"id": "office-supplies", "name": "Office Supplies", "color": "#FF5733", "slug": "office-supplies"}, "status": "completed", "internal": false, "recurring": false, "manual": false, "frequency": "monthly", "isFulfilled": true, "note": "Paid with company credit card for office renovation", "account": {"id": "a43dc3a5-6925-4d91-ac9c-4c1a34bdb388", "name": "Company Credit Card", "currency": "USD", "connection": {"id": "a43dc3a5-6925-4d91-ac9c-4c1a34bdb388", "name": "Chase Bank", "logoUrl": "https://cdn.midday.ai/logos/chase-bank.png"}}, "tags": [{"id": "b7e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7b", "name": "invoice"}, {"id": "c8e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7c", "name": "travel"}], "attachments": [{"id": "b7e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7b", "path": ["e1f2d3c4-b5a6-7d8e-9f0a-1b2c3d4e5f6a", "transactions", "9a8b7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d", "receipt.pdf"], "size": 1928716, "type": "application/pdf", "filename": "receipt.pdf"}]}, {"id": "b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f", "name": "Office Supplies Purchase", "amount": 150.75, "currency": "USD", "date": "2024-05-01T12:00:00.000Z", "category": {"id": "office-supplies", "name": "Office Supplies", "color": "#FF5733", "slug": "office-supplies"}, "status": "completed", "internal": false, "recurring": false, "manual": false, "frequency": "monthly", "isFulfilled": true, "note": "Paid with company credit card for office renovation", "account": {"id": "a43dc3a5-6925-4d91-ac9c-4c1a34bdb388", "name": "Company Credit Card", "currency": "USD", "connection": {"id": "a43dc3a5-6925-4d91-ac9c-4c1a34bdb388", "name": "Chase Bank", "logoUrl": "https://cdn.midday.ai/logos/chase-bank.png"}}, "tags": [{"id": "b7e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7b", "name": "invoice"}, {"id": "c8e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7c", "name": "travel"}], "attachments": [{"id": "b7e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7b", "path": ["e1f2d3c4-b5a6-7d8e-9f0a-1b2c3d4e5f6a", "transactions", "9a8b7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d", "receipt.pdf"], "size": 1928716, "type": "application/pdf", "filename": "receipt.pdf"}]}]}
+  createTransaction:
+    speakeasy-default-create-transaction:
+      responses:
+        "200":
+          application/json: {"id": "b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f", "name": "Office Supplies Purchase", "amount": 150.75, "currency": "USD", "date": "2024-05-01T12:00:00.000Z", "category": {"id": "office-supplies", "name": "Office Supplies", "color": "#FF5733", "slug": "office-supplies"}, "status": "completed", "internal": false, "recurring": false, "manual": false, "frequency": "monthly", "isFulfilled": true, "note": "Paid with company credit card for office renovation", "account": {"id": "a43dc3a5-6925-4d91-ac9c-4c1a34bdb388", "name": "Company Credit Card", "currency": "USD", "connection": {"id": "a43dc3a5-6925-4d91-ac9c-4c1a34bdb388", "name": "Chase Bank", "logoUrl": "https://cdn.midday.ai/logos/chase-bank.png"}}, "tags": [{"id": "b7e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7b", "name": "invoice"}, {"id": "c8e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7c", "name": "travel"}], "attachments": [{"id": "b7e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7b", "path": ["e1f2d3c4-b5a6-7d8e-9f0a-1b2c3d4e5f6a", "transactions", "9a8b7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d", "receipt.pdf"], "size": 1928716, "type": "application/pdf", "filename": "receipt.pdf"}]}
+  getTransactionById:
+    speakeasy-default-get-transaction-by-id:
+      parameters:
+        path:
+          id: "391723c9-de99-4039-b8e2-4fa5bbdf9480"
+      responses:
+        "200":
+          application/json: {"id": "b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f", "name": "Office Supplies Purchase", "amount": 150.75, "currency": "USD", "date": "2024-05-01T12:00:00.000Z", "category": {"id": "office-supplies", "name": "Office Supplies", "color": "#FF5733", "slug": "office-supplies"}, "status": "completed", "internal": false, "recurring": false, "manual": false, "frequency": "monthly", "isFulfilled": true, "note": "Paid with company credit card for office renovation", "account": {"id": "a43dc3a5-6925-4d91-ac9c-4c1a34bdb388", "name": "Company Credit Card", "currency": "USD", "connection": {"id": "a43dc3a5-6925-4d91-ac9c-4c1a34bdb388", "name": "Chase Bank", "logoUrl": "https://cdn.midday.ai/logos/chase-bank.png"}}, "tags": [{"id": "b7e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7b", "name": "invoice"}, {"id": "c8e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7c", "name": "travel"}], "attachments": [{"id": "b7e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7b", "path": ["e1f2d3c4-b5a6-7d8e-9f0a-1b2c3d4e5f6a", "transactions", "9a8b7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d", "receipt.pdf"], "size": 1928716, "type": "application/pdf", "filename": "receipt.pdf"}]}
+  deleteTransaction:
+    speakeasy-default-delete-transaction:
+      parameters:
+        path:
+          id: "92766ee2-a2bc-44aa-97af-6891695fc321"
+      responses:
+        "200":
+          application/json: {"id": "3a643eea-659a-4768-b14f-07f06ea711b4"}
+  updateTransaction:
+    speakeasy-default-update-transaction:
+      parameters:
+        path:
+          id: "f0c1d0ef-5679-4c1b-9698-2c64e97e8c1d"
+      responses:
+        "200":
+          application/json: {"id": "b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f", "name": "Office Supplies Purchase", "amount": 150.75, "currency": "USD", "date": "2024-05-01T12:00:00.000Z", "category": {"id": "office-supplies", "name": "Office Supplies", "color": "#FF5733", "slug": "office-supplies"}, "status": "completed", "internal": false, "recurring": false, "manual": false, "frequency": "monthly", "isFulfilled": true, "note": "Paid with company credit card for office renovation", "account": {"id": "a43dc3a5-6925-4d91-ac9c-4c1a34bdb388", "name": "Company Credit Card", "currency": "USD", "connection": {"id": "a43dc3a5-6925-4d91-ac9c-4c1a34bdb388", "name": "Chase Bank", "logoUrl": "https://cdn.midday.ai/logos/chase-bank.png"}}, "tags": [{"id": "b7e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7b", "name": "invoice"}, {"id": "c8e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7c", "name": "travel"}], "attachments": [{"id": "b7e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7b", "path": ["e1f2d3c4-b5a6-7d8e-9f0a-1b2c3d4e5f6a", "transactions", "9a8b7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d", "receipt.pdf"], "size": 1928716, "type": "application/pdf", "filename": "receipt.pdf"}]}
+  createTransactions:
+    speakeasy-default-create-transactions:
+      responses:
+        "200":
+          application/json: [{"id": "b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f", "name": "Office Supplies Purchase", "amount": 150.75, "currency": "USD", "date": "2024-05-01T12:00:00.000Z", "category": {"id": "office-supplies", "name": "Office Supplies", "color": "#FF5733", "slug": "office-supplies"}, "status": "completed", "internal": false, "recurring": false, "manual": false, "frequency": "monthly", "isFulfilled": true, "note": "Paid with company credit card for office renovation", "account": {"id": "a43dc3a5-6925-4d91-ac9c-4c1a34bdb388", "name": "Company Credit Card", "currency": "USD", "connection": {"id": "a43dc3a5-6925-4d91-ac9c-4c1a34bdb388", "name": "Chase Bank", "logoUrl": "https://cdn.midday.ai/logos/chase-bank.png"}}, "tags": [{"id": "b7e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7b", "name": "invoice"}, {"id": "c8e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7c", "name": "travel"}], "attachments": [{"id": "b7e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7b", "path": ["e1f2d3c4-b5a6-7d8e-9f0a-1b2c3d4e5f6a", "transactions", "9a8b7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d", "receipt.pdf"], "size": 1928716, "type": "application/pdf", "filename": "receipt.pdf"}]}, {"id": "b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f", "name": "Office Supplies Purchase", "amount": 150.75, "currency": "USD", "date": "2024-05-01T12:00:00.000Z", "category": {"id": "office-supplies", "name": "Office Supplies", "color": "#FF5733", "slug": "office-supplies"}, "status": "completed", "internal": false, "recurring": false, "manual": false, "frequency": "monthly", "isFulfilled": true, "note": "Paid with company credit card for office renovation", "account": {"id": "a43dc3a5-6925-4d91-ac9c-4c1a34bdb388", "name": "Company Credit Card", "currency": "USD", "connection": {"id": "a43dc3a5-6925-4d91-ac9c-4c1a34bdb388", "name": "Chase Bank", "logoUrl": "https://cdn.midday.ai/logos/chase-bank.png"}}, "tags": [{"id": "b7e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7b", "name": "invoice"}, {"id": "c8e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7c", "name": "travel"}], "attachments": [{"id": "b7e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7b", "path": ["e1f2d3c4-b5a6-7d8e-9f0a-1b2c3d4e5f6a", "transactions", "9a8b7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d", "receipt.pdf"], "size": 1928716, "type": "application/pdf", "filename": "receipt.pdf"}]}, {"id": "b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f", "name": "Office Supplies Purchase", "amount": 150.75, "currency": "USD", "date": "2024-05-01T12:00:00.000Z", "category": {"id": "office-supplies", "name": "Office Supplies", "color": "#FF5733", "slug": "office-supplies"}, "status": "completed", "internal": false, "recurring": false, "manual": false, "frequency": "monthly", "isFulfilled": true, "note": "Paid with company credit card for office renovation", "account": {"id": "a43dc3a5-6925-4d91-ac9c-4c1a34bdb388", "name": "Company Credit Card", "currency": "USD", "connection": {"id": "a43dc3a5-6925-4d91-ac9c-4c1a34bdb388", "name": "Chase Bank", "logoUrl": "https://cdn.midday.ai/logos/chase-bank.png"}}, "tags": [{"id": "b7e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7b", "name": "invoice"}, {"id": "c8e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7c", "name": "travel"}], "attachments": [{"id": "b7e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7b", "path": ["e1f2d3c4-b5a6-7d8e-9f0a-1b2c3d4e5f6a", "transactions", "9a8b7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d", "receipt.pdf"], "size": 1928716, "type": "application/pdf", "filename": "receipt.pdf"}]}]
+  deleteTransactions:
+    speakeasy-default-delete-transactions:
+      responses:
+        "200":
+          application/json: [{"id": "c0db9ee1-75c5-4621-84a2-0c38d2dc3106"}, {"id": "c0db9ee1-75c5-4621-84a2-0c38d2dc3106"}, {"id": "c0db9ee1-75c5-4621-84a2-0c38d2dc3106"}]
+  updateTransactions:
+    speakeasy-default-update-transactions:
+      responses:
+        "200":
+          application/json: {"meta": {"cursor": "eyJpZCI6IjQ1NiJ9", "hasPreviousPage": false, "hasNextPage": true}, "data": [{"id": "b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f", "name": "Office Supplies Purchase", "amount": 150.75, "currency": "USD", "date": "2024-05-01T12:00:00.000Z", "category": {"id": "office-supplies", "name": "Office Supplies", "color": "#FF5733", "slug": "office-supplies"}, "status": "completed", "internal": false, "recurring": false, "manual": false, "frequency": "monthly", "isFulfilled": true, "note": "Paid with company credit card for office renovation", "account": {"id": "a43dc3a5-6925-4d91-ac9c-4c1a34bdb388", "name": "Company Credit Card", "currency": "USD", "connection": {"id": "a43dc3a5-6925-4d91-ac9c-4c1a34bdb388", "name": "Chase Bank", "logoUrl": "https://cdn.midday.ai/logos/chase-bank.png"}}, "tags": [{"id": "b7e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7b", "name": "invoice"}, {"id": "c8e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7c", "name": "travel"}], "attachments": [{"id": "b7e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7b", "path": ["e1f2d3c4-b5a6-7d8e-9f0a-1b2c3d4e5f6a", "transactions", "9a8b7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d", "receipt.pdf"], "size": 1928716, "type": "application/pdf", "filename": "receipt.pdf"}]}, {"id": "b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f", "name": "Office Supplies Purchase", "amount": 150.75, "currency": "USD", "date": "2024-05-01T12:00:00.000Z", "category": {"id": "office-supplies", "name": "Office Supplies", "color": "#FF5733", "slug": "office-supplies"}, "status": "completed", "internal": false, "recurring": false, "manual": false, "frequency": "monthly", "isFulfilled": true, "note": "Paid with company credit card for office renovation", "account": {"id": "a43dc3a5-6925-4d91-ac9c-4c1a34bdb388", "name": "Company Credit Card", "currency": "USD", "connection": {"id": "a43dc3a5-6925-4d91-ac9c-4c1a34bdb388", "name": "Chase Bank", "logoUrl": "https://cdn.midday.ai/logos/chase-bank.png"}}, "tags": [{"id": "b7e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7b", "name": "invoice"}, {"id": "c8e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7c", "name": "travel"}], "attachments": [{"id": "b7e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7b", "path": ["e1f2d3c4-b5a6-7d8e-9f0a-1b2c3d4e5f6a", "transactions", "9a8b7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d", "receipt.pdf"], "size": 1928716, "type": "application/pdf", "filename": "receipt.pdf"}]}, {"id": "b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f", "name": "Office Supplies Purchase", "amount": 150.75, "currency": "USD", "date": "2024-05-01T12:00:00.000Z", "category": {"id": "office-supplies", "name": "Office Supplies", "color": "#FF5733", "slug": "office-supplies"}, "status": "completed", "internal": false, "recurring": false, "manual": false, "frequency": "monthly", "isFulfilled": true, "note": "Paid with company credit card for office renovation", "account": {"id": "a43dc3a5-6925-4d91-ac9c-4c1a34bdb388", "name": "Company Credit Card", "currency": "USD", "connection": {"id": "a43dc3a5-6925-4d91-ac9c-4c1a34bdb388", "name": "Chase Bank", "logoUrl": "https://cdn.midday.ai/logos/chase-bank.png"}}, "tags": [{"id": "b7e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7b", "name": "invoice"}, {"id": "c8e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7c", "name": "travel"}], "attachments": [{"id": "b7e2f8c1-3d4a-4e2b-9f1a-2c3d4e5f6a7b", "path": ["e1f2d3c4-b5a6-7d8e-9f0a-1b2c3d4e5f6a", "transactions", "9a8b7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d", "receipt.pdf"], "size": 1928716, "type": "application/pdf", "filename": "receipt.pdf"}]}]}
+  listTeams:
+    speakeasy-default-list-teams:
+      responses:
+        "200":
+          application/json: {"data": [{"id": "123e4567-e89b-12d3-a456-426614174000", "name": "Acme Corporation", "logoUrl": "https://cdn.midday.ai/logos/acme-corp.png", "plan": "pro"}, {"id": "123e4567-e89b-12d3-a456-426614174000", "name": "Acme Corporation", "logoUrl": "https://cdn.midday.ai/logos/acme-corp.png", "plan": "pro"}, {"id": "123e4567-e89b-12d3-a456-426614174000", "name": "Acme Corporation", "logoUrl": "https://cdn.midday.ai/logos/acme-corp.png", "plan": "pro"}]}
+  getTeamById:
+    speakeasy-default-get-team-by-id:
+      parameters:
+        path:
+          id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: {"id": "123e4567-e89b-12d3-a456-426614174000", "name": "Acme Corporation", "logoUrl": "https://cdn.midday.ai/logos/acme-corp.png", "plan": "pro"}
+  updateTeamById:
+    speakeasy-default-update-team-by-id:
+      parameters:
+        path:
+          id: "123e4567-e89b-12d3-a456-426614174000"
+      requestBody:
+        application/json: {"name": "Acme Corporation", "email": "team@acme.com", "logoUrl": "https://cdn.midday.ai/logos/acme-corp.png", "baseCurrency": "USD"}
+      responses:
+        "200":
+          application/json: {"id": "123e4567-e89b-12d3-a456-426614174000", "name": "Acme Corporation", "logoUrl": "https://cdn.midday.ai/logos/acme-corp.png", "plan": "pro"}
+  listTeamMembers:
+    speakeasy-default-list-team-members:
+      parameters:
+        path:
+          id: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        "200":
+          application/json: {"data": [{"id": "123e4567-e89b-12d3-a456-426614174000", "role": "owner", "fullName": "John Doe", "avatarUrl": "https://cdn.midday.ai/avatars/john-doe.png"}, {"id": "123e4567-e89b-12d3-a456-426614174000", "role": "owner", "fullName": "John Doe", "avatarUrl": "https://cdn.midday.ai/avatars/john-doe.png"}]}
+  getCurrentUser:
+    speakeasy-default-get-current-user:
+      responses:
+        "200":
+          application/json: {"id": "123e4567-e89b-12d3-a456-426614174000", "fullName": "Jane Doe", "email": "jane.doe@acme.com", "avatarUrl": "https://cdn.midday.ai/avatars/jane-doe.jpg", "locale": "en-US", "weekStartsOnMonday": true, "timezone": "America/New_York", "timeFormat": 24, "dateFormat": "yyyy-MM-dd", "team": {"id": "123e4567-e89b-12d3-a456-426614174000", "name": "Acme Corporation", "logoUrl": "https://cdn.midday.ai/logos/acme-corp.png", "plan": "pro"}}
+  updateCurrentUser:
+    speakeasy-default-update-current-user:
+      requestBody:
+        application/json: {"fullName": "Jane Doe", "teamId": "team-abc123", "email": "jane.doe@acme.com", "avatarUrl": "https://cdn.midday.ai/avatars/jane-doe.jpg", "locale": "en-US", "weekStartsOnMonday": true, "timezone": "America/New_York", "timeFormat": 24, "dateFormat": "yyyy-MM-dd"}
+      responses:
+        "200":
+          application/json: {"id": "123e4567-e89b-12d3-a456-426614174000", "fullName": "Jane Doe", "email": "jane.doe@acme.com", "avatarUrl": "https://cdn.midday.ai/avatars/jane-doe.jpg", "locale": "en-US", "weekStartsOnMonday": true, "timezone": "America/New_York", "timeFormat": 24, "dateFormat": "yyyy-MM-dd", "team": {"id": "123e4567-e89b-12d3-a456-426614174000", "name": "Acme Corporation", "logoUrl": "https://cdn.midday.ai/logos/acme-corp.png", "plan": "pro"}}
+  listCustomers:
+    speakeasy-default-list-customers:
+      parameters:
+        query:
+          q: "acme"
+          sort: ["name", "asc"]
+          cursor: "eyJpZCI6IjEyMyJ9"
+          pageSize: 20
+      responses:
+        "200":
+          application/json: {"meta": {"cursor": "eyJpZCI6IjQ1NiJ9", "hasPreviousPage": false, "hasNextPage": true}, "data": []}
+  createCustomer:
+    speakeasy-default-create-customer:
+      requestBody:
+        application/json: {"id": "b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4", "name": "Acme Corporation", "email": "contact@acme.com", "country": "United States", "addressLine1": "123 Main Street", "addressLine2": "Suite 400", "city": "San Francisco", "state": "California", "zip": "94105", "phone": "+1-555-123-4567", "website": "https://acme.com", "note": "Preferred contact method is email. Large enterprise client.", "vatNumber": "US123456789", "countryCode": "US", "contact": "John Smith", "tags": [{"id": "e7a9c1a2-4c2a-4e7a-9c1a-2b7c1e24c2a4", "name": "VIP"}, {"id": "f1b2c3d4-5678-4e7a-9c1a-2b7c1e24c2a4", "name": "Enterprise"}]}
+      responses:
+        "201":
+          application/json: {"id": "b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4", "name": "Acme Corporation", "email": "contact@acme.com", "phone": "+1-555-123-4567", "website": "https://acme.com", "createdAt": "2024-05-01T12:34:56.789Z", "country": "United States", "addressLine1": "123 Main Street", "addressLine2": "Suite 400", "city": "San Francisco", "state": "California", "zip": "94105", "note": "Preferred contact method is email. Large enterprise client.", "vatNumber": "US123456789", "countryCode": "US", "token": "cus_abc123xyz789", "contact": "John Smith", "invoiceCount": 12, "projectCount": 3, "tags": [{"id": "e7a9c1a2-4c2a-4e7a-9c1a-2b7c1e24c2a4", "name": "VIP"}, {"id": "f1b2c3d4-5678-4e7a-9c1a-2b7c1e24c2a4", "name": "Enterprise"}]}
+  getCustomerById:
+    speakeasy-default-get-customer-by-id:
+      parameters:
+        path:
+          id: "b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4"
+      responses:
+        "200":
+          application/json: {"id": "b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4", "name": "Acme Corporation", "email": "contact@acme.com", "phone": "+1-555-123-4567", "website": "https://acme.com", "createdAt": "2024-05-01T12:34:56.789Z", "country": "United States", "addressLine1": "123 Main Street", "addressLine2": "Suite 400", "city": "San Francisco", "state": "California", "zip": "94105", "note": "Preferred contact method is email. Large enterprise client.", "vatNumber": "US123456789", "countryCode": "US", "token": "cus_abc123xyz789", "contact": "John Smith", "invoiceCount": 12, "projectCount": 3, "tags": [{"id": "e7a9c1a2-4c2a-4e7a-9c1a-2b7c1e24c2a4", "name": "VIP"}, {"id": "f1b2c3d4-5678-4e7a-9c1a-2b7c1e24c2a4", "name": "Enterprise"}]}
+  deleteCustomer:
+    speakeasy-default-delete-customer:
+      parameters:
+        path:
+          id: "b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4"
+      responses:
+        "200":
+          application/json: {"id": "b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4", "name": "Acme Corporation", "email": "contact@acme.com", "phone": "+1-555-123-4567", "website": "https://acme.com", "createdAt": "2024-05-01T12:34:56.789Z", "country": "United States", "addressLine1": "123 Main Street", "addressLine2": "Suite 400", "city": "San Francisco", "state": "California", "zip": "94105", "note": "Preferred contact method is email. Large enterprise client.", "vatNumber": "US123456789", "countryCode": "US", "token": "cus_abc123xyz789", "contact": "John Smith", "invoiceCount": 12, "projectCount": 3, "tags": [{"id": "e7a9c1a2-4c2a-4e7a-9c1a-2b7c1e24c2a4", "name": "VIP"}, {"id": "f1b2c3d4-5678-4e7a-9c1a-2b7c1e24c2a4", "name": "Enterprise"}]}
+  updateCustomer:
+    speakeasy-default-update-customer:
+      parameters:
+        path:
+          id: "b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4"
+      requestBody:
+        application/json: {"id": "b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4", "name": "Acme Corporation", "email": "contact@acme.com", "country": "United States", "addressLine1": "123 Main Street", "addressLine2": "Suite 400", "city": "San Francisco", "state": "California", "zip": "94105", "phone": "+1-555-123-4567", "website": "https://acme.com", "note": "Preferred contact method is email. Large enterprise client.", "vatNumber": "US123456789", "countryCode": "US", "contact": "John Smith", "tags": [{"id": "e7a9c1a2-4c2a-4e7a-9c1a-2b7c1e24c2a4", "name": "VIP"}, {"id": "f1b2c3d4-5678-4e7a-9c1a-2b7c1e24c2a4", "name": "Enterprise"}]}
+      responses:
+        "200":
+          application/json: {"id": "b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4", "name": "Acme Corporation", "email": "contact@acme.com", "phone": "+1-555-123-4567", "website": "https://acme.com", "createdAt": "2024-05-01T12:34:56.789Z", "country": "United States", "addressLine1": "123 Main Street", "addressLine2": "Suite 400", "city": "San Francisco", "state": "California", "zip": "94105", "note": "Preferred contact method is email. Large enterprise client.", "vatNumber": "US123456789", "countryCode": "US", "token": "cus_abc123xyz789", "contact": "John Smith", "invoiceCount": 12, "projectCount": 3, "tags": [{"id": "e7a9c1a2-4c2a-4e7a-9c1a-2b7c1e24c2a4", "name": "VIP"}, {"id": "f1b2c3d4-5678-4e7a-9c1a-2b7c1e24c2a4", "name": "Enterprise"}]}
+  listBankAccounts:
+    speakeasy-default-list-bank-accounts:
+      responses:
+        "200":
+          application/json: {"data": [{"id": "b7e6c2a0-1f2d-4c3b-9a8e-123456789abc", "name": "Checking Account", "currency": "USD", "type": "depository", "enabled": true, "balance": 1500.75, "manual": false}]}
+  createBankAccount:
+    speakeasy-default-create-bank-account:
+      requestBody:
+        application/json: {"name": "Checking Account", "currency": "USD", "manual": false}
+      responses:
+        "201":
+          application/json: {"id": "b7e6c2a0-1f2d-4c3b-9a8e-123456789abc", "name": "Checking Account", "currency": "USD", "type": "depository", "enabled": true, "balance": 1500.75, "manual": false}
+  getBankAccountById:
+    speakeasy-default-get-bank-account-by-id:
+      parameters:
+        path:
+          id: "b7e6c2a0-1f2d-4c3b-9a8e-123456789abc"
+      responses:
+        "200":
+          application/json: {"id": "b7e6c2a0-1f2d-4c3b-9a8e-123456789abc", "name": "Checking Account", "currency": "USD", "type": "depository", "enabled": true, "balance": 1500.75, "manual": false}
+  deleteBankAccount:
+    speakeasy-default-delete-bank-account:
+      parameters:
+        path:
+          id: "b7e6c2a0-1f2d-4c3b-9a8e-123456789abc"
+      responses:
+        "200":
+          application/json: {"id": "b7e6c2a0-1f2d-4c3b-9a8e-123456789abc", "name": "Checking Account", "currency": "USD", "type": "depository", "enabled": true, "balance": 1500.75, "manual": false}
+  updateBankAccount:
+    speakeasy-default-update-bank-account:
+      parameters:
+        path:
+          id: "b7e6c2a0-1f2d-4c3b-9a8e-123456789abc"
+      requestBody:
+        application/json: {"id": "b7e6c2a0-1f2d-4c3b-9a8e-123456789abc", "name": "Checking Account", "enabled": true, "balance": 1500.75, "type": "depository"}
+      responses:
+        "200":
+          application/json: {"id": "b7e6c2a0-1f2d-4c3b-9a8e-123456789abc", "name": "Checking Account", "currency": "USD", "type": "depository", "enabled": true, "balance": 1500.75, "manual": false}
+  listTags:
+    speakeasy-default-list-tags:
+      responses:
+        "200":
+          application/json: {"data": [{"id": "b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f", "name": "Important"}]}
+  createTag:
+    speakeasy-default-create-tag:
+      requestBody:
+        application/json: {"name": "Important"}
+      responses:
+        "201":
+          application/json: {"data": [{"id": "b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f", "name": "Important"}]}
+  getTagById:
+    speakeasy-default-get-tag-by-id:
+      parameters:
+        path:
+          id: "b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f"
+      responses:
+        "200":
+          application/json: {"id": "b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f", "name": "Important"}
+  deleteTag:
+    speakeasy-default-delete-tag:
+      parameters:
+        path:
+          id: "b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f"
+  updateTag:
+    speakeasy-default-update-tag:
+      parameters:
+        path:
+          id: "b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f"
+      requestBody:
+        application/json: {"name": "Urgent"}
+      responses:
+        "200":
+          application/json: {"id": "b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f", "name": "Important"}
+  listDocuments:
+    speakeasy-default-list-documents:
+      parameters:
+        query:
+          cursor: "20"
+          pageSize: 20
+          q: "invoice"
+          tags: ["tag1", "tag2"]
+      responses:
+        "200":
+          application/json: {"meta": {"cursor": "20", "hasPreviousPage": false, "hasNextPage": true}, "data": [{"id": "doc_1234567890abcdef", "title": "Invoice April 2024", "pathTokens": ["invoices", "2024", "april", "invoice-123.pdf"], "metadata": {"size": 204800, "mimetype": "application/pdf"}, "processingStatus": "processed", "summary": "Invoice for April 2024, total $1,200.00", "date": "2024-04-30"}]}
+  getDocumentById:
+    speakeasy-default-get-document-by-id:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "200":
+          application/json: {"id": "doc_1234567890abcdef", "title": "Invoice April 2024", "pathTokens": ["invoices", "2024", "april", "invoice-123.pdf"], "metadata": {"size": 204800, "mimetype": "application/pdf"}, "processingStatus": "processed", "summary": "Invoice for April 2024, total $1,200.00", "date": "2024-04-30"}
+  deleteDocument:
+    speakeasy-default-delete-document:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "200":
+          application/json: {"id": "<id>"}
+  listInboxItems:
+    speakeasy-default-list-inbox-items:
+      responses:
+        "200":
+          application/json: {"meta": {"cursor": "b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4", "hasPreviousPage": false, "hasNextPage": true}, "data": [{"id": "b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4", "fileName": "invoice-123.pdf", "filePath": ["inbox", "2024", "05", "invoice-123.pdf"], "displayName": "Invoice May 2024", "amount": 123.45, "currency": "USD", "contentType": "application/pdf", "date": "2024-05-01", "status": "pending", "createdAt": "2024-05-01T12:34:56.789Z", "website": "https://vendor.com", "description": "Invoice for May 2024 services", "transaction": {"id": "a1b2c3d4-5678-4e7a-9c1a-2b7c1e24c2a4", "amount": 123.45, "currency": "USD", "name": "Acme Corp", "date": "2024-05-01"}}, {"id": "b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4", "fileName": "invoice-123.pdf", "filePath": ["inbox", "2024", "05", "invoice-123.pdf"], "displayName": "Invoice May 2024", "amount": 123.45, "currency": "USD", "contentType": "application/pdf", "date": "2024-05-01", "status": "pending", "createdAt": "2024-05-01T12:34:56.789Z", "website": "https://vendor.com", "description": "Invoice for May 2024 services", "transaction": {"id": "a1b2c3d4-5678-4e7a-9c1a-2b7c1e24c2a4", "amount": 123.45, "currency": "USD", "name": "Acme Corp", "date": "2024-05-01"}}, {"id": "b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4", "fileName": "invoice-123.pdf", "filePath": ["inbox", "2024", "05", "invoice-123.pdf"], "displayName": "Invoice May 2024", "amount": 123.45, "currency": "USD", "contentType": "application/pdf", "date": "2024-05-01", "status": "pending", "createdAt": "2024-05-01T12:34:56.789Z", "website": "https://vendor.com", "description": "Invoice for May 2024 services", "transaction": {"id": "a1b2c3d4-5678-4e7a-9c1a-2b7c1e24c2a4", "amount": 123.45, "currency": "USD", "name": "Acme Corp", "date": "2024-05-01"}}]}
+  getInboxItemById:
+    speakeasy-default-get-inbox-item-by-id:
+      parameters:
+        path:
+          id: "b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4"
+      responses:
+        "200":
+          application/json: {"id": "b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4", "fileName": "invoice-123.pdf", "filePath": ["inbox", "2024", "05", "invoice-123.pdf"], "displayName": "Invoice May 2024", "amount": 123.45, "currency": "USD", "contentType": "application/pdf", "date": "2024-05-01", "status": "pending", "createdAt": "2024-05-01T12:34:56.789Z", "website": "https://vendor.com", "description": "Invoice for May 2024 services", "transaction": {"id": "a1b2c3d4-5678-4e7a-9c1a-2b7c1e24c2a4", "amount": 123.45, "currency": "USD", "name": "Acme Corp", "date": "2024-05-01"}}
+  deleteInboxItem:
+    speakeasy-default-delete-inbox-item:
+      parameters:
+        path:
+          id: "b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4"
+      responses:
+        "200":
+          application/json: {"id": "b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4"}
+  updateInboxItem:
+    speakeasy-default-update-inbox-item:
+      parameters:
+        path:
+          id: "<id>"
+      requestBody:
+        application/json: {"status": "archived"}
+      responses:
+        "200":
+          application/json: {"id": "b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4", "fileName": "invoice-123.pdf", "filePath": ["inbox", "2024", "05", "invoice-123.pdf"], "displayName": "Invoice May 2024", "amount": 123.45, "currency": "USD", "contentType": "application/pdf", "date": "2024-05-01", "status": "pending", "createdAt": "2024-05-01T12:34:56.789Z", "website": "https://vendor.com", "description": "Invoice for May 2024 services", "transaction": {"id": "a1b2c3d4-5678-4e7a-9c1a-2b7c1e24c2a4", "amount": 123.45, "currency": "USD", "name": "Acme Corp", "date": "2024-05-01"}}
+  listInvoices:
+    speakeasy-default-list-invoices:
+      parameters:
+        query:
+          cursor: "25"
+          sort: ["createdAt", "desc"]
+          pageSize: 25
+          q: "Acme"
+          start: "2024-01-01"
+          end: "2024-01-31"
+          statuses: ["paid", "unpaid"]
+          customers: ["customer-uuid-1", "customer-uuid-2"]
+      responses:
+        "200":
+          application/json: {"meta": {"cursor": "25", "hasPreviousPage": false, "hasNextPage": true}, "data": []}
+  get_/invoices/payment-status:
+    speakeasy-default-get-/invoices/payment-status:
+      responses:
+        "200":
+          application/json: {"score": 85, "paymentStatus": "good"}
+  getInvoiceSummary:
+    speakeasy-default-get-invoice-summary:
+      parameters:
+        query:
+          status: "paid"
+      responses:
+        "200":
+          application/json: [{"currency": "SEK", "totalAmount": 224171.25, "invoiceCount": 15}]
+  getInvoiceById:
+    speakeasy-default-get-invoice-by-id:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "200":
+          application/json: {"id": "b3b7e6e2-8c2a-4e2a-9b1a-2e4b5c6d7f8a", "status": "paid", "dueDate": "2024-06-30T23:59:59.000Z", "issueDate": "2024-06-01T00:00:00.000Z", "invoiceNumber": "INV-2024-001", "amount": 1500.75, "currency": "USD", "customer": {"id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890", "name": "Acme Corporation", "website": "https://acme.com", "email": "info@acme.com"}, "paidAt": "2024-06-15T12:00:00.000Z", "reminderSentAt": "2024-06-10T09:00:00.000Z", "note": "Thank you for your business.", "vat": 120, "tax": 80, "discount": 50, "subtotal": 1400, "viewedAt": "2024-06-05T14:30:00.000Z", "customerName": "Acme Corporation", "sentTo": "billing@acme.com", "sentAt": "2024-06-02T08:00:00.000Z", "createdAt": "2024-06-01T07:00:00.000Z", "updatedAt": "2024-06-15T10:00:00.000Z"}
+  deleteInvoice:
+    speakeasy-default-delete-invoice:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "200":
+          application/json: {"id": "b3b7e6e2-8c2a-4e2a-9b1a-2e4b5c6d7f8a"}
+  search:
+    speakeasy-default-search:
+      parameters:
+        query:
+          searchTerm: "Acme"
+          language: "en"
+          limit: 30
+          itemsPerTableLimit: 5
+          relevanceThreshold: 0.01
+      responses:
+        "200":
+          application/json: [{"id": "b3b7e6e2-8c2a-4e2a-9b1a-2e4b5c6d7f8a", "type": "invoice", "relevance": 0.92, "created_at": "2024-06-01T00:00:00.000Z", "data": {"invoiceNumber": "INV-2024-001", "customerName": "Acme Corporation", "amount": 1500.75}}]
+  getRevenueMetrics:
+    speakeasy-default-get-revenue-metrics:
+      parameters:
+        query:
+          from: "2023-01-01"
+          to: "2023-12-31"
+          currency: "USD"
+      responses:
+        "200":
+          application/json: {"summary": {"currentTotal": 10000, "prevTotal": 8000, "currency": "USD"}, "meta": {"type": "revenue", "currency": "USD"}, "result": [{"date": "2023-01-31", "precentage": {"value": 25, "status": "positive"}, "current": {"date": "2023-01-31", "value": 1000, "currency": "USD"}, "previous": {"date": "2022-01-31", "value": 800, "currency": "USD"}}, {"date": "2023-01-31", "precentage": {"value": 25, "status": "positive"}, "current": {"date": "2023-01-31", "value": 1000, "currency": "USD"}, "previous": {"date": "2022-01-31", "value": 800, "currency": "USD"}}, {"date": "2023-01-31", "precentage": {"value": 25, "status": "positive"}, "current": {"date": "2023-01-31", "value": 1000, "currency": "USD"}, "previous": {"date": "2022-01-31", "value": 800, "currency": "USD"}}]}
+  getProfitMetrics:
+    speakeasy-default-get-profit-metrics:
+      parameters:
+        query:
+          from: "2023-01-01"
+          to: "2023-12-31"
+          currency: "USD"
+      responses:
+        "200":
+          application/json: {"summary": {"currentTotal": 10000, "prevTotal": 8000, "currency": "USD"}, "meta": {"type": "profit", "currency": "USD"}, "result": [{"date": "2023-01-31", "precentage": {"value": 25, "status": "positive"}, "current": {"date": "2023-01-31", "value": 1000, "currency": "USD"}, "previous": {"date": "2022-01-31", "value": 800, "currency": "USD"}}, {"date": "2023-01-31", "precentage": {"value": 25, "status": "positive"}, "current": {"date": "2023-01-31", "value": 1000, "currency": "USD"}, "previous": {"date": "2022-01-31", "value": 800, "currency": "USD"}}, {"date": "2023-01-31", "precentage": {"value": 25, "status": "positive"}, "current": {"date": "2023-01-31", "value": 1000, "currency": "USD"}, "previous": {"date": "2022-01-31", "value": 800, "currency": "USD"}}]}
+  getBurnRateMetrics:
+    speakeasy-default-get-burn-rate-metrics:
+      parameters:
+        query:
+          from: "2023-01-01"
+          to: "2023-12-31"
+          currency: "USD"
+      responses:
+        "200":
+          application/json: [{"date": "2024-01-01", "value": 647366.44, "currency": "SEK"}, {"date": "2024-01-01", "value": 647366.44, "currency": "SEK"}, {"date": "2024-01-01", "value": 647366.44, "currency": "SEK"}]
+  getRunwayMetrics:
+    speakeasy-default-get-runway-metrics:
+      parameters:
+        query:
+          from: "2023-01-01"
+          to: "2023-12-31"
+          currency: "USD"
+      responses:
+        "200":
+          application/json: 12
+  getExpensesMetrics:
+    speakeasy-default-get-expenses-metrics:
+      parameters:
+        query:
+          from: "2023-01-01"
+          to: "2023-12-31"
+          currency: "USD"
+      responses:
+        "200":
+          application/json: {"summary": {"averageExpense": 121054.86, "currency": "SEK"}, "meta": {"type": "expense", "currency": "SEK"}, "result": [{"date": "2024-01-01 00:00:00", "value": 637898.68, "currency": "SEK", "recurring": 9467.76, "total": 647366.44}]}
+  getSpendingMetrics:
+    speakeasy-default-get-spending-metrics:
+      parameters:
+        query:
+          from: "2023-01-01"
+          to: "2023-12-31"
+          currency: "USD"
+      responses:
+        "200":
+          application/json: [{"name": "Taxes", "slug": "taxes", "amount": -1256445, "currency": "SEK", "color": "#8492A6", "percentage": 44}]
+  listTrackerProjects:
+    speakeasy-default-list-tracker-projects:
+      parameters:
+        query:
+          cursor: "eyJpZCI6IjEyMyJ9"
+          pageSize: 20
+          q: "website"
+          start: "2024-04-01"
+          end: "2024-04-30"
+          status: "in_progress"
+          customers: ["customer-1", "customer-2"]
+          tags: ["tag-1", "tag-2"]
+          sort: ["-createdAt", "name"]
+      responses:
+        "200":
+          application/json: {"meta": {"hasNextPage": true, "hasPreviousPage": false}, "data": [{"id": "b7e6c8e2-1f2a-4c3b-9e2d-1a2b3c4d5e6f", "name": "Website Redesign", "description": "Complete redesign of the company website with modern UI/UX and improved performance", "status": "in_progress", "estimate": 120, "currency": "USD", "createdAt": "2024-05-01T12:00:00.000Z", "totalDuration": 43200, "totalAmount": 3600, "customer": {"id": "a1b2c3d4-e5f6-7890-abcd-1234567890ef", "name": "Acme Corporation", "website": "https://acme.com"}, "tags": [{"id": "d1e2f3a4-b5c6-7890-abcd-1234567890ef", "name": "Design"}, {"id": "d1e2f3a4-b5c6-7890-abcd-1234567890ef", "name": "Design"}], "users": [{"id": "f1e2d3c4-b5a6-7890-abcd-1234567890ef", "fullName": "Jane Doe", "avatarUrl": "https://cdn.midday.ai/avatar.jpg"}, {"id": "f1e2d3c4-b5a6-7890-abcd-1234567890ef", "fullName": "Jane Doe", "avatarUrl": "https://cdn.midday.ai/avatar.jpg"}]}, {"id": "b7e6c8e2-1f2a-4c3b-9e2d-1a2b3c4d5e6f", "name": "Website Redesign", "description": "Complete redesign of the company website with modern UI/UX and improved performance", "status": "in_progress", "estimate": 120, "currency": "USD", "createdAt": "2024-05-01T12:00:00.000Z", "totalDuration": 43200, "totalAmount": 3600, "customer": {"id": "a1b2c3d4-e5f6-7890-abcd-1234567890ef", "name": "Acme Corporation", "website": "https://acme.com"}, "tags": [{"id": "d1e2f3a4-b5c6-7890-abcd-1234567890ef", "name": "Design"}, {"id": "d1e2f3a4-b5c6-7890-abcd-1234567890ef", "name": "Design"}], "users": [{"id": "f1e2d3c4-b5a6-7890-abcd-1234567890ef", "fullName": "Jane Doe", "avatarUrl": "https://cdn.midday.ai/avatar.jpg"}, {"id": "f1e2d3c4-b5a6-7890-abcd-1234567890ef", "fullName": "Jane Doe", "avatarUrl": "https://cdn.midday.ai/avatar.jpg"}]}, {"id": "b7e6c8e2-1f2a-4c3b-9e2d-1a2b3c4d5e6f", "name": "Website Redesign", "description": "Complete redesign of the company website with modern UI/UX and improved performance", "status": "in_progress", "estimate": 120, "currency": "USD", "createdAt": "2024-05-01T12:00:00.000Z", "totalDuration": 43200, "totalAmount": 3600, "customer": {"id": "a1b2c3d4-e5f6-7890-abcd-1234567890ef", "name": "Acme Corporation", "website": "https://acme.com"}, "tags": [{"id": "d1e2f3a4-b5c6-7890-abcd-1234567890ef", "name": "Design"}, {"id": "d1e2f3a4-b5c6-7890-abcd-1234567890ef", "name": "Design"}], "users": [{"id": "f1e2d3c4-b5a6-7890-abcd-1234567890ef", "fullName": "Jane Doe", "avatarUrl": "https://cdn.midday.ai/avatar.jpg"}, {"id": "f1e2d3c4-b5a6-7890-abcd-1234567890ef", "fullName": "Jane Doe", "avatarUrl": "https://cdn.midday.ai/avatar.jpg"}]}]}
+  createTrackerProject:
+    "":
+      requestBody:
+        application/json: {"name": "New Project", "billable": true}
+      responses:
+        "200":
+          application/json: {"id": "b7e6c8e2-1f2a-4c3b-9e2d-1a2b3c4d5e6f", "name": "Website Redesign", "description": "Complete redesign of the company website with modern UI/UX and improved performance", "status": "in_progress", "estimate": 120, "currency": "USD", "createdAt": "2024-05-01T12:00:00.000Z", "totalDuration": 43200, "totalAmount": 3600, "customer": {"id": "a1b2c3d4-e5f6-7890-abcd-1234567890ef", "name": "Acme Corporation", "website": "https://acme.com"}, "tags": [], "users": [{"id": "f1e2d3c4-b5a6-7890-abcd-1234567890ef", "fullName": "Jane Doe", "avatarUrl": "https://cdn.midday.ai/avatar.jpg"}, {"id": "f1e2d3c4-b5a6-7890-abcd-1234567890ef", "fullName": "Jane Doe", "avatarUrl": "https://cdn.midday.ai/avatar.jpg"}]}
+  getTrackerProjectById:
+    speakeasy-default-get-tracker-project-by-id:
+      parameters:
+        path:
+          id: "b7e6c8e2-1f2a-4c3b-9e2d-1a2b3c4d5e6f"
+      responses:
+        "200":
+          application/json: {"id": "b7e6c8e2-1f2a-4c3b-9e2d-1a2b3c4d5e6f", "name": "Website Redesign", "description": "Complete redesign of the company website with modern UI/UX and improved performance", "status": "in_progress", "estimate": 120, "currency": "USD", "createdAt": "2024-05-01T12:00:00.000Z", "totalDuration": 43200, "totalAmount": 3600, "customer": {"id": "a1b2c3d4-e5f6-7890-abcd-1234567890ef", "name": "Acme Corporation", "website": "https://acme.com"}, "tags": [], "users": []}
+  deleteTrackerProject:
+    speakeasy-default-delete-tracker-project:
+      parameters:
+        path:
+          id: "b7e6c8e2-1f2a-4c3b-9e2d-1a2b3c4d5e6f"
+      responses:
+        "200":
+          application/json: {"id": "b7e6c8e2-1f2a-4c3b-9e2d-1a2b3c4d5e6f"}
+  updateTrackerProject:
+    speakeasy-default-update-tracker-project:
+      parameters:
+        path:
+          id: "b7e6c8e2-1f2a-4c3b-9e2d-1a2b3c4d5e6f"
+      requestBody:
+        application/json: {"name": "Website Redesign", "description": "Complete redesign of the company website with modern UI/UX and improved performance", "estimate": 120, "billable": true, "rate": 75, "currency": "USD", "status": "in_progress", "customerId": "a1b2c3d4-e5f6-7890-abcd-1234567890ef", "tags": [{"id": "f1e2d3c4-b5a6-7890-1234-567890abcdef", "value": "Design"}, {"id": "e2d3c4b5-a6f1-7890-1234-567890abcdef", "value": "Frontend"}]}
+      responses:
+        "200":
+          application/json: {"id": "b7e6c8e2-1f2a-4c3b-9e2d-1a2b3c4d5e6f", "name": "Website Redesign", "description": "Complete redesign of the company website with modern UI/UX and improved performance", "status": "in_progress", "estimate": 120, "currency": "USD", "createdAt": "2024-05-01T12:00:00.000Z", "totalDuration": 43200, "totalAmount": 3600, "customer": {"id": "a1b2c3d4-e5f6-7890-abcd-1234567890ef", "name": "Acme Corporation", "website": "https://acme.com"}, "tags": [{"id": "d1e2f3a4-b5c6-7890-abcd-1234567890ef", "name": "Design"}, {"id": "d1e2f3a4-b5c6-7890-abcd-1234567890ef", "name": "Design"}, {"id": "d1e2f3a4-b5c6-7890-abcd-1234567890ef", "name": "Design"}], "users": null}
+  listTrackerEntries:
+    speakeasy-default-list-tracker-entries:
+      parameters:
+        query:
+          from: "2024-04-01"
+          to: "2024-04-30"
+          projectId: "b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2"
+      responses:
+        "200":
+          application/json: {"meta": {"totalDuration": 86400, "totalAmount": 1800, "from": "2024-04-01", "to": "2024-04-30"}, "result": {"key": [{"id": "b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2", "createdAt": "2024-04-15T09:00:00.000Z", "duration": 28800, "start": "2024-04-15T09:00:00.000Z", "stop": "2024-04-15T17:00:00.000Z", "teamId": "team-1234", "description": "Worked on implementing user authentication feature", "rate": 75, "currency": "USD", "billed": false, "date": "2024-04-15", "user": {"id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890", "fullName": "Jane Doe", "avatarUrl": "https://cdn.midday.ai/avatar.jpg"}, "project": {"id": "b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2", "createdAt": "2024-03-01T10:00:00.000Z", "rate": 75, "currency": "USD", "status": "in_progress", "description": "Complete website redesign with modern UI/UX", "name": "Website Redesign Project", "billable": true, "estimate": 120, "customer": {"id": "customer-1234", "name": "Acme Corporation"}}}, {"id": "b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2", "createdAt": "2024-04-15T09:00:00.000Z", "duration": 28800, "start": "2024-04-15T09:00:00.000Z", "stop": "2024-04-15T17:00:00.000Z", "teamId": "team-1234", "description": "Worked on implementing user authentication feature", "rate": 75, "currency": "USD", "billed": false, "date": "2024-04-15", "user": {"id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890", "fullName": "Jane Doe", "avatarUrl": "https://cdn.midday.ai/avatar.jpg"}, "project": {"id": "b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2", "createdAt": "2024-03-01T10:00:00.000Z", "rate": 75, "currency": "USD", "status": "in_progress", "description": "Complete website redesign with modern UI/UX", "name": "Website Redesign Project", "billable": true, "estimate": 120, "customer": {"id": "customer-1234", "name": "Acme Corporation"}}}, {"id": "b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2", "createdAt": "2024-04-15T09:00:00.000Z", "duration": 28800, "start": "2024-04-15T09:00:00.000Z", "stop": "2024-04-15T17:00:00.000Z", "teamId": "team-1234", "description": "Worked on implementing user authentication feature", "rate": 75, "currency": "USD", "billed": false, "date": "2024-04-15", "user": {"id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890", "fullName": "Jane Doe", "avatarUrl": "https://cdn.midday.ai/avatar.jpg"}, "project": {"id": "b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2", "createdAt": "2024-03-01T10:00:00.000Z", "rate": 75, "currency": "USD", "status": "in_progress", "description": "Complete website redesign with modern UI/UX", "name": "Website Redesign Project", "billable": true, "estimate": 120, "customer": {"id": "customer-1234", "name": "Acme Corporation"}}}], "key1": [], "key2": []}}
+  deleteTrackerEntry:
+    speakeasy-default-delete-tracker-entry:
+      parameters:
+        path:
+          id: "b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2"
+      responses:
+        "200":
+          application/json: {"id": "b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2"}
+examplesVersion: 1.0.2
+generatedTests: {}
