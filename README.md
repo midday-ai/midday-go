@@ -1,15 +1,13 @@
-# github.com/midday-ai/midday-go
-
-Developer-friendly & type-safe Go SDK specifically catered to leverage *github.com/midday-ai/midday-go* API.
-
-<div align="left">
-    <a href="https://www.speakeasy.com/?utm_source=github-com/midday-ai/midday-go&utm_campaign=go"><img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" /></a>
-    <a href="https://opensource.org/licenses/MIT">
-        <img src="https://img.shields.io/badge/License-MIT-blue.svg" style="width: 100px; height: 28px;" />
-    </a>
+<div align="center">
+  <img src="https://github.com/midday-ai/midday-ts/raw/main/hero.jpg" alt="Midday go SDK to interact with APIs.">
+  <h3>Midday go SDK</h3>
+  <a href="https://speakeasyapi.dev/"><img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" /></a>
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/License-MIT-blue.svg" style="width: 100px; height: 28px;" />
+  </a>
 </div>
 
-Midday API: Midday is a platform for Invoicing, Time tracking, File reconciliation, Storage, Financial Overview & your own Assistant.
+Midday is a platform for Invoicing, Time tracking, File reconciliation, Storage, Financial Overview & your own Assistant.
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
