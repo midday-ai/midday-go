@@ -137,6 +137,7 @@ func main() {
         Email: middaygo.String("team@acme.com"),
         LogoURL: middaygo.String("https://cdn.midday.ai/logos/acme-corp.png"),
         BaseCurrency: middaygo.String("USD"),
+        CountryCode: middaygo.String("US"),
     })
     if err != nil {
         log.Fatal(err)
