@@ -191,6 +191,8 @@ type TransactionResponse struct {
 	Amount float64 `json:"amount"`
 	// Currency code of the transaction in ISO 4217 format
 	Currency string `json:"currency"`
+	// Name of the counterparty
+	CounterpartyName *string `json:"counterpartyName"`
 	// Date and time of the transaction in ISO 8601 format
 	Date string `json:"date"`
 	// Category information assigned to the transaction for organization
@@ -243,6 +245,13 @@ func (o *TransactionResponse) GetCurrency() string {
 		return ""
 	}
 	return o.Currency
+}
+
+func (o *TransactionResponse) GetCounterpartyName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CounterpartyName
 }
 
 func (o *TransactionResponse) GetDate() string {
