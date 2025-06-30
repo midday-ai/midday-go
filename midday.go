@@ -2,7 +2,7 @@
 
 package middaygo
 
-// Generated from OpenAPI doc version 0.0.1 and generator version 2.616.1
+// Generated from OpenAPI doc version 0.0.1 and generator version 2.640.2
 
 import (
 	"context"
@@ -143,9 +143,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *Midday {
 	sdk := &Midday{
-		SDKVersion: "0.0.1",
+		SDKVersion: "0.1.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.0.1 2.616.1 0.0.1 github.com/midday-ai/midday-go",
+			UserAgent:  "speakeasy-sdk/go 0.1.0 2.640.2 0.0.1 github.com/midday-ai/midday-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
