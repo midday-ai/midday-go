@@ -10,6 +10,10 @@ type Category struct {
 	Name string `json:"name"`
 	// Hex color code associated with the category for UI display
 	Color string `json:"color"`
+	// Tax rate of the category
+	TaxRate *float64 `json:"taxRate"`
+	// Tax type of the category
+	TaxType *string `json:"taxType"`
 	// URL-friendly slug of the category
 	Slug string `json:"slug"`
 }
@@ -33,6 +37,20 @@ func (o *Category) GetColor() string {
 		return ""
 	}
 	return o.Color
+}
+
+func (o *Category) GetTaxRate() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.TaxRate
+}
+
+func (o *Category) GetTaxType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TaxType
 }
 
 func (o *Category) GetSlug() string {
@@ -189,8 +207,16 @@ type TransactionResponse struct {
 	Name string `json:"name"`
 	// Monetary amount of the transaction
 	Amount float64 `json:"amount"`
+	// Tax amount of the transaction
+	TaxAmount *float64 `json:"taxAmount"`
+	// Tax rate of the transaction
+	TaxRate *float64 `json:"taxRate"`
+	// Tax type of the transaction
+	TaxType *string `json:"taxType"`
 	// Currency code of the transaction in ISO 4217 format
 	Currency string `json:"currency"`
+	// Name of the counterparty
+	CounterpartyName *string `json:"counterpartyName"`
 	// Date and time of the transaction in ISO 8601 format
 	Date string `json:"date"`
 	// Category information assigned to the transaction for organization
@@ -238,11 +264,39 @@ func (o *TransactionResponse) GetAmount() float64 {
 	return o.Amount
 }
 
+func (o *TransactionResponse) GetTaxAmount() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.TaxAmount
+}
+
+func (o *TransactionResponse) GetTaxRate() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.TaxRate
+}
+
+func (o *TransactionResponse) GetTaxType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TaxType
+}
+
 func (o *TransactionResponse) GetCurrency() string {
 	if o == nil {
 		return ""
 	}
 	return o.Currency
+}
+
+func (o *TransactionResponse) GetCounterpartyName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CounterpartyName
 }
 
 func (o *TransactionResponse) GetDate() string {
