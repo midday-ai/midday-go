@@ -2,7 +2,7 @@
 
 package middaygo
 
-// Generated from OpenAPI doc version 0.0.1 and generator version 2.616.1
+// Generated from OpenAPI doc version 0.0.1 and generator version 2.656.5
 
 import (
 	"context"
@@ -50,23 +50,20 @@ func Pointer[T any](v T) *T { return &v }
 
 // Midday API: Midday is a platform for Invoicing, Time tracking, File reconciliation, Storage, Financial Overview & your own Assistant.
 type Midday struct {
-	SDKVersion   string
-	Transactions *Transactions
-	Teams        *Teams
-	Users        *Users
-	Customers    *Customers
-	BankAccounts *BankAccounts
-	Tags         *Tags
-	Documents    *Documents
-	Inbox        *Inbox
-	Invoices     *Invoices
-	// Search
-	// Search across all data, invoices, documents, customers, transactions, and more.
+	SDKVersion      string
+	Transactions    *Transactions
+	Teams           *Teams
+	Users           *Users
+	Customers       *Customers
+	BankAccounts    *BankAccounts
+	Tags            *Tags
+	Documents       *Documents
+	Inbox           *Inbox
+	Invoices        *Invoices
 	Search          *Search
 	Metrics         *Metrics
 	TrackerProjects *TrackerProjects
 	TrackerEntries  *TrackerEntries
-	Tracker         *Tracker
 
 	sdkConfiguration config.SDKConfiguration
 	hooks            *hooks.Hooks
@@ -143,9 +140,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *Midday {
 	sdk := &Midday{
-		SDKVersion: "0.0.1",
+		SDKVersion: "0.1.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.0.1 2.616.1 0.0.1 github.com/midday-ai/midday-go",
+			UserAgent:  "speakeasy-sdk/go 0.1.0 2.656.5 0.0.1 github.com/midday-ai/midday-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
@@ -181,7 +178,6 @@ func New(opts ...SDKOption) *Midday {
 	sdk.Metrics = newMetrics(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.TrackerProjects = newTrackerProjects(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.TrackerEntries = newTrackerEntries(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Tracker = newTracker(sdk, sdk.sdkConfiguration, sdk.hooks)
 
 	return sdk
 }
