@@ -106,6 +106,7 @@ func main() {
 
     res, err := s.TrackerProjects.Create(ctx, &operations.CreateTrackerProjectRequest{
         Name: "New Project",
+        Billable: middaygo.Bool(true),
     })
     if err != nil {
         log.Fatal(err)
@@ -261,6 +262,7 @@ func main() {
         Name: "Website Redesign",
         Description: middaygo.String("Complete redesign of the company website with modern UI/UX and improved performance"),
         Estimate: middaygo.Float64(120),
+        Billable: middaygo.Bool(true),
         Rate: middaygo.Float64(75),
         Currency: middaygo.String("USD"),
         Status: operations.UpdateTrackerProjectStatusInProgress.ToPointer(),

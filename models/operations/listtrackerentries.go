@@ -73,8 +73,8 @@ func (o *ListTrackerEntriesMeta) GetTo() string {
 	return o.To
 }
 
-// User information for the person who created this tracker entry
-type User struct {
+// ListTrackerEntriesUser - User information for the person who created this tracker entry
+type ListTrackerEntriesUser struct {
 	// Unique identifier of the user
 	ID string `json:"id"`
 	// Full name of the user
@@ -83,21 +83,21 @@ type User struct {
 	AvatarURL string `json:"avatarUrl"`
 }
 
-func (o *User) GetID() string {
+func (o *ListTrackerEntriesUser) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *User) GetFullName() string {
+func (o *ListTrackerEntriesUser) GetFullName() string {
 	if o == nil {
 		return ""
 	}
 	return o.FullName
 }
 
-func (o *User) GetAvatarURL() string {
+func (o *ListTrackerEntriesUser) GetAvatarURL() string {
 	if o == nil {
 		return ""
 	}
@@ -126,96 +126,96 @@ func (o *ListTrackerEntriesCustomer) GetName() string {
 	return o.Name
 }
 
-// Project information associated with this tracker entry
-type Project struct {
+// ListTrackerEntriesProject - Project information associated with this tracker entry
+type ListTrackerEntriesProject struct {
 	// Unique identifier of the project
 	ID string `json:"id"`
 	// Date and time when the project was created in ISO 8601 format
 	CreatedAt string `json:"createdAt"`
 	// Default hourly rate for the project
-	Rate float64 `json:"rate"`
+	Rate *float64 `json:"rate"`
 	// Currency code for the project rate in ISO 4217 format
-	Currency string `json:"currency"`
+	Currency *string `json:"currency"`
 	// Current status of the project
 	Status string `json:"status"`
 	// Description of the project
-	Description string `json:"description"`
+	Description *string `json:"description"`
 	// Name of the project
 	Name string `json:"name"`
 	// Whether the project is billable to the customer
-	Billable bool `json:"billable"`
+	Billable *bool `json:"billable"`
 	// Estimated total hours for the project
-	Estimate float64 `json:"estimate"`
+	Estimate *float64 `json:"estimate"`
 	// Customer information associated with the project
-	Customer ListTrackerEntriesCustomer `json:"customer"`
+	Customer *ListTrackerEntriesCustomer `json:"customer"`
 }
 
-func (o *Project) GetID() string {
+func (o *ListTrackerEntriesProject) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *Project) GetCreatedAt() string {
+func (o *ListTrackerEntriesProject) GetCreatedAt() string {
 	if o == nil {
 		return ""
 	}
 	return o.CreatedAt
 }
 
-func (o *Project) GetRate() float64 {
+func (o *ListTrackerEntriesProject) GetRate() *float64 {
 	if o == nil {
-		return 0.0
+		return nil
 	}
 	return o.Rate
 }
 
-func (o *Project) GetCurrency() string {
+func (o *ListTrackerEntriesProject) GetCurrency() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Currency
 }
 
-func (o *Project) GetStatus() string {
+func (o *ListTrackerEntriesProject) GetStatus() string {
 	if o == nil {
 		return ""
 	}
 	return o.Status
 }
 
-func (o *Project) GetDescription() string {
+func (o *ListTrackerEntriesProject) GetDescription() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Description
 }
 
-func (o *Project) GetName() string {
+func (o *ListTrackerEntriesProject) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *Project) GetBillable() bool {
+func (o *ListTrackerEntriesProject) GetBillable() *bool {
 	if o == nil {
-		return false
+		return nil
 	}
 	return o.Billable
 }
 
-func (o *Project) GetEstimate() float64 {
+func (o *ListTrackerEntriesProject) GetEstimate() *float64 {
 	if o == nil {
-		return 0.0
+		return nil
 	}
 	return o.Estimate
 }
 
-func (o *Project) GetCustomer() ListTrackerEntriesCustomer {
+func (o *ListTrackerEntriesProject) GetCustomer() *ListTrackerEntriesCustomer {
 	if o == nil {
-		return ListTrackerEntriesCustomer{}
+		return nil
 	}
 	return o.Customer
 }
@@ -244,9 +244,9 @@ type Result struct {
 	// Date of the tracker entry in YYYY-MM-DD format
 	Date string `json:"date"`
 	// User information for the person who created this tracker entry
-	User User `json:"user"`
+	User ListTrackerEntriesUser `json:"user"`
 	// Project information associated with this tracker entry
-	Project Project `json:"project"`
+	Project ListTrackerEntriesProject `json:"project"`
 }
 
 func (o *Result) GetID() string {
@@ -326,16 +326,16 @@ func (o *Result) GetDate() string {
 	return o.Date
 }
 
-func (o *Result) GetUser() User {
+func (o *Result) GetUser() ListTrackerEntriesUser {
 	if o == nil {
-		return User{}
+		return ListTrackerEntriesUser{}
 	}
 	return o.User
 }
 
-func (o *Result) GetProject() Project {
+func (o *Result) GetProject() ListTrackerEntriesProject {
 	if o == nil {
-		return Project{}
+		return ListTrackerEntriesProject{}
 	}
 	return o.Project
 }
