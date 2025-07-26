@@ -46,6 +46,8 @@ type GetCustomerByIDResponseBody struct {
 	Name string `json:"name"`
 	// Primary email address of the customer
 	Email string `json:"email"`
+	// Billing email address of the customer
+	BillingEmail *string `json:"billingEmail"`
 	// Primary phone number of the customer
 	Phone *string `json:"phone"`
 	// Website URL of the customer
@@ -101,6 +103,13 @@ func (o *GetCustomerByIDResponseBody) GetEmail() string {
 		return ""
 	}
 	return o.Email
+}
+
+func (o *GetCustomerByIDResponseBody) GetBillingEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.BillingEmail
 }
 
 func (o *GetCustomerByIDResponseBody) GetPhone() *string {

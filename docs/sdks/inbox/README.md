@@ -184,9 +184,7 @@ func main() {
         middaygo.WithSecurity("MIDDAY_API_KEY"),
     )
 
-    res, err := s.Inbox.Update(ctx, "<id>", operations.UpdateInboxItemRequestBody{
-        Status: operations.UpdateInboxItemStatusArchived,
-    })
+    res, err := s.Inbox.Update(ctx, "<id>", operations.UpdateInboxItemRequestBody{})
     if err != nil {
         log.Fatal(err)
     }

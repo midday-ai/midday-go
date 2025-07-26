@@ -2,7 +2,7 @@
 
 package middaygo
 
-// Generated from OpenAPI doc version 0.0.1 and generator version 2.616.1
+// Generated from OpenAPI doc version 0.0.1 and generator version 2.666.0
 
 import (
 	"context"
@@ -66,7 +66,7 @@ type Midday struct {
 	Metrics         *Metrics
 	TrackerProjects *TrackerProjects
 	TrackerEntries  *TrackerEntries
-	Tracker         *Tracker
+	TrackerTimer    *TrackerTimer
 
 	sdkConfiguration config.SDKConfiguration
 	hooks            *hooks.Hooks
@@ -143,9 +143,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *Midday {
 	sdk := &Midday{
-		SDKVersion: "0.0.1",
+		SDKVersion: "0.1.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.0.1 2.616.1 0.0.1 github.com/midday-ai/midday-go",
+			UserAgent:  "speakeasy-sdk/go 0.1.0 2.666.0 0.0.1 github.com/midday-ai/midday-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
@@ -181,7 +181,7 @@ func New(opts ...SDKOption) *Midday {
 	sdk.Metrics = newMetrics(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.TrackerProjects = newTrackerProjects(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.TrackerEntries = newTrackerEntries(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Tracker = newTracker(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.TrackerTimer = newTrackerTimer(sdk, sdk.sdkConfiguration, sdk.hooks)
 
 	return sdk
 }

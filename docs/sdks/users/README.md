@@ -88,6 +88,7 @@ func main() {
         Locale: middaygo.String("en-US"),
         WeekStartsOnMonday: middaygo.Bool(true),
         Timezone: middaygo.String("America/New_York"),
+        TimezoneAutoSync: middaygo.Bool(true),
         TimeFormat: middaygo.Float64(24),
         DateFormat: operations.DateFormatRequestYyyyDashMmDashdd.ToPointer(),
     })

@@ -44,14 +44,38 @@ func (e *UpdateInboxItemStatus) UnmarshalJSON(data []byte) error {
 }
 
 type UpdateInboxItemRequestBody struct {
-	Status UpdateInboxItemStatus `json:"status"`
+	Status      *UpdateInboxItemStatus `json:"status,omitempty"`
+	DisplayName *string                `json:"displayName,omitempty"`
+	Currency    *string                `json:"currency,omitempty"`
+	Amount      *float64               `json:"amount,omitempty"`
 }
 
-func (o *UpdateInboxItemRequestBody) GetStatus() UpdateInboxItemStatus {
+func (o *UpdateInboxItemRequestBody) GetStatus() *UpdateInboxItemStatus {
 	if o == nil {
-		return UpdateInboxItemStatus("")
+		return nil
 	}
 	return o.Status
+}
+
+func (o *UpdateInboxItemRequestBody) GetDisplayName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DisplayName
+}
+
+func (o *UpdateInboxItemRequestBody) GetCurrency() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Currency
+}
+
+func (o *UpdateInboxItemRequestBody) GetAmount() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Amount
 }
 
 type UpdateInboxItemRequest struct {

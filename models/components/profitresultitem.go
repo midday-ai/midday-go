@@ -5,7 +5,7 @@ package components
 type ProfitResultItem struct {
 	// Date for the metric (ISO 8601)
 	Date       string           `json:"date"`
-	Precentage ProfitPercentage `json:"precentage"`
+	Percentage ProfitPercentage `json:"percentage"`
 	Current    ProfitCurrent    `json:"current"`
 	Previous   ProfitPrevious   `json:"previous"`
 }
@@ -17,11 +17,11 @@ func (o *ProfitResultItem) GetDate() string {
 	return o.Date
 }
 
-func (o *ProfitResultItem) GetPrecentage() ProfitPercentage {
+func (o *ProfitResultItem) GetPercentage() ProfitPercentage {
 	if o == nil {
 		return ProfitPercentage{}
 	}
-	return o.Precentage
+	return o.Percentage
 }
 
 func (o *ProfitResultItem) GetCurrent() ProfitCurrent {
