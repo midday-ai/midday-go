@@ -13,6 +13,7 @@ Search across all data, invoices, documents, customers, transactions, and more.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="search" method="get" path="/search" -->
 ```go
 package main
 

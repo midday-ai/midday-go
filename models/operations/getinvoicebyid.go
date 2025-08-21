@@ -23,11 +23,12 @@ func (o *GetInvoiceByIDRequest) GetID() string {
 type GetInvoiceByIDStatus string
 
 const (
-	GetInvoiceByIDStatusDraft    GetInvoiceByIDStatus = "draft"
-	GetInvoiceByIDStatusOverdue  GetInvoiceByIDStatus = "overdue"
-	GetInvoiceByIDStatusPaid     GetInvoiceByIDStatus = "paid"
-	GetInvoiceByIDStatusUnpaid   GetInvoiceByIDStatus = "unpaid"
-	GetInvoiceByIDStatusCanceled GetInvoiceByIDStatus = "canceled"
+	GetInvoiceByIDStatusDraft     GetInvoiceByIDStatus = "draft"
+	GetInvoiceByIDStatusOverdue   GetInvoiceByIDStatus = "overdue"
+	GetInvoiceByIDStatusPaid      GetInvoiceByIDStatus = "paid"
+	GetInvoiceByIDStatusUnpaid    GetInvoiceByIDStatus = "unpaid"
+	GetInvoiceByIDStatusCanceled  GetInvoiceByIDStatus = "canceled"
+	GetInvoiceByIDStatusScheduled GetInvoiceByIDStatus = "scheduled"
 )
 
 func (e GetInvoiceByIDStatus) ToPointer() *GetInvoiceByIDStatus {
@@ -48,6 +49,8 @@ func (e *GetInvoiceByIDStatus) UnmarshalJSON(data []byte) error {
 	case "unpaid":
 		fallthrough
 	case "canceled":
+		fallthrough
+	case "scheduled":
 		*e = GetInvoiceByIDStatus(v)
 		return nil
 	default:

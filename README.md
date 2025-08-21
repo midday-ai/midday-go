@@ -10,10 +10,15 @@
 Midday is a platform for Invoicing, Time tracking, File reconciliation, Storage, Financial Overview & your own Assistant.
 <!-- End Summary [summary] -->
 
+<!-- Start Summary [summary] -->
+## Summary
+
+Midday API: Midday is a platform for Invoicing, Time tracking, File reconciliation, Storage, Financial Overview & your own Assistant.
+<!-- End Summary [summary] -->
+
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
-* [github.com/midday-ai/midday-go](#githubcommidday-aimidday-go)
   * [SDK Installation](#sdk-installation)
   * [SDK Example Usage](#sdk-example-usage)
   * [Authentication](#authentication)
@@ -272,13 +277,13 @@ func main() {
 * [Update](docs/sdks/teams/README.md#update) - Update a team
 * [Members](docs/sdks/teams/README.md#members) - List all team members
 
-### [Tracker](docs/sdks/tracker/README.md)
-
-* [Delete](docs/sdks/tracker/README.md#delete) - Delete a tracker entry
-
 ### [TrackerEntries](docs/sdks/trackerentries/README.md)
 
 * [List](docs/sdks/trackerentries/README.md#list) - List all tracker entries
+* [Create](docs/sdks/trackerentries/README.md#create) - Create a tracker entry
+* [CreateBulk](docs/sdks/trackerentries/README.md#createbulk) - Create multiple tracker entries
+* [Delete](docs/sdks/trackerentries/README.md#delete) - Delete a tracker entry
+* [Update](docs/sdks/trackerentries/README.md#update) - Update a tracker entry
 
 ### [TrackerProjects](docs/sdks/trackerprojects/README.md)
 
@@ -287,6 +292,13 @@ func main() {
 * [Get](docs/sdks/trackerprojects/README.md#get) - Retrieve a tracker project
 * [Delete](docs/sdks/trackerprojects/README.md#delete) - Delete a tracker project
 * [Update](docs/sdks/trackerprojects/README.md#update) - Update a tracker project
+
+### [TrackerTimer](docs/sdks/trackertimer/README.md)
+
+* [StartTimer](docs/sdks/trackertimer/README.md#starttimer) - Start a timer
+* [StopTimer](docs/sdks/trackertimer/README.md#stoptimer) - Stop a timer
+* [GetCurrentTimer](docs/sdks/trackertimer/README.md#getcurrenttimer) - Get current timer
+* [GetTimerStatus](docs/sdks/trackertimer/README.md#gettimerstatus) - Get timer status
 
 ### [Transactions](docs/sdks/transactions/README.md)
 
@@ -672,12 +684,13 @@ The built-in `net/http` client satisfies this interface and a default client bas
 import (
 	"net/http"
 	"time"
-	"github.com/myorg/your-go-sdk"
+
+	"github.com/midday-ai/midday-go"
 )
 
 var (
 	httpClient = &http.Client{Timeout: 30 * time.Second}
-	sdkClient  = sdk.New(sdk.WithClient(httpClient))
+	sdkClient  = middaygo.New(middaygo.WithClient(httpClient))
 )
 ```
 

@@ -16,6 +16,7 @@ Retrieve a list of inbox items for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="listInboxItems" method="get" path="/inbox" -->
 ```go
 package main
 
@@ -67,6 +68,7 @@ Retrieve a inbox item by its unique identifier for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getInboxItemById" method="get" path="/inbox/{id}" -->
 ```go
 package main
 
@@ -117,6 +119,7 @@ Delete a inbox item by its unique identifier for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="deleteInboxItem" method="delete" path="/inbox/{id}" -->
 ```go
 package main
 
@@ -167,6 +170,7 @@ Update fields of an inbox item by its unique identifier for the authenticated te
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="updateInboxItem" method="patch" path="/inbox/{id}" -->
 ```go
 package main
 
@@ -184,9 +188,7 @@ func main() {
         middaygo.WithSecurity("MIDDAY_API_KEY"),
     )
 
-    res, err := s.Inbox.Update(ctx, "<id>", operations.UpdateInboxItemRequestBody{
-        Status: operations.UpdateInboxItemStatusArchived,
-    })
+    res, err := s.Inbox.Update(ctx, "<id>", operations.UpdateInboxItemRequestBody{})
     if err != nil {
         log.Fatal(err)
     }

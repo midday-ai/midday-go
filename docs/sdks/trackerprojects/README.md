@@ -17,6 +17,7 @@ List all tracker projects for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="listTrackerProjects" method="get" path="/tracker-projects" -->
 ```go
 package main
 
@@ -87,6 +88,7 @@ Create a tracker project for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="createTrackerProject" method="post" path="/tracker-projects" -->
 ```go
 package main
 
@@ -106,6 +108,7 @@ func main() {
 
     res, err := s.TrackerProjects.Create(ctx, &operations.CreateTrackerProjectRequest{
         Name: "New Project",
+        Billable: middaygo.Bool(true),
     })
     if err != nil {
         log.Fatal(err)
@@ -140,6 +143,7 @@ Retrieve a tracker project for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getTrackerProjectById" method="get" path="/tracker-projects/{id}" -->
 ```go
 package main
 
@@ -190,6 +194,7 @@ Delete a tracker project for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="deleteTrackerProject" method="delete" path="/tracker-projects/{id}" -->
 ```go
 package main
 
@@ -240,6 +245,7 @@ Update a tracker project for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="updateTrackerProject" method="patch" path="/tracker-projects/{id}" -->
 ```go
 package main
 
@@ -261,6 +267,7 @@ func main() {
         Name: "Website Redesign",
         Description: middaygo.String("Complete redesign of the company website with modern UI/UX and improved performance"),
         Estimate: middaygo.Float64(120),
+        Billable: middaygo.Bool(true),
         Rate: middaygo.Float64(75),
         Currency: middaygo.String("USD"),
         Status: operations.UpdateTrackerProjectStatusInProgress.ToPointer(),

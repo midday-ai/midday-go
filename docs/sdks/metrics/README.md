@@ -18,6 +18,7 @@ Revenue metrics for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getRevenueMetrics" method="get" path="/metrics/revenue" -->
 ```go
 package main
 
@@ -70,6 +71,7 @@ Profit metrics for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getProfitMetrics" method="get" path="/metrics/profit" -->
 ```go
 package main
 
@@ -122,6 +124,7 @@ Burn rate metrics for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getBurnRateMetrics" method="get" path="/metrics/burn-rate" -->
 ```go
 package main
 
@@ -174,6 +177,7 @@ Runway metrics for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getRunwayMetrics" method="get" path="/metrics/runway" -->
 ```go
 package main
 
@@ -226,6 +230,7 @@ Expense metrics for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getExpensesMetrics" method="get" path="/metrics/expenses" -->
 ```go
 package main
 
@@ -278,6 +283,7 @@ Spending metrics for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getSpendingMetrics" method="get" path="/metrics/spending" -->
 ```go
 package main
 

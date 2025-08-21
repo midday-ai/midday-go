@@ -17,6 +17,7 @@ Retrieve a list of bank accounts for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="listBankAccounts" method="get" path="/bank-accounts" -->
 ```go
 package main
 
@@ -68,6 +69,7 @@ Create a new bank account for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="createBankAccount" method="post" path="/bank-accounts" -->
 ```go
 package main
 
@@ -123,6 +125,7 @@ Retrieve a bank account by ID for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getBankAccountById" method="get" path="/bank-accounts/{id}" -->
 ```go
 package main
 
@@ -173,6 +176,7 @@ Delete a bank account by ID for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="deleteBankAccount" method="delete" path="/bank-accounts/{id}" -->
 ```go
 package main
 
@@ -223,6 +227,7 @@ Update a bank account by ID for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="updateBankAccount" method="patch" path="/bank-accounts/{id}" -->
 ```go
 package main
 

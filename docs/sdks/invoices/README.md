@@ -17,6 +17,7 @@ Retrieve a list of invoices for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="listInvoices" method="get" path="/invoices" -->
 ```go
 package main
 
@@ -86,6 +87,7 @@ Get payment status for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get_/invoices/payment-status" method="get" path="/invoices/payment-status" -->
 ```go
 package main
 
@@ -135,6 +137,7 @@ Get summary of invoices for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getInvoiceSummary" method="get" path="/invoices/summary" -->
 ```go
 package main
 
@@ -186,6 +189,7 @@ Retrieve a invoice by its unique identifier for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getInvoiceById" method="get" path="/invoices/{id}" -->
 ```go
 package main
 
@@ -236,6 +240,7 @@ Delete an invoice by its unique identifier for the authenticated team. Only invo
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="deleteInvoice" method="delete" path="/invoices/{id}" -->
 ```go
 package main
 

@@ -1,0 +1,9 @@
+# CreateTrackerEntriesBulkResponse
+
+
+## Fields
+
+| Field                                                                                                               | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `HTTPMeta`                                                                                                          | [components.HTTPMetadata](../../models/components/httpmetadata.md)                                                  | :heavy_check_mark:                                                                                                  | N/A                                                                                                                 |
+| `Object`                                                                                                            | [*operations.CreateTrackerEntriesBulkResponseBody](../../models/operations/createtrackerentriesbulkresponsebody.md) | :heavy_minus_sign:                                                                                                  | Tracker entries created successfully.                                                                               |

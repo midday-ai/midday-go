@@ -34,6 +34,8 @@ type UpdateCustomerRequestBody struct {
 	Name string `json:"name"`
 	// Primary email address of the customer
 	Email string `json:"email"`
+	// Billing email address of the customer
+	BillingEmail *string `json:"billingEmail,omitempty"`
 	// Country name where the customer is located
 	Country *string `json:"country,omitempty"`
 	// First line of the customer's address
@@ -81,6 +83,13 @@ func (o *UpdateCustomerRequestBody) GetEmail() string {
 		return ""
 	}
 	return o.Email
+}
+
+func (o *UpdateCustomerRequestBody) GetBillingEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.BillingEmail
 }
 
 func (o *UpdateCustomerRequestBody) GetCountry() *string {
@@ -222,6 +231,8 @@ type UpdateCustomerResponseBody struct {
 	Name string `json:"name"`
 	// Primary email address of the customer
 	Email string `json:"email"`
+	// Billing email address of the customer
+	BillingEmail *string `json:"billingEmail"`
 	// Primary phone number of the customer
 	Phone *string `json:"phone"`
 	// Website URL of the customer
@@ -277,6 +288,13 @@ func (o *UpdateCustomerResponseBody) GetEmail() string {
 		return ""
 	}
 	return o.Email
+}
+
+func (o *UpdateCustomerResponseBody) GetBillingEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.BillingEmail
 }
 
 func (o *UpdateCustomerResponseBody) GetPhone() *string {

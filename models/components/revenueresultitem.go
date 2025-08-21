@@ -5,7 +5,7 @@ package components
 type RevenueResultItem struct {
 	// Date for the metric (ISO 8601)
 	Date       string            `json:"date"`
-	Precentage RevenuePercentage `json:"precentage"`
+	Percentage RevenuePercentage `json:"percentage"`
 	Current    RevenueCurrent    `json:"current"`
 	Previous   RevenuePrevious   `json:"previous"`
 }
@@ -17,11 +17,11 @@ func (o *RevenueResultItem) GetDate() string {
 	return o.Date
 }
 
-func (o *RevenueResultItem) GetPrecentage() RevenuePercentage {
+func (o *RevenueResultItem) GetPercentage() RevenuePercentage {
 	if o == nil {
 		return RevenuePercentage{}
 	}
-	return o.Precentage
+	return o.Percentage
 }
 
 func (o *RevenueResultItem) GetCurrent() RevenueCurrent {

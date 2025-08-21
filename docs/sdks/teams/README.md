@@ -16,6 +16,7 @@ Retrieve a list of teams for the authenticated user.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="listTeams" method="get" path="/teams" -->
 ```go
 package main
 
@@ -65,6 +66,7 @@ Retrieve a team by its ID for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getTeamById" method="get" path="/teams/{id}" -->
 ```go
 package main
 
@@ -115,6 +117,7 @@ Update a team for the authenticated workspace. If there’s no change, returns i
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="updateTeamById" method="patch" path="/teams/{id}" -->
 ```go
 package main
 
@@ -137,6 +140,7 @@ func main() {
         Email: middaygo.String("team@acme.com"),
         LogoURL: middaygo.String("https://cdn.midday.ai/logos/acme-corp.png"),
         BaseCurrency: middaygo.String("USD"),
+        CountryCode: middaygo.String("US"),
     })
     if err != nil {
         log.Fatal(err)
@@ -172,6 +176,7 @@ List all team members for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="listTeamMembers" method="get" path="/teams/{id}/members" -->
 ```go
 package main
 

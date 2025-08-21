@@ -17,6 +17,7 @@ Retrieve a list of customers for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="listCustomers" method="get" path="/customers" -->
 ```go
 package main
 
@@ -73,6 +74,7 @@ Create a new customer for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="createCustomer" method="post" path="/customers" -->
 ```go
 package main
 
@@ -94,6 +96,7 @@ func main() {
         ID: middaygo.String("b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4"),
         Name: "Acme Corporation",
         Email: "contact@acme.com",
+        BillingEmail: middaygo.String("finance@acme.com"),
         Country: middaygo.String("United States"),
         AddressLine1: middaygo.String("123 Main Street"),
         AddressLine2: middaygo.String("Suite 400"),
@@ -150,6 +153,7 @@ Retrieve a customer by ID for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getCustomerById" method="get" path="/customers/{id}" -->
 ```go
 package main
 
@@ -200,6 +204,7 @@ Delete a customer by ID for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="deleteCustomer" method="delete" path="/customers/{id}" -->
 ```go
 package main
 
@@ -250,6 +255,7 @@ Update a customer by ID for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="updateCustomer" method="patch" path="/customers/{id}" -->
 ```go
 package main
 
@@ -271,6 +277,7 @@ func main() {
         ID: middaygo.String("b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4"),
         Name: "Acme Corporation",
         Email: "contact@acme.com",
+        BillingEmail: middaygo.String("finance@acme.com"),
         Country: middaygo.String("United States"),
         AddressLine1: middaygo.String("123 Main Street"),
         AddressLine2: middaygo.String("Suite 400"),

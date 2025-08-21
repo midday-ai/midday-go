@@ -20,6 +20,7 @@ Retrieve a list of transactions for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="listTransactions" method="get" path="/transactions" -->
 ```go
 package main
 
@@ -115,6 +116,7 @@ Create a transaction
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="createTransaction" method="post" path="/transactions" -->
 ```go
 package main
 
@@ -165,6 +167,7 @@ Retrieve a transaction by its ID for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getTransactionById" method="get" path="/transactions/{id}" -->
 ```go
 package main
 
@@ -215,6 +218,7 @@ Delete a transaction for the authenticated team. Only manually created transacti
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="deleteTransaction" method="delete" path="/transactions/{id}" -->
 ```go
 package main
 
@@ -265,6 +269,7 @@ Update a transaction for the authenticated team. If there's no change, returns i
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="updateTransaction" method="patch" path="/transactions/{id}" -->
 ```go
 package main
 
@@ -316,6 +321,7 @@ Bulk create transactions for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="createTransactions" method="post" path="/transactions/bulk" -->
 ```go
 package main
 
@@ -366,6 +372,7 @@ Bulk delete transactions for the authenticated team. Only manually created trans
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="deleteTransactions" method="delete" path="/transactions/bulk" -->
 ```go
 package main
 
@@ -416,6 +423,7 @@ Bulk update transactions for the authenticated team. If there's no change, retur
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="updateTransactions" method="patch" path="/transactions/bulk" -->
 ```go
 package main
 
