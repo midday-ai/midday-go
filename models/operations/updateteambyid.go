@@ -17,6 +17,8 @@ type UpdateTeamByIDRequestBody struct {
 	LogoURL *string `json:"logoUrl,omitempty"`
 	// Base currency for the team in ISO 4217 format (3-letter currency code)
 	BaseCurrency *string `json:"baseCurrency,omitempty"`
+	// Country code for the team
+	CountryCode *string `json:"countryCode,omitempty"`
 }
 
 func (o *UpdateTeamByIDRequestBody) GetName() *string {
@@ -45,6 +47,13 @@ func (o *UpdateTeamByIDRequestBody) GetBaseCurrency() *string {
 		return nil
 	}
 	return o.BaseCurrency
+}
+
+func (o *UpdateTeamByIDRequestBody) GetCountryCode() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CountryCode
 }
 
 type UpdateTeamByIDRequest struct {

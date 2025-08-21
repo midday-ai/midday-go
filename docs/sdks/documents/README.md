@@ -15,6 +15,7 @@ Retrieve a list of documents for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="listDocuments" method="get" path="/documents" -->
 ```go
 package main
 
@@ -74,6 +75,7 @@ Retrieve a document by its unique identifier for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getDocumentById" method="get" path="/documents/{id}" -->
 ```go
 package main
 
@@ -124,6 +126,7 @@ Delete a document by its unique identifier for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="deleteDocument" method="delete" path="/documents/{id}" -->
 ```go
 package main
 

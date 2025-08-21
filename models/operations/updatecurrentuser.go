@@ -56,6 +56,8 @@ type UpdateCurrentUserRequest struct {
 	WeekStartsOnMonday *bool `json:"weekStartsOnMonday,omitempty"`
 	// User's timezone identifier in IANA Time Zone Database format
 	Timezone *string `json:"timezone,omitempty"`
+	// Whether to automatically sync timezone with browser timezone
+	TimezoneAutoSync *bool `json:"timezoneAutoSync,omitempty"`
 	// User's preferred time format: 12 for 12-hour format, 24 for 24-hour format
 	TimeFormat *float64 `json:"timeFormat,omitempty"`
 	// User's preferred date format. Available options: 'dd/MM/yyyy', 'MM/dd/yyyy', 'yyyy-MM-dd', 'dd.MM.yyyy'
@@ -109,6 +111,13 @@ func (o *UpdateCurrentUserRequest) GetTimezone() *string {
 		return nil
 	}
 	return o.Timezone
+}
+
+func (o *UpdateCurrentUserRequest) GetTimezoneAutoSync() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.TimezoneAutoSync
 }
 
 func (o *UpdateCurrentUserRequest) GetTimeFormat() *float64 {
@@ -214,6 +223,8 @@ type UpdateCurrentUserResponseBody struct {
 	WeekStartsOnMonday *bool `json:"weekStartsOnMonday"`
 	// User's timezone identifier in IANA Time Zone Database format
 	Timezone *string `json:"timezone"`
+	// Whether to automatically sync timezone with browser timezone
+	TimezoneAutoSync *bool `json:"timezoneAutoSync"`
 	// User's preferred time format: 12 for 12-hour format, 24 for 24-hour format
 	TimeFormat *float64 `json:"timeFormat"`
 	// User's preferred date format. Available options: 'dd/MM/yyyy', 'MM/dd/yyyy', 'yyyy-MM-dd', 'dd.MM.yyyy'
@@ -269,6 +280,13 @@ func (o *UpdateCurrentUserResponseBody) GetTimezone() *string {
 		return nil
 	}
 	return o.Timezone
+}
+
+func (o *UpdateCurrentUserResponseBody) GetTimezoneAutoSync() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.TimezoneAutoSync
 }
 
 func (o *UpdateCurrentUserResponseBody) GetTimeFormat() *float64 {

@@ -20,10 +20,15 @@ generation:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: true
   sdkHooksConfigAccess: true
+  tests:
+    generateTests: true
+    generateNewTests: false
+    skipResponseBodyAssertions: false
 go:
-  version: 0.0.1
+  version: 0.1.0
   additionalDependencies: {}
   allowUnknownFieldsInWeakUnions: false
+  baseErrorName: MiddayError
   clientServerStatusCodesAsErrors: true
   defaultErrorName: APIError
   envVarPrefix: MIDDAY
@@ -39,6 +44,8 @@ go:
   inputModelSuffix: input
   maxMethodParams: 4
   methodArguments: require-security-and-request
+  modulePath: ""
   outputModelSuffix: output
   packageName: github.com/midday-ai/midday-go
   responseFormat: envelope-http
+  sdkPackageName: ""

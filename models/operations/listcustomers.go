@@ -100,6 +100,8 @@ type ListCustomersData struct {
 	Name string `json:"name"`
 	// Primary email address of the customer
 	Email string `json:"email"`
+	// Billing email address of the customer
+	BillingEmail *string `json:"billingEmail"`
 	// Primary phone number of the customer
 	Phone *string `json:"phone"`
 	// Website URL of the customer
@@ -155,6 +157,13 @@ func (o *ListCustomersData) GetEmail() string {
 		return ""
 	}
 	return o.Email
+}
+
+func (o *ListCustomersData) GetBillingEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.BillingEmail
 }
 
 func (o *ListCustomersData) GetPhone() *string {

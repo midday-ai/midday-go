@@ -110,11 +110,12 @@ func (o *ListInvoicesMeta) GetHasNextPage() bool {
 type ListInvoicesStatus string
 
 const (
-	ListInvoicesStatusDraft    ListInvoicesStatus = "draft"
-	ListInvoicesStatusOverdue  ListInvoicesStatus = "overdue"
-	ListInvoicesStatusPaid     ListInvoicesStatus = "paid"
-	ListInvoicesStatusUnpaid   ListInvoicesStatus = "unpaid"
-	ListInvoicesStatusCanceled ListInvoicesStatus = "canceled"
+	ListInvoicesStatusDraft     ListInvoicesStatus = "draft"
+	ListInvoicesStatusOverdue   ListInvoicesStatus = "overdue"
+	ListInvoicesStatusPaid      ListInvoicesStatus = "paid"
+	ListInvoicesStatusUnpaid    ListInvoicesStatus = "unpaid"
+	ListInvoicesStatusCanceled  ListInvoicesStatus = "canceled"
+	ListInvoicesStatusScheduled ListInvoicesStatus = "scheduled"
 )
 
 func (e ListInvoicesStatus) ToPointer() *ListInvoicesStatus {
@@ -135,6 +136,8 @@ func (e *ListInvoicesStatus) UnmarshalJSON(data []byte) error {
 	case "unpaid":
 		fallthrough
 	case "canceled":
+		fallthrough
+	case "scheduled":
 		*e = ListInvoicesStatus(v)
 		return nil
 	default:

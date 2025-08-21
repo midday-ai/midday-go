@@ -34,6 +34,8 @@ type CreateCustomerRequest struct {
 	Name string `json:"name"`
 	// Primary email address of the customer
 	Email string `json:"email"`
+	// Billing email address of the customer
+	BillingEmail *string `json:"billingEmail,omitempty"`
 	// Country name where the customer is located
 	Country *string `json:"country,omitempty"`
 	// First line of the customer's address
@@ -81,6 +83,13 @@ func (o *CreateCustomerRequest) GetEmail() string {
 		return ""
 	}
 	return o.Email
+}
+
+func (o *CreateCustomerRequest) GetBillingEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.BillingEmail
 }
 
 func (o *CreateCustomerRequest) GetCountry() *string {
@@ -203,6 +212,8 @@ type CreateCustomerResponseBody struct {
 	Name string `json:"name"`
 	// Primary email address of the customer
 	Email string `json:"email"`
+	// Billing email address of the customer
+	BillingEmail *string `json:"billingEmail"`
 	// Primary phone number of the customer
 	Phone *string `json:"phone"`
 	// Website URL of the customer
@@ -258,6 +269,13 @@ func (o *CreateCustomerResponseBody) GetEmail() string {
 		return ""
 	}
 	return o.Email
+}
+
+func (o *CreateCustomerResponseBody) GetBillingEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.BillingEmail
 }
 
 func (o *CreateCustomerResponseBody) GetPhone() *string {

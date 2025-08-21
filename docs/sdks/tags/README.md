@@ -17,6 +17,7 @@ Retrieve a list of tags for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="listTags" method="get" path="/tags" -->
 ```go
 package main
 
@@ -66,6 +67,7 @@ Create a new tag for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="createTag" method="post" path="/tags" -->
 ```go
 package main
 
@@ -119,6 +121,7 @@ Retrieve a tag by ID for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getTagById" method="get" path="/tags/{id}" -->
 ```go
 package main
 
@@ -169,6 +172,7 @@ Delete a tag by ID for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="deleteTag" method="delete" path="/tags/{id}" -->
 ```go
 package main
 
@@ -219,6 +223,7 @@ Update a tag by ID for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="updateTag" method="patch" path="/tags/{id}" -->
 ```go
 package main
 

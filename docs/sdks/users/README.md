@@ -14,6 +14,7 @@ Retrieve the current user for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="getCurrentUser" method="get" path="/users/me" -->
 ```go
 package main
 
@@ -63,6 +64,7 @@ Update the current user for the authenticated team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="updateCurrentUser" method="patch" path="/users/me" -->
 ```go
 package main
 
@@ -88,6 +90,7 @@ func main() {
         Locale: middaygo.String("en-US"),
         WeekStartsOnMonday: middaygo.Bool(true),
         Timezone: middaygo.String("America/New_York"),
+        TimezoneAutoSync: middaygo.Bool(true),
         TimeFormat: middaygo.Float64(24),
         DateFormat: operations.DateFormatRequestYyyyDashMmDashdd.ToPointer(),
     })
