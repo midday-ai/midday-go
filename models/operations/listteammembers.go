@@ -12,11 +12,11 @@ type ListTeamMembersRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
-func (o *ListTeamMembersRequest) GetID() string {
-	if o == nil {
+func (l *ListTeamMembersRequest) GetID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ID
+	return l.ID
 }
 
 // Role of the team member. 'owner' has full permissions, 'member' has limited permissions
@@ -57,32 +57,32 @@ type ListTeamMembersData struct {
 	AvatarURL *string `json:"avatarUrl"`
 }
 
-func (o *ListTeamMembersData) GetID() string {
-	if o == nil {
+func (l *ListTeamMembersData) GetID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ID
+	return l.ID
 }
 
-func (o *ListTeamMembersData) GetRole() Role {
-	if o == nil {
+func (l *ListTeamMembersData) GetRole() Role {
+	if l == nil {
 		return Role("")
 	}
-	return o.Role
+	return l.Role
 }
 
-func (o *ListTeamMembersData) GetFullName() string {
-	if o == nil {
+func (l *ListTeamMembersData) GetFullName() string {
+	if l == nil {
 		return ""
 	}
-	return o.FullName
+	return l.FullName
 }
 
-func (o *ListTeamMembersData) GetAvatarURL() *string {
-	if o == nil {
+func (l *ListTeamMembersData) GetAvatarURL() *string {
+	if l == nil {
 		return nil
 	}
-	return o.AvatarURL
+	return l.AvatarURL
 }
 
 // ListTeamMembersResponseBody - Team members
@@ -91,11 +91,11 @@ type ListTeamMembersResponseBody struct {
 	Data []ListTeamMembersData `json:"data"`
 }
 
-func (o *ListTeamMembersResponseBody) GetData() []ListTeamMembersData {
-	if o == nil {
+func (l *ListTeamMembersResponseBody) GetData() []ListTeamMembersData {
+	if l == nil {
 		return []ListTeamMembersData{}
 	}
-	return o.Data
+	return l.Data
 }
 
 type ListTeamMembersResponse struct {
@@ -104,16 +104,16 @@ type ListTeamMembersResponse struct {
 	Object *ListTeamMembersResponseBody
 }
 
-func (o *ListTeamMembersResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (l *ListTeamMembersResponse) GetHTTPMeta() components.HTTPMetadata {
+	if l == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return l.HTTPMeta
 }
 
-func (o *ListTeamMembersResponse) GetObject() *ListTeamMembersResponseBody {
-	if o == nil {
+func (l *ListTeamMembersResponse) GetObject() *ListTeamMembersResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

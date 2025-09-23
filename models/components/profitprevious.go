@@ -11,23 +11,23 @@ type ProfitPrevious struct {
 	Currency string `json:"currency"`
 }
 
-func (o *ProfitPrevious) GetDate() string {
-	if o == nil {
+func (p *ProfitPrevious) GetDate() string {
+	if p == nil {
 		return ""
 	}
-	return o.Date
+	return p.Date
 }
 
-func (o *ProfitPrevious) GetValue() float64 {
-	if o == nil {
+func (p *ProfitPrevious) GetValue() float64 {
+	if p == nil {
 		return 0.0
 	}
-	return o.Value
+	return p.Value
 }
 
-func (o *ProfitPrevious) GetCurrency() string {
-	if o == nil {
+func (p *ProfitPrevious) GetCurrency() string {
+	if p == nil {
 		return ""
 	}
-	return o.Currency
+	return p.Currency
 }

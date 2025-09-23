@@ -10,11 +10,11 @@ type GetDocumentByIDRequest struct {
 	ID *string `pathParam:"style=simple,explode=false,name=id"`
 }
 
-func (o *GetDocumentByIDRequest) GetID() *string {
-	if o == nil {
+func (g *GetDocumentByIDRequest) GetID() *string {
+	if g == nil {
 		return nil
 	}
-	return o.ID
+	return g.ID
 }
 
 // GetDocumentByIDMetadata - Metadata about the document.
@@ -25,18 +25,18 @@ type GetDocumentByIDMetadata struct {
 	Mimetype *string `json:"mimetype"`
 }
 
-func (o *GetDocumentByIDMetadata) GetSize() *float64 {
-	if o == nil {
+func (g *GetDocumentByIDMetadata) GetSize() *float64 {
+	if g == nil {
 		return nil
 	}
-	return o.Size
+	return g.Size
 }
 
-func (o *GetDocumentByIDMetadata) GetMimetype() *string {
-	if o == nil {
+func (g *GetDocumentByIDMetadata) GetMimetype() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Mimetype
+	return g.Mimetype
 }
 
 // GetDocumentByIDResponseBody - A single document object response.
@@ -57,53 +57,53 @@ type GetDocumentByIDResponseBody struct {
 	Date *string `json:"date"`
 }
 
-func (o *GetDocumentByIDResponseBody) GetID() string {
-	if o == nil {
+func (g *GetDocumentByIDResponseBody) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GetDocumentByIDResponseBody) GetTitle() *string {
-	if o == nil {
+func (g *GetDocumentByIDResponseBody) GetTitle() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Title
+	return g.Title
 }
 
-func (o *GetDocumentByIDResponseBody) GetPathTokens() []string {
-	if o == nil {
+func (g *GetDocumentByIDResponseBody) GetPathTokens() []string {
+	if g == nil {
 		return []string{}
 	}
-	return o.PathTokens
+	return g.PathTokens
 }
 
-func (o *GetDocumentByIDResponseBody) GetMetadata() *GetDocumentByIDMetadata {
-	if o == nil {
+func (g *GetDocumentByIDResponseBody) GetMetadata() *GetDocumentByIDMetadata {
+	if g == nil {
 		return nil
 	}
-	return o.Metadata
+	return g.Metadata
 }
 
-func (o *GetDocumentByIDResponseBody) GetProcessingStatus() string {
-	if o == nil {
+func (g *GetDocumentByIDResponseBody) GetProcessingStatus() string {
+	if g == nil {
 		return ""
 	}
-	return o.ProcessingStatus
+	return g.ProcessingStatus
 }
 
-func (o *GetDocumentByIDResponseBody) GetSummary() *string {
-	if o == nil {
+func (g *GetDocumentByIDResponseBody) GetSummary() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Summary
+	return g.Summary
 }
 
-func (o *GetDocumentByIDResponseBody) GetDate() *string {
-	if o == nil {
+func (g *GetDocumentByIDResponseBody) GetDate() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Date
+	return g.Date
 }
 
 type GetDocumentByIDResponse struct {
@@ -112,16 +112,16 @@ type GetDocumentByIDResponse struct {
 	Object *GetDocumentByIDResponseBody
 }
 
-func (o *GetDocumentByIDResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (g *GetDocumentByIDResponse) GetHTTPMeta() components.HTTPMetadata {
+	if g == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return g.HTTPMeta
 }
 
-func (o *GetDocumentByIDResponse) GetObject() *GetDocumentByIDResponseBody {
-	if o == nil {
+func (g *GetDocumentByIDResponse) GetObject() *GetDocumentByIDResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object
+	return g.Object
 }

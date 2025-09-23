@@ -26,45 +26,45 @@ func (s StartTimerRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (s *StartTimerRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"projectId"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *StartTimerRequest) GetProjectID() string {
-	if o == nil {
+func (s *StartTimerRequest) GetProjectID() string {
+	if s == nil {
 		return ""
 	}
-	return o.ProjectID
+	return s.ProjectID
 }
 
-func (o *StartTimerRequest) GetAssignedID() *string {
-	if o == nil {
+func (s *StartTimerRequest) GetAssignedID() *string {
+	if s == nil {
 		return nil
 	}
-	return o.AssignedID
+	return s.AssignedID
 }
 
-func (o *StartTimerRequest) GetDescription() *string {
-	if o == nil {
+func (s *StartTimerRequest) GetDescription() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Description
+	return s.Description
 }
 
-func (o *StartTimerRequest) GetStart() *time.Time {
-	if o == nil {
+func (s *StartTimerRequest) GetStart() *time.Time {
+	if s == nil {
 		return nil
 	}
-	return o.Start
+	return s.Start
 }
 
-func (o *StartTimerRequest) GetContinueFromEntry() *string {
-	if o == nil {
+func (s *StartTimerRequest) GetContinueFromEntry() *string {
+	if s == nil {
 		return nil
 	}
-	return o.ContinueFromEntry
+	return s.ContinueFromEntry
 }
 
 // StartTimerUser - User information for the person who created this tracker entry
@@ -77,25 +77,25 @@ type StartTimerUser struct {
 	AvatarURL string `json:"avatarUrl"`
 }
 
-func (o *StartTimerUser) GetID() string {
-	if o == nil {
+func (s *StartTimerUser) GetID() string {
+	if s == nil {
 		return ""
 	}
-	return o.ID
+	return s.ID
 }
 
-func (o *StartTimerUser) GetFullName() string {
-	if o == nil {
+func (s *StartTimerUser) GetFullName() string {
+	if s == nil {
 		return ""
 	}
-	return o.FullName
+	return s.FullName
 }
 
-func (o *StartTimerUser) GetAvatarURL() string {
-	if o == nil {
+func (s *StartTimerUser) GetAvatarURL() string {
+	if s == nil {
 		return ""
 	}
-	return o.AvatarURL
+	return s.AvatarURL
 }
 
 // StartTimerCustomer - Customer information associated with the project
@@ -106,18 +106,18 @@ type StartTimerCustomer struct {
 	Name string `json:"name"`
 }
 
-func (o *StartTimerCustomer) GetID() string {
-	if o == nil {
+func (s *StartTimerCustomer) GetID() string {
+	if s == nil {
 		return ""
 	}
-	return o.ID
+	return s.ID
 }
 
-func (o *StartTimerCustomer) GetName() string {
-	if o == nil {
+func (s *StartTimerCustomer) GetName() string {
+	if s == nil {
 		return ""
 	}
-	return o.Name
+	return s.Name
 }
 
 // StartTimerProject - Project information associated with this tracker entry
@@ -144,74 +144,74 @@ type StartTimerProject struct {
 	Customer *StartTimerCustomer `json:"customer"`
 }
 
-func (o *StartTimerProject) GetID() string {
-	if o == nil {
+func (s *StartTimerProject) GetID() string {
+	if s == nil {
 		return ""
 	}
-	return o.ID
+	return s.ID
 }
 
-func (o *StartTimerProject) GetCreatedAt() string {
-	if o == nil {
+func (s *StartTimerProject) GetCreatedAt() string {
+	if s == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return s.CreatedAt
 }
 
-func (o *StartTimerProject) GetRate() *float64 {
-	if o == nil {
+func (s *StartTimerProject) GetRate() *float64 {
+	if s == nil {
 		return nil
 	}
-	return o.Rate
+	return s.Rate
 }
 
-func (o *StartTimerProject) GetCurrency() *string {
-	if o == nil {
+func (s *StartTimerProject) GetCurrency() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Currency
+	return s.Currency
 }
 
-func (o *StartTimerProject) GetStatus() string {
-	if o == nil {
+func (s *StartTimerProject) GetStatus() string {
+	if s == nil {
 		return ""
 	}
-	return o.Status
+	return s.Status
 }
 
-func (o *StartTimerProject) GetDescription() *string {
-	if o == nil {
+func (s *StartTimerProject) GetDescription() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Description
+	return s.Description
 }
 
-func (o *StartTimerProject) GetName() string {
-	if o == nil {
+func (s *StartTimerProject) GetName() string {
+	if s == nil {
 		return ""
 	}
-	return o.Name
+	return s.Name
 }
 
-func (o *StartTimerProject) GetBillable() *bool {
-	if o == nil {
+func (s *StartTimerProject) GetBillable() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Billable
+	return s.Billable
 }
 
-func (o *StartTimerProject) GetEstimate() *float64 {
-	if o == nil {
+func (s *StartTimerProject) GetEstimate() *float64 {
+	if s == nil {
 		return nil
 	}
-	return o.Estimate
+	return s.Estimate
 }
 
-func (o *StartTimerProject) GetCustomer() *StartTimerCustomer {
-	if o == nil {
+func (s *StartTimerProject) GetCustomer() *StartTimerCustomer {
+	if s == nil {
 		return nil
 	}
-	return o.Customer
+	return s.Customer
 }
 
 type StartTimerData struct {
@@ -243,95 +243,95 @@ type StartTimerData struct {
 	Project StartTimerProject `json:"project"`
 }
 
-func (o *StartTimerData) GetID() string {
-	if o == nil {
+func (s *StartTimerData) GetID() string {
+	if s == nil {
 		return ""
 	}
-	return o.ID
+	return s.ID
 }
 
-func (o *StartTimerData) GetCreatedAt() string {
-	if o == nil {
+func (s *StartTimerData) GetCreatedAt() string {
+	if s == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return s.CreatedAt
 }
 
-func (o *StartTimerData) GetDuration() *float64 {
-	if o == nil {
+func (s *StartTimerData) GetDuration() *float64 {
+	if s == nil {
 		return nil
 	}
-	return o.Duration
+	return s.Duration
 }
 
-func (o *StartTimerData) GetStart() string {
-	if o == nil {
+func (s *StartTimerData) GetStart() string {
+	if s == nil {
 		return ""
 	}
-	return o.Start
+	return s.Start
 }
 
-func (o *StartTimerData) GetStop() string {
-	if o == nil {
+func (s *StartTimerData) GetStop() string {
+	if s == nil {
 		return ""
 	}
-	return o.Stop
+	return s.Stop
 }
 
-func (o *StartTimerData) GetTeamID() string {
-	if o == nil {
+func (s *StartTimerData) GetTeamID() string {
+	if s == nil {
 		return ""
 	}
-	return o.TeamID
+	return s.TeamID
 }
 
-func (o *StartTimerData) GetDescription() *string {
-	if o == nil {
+func (s *StartTimerData) GetDescription() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Description
+	return s.Description
 }
 
-func (o *StartTimerData) GetRate() *float64 {
-	if o == nil {
+func (s *StartTimerData) GetRate() *float64 {
+	if s == nil {
 		return nil
 	}
-	return o.Rate
+	return s.Rate
 }
 
-func (o *StartTimerData) GetCurrency() *string {
-	if o == nil {
+func (s *StartTimerData) GetCurrency() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Currency
+	return s.Currency
 }
 
-func (o *StartTimerData) GetBilled() bool {
-	if o == nil {
+func (s *StartTimerData) GetBilled() bool {
+	if s == nil {
 		return false
 	}
-	return o.Billed
+	return s.Billed
 }
 
-func (o *StartTimerData) GetDate() string {
-	if o == nil {
+func (s *StartTimerData) GetDate() string {
+	if s == nil {
 		return ""
 	}
-	return o.Date
+	return s.Date
 }
 
-func (o *StartTimerData) GetUser() StartTimerUser {
-	if o == nil {
+func (s *StartTimerData) GetUser() StartTimerUser {
+	if s == nil {
 		return StartTimerUser{}
 	}
-	return o.User
+	return s.User
 }
 
-func (o *StartTimerData) GetProject() StartTimerProject {
-	if o == nil {
+func (s *StartTimerData) GetProject() StartTimerProject {
+	if s == nil {
 		return StartTimerProject{}
 	}
-	return o.Project
+	return s.Project
 }
 
 // StartTimerResponseBody - Timer started successfully.
@@ -339,11 +339,11 @@ type StartTimerResponseBody struct {
 	Data StartTimerData `json:"data"`
 }
 
-func (o *StartTimerResponseBody) GetData() StartTimerData {
-	if o == nil {
+func (s *StartTimerResponseBody) GetData() StartTimerData {
+	if s == nil {
 		return StartTimerData{}
 	}
-	return o.Data
+	return s.Data
 }
 
 type StartTimerResponse struct {
@@ -352,16 +352,16 @@ type StartTimerResponse struct {
 	Object *StartTimerResponseBody
 }
 
-func (o *StartTimerResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (s *StartTimerResponse) GetHTTPMeta() components.HTTPMetadata {
+	if s == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return s.HTTPMeta
 }
 
-func (o *StartTimerResponse) GetObject() *StartTimerResponseBody {
-	if o == nil {
+func (s *StartTimerResponse) GetObject() *StartTimerResponseBody {
+	if s == nil {
 		return nil
 	}
-	return o.Object
+	return s.Object
 }

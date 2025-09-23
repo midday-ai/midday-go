@@ -19,6 +19,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/models/operations"
 	"log"
@@ -28,12 +30,14 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Search.Search(ctx, operations.SearchRequest{
-        SearchTerm: middaygo.String("Acme"),
-        Language: middaygo.String("en"),
+        SearchTerm: middaygo.Pointer("Acme"),
+        Language: middaygo.Pointer("en"),
     })
     if err != nil {
         log.Fatal(err)

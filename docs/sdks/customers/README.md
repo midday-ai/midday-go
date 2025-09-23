@@ -23,6 +23,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -31,13 +33,15 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
-    res, err := s.Customers.List(ctx, middaygo.String("acme"), []string{
+    res, err := s.Customers.List(ctx, middaygo.Pointer("acme"), []string{
         "name",
         "asc",
-    }, middaygo.String("eyJpZCI6IjEyMyJ9"), middaygo.Float64(20))
+    }, middaygo.Pointer("eyJpZCI6IjEyMyJ9"), middaygo.Pointer[float64](20))
     if err != nil {
         log.Fatal(err)
     }
@@ -80,6 +84,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/models/operations"
 	"log"
@@ -89,26 +95,28 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Customers.Create(ctx, &operations.CreateCustomerRequest{
-        ID: middaygo.String("b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4"),
+        ID: middaygo.Pointer("b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4"),
         Name: "Acme Corporation",
         Email: "contact@acme.com",
-        BillingEmail: middaygo.String("finance@acme.com"),
-        Country: middaygo.String("United States"),
-        AddressLine1: middaygo.String("123 Main Street"),
-        AddressLine2: middaygo.String("Suite 400"),
-        City: middaygo.String("San Francisco"),
-        State: middaygo.String("California"),
-        Zip: middaygo.String("94105"),
-        Phone: middaygo.String("+1-555-123-4567"),
-        Website: middaygo.String("https://acme.com"),
-        Note: middaygo.String("Preferred contact method is email. Large enterprise client."),
-        VatNumber: middaygo.String("US123456789"),
-        CountryCode: middaygo.String("US"),
-        Contact: middaygo.String("John Smith"),
+        BillingEmail: middaygo.Pointer("finance@acme.com"),
+        Country: middaygo.Pointer("United States"),
+        AddressLine1: middaygo.Pointer("123 Main Street"),
+        AddressLine2: middaygo.Pointer("Suite 400"),
+        City: middaygo.Pointer("San Francisco"),
+        State: middaygo.Pointer("California"),
+        Zip: middaygo.Pointer("94105"),
+        Phone: middaygo.Pointer("+1-555-123-4567"),
+        Website: middaygo.Pointer("https://acme.com"),
+        Note: middaygo.Pointer("Preferred contact method is email. Large enterprise client."),
+        VatNumber: middaygo.Pointer("US123456789"),
+        CountryCode: middaygo.Pointer("US"),
+        Contact: middaygo.Pointer("John Smith"),
         Tags: []operations.CreateCustomerTagRequest{
             operations.CreateCustomerTagRequest{
                 ID: "e7a9c1a2-4c2a-4e7a-9c1a-2b7c1e24c2a4",
@@ -159,6 +167,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -167,7 +177,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Customers.Get(ctx, "b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4")
@@ -210,6 +222,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -218,7 +232,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Customers.Delete(ctx, "b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4")
@@ -261,6 +277,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/models/operations"
 	"log"
@@ -270,26 +288,28 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Customers.Update(ctx, "b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4", &operations.UpdateCustomerRequestBody{
-        ID: middaygo.String("b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4"),
+        ID: middaygo.Pointer("b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4"),
         Name: "Acme Corporation",
         Email: "contact@acme.com",
-        BillingEmail: middaygo.String("finance@acme.com"),
-        Country: middaygo.String("United States"),
-        AddressLine1: middaygo.String("123 Main Street"),
-        AddressLine2: middaygo.String("Suite 400"),
-        City: middaygo.String("San Francisco"),
-        State: middaygo.String("California"),
-        Zip: middaygo.String("94105"),
-        Phone: middaygo.String("+1-555-123-4567"),
-        Website: middaygo.String("https://acme.com"),
-        Note: middaygo.String("Preferred contact method is email. Large enterprise client."),
-        VatNumber: middaygo.String("US123456789"),
-        CountryCode: middaygo.String("US"),
-        Contact: middaygo.String("John Smith"),
+        BillingEmail: middaygo.Pointer("finance@acme.com"),
+        Country: middaygo.Pointer("United States"),
+        AddressLine1: middaygo.Pointer("123 Main Street"),
+        AddressLine2: middaygo.Pointer("Suite 400"),
+        City: middaygo.Pointer("San Francisco"),
+        State: middaygo.Pointer("California"),
+        Zip: middaygo.Pointer("94105"),
+        Phone: middaygo.Pointer("+1-555-123-4567"),
+        Website: middaygo.Pointer("https://acme.com"),
+        Note: middaygo.Pointer("Preferred contact method is email. Large enterprise client."),
+        VatNumber: middaygo.Pointer("US123456789"),
+        CountryCode: middaygo.Pointer("US"),
+        Contact: middaygo.Pointer("John Smith"),
         Tags: []operations.UpdateCustomerTagRequest{
             operations.UpdateCustomerTagRequest{
                 ID: "e7a9c1a2-4c2a-4e7a-9c1a-2b7c1e24c2a4",

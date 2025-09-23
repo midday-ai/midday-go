@@ -20,6 +20,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -28,7 +30,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Users.Get(ctx)
@@ -70,6 +74,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/models/operations"
 	"log"
@@ -79,19 +85,21 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Users.Update(ctx, &operations.UpdateCurrentUserRequest{
-        FullName: middaygo.String("Jane Doe"),
-        TeamID: middaygo.String("team-abc123"),
-        Email: middaygo.String("jane.doe@acme.com"),
-        AvatarURL: middaygo.String("https://cdn.midday.ai/avatars/jane-doe.jpg"),
-        Locale: middaygo.String("en-US"),
-        WeekStartsOnMonday: middaygo.Bool(true),
-        Timezone: middaygo.String("America/New_York"),
-        TimezoneAutoSync: middaygo.Bool(true),
-        TimeFormat: middaygo.Float64(24),
+        FullName: middaygo.Pointer("Jane Doe"),
+        TeamID: middaygo.Pointer("team-abc123"),
+        Email: middaygo.Pointer("jane.doe@acme.com"),
+        AvatarURL: middaygo.Pointer("https://cdn.midday.ai/avatars/jane-doe.jpg"),
+        Locale: middaygo.Pointer("en-US"),
+        WeekStartsOnMonday: middaygo.Pointer(true),
+        Timezone: middaygo.Pointer("America/New_York"),
+        TimezoneAutoSync: middaygo.Pointer(true),
+        TimeFormat: middaygo.Pointer[float64](24),
         DateFormat: operations.DateFormatRequestYyyyDashMmDashdd.ToPointer(),
     })
     if err != nil {

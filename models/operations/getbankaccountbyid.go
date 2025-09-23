@@ -10,11 +10,11 @@ type GetBankAccountByIDRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
-func (o *GetBankAccountByIDRequest) GetID() string {
-	if o == nil {
+func (g *GetBankAccountByIDRequest) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
 // GetBankAccountByIDResponseBody - A single bank account object response.
@@ -35,53 +35,53 @@ type GetBankAccountByIDResponseBody struct {
 	Manual *bool `json:"manual"`
 }
 
-func (o *GetBankAccountByIDResponseBody) GetID() string {
-	if o == nil {
+func (g *GetBankAccountByIDResponseBody) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GetBankAccountByIDResponseBody) GetName() *string {
-	if o == nil {
+func (g *GetBankAccountByIDResponseBody) GetName() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Name
+	return g.Name
 }
 
-func (o *GetBankAccountByIDResponseBody) GetCurrency() *string {
-	if o == nil {
+func (g *GetBankAccountByIDResponseBody) GetCurrency() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Currency
+	return g.Currency
 }
 
-func (o *GetBankAccountByIDResponseBody) GetType() *string {
-	if o == nil {
+func (g *GetBankAccountByIDResponseBody) GetType() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Type
+	return g.Type
 }
 
-func (o *GetBankAccountByIDResponseBody) GetEnabled() bool {
-	if o == nil {
+func (g *GetBankAccountByIDResponseBody) GetEnabled() bool {
+	if g == nil {
 		return false
 	}
-	return o.Enabled
+	return g.Enabled
 }
 
-func (o *GetBankAccountByIDResponseBody) GetBalance() *float64 {
-	if o == nil {
+func (g *GetBankAccountByIDResponseBody) GetBalance() *float64 {
+	if g == nil {
 		return nil
 	}
-	return o.Balance
+	return g.Balance
 }
 
-func (o *GetBankAccountByIDResponseBody) GetManual() *bool {
-	if o == nil {
+func (g *GetBankAccountByIDResponseBody) GetManual() *bool {
+	if g == nil {
 		return nil
 	}
-	return o.Manual
+	return g.Manual
 }
 
 type GetBankAccountByIDResponse struct {
@@ -90,16 +90,16 @@ type GetBankAccountByIDResponse struct {
 	Object *GetBankAccountByIDResponseBody
 }
 
-func (o *GetBankAccountByIDResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (g *GetBankAccountByIDResponse) GetHTTPMeta() components.HTTPMetadata {
+	if g == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return g.HTTPMeta
 }
 
-func (o *GetBankAccountByIDResponse) GetObject() *GetBankAccountByIDResponseBody {
-	if o == nil {
+func (g *GetBankAccountByIDResponse) GetObject() *GetBankAccountByIDResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object
+	return g.Object
 }

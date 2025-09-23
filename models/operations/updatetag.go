@@ -11,11 +11,11 @@ type UpdateTagRequestBody struct {
 	Name string `json:"name"`
 }
 
-func (o *UpdateTagRequestBody) GetName() string {
-	if o == nil {
+func (u *UpdateTagRequestBody) GetName() string {
+	if u == nil {
 		return ""
 	}
-	return o.Name
+	return u.Name
 }
 
 type UpdateTagRequest struct {
@@ -23,18 +23,18 @@ type UpdateTagRequest struct {
 	RequestBody *UpdateTagRequestBody `request:"mediaType=application/json"`
 }
 
-func (o *UpdateTagRequest) GetID() string {
-	if o == nil {
+func (u *UpdateTagRequest) GetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UpdateTagRequest) GetRequestBody() *UpdateTagRequestBody {
-	if o == nil {
+func (u *UpdateTagRequest) GetRequestBody() *UpdateTagRequestBody {
+	if u == nil {
 		return nil
 	}
-	return o.RequestBody
+	return u.RequestBody
 }
 
 type UpdateTagResponse struct {
@@ -43,16 +43,16 @@ type UpdateTagResponse struct {
 	TagResponse *components.TagResponse
 }
 
-func (o *UpdateTagResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (u *UpdateTagResponse) GetHTTPMeta() components.HTTPMetadata {
+	if u == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return u.HTTPMeta
 }
 
-func (o *UpdateTagResponse) GetTagResponse() *components.TagResponse {
-	if o == nil {
+func (u *UpdateTagResponse) GetTagResponse() *components.TagResponse {
+	if u == nil {
 		return nil
 	}
-	return o.TagResponse
+	return u.TagResponse
 }

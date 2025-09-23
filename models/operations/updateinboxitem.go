@@ -11,11 +11,14 @@ import (
 type UpdateInboxItemStatus string
 
 const (
-	UpdateInboxItemStatusNew        UpdateInboxItemStatus = "new"
-	UpdateInboxItemStatusArchived   UpdateInboxItemStatus = "archived"
-	UpdateInboxItemStatusProcessing UpdateInboxItemStatus = "processing"
-	UpdateInboxItemStatusDone       UpdateInboxItemStatus = "done"
-	UpdateInboxItemStatusPending    UpdateInboxItemStatus = "pending"
+	UpdateInboxItemStatusNew            UpdateInboxItemStatus = "new"
+	UpdateInboxItemStatusArchived       UpdateInboxItemStatus = "archived"
+	UpdateInboxItemStatusProcessing     UpdateInboxItemStatus = "processing"
+	UpdateInboxItemStatusDone           UpdateInboxItemStatus = "done"
+	UpdateInboxItemStatusPending        UpdateInboxItemStatus = "pending"
+	UpdateInboxItemStatusDeleted        UpdateInboxItemStatus = "deleted"
+	UpdateInboxItemStatusAnalyzing      UpdateInboxItemStatus = "analyzing"
+	UpdateInboxItemStatusSuggestedMatch UpdateInboxItemStatus = "suggested_match"
 )
 
 func (e UpdateInboxItemStatus) ToPointer() *UpdateInboxItemStatus {
@@ -36,6 +39,12 @@ func (e *UpdateInboxItemStatus) UnmarshalJSON(data []byte) error {
 	case "done":
 		fallthrough
 	case "pending":
+		fallthrough
+	case "deleted":
+		fallthrough
+	case "analyzing":
+		fallthrough
+	case "suggested_match":
 		*e = UpdateInboxItemStatus(v)
 		return nil
 	default:
@@ -50,32 +59,32 @@ type UpdateInboxItemRequestBody struct {
 	Amount      *float64               `json:"amount,omitempty"`
 }
 
-func (o *UpdateInboxItemRequestBody) GetStatus() *UpdateInboxItemStatus {
-	if o == nil {
+func (u *UpdateInboxItemRequestBody) GetStatus() *UpdateInboxItemStatus {
+	if u == nil {
 		return nil
 	}
-	return o.Status
+	return u.Status
 }
 
-func (o *UpdateInboxItemRequestBody) GetDisplayName() *string {
-	if o == nil {
+func (u *UpdateInboxItemRequestBody) GetDisplayName() *string {
+	if u == nil {
 		return nil
 	}
-	return o.DisplayName
+	return u.DisplayName
 }
 
-func (o *UpdateInboxItemRequestBody) GetCurrency() *string {
-	if o == nil {
+func (u *UpdateInboxItemRequestBody) GetCurrency() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Currency
+	return u.Currency
 }
 
-func (o *UpdateInboxItemRequestBody) GetAmount() *float64 {
-	if o == nil {
+func (u *UpdateInboxItemRequestBody) GetAmount() *float64 {
+	if u == nil {
 		return nil
 	}
-	return o.Amount
+	return u.Amount
 }
 
 type UpdateInboxItemRequest struct {
@@ -83,18 +92,18 @@ type UpdateInboxItemRequest struct {
 	RequestBody UpdateInboxItemRequestBody `request:"mediaType=application/json"`
 }
 
-func (o *UpdateInboxItemRequest) GetID() string {
-	if o == nil {
+func (u *UpdateInboxItemRequest) GetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UpdateInboxItemRequest) GetRequestBody() UpdateInboxItemRequestBody {
-	if o == nil {
+func (u *UpdateInboxItemRequest) GetRequestBody() UpdateInboxItemRequestBody {
+	if u == nil {
 		return UpdateInboxItemRequestBody{}
 	}
-	return o.RequestBody
+	return u.RequestBody
 }
 
 // UpdateInboxItemTransaction - Matched transaction for this inbox item, if any
@@ -111,39 +120,39 @@ type UpdateInboxItemTransaction struct {
 	Date string `json:"date"`
 }
 
-func (o *UpdateInboxItemTransaction) GetID() string {
-	if o == nil {
+func (u *UpdateInboxItemTransaction) GetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UpdateInboxItemTransaction) GetAmount() float64 {
-	if o == nil {
+func (u *UpdateInboxItemTransaction) GetAmount() float64 {
+	if u == nil {
 		return 0.0
 	}
-	return o.Amount
+	return u.Amount
 }
 
-func (o *UpdateInboxItemTransaction) GetCurrency() string {
-	if o == nil {
+func (u *UpdateInboxItemTransaction) GetCurrency() string {
+	if u == nil {
 		return ""
 	}
-	return o.Currency
+	return u.Currency
 }
 
-func (o *UpdateInboxItemTransaction) GetName() string {
-	if o == nil {
+func (u *UpdateInboxItemTransaction) GetName() string {
+	if u == nil {
 		return ""
 	}
-	return o.Name
+	return u.Name
 }
 
-func (o *UpdateInboxItemTransaction) GetDate() string {
-	if o == nil {
+func (u *UpdateInboxItemTransaction) GetDate() string {
+	if u == nil {
 		return ""
 	}
-	return o.Date
+	return u.Date
 }
 
 // UpdateInboxItemResponseBody - Inbox item object
@@ -176,95 +185,95 @@ type UpdateInboxItemResponseBody struct {
 	Transaction *UpdateInboxItemTransaction `json:"transaction"`
 }
 
-func (o *UpdateInboxItemResponseBody) GetID() string {
-	if o == nil {
+func (u *UpdateInboxItemResponseBody) GetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UpdateInboxItemResponseBody) GetFileName() string {
-	if o == nil {
+func (u *UpdateInboxItemResponseBody) GetFileName() string {
+	if u == nil {
 		return ""
 	}
-	return o.FileName
+	return u.FileName
 }
 
-func (o *UpdateInboxItemResponseBody) GetFilePath() []string {
-	if o == nil {
+func (u *UpdateInboxItemResponseBody) GetFilePath() []string {
+	if u == nil {
 		return []string{}
 	}
-	return o.FilePath
+	return u.FilePath
 }
 
-func (o *UpdateInboxItemResponseBody) GetDisplayName() string {
-	if o == nil {
+func (u *UpdateInboxItemResponseBody) GetDisplayName() string {
+	if u == nil {
 		return ""
 	}
-	return o.DisplayName
+	return u.DisplayName
 }
 
-func (o *UpdateInboxItemResponseBody) GetAmount() *float64 {
-	if o == nil {
+func (u *UpdateInboxItemResponseBody) GetAmount() *float64 {
+	if u == nil {
 		return nil
 	}
-	return o.Amount
+	return u.Amount
 }
 
-func (o *UpdateInboxItemResponseBody) GetCurrency() *string {
-	if o == nil {
+func (u *UpdateInboxItemResponseBody) GetCurrency() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Currency
+	return u.Currency
 }
 
-func (o *UpdateInboxItemResponseBody) GetContentType() *string {
-	if o == nil {
+func (u *UpdateInboxItemResponseBody) GetContentType() *string {
+	if u == nil {
 		return nil
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdateInboxItemResponseBody) GetDate() *string {
-	if o == nil {
+func (u *UpdateInboxItemResponseBody) GetDate() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Date
+	return u.Date
 }
 
-func (o *UpdateInboxItemResponseBody) GetStatus() string {
-	if o == nil {
+func (u *UpdateInboxItemResponseBody) GetStatus() string {
+	if u == nil {
 		return ""
 	}
-	return o.Status
+	return u.Status
 }
 
-func (o *UpdateInboxItemResponseBody) GetCreatedAt() string {
-	if o == nil {
+func (u *UpdateInboxItemResponseBody) GetCreatedAt() string {
+	if u == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return u.CreatedAt
 }
 
-func (o *UpdateInboxItemResponseBody) GetWebsite() *string {
-	if o == nil {
+func (u *UpdateInboxItemResponseBody) GetWebsite() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Website
+	return u.Website
 }
 
-func (o *UpdateInboxItemResponseBody) GetDescription() *string {
-	if o == nil {
+func (u *UpdateInboxItemResponseBody) GetDescription() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Description
+	return u.Description
 }
 
-func (o *UpdateInboxItemResponseBody) GetTransaction() *UpdateInboxItemTransaction {
-	if o == nil {
+func (u *UpdateInboxItemResponseBody) GetTransaction() *UpdateInboxItemTransaction {
+	if u == nil {
 		return nil
 	}
-	return o.Transaction
+	return u.Transaction
 }
 
 type UpdateInboxItemResponse struct {
@@ -273,16 +282,16 @@ type UpdateInboxItemResponse struct {
 	Object *UpdateInboxItemResponseBody
 }
 
-func (o *UpdateInboxItemResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (u *UpdateInboxItemResponse) GetHTTPMeta() components.HTTPMetadata {
+	if u == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return u.HTTPMeta
 }
 
-func (o *UpdateInboxItemResponse) GetObject() *UpdateInboxItemResponseBody {
-	if o == nil {
+func (u *UpdateInboxItemResponse) GetObject() *UpdateInboxItemResponseBody {
+	if u == nil {
 		return nil
 	}
-	return o.Object
+	return u.Object
 }

@@ -23,6 +23,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -31,7 +33,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.BankAccounts.List(ctx, nil, nil)
@@ -75,6 +79,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/models/operations"
 	"log"
@@ -84,13 +90,15 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.BankAccounts.Create(ctx, &operations.CreateBankAccountRequest{
         Name: "Checking Account",
-        Currency: middaygo.String("USD"),
-        Manual: middaygo.Bool(false),
+        Currency: middaygo.Pointer("USD"),
+        Manual: middaygo.Pointer(false),
     })
     if err != nil {
         log.Fatal(err)
@@ -131,6 +139,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -139,7 +149,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.BankAccounts.Get(ctx, "b7e6c2a0-1f2d-4c3b-9a8e-123456789abc")
@@ -182,6 +194,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -190,7 +204,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.BankAccounts.Delete(ctx, "b7e6c2a0-1f2d-4c3b-9a8e-123456789abc")
@@ -233,6 +249,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/models/operations"
 	"log"
@@ -242,14 +260,16 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.BankAccounts.Update(ctx, "b7e6c2a0-1f2d-4c3b-9a8e-123456789abc", &operations.UpdateBankAccountRequestBody{
-        ID: middaygo.String("b7e6c2a0-1f2d-4c3b-9a8e-123456789abc"),
-        Name: middaygo.String("Checking Account"),
-        Enabled: middaygo.Bool(true),
-        Balance: middaygo.Float64(1500.75),
+        ID: middaygo.Pointer("b7e6c2a0-1f2d-4c3b-9a8e-123456789abc"),
+        Name: middaygo.Pointer("Checking Account"),
+        Enabled: middaygo.Pointer(true),
+        Balance: middaygo.Pointer[float64](1500.75),
         Type: operations.UpdateBankAccountTypeDepository.ToPointer(),
     })
     if err != nil {

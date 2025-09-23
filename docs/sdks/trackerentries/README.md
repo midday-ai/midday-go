@@ -23,6 +23,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -31,10 +33,12 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
-    res, err := s.TrackerEntries.List(ctx, "2024-04-01", "2024-04-30", middaygo.String("b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2"))
+    res, err := s.TrackerEntries.List(ctx, "2024-04-01", "2024-04-30", middaygo.Pointer("b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2"))
     if err != nil {
         log.Fatal(err)
     }
@@ -76,6 +80,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/types"
 	"github.com/midday-ai/midday-go/models/operations"
@@ -86,7 +92,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.TrackerEntries.Create(ctx, &operations.CreateTrackerEntryRequest{
@@ -96,9 +104,9 @@ func main() {
             "2024-04-15",
             "2024-04-16",
         },
-        AssignedID: middaygo.String("a1b2c3d4-e5f6-7890-abcd-ef1234567890"),
+        AssignedID: middaygo.Pointer("a1b2c3d4-e5f6-7890-abcd-ef1234567890"),
         ProjectID: "b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2",
-        Description: middaygo.String("Worked on implementing user authentication feature"),
+        Description: middaygo.Pointer("Worked on implementing user authentication feature"),
         Duration: 28800,
     })
     if err != nil {
@@ -140,6 +148,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/types"
 	"github.com/midday-ai/midday-go/models/operations"
@@ -150,7 +160,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.TrackerEntries.CreateBulk(ctx, &operations.CreateTrackerEntriesBulkRequest{
@@ -161,9 +173,9 @@ func main() {
                 Dates: []string{
                     "2024-04-15",
                 },
-                AssignedID: middaygo.String("a1b2c3d4-e5f6-7890-abcd-ef1234567890"),
+                AssignedID: middaygo.Pointer("a1b2c3d4-e5f6-7890-abcd-ef1234567890"),
                 ProjectID: "b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2",
-                Description: middaygo.String("Working on authentication feature"),
+                Description: middaygo.Pointer("Working on authentication feature"),
                 Duration: 28800,
             },
             operations.Entry{
@@ -172,9 +184,9 @@ func main() {
                 Dates: []string{
                     "2024-04-16",
                 },
-                AssignedID: middaygo.String("a1b2c3d4-e5f6-7890-abcd-ef1234567890"),
+                AssignedID: middaygo.Pointer("a1b2c3d4-e5f6-7890-abcd-ef1234567890"),
                 ProjectID: "b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2",
-                Description: middaygo.String("Working on dashboard feature"),
+                Description: middaygo.Pointer("Working on dashboard feature"),
                 Duration: 28800,
             },
         },
@@ -218,6 +230,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -226,7 +240,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.TrackerEntries.Delete(ctx, "b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2")
@@ -269,6 +285,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/types"
 	"github.com/midday-ai/midday-go/models/operations"
@@ -279,7 +297,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.TrackerEntries.Update(ctx, "b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2", &operations.UpdateTrackerEntryRequestBody{
@@ -289,9 +309,9 @@ func main() {
             "2024-04-15",
             "2024-04-16",
         },
-        AssignedID: middaygo.String("a1b2c3d4-e5f6-7890-abcd-ef1234567890"),
+        AssignedID: middaygo.Pointer("a1b2c3d4-e5f6-7890-abcd-ef1234567890"),
         ProjectID: "b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2",
-        Description: middaygo.String("Worked on implementing user authentication feature"),
+        Description: middaygo.Pointer("Worked on implementing user authentication feature"),
         Duration: 28800,
     })
     if err != nil {

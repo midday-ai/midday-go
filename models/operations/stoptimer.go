@@ -22,31 +22,31 @@ func (s StopTimerRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (s *StopTimerRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *StopTimerRequest) GetEntryID() *string {
-	if o == nil {
+func (s *StopTimerRequest) GetEntryID() *string {
+	if s == nil {
 		return nil
 	}
-	return o.EntryID
+	return s.EntryID
 }
 
-func (o *StopTimerRequest) GetAssignedID() *string {
-	if o == nil {
+func (s *StopTimerRequest) GetAssignedID() *string {
+	if s == nil {
 		return nil
 	}
-	return o.AssignedID
+	return s.AssignedID
 }
 
-func (o *StopTimerRequest) GetStop() *time.Time {
-	if o == nil {
+func (s *StopTimerRequest) GetStop() *time.Time {
+	if s == nil {
 		return nil
 	}
-	return o.Stop
+	return s.Stop
 }
 
 // StopTimerUser - User information for the person who created this tracker entry
@@ -59,25 +59,25 @@ type StopTimerUser struct {
 	AvatarURL string `json:"avatarUrl"`
 }
 
-func (o *StopTimerUser) GetID() string {
-	if o == nil {
+func (s *StopTimerUser) GetID() string {
+	if s == nil {
 		return ""
 	}
-	return o.ID
+	return s.ID
 }
 
-func (o *StopTimerUser) GetFullName() string {
-	if o == nil {
+func (s *StopTimerUser) GetFullName() string {
+	if s == nil {
 		return ""
 	}
-	return o.FullName
+	return s.FullName
 }
 
-func (o *StopTimerUser) GetAvatarURL() string {
-	if o == nil {
+func (s *StopTimerUser) GetAvatarURL() string {
+	if s == nil {
 		return ""
 	}
-	return o.AvatarURL
+	return s.AvatarURL
 }
 
 // StopTimerCustomer - Customer information associated with the project
@@ -88,18 +88,18 @@ type StopTimerCustomer struct {
 	Name string `json:"name"`
 }
 
-func (o *StopTimerCustomer) GetID() string {
-	if o == nil {
+func (s *StopTimerCustomer) GetID() string {
+	if s == nil {
 		return ""
 	}
-	return o.ID
+	return s.ID
 }
 
-func (o *StopTimerCustomer) GetName() string {
-	if o == nil {
+func (s *StopTimerCustomer) GetName() string {
+	if s == nil {
 		return ""
 	}
-	return o.Name
+	return s.Name
 }
 
 // StopTimerProject - Project information associated with this tracker entry
@@ -126,74 +126,74 @@ type StopTimerProject struct {
 	Customer *StopTimerCustomer `json:"customer"`
 }
 
-func (o *StopTimerProject) GetID() string {
-	if o == nil {
+func (s *StopTimerProject) GetID() string {
+	if s == nil {
 		return ""
 	}
-	return o.ID
+	return s.ID
 }
 
-func (o *StopTimerProject) GetCreatedAt() string {
-	if o == nil {
+func (s *StopTimerProject) GetCreatedAt() string {
+	if s == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return s.CreatedAt
 }
 
-func (o *StopTimerProject) GetRate() *float64 {
-	if o == nil {
+func (s *StopTimerProject) GetRate() *float64 {
+	if s == nil {
 		return nil
 	}
-	return o.Rate
+	return s.Rate
 }
 
-func (o *StopTimerProject) GetCurrency() *string {
-	if o == nil {
+func (s *StopTimerProject) GetCurrency() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Currency
+	return s.Currency
 }
 
-func (o *StopTimerProject) GetStatus() string {
-	if o == nil {
+func (s *StopTimerProject) GetStatus() string {
+	if s == nil {
 		return ""
 	}
-	return o.Status
+	return s.Status
 }
 
-func (o *StopTimerProject) GetDescription() *string {
-	if o == nil {
+func (s *StopTimerProject) GetDescription() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Description
+	return s.Description
 }
 
-func (o *StopTimerProject) GetName() string {
-	if o == nil {
+func (s *StopTimerProject) GetName() string {
+	if s == nil {
 		return ""
 	}
-	return o.Name
+	return s.Name
 }
 
-func (o *StopTimerProject) GetBillable() *bool {
-	if o == nil {
+func (s *StopTimerProject) GetBillable() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.Billable
+	return s.Billable
 }
 
-func (o *StopTimerProject) GetEstimate() *float64 {
-	if o == nil {
+func (s *StopTimerProject) GetEstimate() *float64 {
+	if s == nil {
 		return nil
 	}
-	return o.Estimate
+	return s.Estimate
 }
 
-func (o *StopTimerProject) GetCustomer() *StopTimerCustomer {
-	if o == nil {
+func (s *StopTimerProject) GetCustomer() *StopTimerCustomer {
+	if s == nil {
 		return nil
 	}
-	return o.Customer
+	return s.Customer
 }
 
 type StopTimerData struct {
@@ -225,95 +225,95 @@ type StopTimerData struct {
 	Project StopTimerProject `json:"project"`
 }
 
-func (o *StopTimerData) GetID() string {
-	if o == nil {
+func (s *StopTimerData) GetID() string {
+	if s == nil {
 		return ""
 	}
-	return o.ID
+	return s.ID
 }
 
-func (o *StopTimerData) GetCreatedAt() string {
-	if o == nil {
+func (s *StopTimerData) GetCreatedAt() string {
+	if s == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return s.CreatedAt
 }
 
-func (o *StopTimerData) GetDuration() *float64 {
-	if o == nil {
+func (s *StopTimerData) GetDuration() *float64 {
+	if s == nil {
 		return nil
 	}
-	return o.Duration
+	return s.Duration
 }
 
-func (o *StopTimerData) GetStart() string {
-	if o == nil {
+func (s *StopTimerData) GetStart() string {
+	if s == nil {
 		return ""
 	}
-	return o.Start
+	return s.Start
 }
 
-func (o *StopTimerData) GetStop() string {
-	if o == nil {
+func (s *StopTimerData) GetStop() string {
+	if s == nil {
 		return ""
 	}
-	return o.Stop
+	return s.Stop
 }
 
-func (o *StopTimerData) GetTeamID() string {
-	if o == nil {
+func (s *StopTimerData) GetTeamID() string {
+	if s == nil {
 		return ""
 	}
-	return o.TeamID
+	return s.TeamID
 }
 
-func (o *StopTimerData) GetDescription() *string {
-	if o == nil {
+func (s *StopTimerData) GetDescription() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Description
+	return s.Description
 }
 
-func (o *StopTimerData) GetRate() *float64 {
-	if o == nil {
+func (s *StopTimerData) GetRate() *float64 {
+	if s == nil {
 		return nil
 	}
-	return o.Rate
+	return s.Rate
 }
 
-func (o *StopTimerData) GetCurrency() *string {
-	if o == nil {
+func (s *StopTimerData) GetCurrency() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Currency
+	return s.Currency
 }
 
-func (o *StopTimerData) GetBilled() bool {
-	if o == nil {
+func (s *StopTimerData) GetBilled() bool {
+	if s == nil {
 		return false
 	}
-	return o.Billed
+	return s.Billed
 }
 
-func (o *StopTimerData) GetDate() string {
-	if o == nil {
+func (s *StopTimerData) GetDate() string {
+	if s == nil {
 		return ""
 	}
-	return o.Date
+	return s.Date
 }
 
-func (o *StopTimerData) GetUser() StopTimerUser {
-	if o == nil {
+func (s *StopTimerData) GetUser() StopTimerUser {
+	if s == nil {
 		return StopTimerUser{}
 	}
-	return o.User
+	return s.User
 }
 
-func (o *StopTimerData) GetProject() StopTimerProject {
-	if o == nil {
+func (s *StopTimerData) GetProject() StopTimerProject {
+	if s == nil {
 		return StopTimerProject{}
 	}
-	return o.Project
+	return s.Project
 }
 
 // StopTimerResponseBody - Timer stopped successfully.
@@ -321,11 +321,11 @@ type StopTimerResponseBody struct {
 	Data StopTimerData `json:"data"`
 }
 
-func (o *StopTimerResponseBody) GetData() StopTimerData {
-	if o == nil {
+func (s *StopTimerResponseBody) GetData() StopTimerData {
+	if s == nil {
 		return StopTimerData{}
 	}
-	return o.Data
+	return s.Data
 }
 
 type StopTimerResponse struct {
@@ -334,16 +334,16 @@ type StopTimerResponse struct {
 	Object *StopTimerResponseBody
 }
 
-func (o *StopTimerResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (s *StopTimerResponse) GetHTTPMeta() components.HTTPMetadata {
+	if s == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return s.HTTPMeta
 }
 
-func (o *StopTimerResponse) GetObject() *StopTimerResponseBody {
-	if o == nil {
+func (s *StopTimerResponse) GetObject() *StopTimerResponseBody {
+	if s == nil {
 		return nil
 	}
-	return o.Object
+	return s.Object
 }

@@ -11,11 +11,11 @@ type DeleteTransactionsResponseBody struct {
 	ID string `json:"id"`
 }
 
-func (o *DeleteTransactionsResponseBody) GetID() string {
-	if o == nil {
+func (d *DeleteTransactionsResponseBody) GetID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ID
+	return d.ID
 }
 
 type DeleteTransactionsResponse struct {
@@ -24,16 +24,16 @@ type DeleteTransactionsResponse struct {
 	ResponseBodies []DeleteTransactionsResponseBody
 }
 
-func (o *DeleteTransactionsResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (d *DeleteTransactionsResponse) GetHTTPMeta() components.HTTPMetadata {
+	if d == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return d.HTTPMeta
 }
 
-func (o *DeleteTransactionsResponse) GetResponseBodies() []DeleteTransactionsResponseBody {
-	if o == nil {
+func (d *DeleteTransactionsResponse) GetResponseBodies() []DeleteTransactionsResponseBody {
+	if d == nil {
 		return nil
 	}
-	return o.ResponseBodies
+	return d.ResponseBodies
 }

@@ -1,40 +1,47 @@
 lockVersion: 2.0.0
 id: 594731ce-66d4-43e3-8c52-6bf07481e7bf
 management:
-  docChecksum: dd329bc0918b4bf1ae9f9d626db08cfb
+  docChecksum: b7ac057234b8cfcbb0d66d31179e13cf
   docVersion: 0.0.1
-  speakeasyVersion: 1.606.0
-  generationVersion: 2.686.7
-  releaseVersion: 0.1.0
-  configChecksum: 06202174e8666aca651893367aac9f96
+  speakeasyVersion: 1.622.1
+  generationVersion: 2.709.0
+  releaseVersion: 0.2.0
+  configChecksum: 17f5f4b3bf8d44ba8a7e6240bb80ab0c
   repoURL: https://github.com/midday-ai/midday-go.git
   installationURL: https://github.com/midday-ai/midday-go
 features:
   go:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.9.3
+    core: 3.11.0
     defaultEnabledRetries: 0.2.0
     devContainers: 2.90.0
-    enums: 2.81.1
+    enums: 2.82.0
     envVarSecurityUsage: 0.3.2
     examples: 2.81.5
     flattening: 2.81.1
-    globalSecurity: 2.82.11
+    globalSecurity: 2.82.12
     globalSecurityCallbacks: 0.1.0
-    globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.3
     intellisenseMarkdownSupport: 0.1.0
     nameOverrides: 2.81.2
-    nullables: 0.1.1
+    nullables: 0.2.0
     responseFormat: 0.1.2
     retries: 2.84.2
     sdkHooks: 0.2.0
+    unions: 2.85.14
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
   - .devcontainer/setup.sh
   - .gitattributes
+  - /models/apierrors/createinvoice.go
+  - /models/apierrors/getdocumentpresignedurl.go
+  - /models/apierrors/getinboxpresignedurl.go
+  - /models/apierrors/getoauthauthorization.go
+  - /models/apierrors/gettransactionattachmentpresignedurl.go
+  - /models/apierrors/postoauthauthorization.go
+  - /models/apierrors/postoauthtoken.go
   - /models/components/createtag.go
   - /models/components/expensesresultarray.go
   - /models/components/getburnrateresponseschema.go
@@ -42,6 +49,9 @@ generatedFiles:
   - /models/components/getprofitresponseschema.go
   - /models/components/getrevenueresponseschema.go
   - /models/components/httpmetadata.go
+  - /models/components/notificationresponseschema.go
+  - /models/components/notificationschema.go
+  - /models/components/notificationsresponseschema.go
   - /models/components/profitcurrent.go
   - /models/components/profitmeta.go
   - /models/components/profitpercentage.go
@@ -61,8 +71,11 @@ generatedFiles:
   - /models/components/trackerprojectresponse.go
   - /models/components/trackerprojectsresponse.go
   - /models/components/transactionresponse.go
+  - /models/components/updateallnotificationsstatusresponseschema.go
+  - /models/components/updateallnotificationsstatusschema.go
   - /models/operations/createbankaccount.go
   - /models/operations/createcustomer.go
+  - /models/operations/createinvoice.go
   - /models/operations/createtag.go
   - /models/operations/createtrackerentriesbulk.go
   - /models/operations/createtrackerentry.go
@@ -80,43 +93,54 @@ generatedFiles:
   - /models/operations/deletetransaction.go
   - /models/operations/deletetransactions.go
   - /models/operations/getbankaccountbyid.go
-  - /models/operations/getburnratemetrics.go
+  - /models/operations/getburnratereports.go
   - /models/operations/getcurrenttimer.go
   - /models/operations/getcurrentuser.go
   - /models/operations/getcustomerbyid.go
   - /models/operations/getdocumentbyid.go
-  - /models/operations/getexpensesmetrics.go
+  - /models/operations/getdocumentpresignedurl.go
+  - /models/operations/getexpensesreports.go
   - /models/operations/getinboxitembyid.go
+  - /models/operations/getinboxpresignedurl.go
   - /models/operations/getinvoicebyid.go
   - /models/operations/getinvoicespaymentstatus.go
   - /models/operations/getinvoicesummary.go
-  - /models/operations/getprofitmetrics.go
-  - /models/operations/getrevenuemetrics.go
-  - /models/operations/getrunwaymetrics.go
-  - /models/operations/getspendingmetrics.go
+  - /models/operations/getoauthauthorization.go
+  - /models/operations/getprofitreports.go
+  - /models/operations/getrevenuereports.go
+  - /models/operations/getrunwayreports.go
+  - /models/operations/getspendingreports.go
   - /models/operations/gettagbyid.go
   - /models/operations/getteambyid.go
   - /models/operations/gettimerstatus.go
   - /models/operations/gettrackerprojectbyid.go
+  - /models/operations/gettransactionattachmentpresignedurl.go
   - /models/operations/gettransactionbyid.go
   - /models/operations/listbankaccounts.go
   - /models/operations/listcustomers.go
   - /models/operations/listdocuments.go
   - /models/operations/listinboxitems.go
   - /models/operations/listinvoices.go
+  - /models/operations/listnotifications.go
   - /models/operations/listtags.go
   - /models/operations/listteammembers.go
   - /models/operations/listteams.go
   - /models/operations/listtrackerentries.go
   - /models/operations/listtrackerprojects.go
   - /models/operations/listtransactions.go
+  - /models/operations/postoauthauthorization.go
+  - /models/operations/postoauthrevoke.go
+  - /models/operations/postoauthtoken.go
   - /models/operations/search.go
   - /models/operations/starttimer.go
   - /models/operations/stoptimer.go
+  - /models/operations/updateallnotificationsstatus.go
   - /models/operations/updatebankaccount.go
   - /models/operations/updatecurrentuser.go
   - /models/operations/updatecustomer.go
   - /models/operations/updateinboxitem.go
+  - /models/operations/updateinvoice.go
+  - /models/operations/updatenotificationstatus.go
   - /models/operations/updatetag.go
   - /models/operations/updateteambyid.go
   - /models/operations/updatetrackerentry.go
@@ -126,6 +150,23 @@ generatedFiles:
   - USAGE.md
   - bankaccounts.go
   - customers.go
+  - docs/models/apierrors/conflicterror.md
+  - docs/models/apierrors/createinvoicebadrequesterror.md
+  - docs/models/apierrors/createinvoiceinternalservererror.md
+  - docs/models/apierrors/createinvoicenotfounderror.md
+  - docs/models/apierrors/getdocumentpresignedurlbadrequesterror.md
+  - docs/models/apierrors/getdocumentpresignedurlinternalservererror.md
+  - docs/models/apierrors/getdocumentpresignedurlnotfounderror.md
+  - docs/models/apierrors/getinboxpresignedurlbadrequesterror.md
+  - docs/models/apierrors/getinboxpresignedurlinternalservererror.md
+  - docs/models/apierrors/getinboxpresignedurlnotfounderror.md
+  - docs/models/apierrors/getoauthauthorizationbadrequesterror.md
+  - docs/models/apierrors/gettransactionattachmentpresignedurlbadrequesterror.md
+  - docs/models/apierrors/gettransactionattachmentpresignedurlinternalservererror.md
+  - docs/models/apierrors/gettransactionattachmentpresignedurlnotfounderror.md
+  - docs/models/apierrors/postoauthauthorizationbadrequesterror.md
+  - docs/models/apierrors/postoauthtokenbadrequesterror.md
+  - docs/models/apierrors/unauthorizederror.md
   - docs/models/components/account.md
   - docs/models/components/attachment.md
   - docs/models/components/category.md
@@ -139,6 +180,11 @@ generatedFiles:
   - docs/models/components/getprofitresponseschema.md
   - docs/models/components/getrevenueresponseschema.md
   - docs/models/components/httpmetadata.md
+  - docs/models/components/notificationresponseschema.md
+  - docs/models/components/notificationschema.md
+  - docs/models/components/notificationschemastatus.md
+  - docs/models/components/notificationsresponseschema.md
+  - docs/models/components/notificationsresponseschemameta.md
   - docs/models/components/profitcurrent.md
   - docs/models/components/profitmeta.md
   - docs/models/components/profitmetatype.md
@@ -156,6 +202,7 @@ generatedFiles:
   - docs/models/components/revenueresultitem.md
   - docs/models/components/revenuesummary.md
   - docs/models/components/security.md
+  - docs/models/components/source.md
   - docs/models/components/spendingresultarray.md
   - docs/models/components/summary.md
   - docs/models/components/tagresponse.md
@@ -167,8 +214,13 @@ generatedFiles:
   - docs/models/components/trackerprojectsresponsemeta.md
   - docs/models/components/transactionresponse.md
   - docs/models/components/transactionresponsetag.md
+  - docs/models/components/updateallnotificationsstatusresponseschema.md
+  - docs/models/components/updateallnotificationsstatusschema.md
+  - docs/models/components/updateallnotificationsstatusschemastatus.md
   - docs/models/components/user.md
   - docs/models/operations/attachments.md
+  - docs/models/operations/authorizationcode.md
+  - docs/models/operations/bottomblock.md
   - docs/models/operations/createbankaccountrequest.md
   - docs/models/operations/createbankaccountresponse.md
   - docs/models/operations/createbankaccountresponsebody.md
@@ -177,6 +229,10 @@ generatedFiles:
   - docs/models/operations/createcustomerresponsebody.md
   - docs/models/operations/createcustomertagrequest.md
   - docs/models/operations/createcustomertagresponse.md
+  - docs/models/operations/createinvoicerequest.md
+  - docs/models/operations/createinvoiceresponse.md
+  - docs/models/operations/createinvoiceresponsebody.md
+  - docs/models/operations/createinvoicestatus.md
   - docs/models/operations/createtagresponse.md
   - docs/models/operations/createtrackerentriesbulkcustomer.md
   - docs/models/operations/createtrackerentriesbulkdata.md
@@ -203,6 +259,7 @@ generatedFiles:
   - docs/models/operations/createtransactionsresponse.md
   - docs/models/operations/currententry.md
   - docs/models/operations/dateformatrequest.md
+  - docs/models/operations/decision.md
   - docs/models/operations/deletebankaccountrequest.md
   - docs/models/operations/deletebankaccountresponse.md
   - docs/models/operations/deletebankaccountresponsebody.md
@@ -232,12 +289,14 @@ generatedFiles:
   - docs/models/operations/deletetransactionresponsebody.md
   - docs/models/operations/deletetransactionsresponse.md
   - docs/models/operations/deletetransactionsresponsebody.md
+  - docs/models/operations/deliverytype.md
   - docs/models/operations/entry.md
+  - docs/models/operations/fromdetails.md
   - docs/models/operations/getbankaccountbyidrequest.md
   - docs/models/operations/getbankaccountbyidresponse.md
   - docs/models/operations/getbankaccountbyidresponsebody.md
-  - docs/models/operations/getburnratemetricsrequest.md
-  - docs/models/operations/getburnratemetricsresponse.md
+  - docs/models/operations/getburnratereportsrequest.md
+  - docs/models/operations/getburnratereportsresponse.md
   - docs/models/operations/getcurrenttimercustomer.md
   - docs/models/operations/getcurrenttimerdata.md
   - docs/models/operations/getcurrenttimerproject.md
@@ -257,12 +316,18 @@ generatedFiles:
   - docs/models/operations/getdocumentbyidrequest.md
   - docs/models/operations/getdocumentbyidresponse.md
   - docs/models/operations/getdocumentbyidresponsebody.md
-  - docs/models/operations/getexpensesmetricsrequest.md
-  - docs/models/operations/getexpensesmetricsresponse.md
+  - docs/models/operations/getdocumentpresignedurlrequest.md
+  - docs/models/operations/getdocumentpresignedurlresponse.md
+  - docs/models/operations/getdocumentpresignedurlresponsebody.md
+  - docs/models/operations/getexpensesreportsrequest.md
+  - docs/models/operations/getexpensesreportsresponse.md
   - docs/models/operations/getinboxitembyidrequest.md
   - docs/models/operations/getinboxitembyidresponse.md
   - docs/models/operations/getinboxitembyidresponsebody.md
   - docs/models/operations/getinboxitembyidtransaction.md
+  - docs/models/operations/getinboxpresignedurlrequest.md
+  - docs/models/operations/getinboxpresignedurlresponse.md
+  - docs/models/operations/getinboxpresignedurlresponsebody.md
   - docs/models/operations/getinvoicebyidcustomer.md
   - docs/models/operations/getinvoicebyidrequest.md
   - docs/models/operations/getinvoicebyidresponse.md
@@ -274,14 +339,18 @@ generatedFiles:
   - docs/models/operations/getinvoicesummaryresponse.md
   - docs/models/operations/getinvoicesummaryresponsebody.md
   - docs/models/operations/getinvoicesummarystatus.md
-  - docs/models/operations/getprofitmetricsrequest.md
-  - docs/models/operations/getprofitmetricsresponse.md
-  - docs/models/operations/getrevenuemetricsrequest.md
-  - docs/models/operations/getrevenuemetricsresponse.md
-  - docs/models/operations/getrunwaymetricsrequest.md
-  - docs/models/operations/getrunwaymetricsresponse.md
-  - docs/models/operations/getspendingmetricsrequest.md
-  - docs/models/operations/getspendingmetricsresponse.md
+  - docs/models/operations/getoauthauthorizationrequest.md
+  - docs/models/operations/getoauthauthorizationresponse.md
+  - docs/models/operations/getoauthauthorizationresponsebody.md
+  - docs/models/operations/getoauthauthorizationstatus.md
+  - docs/models/operations/getprofitreportsrequest.md
+  - docs/models/operations/getprofitreportsresponse.md
+  - docs/models/operations/getrevenuereportsrequest.md
+  - docs/models/operations/getrevenuereportsresponse.md
+  - docs/models/operations/getrunwayreportsrequest.md
+  - docs/models/operations/getrunwayreportsresponse.md
+  - docs/models/operations/getspendingreportsrequest.md
+  - docs/models/operations/getspendingreportsresponse.md
   - docs/models/operations/gettagbyidrequest.md
   - docs/models/operations/gettagbyidresponse.md
   - docs/models/operations/getteambyidplan.md
@@ -294,8 +363,14 @@ generatedFiles:
   - docs/models/operations/gettimerstatusresponsebody.md
   - docs/models/operations/gettrackerprojectbyidrequest.md
   - docs/models/operations/gettrackerprojectbyidresponse.md
+  - docs/models/operations/gettransactionattachmentpresignedurlrequest.md
+  - docs/models/operations/gettransactionattachmentpresignedurlresponse.md
+  - docs/models/operations/gettransactionattachmentpresignedurlresponsebody.md
   - docs/models/operations/gettransactionbyidrequest.md
   - docs/models/operations/gettransactionbyidresponse.md
+  - docs/models/operations/granttypeauthorizationcode.md
+  - docs/models/operations/granttyperefreshtoken.md
+  - docs/models/operations/lineitem.md
   - docs/models/operations/listbankaccountsdata.md
   - docs/models/operations/listbankaccountsrequest.md
   - docs/models/operations/listbankaccountsresponse.md
@@ -326,6 +401,10 @@ generatedFiles:
   - docs/models/operations/listinvoicesresponse.md
   - docs/models/operations/listinvoicesresponsebody.md
   - docs/models/operations/listinvoicesstatus.md
+  - docs/models/operations/listnotificationsrequest.md
+  - docs/models/operations/listnotificationsresponse.md
+  - docs/models/operations/listnotificationsstatusenum1.md
+  - docs/models/operations/listnotificationsstatusenum2.md
   - docs/models/operations/listtagsresponse.md
   - docs/models/operations/listteammembersdata.md
   - docs/models/operations/listteammembersrequest.md
@@ -350,13 +429,29 @@ generatedFiles:
   - docs/models/operations/listtransactionsresponse.md
   - docs/models/operations/listtransactionsresponsebody.md
   - docs/models/operations/listtransactionstype.md
+  - docs/models/operations/name.md
+  - docs/models/operations/notedetails.md
   - docs/models/operations/option.md
+  - docs/models/operations/paymentdetails.md
+  - docs/models/operations/postoauthauthorizationrequest.md
+  - docs/models/operations/postoauthauthorizationresponse.md
+  - docs/models/operations/postoauthauthorizationresponsebody.md
+  - docs/models/operations/postoauthrevokerequest.md
+  - docs/models/operations/postoauthrevokeresponse.md
+  - docs/models/operations/postoauthrevokeresponsebody.md
+  - docs/models/operations/postoauthtokenrequest.md
+  - docs/models/operations/postoauthtokenresponse.md
+  - docs/models/operations/postoauthtokenresponsebody.md
+  - docs/models/operations/refreshtoken.md
   - docs/models/operations/requestbody.md
+  - docs/models/operations/responsetype.md
   - docs/models/operations/result.md
   - docs/models/operations/role.md
+  - docs/models/operations/scope.md
   - docs/models/operations/searchrequest.md
   - docs/models/operations/searchresponse.md
   - docs/models/operations/searchresponsebody.md
+  - docs/models/operations/size.md
   - docs/models/operations/starttimercustomer.md
   - docs/models/operations/starttimerdata.md
   - docs/models/operations/starttimerproject.md
@@ -364,6 +459,7 @@ generatedFiles:
   - docs/models/operations/starttimerresponse.md
   - docs/models/operations/starttimerresponsebody.md
   - docs/models/operations/starttimeruser.md
+  - docs/models/operations/status.md
   - docs/models/operations/stoptimercustomer.md
   - docs/models/operations/stoptimerdata.md
   - docs/models/operations/stoptimerproject.md
@@ -371,7 +467,15 @@ generatedFiles:
   - docs/models/operations/stoptimerresponse.md
   - docs/models/operations/stoptimerresponsebody.md
   - docs/models/operations/stoptimeruser.md
+  - docs/models/operations/template.md
+  - docs/models/operations/templatedeliverytype.md
+  - docs/models/operations/templatefromdetails.md
+  - docs/models/operations/templatepaymentdetails.md
+  - docs/models/operations/tokentype.md
+  - docs/models/operations/tokentypehint.md
+  - docs/models/operations/topblock.md
   - docs/models/operations/trackerproject.md
+  - docs/models/operations/updateallnotificationsstatusresponse.md
   - docs/models/operations/updatebankaccountrequest.md
   - docs/models/operations/updatebankaccountrequestbody.md
   - docs/models/operations/updatebankaccountresponse.md
@@ -394,6 +498,17 @@ generatedFiles:
   - docs/models/operations/updateinboxitemresponsebody.md
   - docs/models/operations/updateinboxitemstatus.md
   - docs/models/operations/updateinboxitemtransaction.md
+  - docs/models/operations/updateinvoicecustomer.md
+  - docs/models/operations/updateinvoicerequest.md
+  - docs/models/operations/updateinvoicerequestbody.md
+  - docs/models/operations/updateinvoiceresponse.md
+  - docs/models/operations/updateinvoiceresponsebody.md
+  - docs/models/operations/updateinvoicestatusrequest.md
+  - docs/models/operations/updateinvoicestatusresponse.md
+  - docs/models/operations/updatenotificationstatusrequest.md
+  - docs/models/operations/updatenotificationstatusrequestbody.md
+  - docs/models/operations/updatenotificationstatusresponse.md
+  - docs/models/operations/updatenotificationstatusstatus.md
   - docs/models/operations/updatetagrequest.md
   - docs/models/operations/updatetagrequestbody.md
   - docs/models/operations/updatetagresponse.md
@@ -431,8 +546,10 @@ generatedFiles:
   - docs/sdks/documents/README.md
   - docs/sdks/inbox/README.md
   - docs/sdks/invoices/README.md
-  - docs/sdks/metrics/README.md
   - docs/sdks/midday/README.md
+  - docs/sdks/notifications/README.md
+  - docs/sdks/oauth/README.md
+  - docs/sdks/reports/README.md
   - docs/sdks/search/README.md
   - docs/sdks/tags/README.md
   - docs/sdks/teams/README.md
@@ -458,10 +575,14 @@ generatedFiles:
   - internal/utils/security.go
   - internal/utils/utils.go
   - invoices.go
-  - metrics.go
   - midday.go
   - models/apierrors/apierror.go
   - models/operations/options.go
+  - notifications.go
+  - oauth.go
+  - optionalnullable/optionalnullable.go
+  - optionalnullable/optionalnullable_test.go
+  - reports.go
   - retry/config.go
   - search.go
   - tags.go
@@ -797,7 +918,7 @@ examples:
           id: "<id>"
       responses:
         "200":
-          application/json: {"id": "b3b7e6e2-8c2a-4e2a-9b1a-2e4b5c6d7f8a", "status": "paid", "dueDate": "2024-06-30T23:59:59.000Z", "issueDate": "2024-06-01T00:00:00.000Z", "invoiceNumber": "INV-2024-001", "amount": 1500.75, "currency": "USD", "customer": {"id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890", "name": "Acme Corporation", "website": "https://acme.com", "email": "info@acme.com"}, "paidAt": "2024-06-15T12:00:00.000Z", "reminderSentAt": "2024-06-10T09:00:00.000Z", "note": "Thank you for your business.", "vat": 120, "tax": 80, "discount": 50, "subtotal": 1400, "viewedAt": "2024-06-05T14:30:00.000Z", "customerName": "Acme Corporation", "sentTo": "billing@acme.com", "sentAt": "2024-06-02T08:00:00.000Z", "createdAt": "2024-06-01T07:00:00.000Z", "updatedAt": "2024-06-15T10:00:00.000Z"}
+          application/json: {"id": "b3b7e6e2-8c2a-4e2a-9b1a-2e4b5c6d7f8a", "status": "paid", "dueDate": "2024-06-30T23:59:59.000Z", "issueDate": "2024-06-01T00:00:00.000Z", "invoiceNumber": "INV-2024-001", "amount": 1500.75, "currency": "USD", "customer": {"id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890", "name": "Acme Corporation", "website": "https://acme.com", "email": "info@acme.com"}, "paidAt": "2024-06-15T12:00:00.000Z", "reminderSentAt": "2024-06-10T09:00:00.000Z", "note": "Thank you for your business.", "vat": 120, "tax": 80, "discount": 50, "subtotal": 1400, "viewedAt": "2024-06-05T14:30:00.000Z", "customerName": "Acme Corporation", "sentTo": "billing@acme.com", "sentAt": "2024-06-02T08:00:00.000Z", "createdAt": "2024-06-01T07:00:00.000Z", "updatedAt": "2024-06-15T10:00:00.000Z", "pdfUrl": "https://app.midday.ai/api/download/invoice?token=eef58951-1682-4062-b010-425866032390", "previewUrl": "https://app.midday.ai/i/eef58951-1682-4062-b010-425866032390"}
   deleteInvoice:
     speakeasy-default-delete-invoice:
       parameters:
@@ -1005,6 +1126,214 @@ examples:
       responses:
         "200":
           application/json: {"data": {"isRunning": true, "currentEntry": {"id": "a26a5a54-1e28-4c83-b854-2821b87e4a97", "start": "<value>", "description": "brr debit greedy lasting because offset outset generously", "projectId": "f2d14591-a762-4edc-b444-ff2f1ff3b4b8", "trackerProject": {"id": "2cabaa5d-6000-419b-b904-099b57ddc208", "name": "<value>"}}, "elapsedTime": 1800}}
+  getOAuthAuthorization:
+    speakeasy-default-get-O-auth-authorization:
+      parameters:
+        query:
+          response_type: "code"
+          client_id: "mid_client_abcdef123456789"
+          redirect_uri: "https://myapp.com/callback"
+          scope: "transactions.read invoices.read"
+          state: "abc123xyz789_secure-random-state-value-with-sufficient-entropy"
+          code_challenge: "E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM"
+      responses:
+        "200":
+          application/json: {"id": "123e4567-e89b-12d3-a456-426614174000", "name": "My Raycast Extension", "description": "A Raycast extension for managing transactions", "overview": "This application provides advanced transaction management features including:\n- Real-time sync\n- Advanced filtering", "developerName": "Acme Corp", "logoUrl": "https://example.com/logo.png", "website": "https://myapp.com", "installUrl": "https://myapp.com/install", "screenshots": ["https://example.com/screenshot1.png", "https://example.com/screenshot2.png"], "clientId": "mid_client_abcdef123456789", "scopes": ["transactions.read", "invoices.read"], "redirectUri": "https://myapp.com/callback", "state": "abc123xyz789_secure-random-state-value-with-sufficient-entropy", "status": "approved"}
+        "400":
+          application/json: {"error": "invalid_request", "error_description": "The request is missing a required parameter", "error_uri": "https://docs.midday.ai/errors/invalid_request", "state": "abc123xyz789_secure-random-state-value-with-sufficient-entropy"}
+  postOAuthAuthorization:
+    speakeasy-default-post-O-auth-authorization:
+      requestBody:
+        application/json: {"client_id": "mid_client_abcdef123456789", "decision": "allow", "scopes": ["transactions.read", "invoices.read"], "redirect_uri": "https://myapp.com/callback", "state": "abc123xyz789_secure-random-state-value-with-sufficient-entropy", "code_challenge": "E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM", "teamId": "123e4567-e89b-12d3-a456-426614174000"}
+      responses:
+        "200":
+          application/json: {"redirect_url": "https://trained-outset.info"}
+        "400":
+          application/json: {"redirect_url": "https://young-ferret.name/"}
+        "401":
+          application/json: {"redirect_url": "https://impressive-giant.info"}
+  postOAuthToken:
+    speakeasy-default-post-O-auth-token:
+      requestBody:
+        application/json: {"grant_type": "refresh_token", "refresh_token": "mid_rt_abcdef123456789", "client_id": "mid_client_abcdef123456789", "client_secret": "mid_secret_abcdef123456789", "scope": "transactions.read invoices.read"}
+        application/x-www-form-urlencoded: {"grant_type": "refresh_token", "refresh_token": "mid_rt_abcdef123456789", "client_id": "mid_client_abcdef123456789", "client_secret": "mid_secret_abcdef123456789", "scope": "transactions.read invoices.read"}
+      responses:
+        "200":
+          application/json: {"access_token": "mid_access_token_abcdef123456789", "token_type": "Bearer", "expires_in": 3600, "refresh_token": "mid_refresh_token_abcdef123456789", "scope": "transactions.read invoices.read"}
+        "400":
+          application/json: {"error": "invalid_request", "error_description": "The request is missing a required parameter", "error_uri": "https://docs.midday.ai/errors/invalid_request", "state": "abc123xyz789_secure-random-state-value-with-sufficient-entropy"}
+  postOAuthRevoke:
+    speakeasy-default-post-O-auth-revoke:
+      requestBody:
+        application/json: {"token": "mid_access_token_abcdef123456789", "token_type_hint": "access_token", "client_id": "mid_client_abcdef123456789", "client_secret": "mid_secret_abcdef123456789"}
+        application/x-www-form-urlencoded: {"token": "mid_access_token_abcdef123456789", "token_type_hint": "access_token", "client_id": "mid_client_abcdef123456789", "client_secret": "mid_secret_abcdef123456789"}
+      responses:
+        "200":
+          application/json: {"success": true}
+  listNotifications:
+    speakeasy-default-list-notifications:
+      parameters:
+        query:
+          cursor: "20"
+          pageSize: 20
+          status: ["unread", "read"]
+          userId: "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+          priority: 5
+          maxPriority: 3
+      responses:
+        "200":
+          application/json: {"data": [], "meta": {"cursor": "40", "hasPreviousPage": true, "hasNextPage": false}}
+  updateNotificationStatus:
+    speakeasy-default-update-notification-status:
+      parameters:
+        path:
+          notificationId: "b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2"
+      requestBody:
+        application/json: {"status": "read"}
+      responses:
+        "200":
+          application/json: {"data": {"id": "b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2", "createdAt": "2024-04-15T09:00:00.000Z", "teamId": "a1b2c3d4-e5f6-7890-abcd-ef1234567890", "userId": "c2d3e4f5-a6b7-8901-bcde-f23456789012", "type": "transactions_created", "priority": 3, "source": "system", "status": "unread", "metadata": {"transactionCount": 5, "dateRange": {"from": "2024-04-01", "to": "2024-04-15"}}, "lastUsedAt": "2024-04-15T11:00:00.000Z"}}
+  updateAllNotificationsStatus:
+    speakeasy-default-update-all-notifications-status:
+      requestBody:
+        application/json: {"status": "read"}
+      responses:
+        "200":
+          application/json: {"data": []}
+  getTransactionAttachmentPreSignedUrl:
+    speakeasy-default-get-transaction-attachment-pre-signed-url:
+      parameters:
+        path:
+          transactionId: "b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4"
+          attachmentId: "a43dc3a5-6925-4d91-ac9c-4c1a34bdb388"
+        query:
+          download: true
+      responses:
+        "200":
+          application/json: {"url": "https://service.midday.ai/storage/v1/object/sign/vault/transactions/receipt.pdf?token=abc123&expires=1640995200", "expiresAt": "2024-04-15T10:01:00.000Z", "fileName": "receipt.pdf"}
+        "400":
+          application/json: {"error": "<value>"}
+        "404":
+          application/json: {"error": "<value>"}
+        "500":
+          application/json: {"error": "<value>"}
+  getDocumentPreSignedUrl:
+    speakeasy-default-get-document-pre-signed-url:
+      parameters:
+        path:
+          id: "b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4"
+        query:
+          download: true
+      responses:
+        "200":
+          application/json: {"url": "https://service.midday.ai/storage/v1/object/sign/vault/documents/2024/invoice.pdf?token=abc123&expires=1640995200", "expiresAt": "2024-04-15T10:01:00.000Z", "fileName": "invoice-april-2024.pdf"}
+        "400":
+          application/json: {"error": "<value>"}
+        "404":
+          application/json: {"error": "<value>"}
+        "500":
+          application/json: {"error": "<value>"}
+  getInboxPreSignedUrl:
+    speakeasy-default-get-inbox-pre-signed-url:
+      parameters:
+        path:
+          id: "b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4"
+        query:
+          download: true
+      responses:
+        "200":
+          application/json: {"url": "https://service.midday.ai/storage/v1/object/sign/vault/inbox/document.pdf?token=abc123&expires=1640995200", "expiresAt": "2024-04-15T10:01:00.000Z", "fileName": "invoice.pdf"}
+        "400":
+          application/json: {"error": "<value>"}
+        "404":
+          application/json: {"error": "<value>"}
+        "500":
+          application/json: {"error": "<value>"}
+  createInvoice:
+    speakeasy-default-create-invoice:
+      requestBody:
+        application/json: {"template": {"customerLabel": "Bill To", "title": "Invoice", "fromLabel": "From", "invoiceNoLabel": "Invoice #", "issueDateLabel": "Issue Date", "dueDateLabel": "Due Date", "descriptionLabel": "Description", "priceLabel": "Rate", "quantityLabel": "Qty", "totalLabel": "Amount", "totalSummaryLabel": "Total", "vatLabel": "VAT", "taxLabel": "Sales Tax", "discountLabel": "Discount", "timezone": "America/Los_Angeles", "paymentLabel": "Payment Information", "noteLabel": "Notes", "logoUrl": "https://example.com/logo.png", "currency": "USD", "dateFormat": "MM/dd/yyyy", "includeVat": false, "includeTax": true, "includeDiscount": false, "includeDecimals": true, "includePdf": true, "sendCopy": true, "includeUnits": true, "includeQr": false, "taxRate": 8.5, "vatRate": 0, "size": "letter", "deliveryType": "create", "locale": "en-US", "paymentDetails": {}, "fromDetails": {}}, "fromDetails": {}, "customerId": "a1b2c3d4-e5f6-7890-abcd-ef1234567890", "paymentDetails": {}, "noteDetails": {}, "dueDate": "2024-07-15T23:59:59.000Z", "issueDate": "2024-06-15T00:00:00.000Z", "invoiceNumber": "INV-2024-001", "logoUrl": "https://example.com/logo.png", "tax": 85, "topBlock": {}, "bottomBlock": {}, "amount": 1085, "lineItems": [{"quantity": 40, "price": 75, "tax": 8.5, "name": {}}, {"quantity": 20, "price": 50, "tax": 8.5, "name": {}}], "deliveryType": "create", "scheduledAt": "2024-07-01T09:00:00.000Z"}
+      responses:
+        "201":
+          application/json: {"id": "b3b7e6e2-8c2a-4e2a-9b1a-2e4b5c6d7f8a", "status": "draft", "createdAt": "2024-06-01T07:00:00.000Z", "updatedAt": "2024-06-01T07:00:00.000Z", "pdfUrl": "https://app.midday.ai/api/download/invoice?token=eyJ...", "previewUrl": "https://app.midday.ai/i/eyJ..."}
+        "400":
+          application/json: {"message": "scheduledAt is required for scheduled delivery"}
+        "404":
+          application/json: {"message": "Customer not found"}
+        "409":
+          application/json: {"message": "Invoice number 'INV-2024-001' is already used. Please provide a different invoice number or omit it to auto-generate one."}
+        "500":
+          application/json: {"message": "Failed to create invoice"}
+  updateInvoice:
+    speakeasy-default-update-invoice:
+      parameters:
+        path:
+          id: "<id>"
+      requestBody:
+        application/json: {"status": "paid", "paidAt": "2024-06-15T12:00:00.000Z", "internalNote": "Payment received via bank transfer"}
+      responses:
+        "200":
+          application/json: {"id": "b3b7e6e2-8c2a-4e2a-9b1a-2e4b5c6d7f8a", "status": "paid", "dueDate": "2024-06-30T23:59:59.000Z", "issueDate": "2024-06-01T00:00:00.000Z", "invoiceNumber": "INV-2024-001", "amount": 1500.75, "currency": "USD", "customer": {"id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890", "name": "Acme Corporation", "website": "https://acme.com", "email": "info@acme.com"}, "paidAt": "2024-06-15T12:00:00.000Z", "reminderSentAt": "2024-06-10T09:00:00.000Z", "note": "Thank you for your business.", "vat": 120, "tax": 80, "discount": 50, "subtotal": 1400, "viewedAt": "2024-06-05T14:30:00.000Z", "customerName": "Acme Corporation", "sentTo": "billing@acme.com", "sentAt": "2024-06-02T08:00:00.000Z", "createdAt": "2024-06-01T07:00:00.000Z", "updatedAt": "2024-06-15T10:00:00.000Z", "pdfUrl": "https://app.midday.ai/api/download/invoice?token=eef58951-1682-4062-b010-425866032390", "previewUrl": "https://app.midday.ai/i/eef58951-1682-4062-b010-425866032390"}
+  getRevenueReports:
+    speakeasy-default-get-revenue-reports:
+      parameters:
+        query:
+          from: "2023-01-01"
+          to: "2023-12-31"
+          currency: "USD"
+      responses:
+        "200":
+          application/json: {"summary": {"currentTotal": 10000, "prevTotal": 8000, "currency": "USD"}, "meta": {"type": "revenue", "currency": "USD"}, "result": []}
+  getProfitReports:
+    speakeasy-default-get-profit-reports:
+      parameters:
+        query:
+          from: "2023-01-01"
+          to: "2023-12-31"
+          currency: "USD"
+      responses:
+        "200":
+          application/json: {"summary": {"currentTotal": 10000, "prevTotal": 8000, "currency": "USD"}, "meta": {"type": "profit", "currency": "USD"}, "result": [{"date": "2023-01-31", "percentage": {"value": 25, "status": "positive"}, "current": {"date": "2023-01-31", "value": 1000, "currency": "USD"}, "previous": {"date": "2022-01-31", "value": 800, "currency": "USD"}}]}
+  getBurnRateReports:
+    speakeasy-default-get-burn-rate-reports:
+      parameters:
+        query:
+          from: "2023-01-01"
+          to: "2023-12-31"
+          currency: "USD"
+      responses:
+        "200":
+          application/json: [{"date": "2024-01-01", "value": 647366.44, "currency": "SEK"}]
+  getRunwayReports:
+    speakeasy-default-get-runway-reports:
+      parameters:
+        query:
+          from: "2023-01-01"
+          to: "2023-12-31"
+          currency: "USD"
+      responses:
+        "200":
+          application/json: 12
+  getExpensesReports:
+    speakeasy-default-get-expenses-reports:
+      parameters:
+        query:
+          from: "2023-01-01"
+          to: "2023-12-31"
+          currency: "USD"
+      responses:
+        "200":
+          application/json: {"summary": {"averageExpense": 121054.86, "currency": "SEK"}, "meta": {"type": "expense", "currency": "SEK"}, "result": [{"date": "2024-01-01 00:00:00", "value": 637898.68, "currency": "SEK", "recurring": 9467.76, "total": 647366.44}]}
+  getSpendingReports:
+    speakeasy-default-get-spending-reports:
+      parameters:
+        query:
+          from: "2023-01-01"
+          to: "2023-12-31"
+          currency: "USD"
+      responses:
+        "200":
+          application/json: [{"name": "Taxes", "slug": "taxes", "amount": -1256445, "currency": "SEK", "color": "#8492A6", "percentage": 44}]
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## SDK Changes Detected:\n* `Midday.Metrics.Revenue()`:  `response.Result.[]` **Changed** **Breaking** :warning:\n* `Midday.TrackerEntries.List()`:  `response.Result.{}.[].Project` **Changed** **Breaking** :warning:\n* `Midday.Metrics.Profit()`:  `response.Result.[]` **Changed** **Breaking** :warning:\n* `Midday.Transactions.Update()`:  `response` **Changed**\n* `Midday.Transactions.UpdateMany()`:  `response.Data.[]` **Changed**\n* `Midday.TrackerTimer.StopTimer()`: **Added**\n* `Midday.TrackerTimer.GetCurrentTimer()`: **Added**\n* `Midday.TrackerTimer.GetTimerStatus()`: **Added**\n* `Midday.Tracker.Delete()`: **Deleted** **Breaking** :warning:\n* `Midday.Transactions.List()`:  `response.Data.[]` **Changed**\n* `Midday.Transactions.Create()`:  `response` **Changed**\n* `Midday.Transactions.Get()`:  `response` **Changed**\n* `Midday.TrackerEntries.Create()`: **Added**\n* `Midday.Transactions.CreateMany()`:  `response.[]` **Changed**\n* `Midday.TrackerTimer.StartTimer()`: **Added**\n* `Midday.Teams.Update()`: \n  *  `request.RequestBody.CountryCode` **Added**\n* `Midday.Users.Get()`:  `response.TimezoneAutoSync` **Added**\n* `Midday.Users.Update()`: \n  *  `request.Request.TimezoneAutoSync` **Added**\n  *  `response.TimezoneAutoSync` **Added**\n* `Midday.Customers.List()`:  `response.Data.[].BillingEmail` **Added**\n* `Midday.Customers.Create()`: \n  *  `request.Request.BillingEmail` **Added**\n  *  `response.BillingEmail` **Added**\n* `Midday.Customers.Get()`:  `response.BillingEmail` **Added**\n* `Midday.Customers.Delete()`:  `response.BillingEmail` **Added**\n* `Midday.Customers.Update()`: \n  *  `request.RequestBody.BillingEmail` **Added**\n  *  `response.BillingEmail` **Added**\n* `Midday.Inbox.Update()`:  `request.RequestBody` **Changed**\n* `Midday.TrackerEntries.Update()`: **Added**\n* `Midday.TrackerEntries.Delete()`: **Added**\n* `Midday.TrackerEntries.CreateBulk()`: **Added**\n"
+releaseNotes: "## Go SDK Changes Detected:\n* `Midday.Invoices.List()`:  `response.Data.[]` **Changed** **Breaking** :warning:\n* `Midday.Invoices.Get()`:  `response` **Changed** **Breaking** :warning:\n* `Midday.Reports.Burn-Rate()`: **Added**\n* `Midday.Metrics.Runway()`: **Deleted** **Breaking** :warning:\n* `Midday.Notifications.List()`: **Added**\n* `Midday.Notifications.UpdateStatus()`: **Added**\n* `Midday.Notifications.UpdateAllStatus()`: **Added**\n* `Midday.Transactions.GetAttachmentPreSignedUrl()`: **Added**\n* `Midday.Documents.GetPreSignedUrl()`: **Added**\n* `Midday.Inbox.GetPreSignedUrl()`: **Added**\n* `Midday.Invoices.Create()`: **Added**\n* `Midday.Invoices.Update()`: **Added**\n* `Midday.Reports.Revenue()`: **Added**\n* `Midday.Reports.Profit()`: **Added**\n* `Midday.OAuth.GetOAuthAuthorization()`: **Added**\n* `Midday.Reports.Runway()`: **Added**\n* `Midday.OAuth.PostOAuthRevoke()`: **Added**\n* `Midday.Metrics.Revenue()`: **Deleted** **Breaking** :warning:\n* `Midday.Reports.Expenses()`: **Added**\n* `Midday.Metrics.Profit()`: **Deleted** **Breaking** :warning:\n* `Midday.Metrics.Burn-Rate()`: **Deleted** **Breaking** :warning:\n* `Midday.Reports.Spending()`: **Added**\n* `Midday.Metrics.Expenses()`: **Deleted** **Breaking** :warning:\n* `Midday.Metrics.Spending()`: **Deleted** **Breaking** :warning:\n* `Midday.Inbox.List()`: \n  *  `request.Request.Status` **Changed**\n* `Midday.OAuth.PostOAuthToken()`: **Added**\n* `Midday.OAuth.PostOAuthAuthorization()`: **Added**\n* `Midday.Search.Search()`: \n  *  `request.Request.RelevanceThreshold` **Changed**\n* `Midday.TrackerEntries.Create()`: \n  *  `request.Request.AssignedId` **Changed**\n* `Midday.TrackerEntries.CreateBulk()`: \n  *  `request.Request.Entries.[].AssignedId` **Changed**\n* `Midday.TrackerEntries.Update()`: \n  *  `request.RequestBody.AssignedId` **Changed**\n"

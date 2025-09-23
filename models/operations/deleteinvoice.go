@@ -10,11 +10,11 @@ type DeleteInvoiceRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
-func (o *DeleteInvoiceRequest) GetID() string {
-	if o == nil {
+func (d *DeleteInvoiceRequest) GetID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ID
+	return d.ID
 }
 
 // DeleteInvoiceResponseBody - Delete a invoice by its unique identifier for the authenticated team.
@@ -23,11 +23,11 @@ type DeleteInvoiceResponseBody struct {
 	ID string `json:"id"`
 }
 
-func (o *DeleteInvoiceResponseBody) GetID() string {
-	if o == nil {
+func (d *DeleteInvoiceResponseBody) GetID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ID
+	return d.ID
 }
 
 type DeleteInvoiceResponse struct {
@@ -36,16 +36,16 @@ type DeleteInvoiceResponse struct {
 	Object *DeleteInvoiceResponseBody
 }
 
-func (o *DeleteInvoiceResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (d *DeleteInvoiceResponse) GetHTTPMeta() components.HTTPMetadata {
+	if d == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return d.HTTPMeta
 }
 
-func (o *DeleteInvoiceResponse) GetObject() *DeleteInvoiceResponseBody {
-	if o == nil {
+func (d *DeleteInvoiceResponse) GetObject() *DeleteInvoiceResponseBody {
+	if d == nil {
 		return nil
 	}
-	return o.Object
+	return d.Object
 }

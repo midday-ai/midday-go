@@ -15,8 +15,8 @@ type CreateTrackerEntryRequest struct {
 	Stop time.Time `json:"stop"`
 	// Array of dates for which to create tracker entries
 	Dates []string `json:"dates"`
-	// Unique identifier of the user assigned to this tracker entry
-	AssignedID *string `json:"assignedId"`
+	// Unique identifier of the user assigned to this tracker entry. If not provided, will use the authenticated user
+	AssignedID *string `json:"assignedId,omitempty"`
 	// Unique identifier of the project associated with this tracker entry
 	ProjectID string `json:"projectId"`
 	// Optional description or notes for the tracker entry
@@ -30,59 +30,59 @@ func (c CreateTrackerEntryRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CreateTrackerEntryRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"start", "stop", "dates", "projectId", "duration"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateTrackerEntryRequest) GetStart() time.Time {
-	if o == nil {
+func (c *CreateTrackerEntryRequest) GetStart() time.Time {
+	if c == nil {
 		return time.Time{}
 	}
-	return o.Start
+	return c.Start
 }
 
-func (o *CreateTrackerEntryRequest) GetStop() time.Time {
-	if o == nil {
+func (c *CreateTrackerEntryRequest) GetStop() time.Time {
+	if c == nil {
 		return time.Time{}
 	}
-	return o.Stop
+	return c.Stop
 }
 
-func (o *CreateTrackerEntryRequest) GetDates() []string {
-	if o == nil {
+func (c *CreateTrackerEntryRequest) GetDates() []string {
+	if c == nil {
 		return []string{}
 	}
-	return o.Dates
+	return c.Dates
 }
 
-func (o *CreateTrackerEntryRequest) GetAssignedID() *string {
-	if o == nil {
+func (c *CreateTrackerEntryRequest) GetAssignedID() *string {
+	if c == nil {
 		return nil
 	}
-	return o.AssignedID
+	return c.AssignedID
 }
 
-func (o *CreateTrackerEntryRequest) GetProjectID() string {
-	if o == nil {
+func (c *CreateTrackerEntryRequest) GetProjectID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ProjectID
+	return c.ProjectID
 }
 
-func (o *CreateTrackerEntryRequest) GetDescription() *string {
-	if o == nil {
+func (c *CreateTrackerEntryRequest) GetDescription() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Description
+	return c.Description
 }
 
-func (o *CreateTrackerEntryRequest) GetDuration() float64 {
-	if o == nil {
+func (c *CreateTrackerEntryRequest) GetDuration() float64 {
+	if c == nil {
 		return 0.0
 	}
-	return o.Duration
+	return c.Duration
 }
 
 // CreateTrackerEntryUser - User information for the person who created this tracker entry
@@ -95,25 +95,25 @@ type CreateTrackerEntryUser struct {
 	AvatarURL string `json:"avatarUrl"`
 }
 
-func (o *CreateTrackerEntryUser) GetID() string {
-	if o == nil {
+func (c *CreateTrackerEntryUser) GetID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ID
+	return c.ID
 }
 
-func (o *CreateTrackerEntryUser) GetFullName() string {
-	if o == nil {
+func (c *CreateTrackerEntryUser) GetFullName() string {
+	if c == nil {
 		return ""
 	}
-	return o.FullName
+	return c.FullName
 }
 
-func (o *CreateTrackerEntryUser) GetAvatarURL() string {
-	if o == nil {
+func (c *CreateTrackerEntryUser) GetAvatarURL() string {
+	if c == nil {
 		return ""
 	}
-	return o.AvatarURL
+	return c.AvatarURL
 }
 
 // CreateTrackerEntryCustomer - Customer information associated with the project
@@ -124,18 +124,18 @@ type CreateTrackerEntryCustomer struct {
 	Name string `json:"name"`
 }
 
-func (o *CreateTrackerEntryCustomer) GetID() string {
-	if o == nil {
+func (c *CreateTrackerEntryCustomer) GetID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ID
+	return c.ID
 }
 
-func (o *CreateTrackerEntryCustomer) GetName() string {
-	if o == nil {
+func (c *CreateTrackerEntryCustomer) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
 }
 
 // CreateTrackerEntryProject - Project information associated with this tracker entry
@@ -162,74 +162,74 @@ type CreateTrackerEntryProject struct {
 	Customer *CreateTrackerEntryCustomer `json:"customer"`
 }
 
-func (o *CreateTrackerEntryProject) GetID() string {
-	if o == nil {
+func (c *CreateTrackerEntryProject) GetID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ID
+	return c.ID
 }
 
-func (o *CreateTrackerEntryProject) GetCreatedAt() string {
-	if o == nil {
+func (c *CreateTrackerEntryProject) GetCreatedAt() string {
+	if c == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return c.CreatedAt
 }
 
-func (o *CreateTrackerEntryProject) GetRate() *float64 {
-	if o == nil {
+func (c *CreateTrackerEntryProject) GetRate() *float64 {
+	if c == nil {
 		return nil
 	}
-	return o.Rate
+	return c.Rate
 }
 
-func (o *CreateTrackerEntryProject) GetCurrency() *string {
-	if o == nil {
+func (c *CreateTrackerEntryProject) GetCurrency() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Currency
+	return c.Currency
 }
 
-func (o *CreateTrackerEntryProject) GetStatus() string {
-	if o == nil {
+func (c *CreateTrackerEntryProject) GetStatus() string {
+	if c == nil {
 		return ""
 	}
-	return o.Status
+	return c.Status
 }
 
-func (o *CreateTrackerEntryProject) GetDescription() *string {
-	if o == nil {
+func (c *CreateTrackerEntryProject) GetDescription() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Description
+	return c.Description
 }
 
-func (o *CreateTrackerEntryProject) GetName() string {
-	if o == nil {
+func (c *CreateTrackerEntryProject) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
 }
 
-func (o *CreateTrackerEntryProject) GetBillable() *bool {
-	if o == nil {
+func (c *CreateTrackerEntryProject) GetBillable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Billable
+	return c.Billable
 }
 
-func (o *CreateTrackerEntryProject) GetEstimate() *float64 {
-	if o == nil {
+func (c *CreateTrackerEntryProject) GetEstimate() *float64 {
+	if c == nil {
 		return nil
 	}
-	return o.Estimate
+	return c.Estimate
 }
 
-func (o *CreateTrackerEntryProject) GetCustomer() *CreateTrackerEntryCustomer {
-	if o == nil {
+func (c *CreateTrackerEntryProject) GetCustomer() *CreateTrackerEntryCustomer {
+	if c == nil {
 		return nil
 	}
-	return o.Customer
+	return c.Customer
 }
 
 type CreateTrackerEntryData struct {
@@ -261,95 +261,95 @@ type CreateTrackerEntryData struct {
 	Project CreateTrackerEntryProject `json:"project"`
 }
 
-func (o *CreateTrackerEntryData) GetID() string {
-	if o == nil {
+func (c *CreateTrackerEntryData) GetID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ID
+	return c.ID
 }
 
-func (o *CreateTrackerEntryData) GetCreatedAt() string {
-	if o == nil {
+func (c *CreateTrackerEntryData) GetCreatedAt() string {
+	if c == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return c.CreatedAt
 }
 
-func (o *CreateTrackerEntryData) GetDuration() float64 {
-	if o == nil {
+func (c *CreateTrackerEntryData) GetDuration() float64 {
+	if c == nil {
 		return 0.0
 	}
-	return o.Duration
+	return c.Duration
 }
 
-func (o *CreateTrackerEntryData) GetStart() string {
-	if o == nil {
+func (c *CreateTrackerEntryData) GetStart() string {
+	if c == nil {
 		return ""
 	}
-	return o.Start
+	return c.Start
 }
 
-func (o *CreateTrackerEntryData) GetStop() string {
-	if o == nil {
+func (c *CreateTrackerEntryData) GetStop() string {
+	if c == nil {
 		return ""
 	}
-	return o.Stop
+	return c.Stop
 }
 
-func (o *CreateTrackerEntryData) GetTeamID() string {
-	if o == nil {
+func (c *CreateTrackerEntryData) GetTeamID() string {
+	if c == nil {
 		return ""
 	}
-	return o.TeamID
+	return c.TeamID
 }
 
-func (o *CreateTrackerEntryData) GetDescription() *string {
-	if o == nil {
+func (c *CreateTrackerEntryData) GetDescription() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Description
+	return c.Description
 }
 
-func (o *CreateTrackerEntryData) GetRate() *float64 {
-	if o == nil {
+func (c *CreateTrackerEntryData) GetRate() *float64 {
+	if c == nil {
 		return nil
 	}
-	return o.Rate
+	return c.Rate
 }
 
-func (o *CreateTrackerEntryData) GetCurrency() *string {
-	if o == nil {
+func (c *CreateTrackerEntryData) GetCurrency() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Currency
+	return c.Currency
 }
 
-func (o *CreateTrackerEntryData) GetBilled() bool {
-	if o == nil {
+func (c *CreateTrackerEntryData) GetBilled() bool {
+	if c == nil {
 		return false
 	}
-	return o.Billed
+	return c.Billed
 }
 
-func (o *CreateTrackerEntryData) GetDate() string {
-	if o == nil {
+func (c *CreateTrackerEntryData) GetDate() string {
+	if c == nil {
 		return ""
 	}
-	return o.Date
+	return c.Date
 }
 
-func (o *CreateTrackerEntryData) GetUser() CreateTrackerEntryUser {
-	if o == nil {
+func (c *CreateTrackerEntryData) GetUser() CreateTrackerEntryUser {
+	if c == nil {
 		return CreateTrackerEntryUser{}
 	}
-	return o.User
+	return c.User
 }
 
-func (o *CreateTrackerEntryData) GetProject() CreateTrackerEntryProject {
-	if o == nil {
+func (c *CreateTrackerEntryData) GetProject() CreateTrackerEntryProject {
+	if c == nil {
 		return CreateTrackerEntryProject{}
 	}
-	return o.Project
+	return c.Project
 }
 
 // CreateTrackerEntryResponseBody - Response schema for created tracker entries
@@ -358,11 +358,11 @@ type CreateTrackerEntryResponseBody struct {
 	Data []CreateTrackerEntryData `json:"data"`
 }
 
-func (o *CreateTrackerEntryResponseBody) GetData() []CreateTrackerEntryData {
-	if o == nil {
+func (c *CreateTrackerEntryResponseBody) GetData() []CreateTrackerEntryData {
+	if c == nil {
 		return []CreateTrackerEntryData{}
 	}
-	return o.Data
+	return c.Data
 }
 
 type CreateTrackerEntryResponse struct {
@@ -371,16 +371,16 @@ type CreateTrackerEntryResponse struct {
 	Object *CreateTrackerEntryResponseBody
 }
 
-func (o *CreateTrackerEntryResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (c *CreateTrackerEntryResponse) GetHTTPMeta() components.HTTPMetadata {
+	if c == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return c.HTTPMeta
 }
 
-func (o *CreateTrackerEntryResponse) GetObject() *CreateTrackerEntryResponseBody {
-	if o == nil {
+func (c *CreateTrackerEntryResponse) GetObject() *CreateTrackerEntryResponseBody {
+	if c == nil {
 		return nil
 	}
-	return o.Object
+	return c.Object
 }

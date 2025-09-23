@@ -17,32 +17,32 @@ type CreateTransactionsAttachment struct {
 	Type string `json:"type"`
 }
 
-func (o *CreateTransactionsAttachment) GetPath() []string {
-	if o == nil {
+func (c *CreateTransactionsAttachment) GetPath() []string {
+	if c == nil {
 		return []string{}
 	}
-	return o.Path
+	return c.Path
 }
 
-func (o *CreateTransactionsAttachment) GetName() string {
-	if o == nil {
+func (c *CreateTransactionsAttachment) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
 }
 
-func (o *CreateTransactionsAttachment) GetSize() float64 {
-	if o == nil {
+func (c *CreateTransactionsAttachment) GetSize() float64 {
+	if c == nil {
 		return 0.0
 	}
-	return o.Size
+	return c.Size
 }
 
-func (o *CreateTransactionsAttachment) GetType() string {
-	if o == nil {
+func (c *CreateTransactionsAttachment) GetType() string {
+	if c == nil {
 		return ""
 	}
-	return o.Type
+	return c.Type
 }
 
 type RequestBody struct {
@@ -68,74 +68,74 @@ type RequestBody struct {
 	Attachments []CreateTransactionsAttachment `json:"attachments,omitempty"`
 }
 
-func (o *RequestBody) GetName() string {
-	if o == nil {
+func (r *RequestBody) GetName() string {
+	if r == nil {
 		return ""
 	}
-	return o.Name
+	return r.Name
 }
 
-func (o *RequestBody) GetAmount() float64 {
-	if o == nil {
+func (r *RequestBody) GetAmount() float64 {
+	if r == nil {
 		return 0.0
 	}
-	return o.Amount
+	return r.Amount
 }
 
-func (o *RequestBody) GetCurrency() string {
-	if o == nil {
+func (r *RequestBody) GetCurrency() string {
+	if r == nil {
 		return ""
 	}
-	return o.Currency
+	return r.Currency
 }
 
-func (o *RequestBody) GetDate() string {
-	if o == nil {
+func (r *RequestBody) GetDate() string {
+	if r == nil {
 		return ""
 	}
-	return o.Date
+	return r.Date
 }
 
-func (o *RequestBody) GetBankAccountID() string {
-	if o == nil {
+func (r *RequestBody) GetBankAccountID() string {
+	if r == nil {
 		return ""
 	}
-	return o.BankAccountID
+	return r.BankAccountID
 }
 
-func (o *RequestBody) GetAssignedID() *string {
-	if o == nil {
+func (r *RequestBody) GetAssignedID() *string {
+	if r == nil {
 		return nil
 	}
-	return o.AssignedID
+	return r.AssignedID
 }
 
-func (o *RequestBody) GetCategorySlug() *string {
-	if o == nil {
+func (r *RequestBody) GetCategorySlug() *string {
+	if r == nil {
 		return nil
 	}
-	return o.CategorySlug
+	return r.CategorySlug
 }
 
-func (o *RequestBody) GetNote() *string {
-	if o == nil {
+func (r *RequestBody) GetNote() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Note
+	return r.Note
 }
 
-func (o *RequestBody) GetInternal() *bool {
-	if o == nil {
+func (r *RequestBody) GetInternal() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Internal
+	return r.Internal
 }
 
-func (o *RequestBody) GetAttachments() []CreateTransactionsAttachment {
-	if o == nil {
+func (r *RequestBody) GetAttachments() []CreateTransactionsAttachment {
+	if r == nil {
 		return nil
 	}
-	return o.Attachments
+	return r.Attachments
 }
 
 type CreateTransactionsResponse struct {
@@ -144,16 +144,16 @@ type CreateTransactionsResponse struct {
 	TransactionResponses []components.TransactionResponse
 }
 
-func (o *CreateTransactionsResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (c *CreateTransactionsResponse) GetHTTPMeta() components.HTTPMetadata {
+	if c == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return c.HTTPMeta
 }
 
-func (o *CreateTransactionsResponse) GetTransactionResponses() []components.TransactionResponse {
-	if o == nil {
+func (c *CreateTransactionsResponse) GetTransactionResponses() []components.TransactionResponse {
+	if c == nil {
 		return nil
 	}
-	return o.TransactionResponses
+	return c.TransactionResponses
 }

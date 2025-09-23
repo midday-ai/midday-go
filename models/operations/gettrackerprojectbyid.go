@@ -10,11 +10,11 @@ type GetTrackerProjectByIDRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
-func (o *GetTrackerProjectByIDRequest) GetID() string {
-	if o == nil {
+func (g *GetTrackerProjectByIDRequest) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
 type GetTrackerProjectByIDResponse struct {
@@ -23,16 +23,16 @@ type GetTrackerProjectByIDResponse struct {
 	TrackerProjectResponse *components.TrackerProjectResponse
 }
 
-func (o *GetTrackerProjectByIDResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (g *GetTrackerProjectByIDResponse) GetHTTPMeta() components.HTTPMetadata {
+	if g == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return g.HTTPMeta
 }
 
-func (o *GetTrackerProjectByIDResponse) GetTrackerProjectResponse() *components.TrackerProjectResponse {
-	if o == nil {
+func (g *GetTrackerProjectByIDResponse) GetTrackerProjectResponse() *components.TrackerProjectResponse {
+	if g == nil {
 		return nil
 	}
-	return o.TrackerProjectResponse
+	return g.TrackerProjectResponse
 }

@@ -10,11 +10,11 @@ type DeleteTrackerEntryRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
-func (o *DeleteTrackerEntryRequest) GetID() string {
-	if o == nil {
+func (d *DeleteTrackerEntryRequest) GetID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ID
+	return d.ID
 }
 
 // DeleteTrackerEntryResponseBody - Tracker entry deleted successfully.
@@ -23,11 +23,11 @@ type DeleteTrackerEntryResponseBody struct {
 	ID string `json:"id"`
 }
 
-func (o *DeleteTrackerEntryResponseBody) GetID() string {
-	if o == nil {
+func (d *DeleteTrackerEntryResponseBody) GetID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ID
+	return d.ID
 }
 
 type DeleteTrackerEntryResponse struct {
@@ -36,16 +36,16 @@ type DeleteTrackerEntryResponse struct {
 	Object *DeleteTrackerEntryResponseBody
 }
 
-func (o *DeleteTrackerEntryResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (d *DeleteTrackerEntryResponse) GetHTTPMeta() components.HTTPMetadata {
+	if d == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return d.HTTPMeta
 }
 
-func (o *DeleteTrackerEntryResponse) GetObject() *DeleteTrackerEntryResponseBody {
-	if o == nil {
+func (d *DeleteTrackerEntryResponse) GetObject() *DeleteTrackerEntryResponseBody {
+	if d == nil {
 		return nil
 	}
-	return o.Object
+	return d.Object
 }

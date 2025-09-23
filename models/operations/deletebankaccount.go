@@ -10,11 +10,11 @@ type DeleteBankAccountRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
-func (o *DeleteBankAccountRequest) GetID() string {
-	if o == nil {
+func (d *DeleteBankAccountRequest) GetID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ID
+	return d.ID
 }
 
 // DeleteBankAccountResponseBody - A single bank account object response.
@@ -35,53 +35,53 @@ type DeleteBankAccountResponseBody struct {
 	Manual *bool `json:"manual"`
 }
 
-func (o *DeleteBankAccountResponseBody) GetID() string {
-	if o == nil {
+func (d *DeleteBankAccountResponseBody) GetID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ID
+	return d.ID
 }
 
-func (o *DeleteBankAccountResponseBody) GetName() *string {
-	if o == nil {
+func (d *DeleteBankAccountResponseBody) GetName() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Name
+	return d.Name
 }
 
-func (o *DeleteBankAccountResponseBody) GetCurrency() *string {
-	if o == nil {
+func (d *DeleteBankAccountResponseBody) GetCurrency() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Currency
+	return d.Currency
 }
 
-func (o *DeleteBankAccountResponseBody) GetType() *string {
-	if o == nil {
+func (d *DeleteBankAccountResponseBody) GetType() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Type
+	return d.Type
 }
 
-func (o *DeleteBankAccountResponseBody) GetEnabled() bool {
-	if o == nil {
+func (d *DeleteBankAccountResponseBody) GetEnabled() bool {
+	if d == nil {
 		return false
 	}
-	return o.Enabled
+	return d.Enabled
 }
 
-func (o *DeleteBankAccountResponseBody) GetBalance() *float64 {
-	if o == nil {
+func (d *DeleteBankAccountResponseBody) GetBalance() *float64 {
+	if d == nil {
 		return nil
 	}
-	return o.Balance
+	return d.Balance
 }
 
-func (o *DeleteBankAccountResponseBody) GetManual() *bool {
-	if o == nil {
+func (d *DeleteBankAccountResponseBody) GetManual() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Manual
+	return d.Manual
 }
 
 type DeleteBankAccountResponse struct {
@@ -90,16 +90,16 @@ type DeleteBankAccountResponse struct {
 	Object *DeleteBankAccountResponseBody
 }
 
-func (o *DeleteBankAccountResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (d *DeleteBankAccountResponse) GetHTTPMeta() components.HTTPMetadata {
+	if d == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return d.HTTPMeta
 }
 
-func (o *DeleteBankAccountResponse) GetObject() *DeleteBankAccountResponseBody {
-	if o == nil {
+func (d *DeleteBankAccountResponse) GetObject() *DeleteBankAccountResponseBody {
+	if d == nil {
 		return nil
 	}
-	return o.Object
+	return d.Object
 }

@@ -10,11 +10,11 @@ type GetTransactionByIDRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
-func (o *GetTransactionByIDRequest) GetID() string {
-	if o == nil {
+func (g *GetTransactionByIDRequest) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
 type GetTransactionByIDResponse struct {
@@ -23,16 +23,16 @@ type GetTransactionByIDResponse struct {
 	TransactionResponse *components.TransactionResponse
 }
 
-func (o *GetTransactionByIDResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (g *GetTransactionByIDResponse) GetHTTPMeta() components.HTTPMetadata {
+	if g == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return g.HTTPMeta
 }
 
-func (o *GetTransactionByIDResponse) GetTransactionResponse() *components.TransactionResponse {
-	if o == nil {
+func (g *GetTransactionByIDResponse) GetTransactionResponse() *components.TransactionResponse {
+	if g == nil {
 		return nil
 	}
-	return o.TransactionResponse
+	return g.TransactionResponse
 }

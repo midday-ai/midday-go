@@ -13,32 +13,32 @@ type ListCustomersRequest struct {
 	PageSize *float64 `queryParam:"style=form,explode=true,name=pageSize"`
 }
 
-func (o *ListCustomersRequest) GetQ() *string {
-	if o == nil {
+func (l *ListCustomersRequest) GetQ() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Q
+	return l.Q
 }
 
-func (o *ListCustomersRequest) GetSort() []string {
-	if o == nil {
+func (l *ListCustomersRequest) GetSort() []string {
+	if l == nil {
 		return nil
 	}
-	return o.Sort
+	return l.Sort
 }
 
-func (o *ListCustomersRequest) GetCursor() *string {
-	if o == nil {
+func (l *ListCustomersRequest) GetCursor() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Cursor
+	return l.Cursor
 }
 
-func (o *ListCustomersRequest) GetPageSize() *float64 {
-	if o == nil {
+func (l *ListCustomersRequest) GetPageSize() *float64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
 // ListCustomersMeta - Pagination metadata for the customers response
@@ -51,25 +51,25 @@ type ListCustomersMeta struct {
 	HasNextPage bool `json:"hasNextPage"`
 }
 
-func (o *ListCustomersMeta) GetCursor() *string {
-	if o == nil {
+func (l *ListCustomersMeta) GetCursor() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Cursor
+	return l.Cursor
 }
 
-func (o *ListCustomersMeta) GetHasPreviousPage() bool {
-	if o == nil {
+func (l *ListCustomersMeta) GetHasPreviousPage() bool {
+	if l == nil {
 		return false
 	}
-	return o.HasPreviousPage
+	return l.HasPreviousPage
 }
 
-func (o *ListCustomersMeta) GetHasNextPage() bool {
-	if o == nil {
+func (l *ListCustomersMeta) GetHasNextPage() bool {
+	if l == nil {
 		return false
 	}
-	return o.HasNextPage
+	return l.HasNextPage
 }
 
 type ListCustomersTag struct {
@@ -79,18 +79,18 @@ type ListCustomersTag struct {
 	Name string `json:"name"`
 }
 
-func (o *ListCustomersTag) GetID() string {
-	if o == nil {
+func (l *ListCustomersTag) GetID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ID
+	return l.ID
 }
 
-func (o *ListCustomersTag) GetName() string {
-	if o == nil {
+func (l *ListCustomersTag) GetName() string {
+	if l == nil {
 		return ""
 	}
-	return o.Name
+	return l.Name
 }
 
 type ListCustomersData struct {
@@ -138,151 +138,151 @@ type ListCustomersData struct {
 	Tags []ListCustomersTag `json:"tags"`
 }
 
-func (o *ListCustomersData) GetID() string {
-	if o == nil {
+func (l *ListCustomersData) GetID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ID
+	return l.ID
 }
 
-func (o *ListCustomersData) GetName() string {
-	if o == nil {
+func (l *ListCustomersData) GetName() string {
+	if l == nil {
 		return ""
 	}
-	return o.Name
+	return l.Name
 }
 
-func (o *ListCustomersData) GetEmail() string {
-	if o == nil {
+func (l *ListCustomersData) GetEmail() string {
+	if l == nil {
 		return ""
 	}
-	return o.Email
+	return l.Email
 }
 
-func (o *ListCustomersData) GetBillingEmail() *string {
-	if o == nil {
+func (l *ListCustomersData) GetBillingEmail() *string {
+	if l == nil {
 		return nil
 	}
-	return o.BillingEmail
+	return l.BillingEmail
 }
 
-func (o *ListCustomersData) GetPhone() *string {
-	if o == nil {
+func (l *ListCustomersData) GetPhone() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Phone
+	return l.Phone
 }
 
-func (o *ListCustomersData) GetWebsite() *string {
-	if o == nil {
+func (l *ListCustomersData) GetWebsite() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Website
+	return l.Website
 }
 
-func (o *ListCustomersData) GetCreatedAt() string {
-	if o == nil {
+func (l *ListCustomersData) GetCreatedAt() string {
+	if l == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return l.CreatedAt
 }
 
-func (o *ListCustomersData) GetCountry() *string {
-	if o == nil {
+func (l *ListCustomersData) GetCountry() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Country
+	return l.Country
 }
 
-func (o *ListCustomersData) GetAddressLine1() *string {
-	if o == nil {
+func (l *ListCustomersData) GetAddressLine1() *string {
+	if l == nil {
 		return nil
 	}
-	return o.AddressLine1
+	return l.AddressLine1
 }
 
-func (o *ListCustomersData) GetAddressLine2() *string {
-	if o == nil {
+func (l *ListCustomersData) GetAddressLine2() *string {
+	if l == nil {
 		return nil
 	}
-	return o.AddressLine2
+	return l.AddressLine2
 }
 
-func (o *ListCustomersData) GetCity() *string {
-	if o == nil {
+func (l *ListCustomersData) GetCity() *string {
+	if l == nil {
 		return nil
 	}
-	return o.City
+	return l.City
 }
 
-func (o *ListCustomersData) GetState() *string {
-	if o == nil {
+func (l *ListCustomersData) GetState() *string {
+	if l == nil {
 		return nil
 	}
-	return o.State
+	return l.State
 }
 
-func (o *ListCustomersData) GetZip() *string {
-	if o == nil {
+func (l *ListCustomersData) GetZip() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Zip
+	return l.Zip
 }
 
-func (o *ListCustomersData) GetNote() *string {
-	if o == nil {
+func (l *ListCustomersData) GetNote() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Note
+	return l.Note
 }
 
-func (o *ListCustomersData) GetVatNumber() *string {
-	if o == nil {
+func (l *ListCustomersData) GetVatNumber() *string {
+	if l == nil {
 		return nil
 	}
-	return o.VatNumber
+	return l.VatNumber
 }
 
-func (o *ListCustomersData) GetCountryCode() *string {
-	if o == nil {
+func (l *ListCustomersData) GetCountryCode() *string {
+	if l == nil {
 		return nil
 	}
-	return o.CountryCode
+	return l.CountryCode
 }
 
-func (o *ListCustomersData) GetToken() string {
-	if o == nil {
+func (l *ListCustomersData) GetToken() string {
+	if l == nil {
 		return ""
 	}
-	return o.Token
+	return l.Token
 }
 
-func (o *ListCustomersData) GetContact() *string {
-	if o == nil {
+func (l *ListCustomersData) GetContact() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Contact
+	return l.Contact
 }
 
-func (o *ListCustomersData) GetInvoiceCount() float64 {
-	if o == nil {
+func (l *ListCustomersData) GetInvoiceCount() float64 {
+	if l == nil {
 		return 0.0
 	}
-	return o.InvoiceCount
+	return l.InvoiceCount
 }
 
-func (o *ListCustomersData) GetProjectCount() float64 {
-	if o == nil {
+func (l *ListCustomersData) GetProjectCount() float64 {
+	if l == nil {
 		return 0.0
 	}
-	return o.ProjectCount
+	return l.ProjectCount
 }
 
-func (o *ListCustomersData) GetTags() []ListCustomersTag {
-	if o == nil {
+func (l *ListCustomersData) GetTags() []ListCustomersTag {
+	if l == nil {
 		return []ListCustomersTag{}
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListCustomersResponseBody - Retrieve a list of customers for the authenticated team.
@@ -293,18 +293,18 @@ type ListCustomersResponseBody struct {
 	Data []ListCustomersData `json:"data"`
 }
 
-func (o *ListCustomersResponseBody) GetMeta() ListCustomersMeta {
-	if o == nil {
+func (l *ListCustomersResponseBody) GetMeta() ListCustomersMeta {
+	if l == nil {
 		return ListCustomersMeta{}
 	}
-	return o.Meta
+	return l.Meta
 }
 
-func (o *ListCustomersResponseBody) GetData() []ListCustomersData {
-	if o == nil {
+func (l *ListCustomersResponseBody) GetData() []ListCustomersData {
+	if l == nil {
 		return []ListCustomersData{}
 	}
-	return o.Data
+	return l.Data
 }
 
 type ListCustomersResponse struct {
@@ -313,16 +313,16 @@ type ListCustomersResponse struct {
 	Object *ListCustomersResponseBody
 }
 
-func (o *ListCustomersResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (l *ListCustomersResponse) GetHTTPMeta() components.HTTPMetadata {
+	if l == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return l.HTTPMeta
 }
 
-func (o *ListCustomersResponse) GetObject() *ListCustomersResponseBody {
-	if o == nil {
+func (l *ListCustomersResponse) GetObject() *ListCustomersResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

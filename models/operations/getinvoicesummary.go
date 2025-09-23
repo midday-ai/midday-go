@@ -49,11 +49,11 @@ type GetInvoiceSummaryRequest struct {
 	Status *GetInvoiceSummaryStatus `queryParam:"style=form,explode=true,name=status"`
 }
 
-func (o *GetInvoiceSummaryRequest) GetStatus() *GetInvoiceSummaryStatus {
-	if o == nil {
+func (g *GetInvoiceSummaryRequest) GetStatus() *GetInvoiceSummaryStatus {
+	if g == nil {
 		return nil
 	}
-	return o.Status
+	return g.Status
 }
 
 type GetInvoiceSummaryResponseBody struct {
@@ -65,25 +65,25 @@ type GetInvoiceSummaryResponseBody struct {
 	InvoiceCount float64 `json:"invoiceCount"`
 }
 
-func (o *GetInvoiceSummaryResponseBody) GetCurrency() string {
-	if o == nil {
+func (g *GetInvoiceSummaryResponseBody) GetCurrency() string {
+	if g == nil {
 		return ""
 	}
-	return o.Currency
+	return g.Currency
 }
 
-func (o *GetInvoiceSummaryResponseBody) GetTotalAmount() float64 {
-	if o == nil {
+func (g *GetInvoiceSummaryResponseBody) GetTotalAmount() float64 {
+	if g == nil {
 		return 0.0
 	}
-	return o.TotalAmount
+	return g.TotalAmount
 }
 
-func (o *GetInvoiceSummaryResponseBody) GetInvoiceCount() float64 {
-	if o == nil {
+func (g *GetInvoiceSummaryResponseBody) GetInvoiceCount() float64 {
+	if g == nil {
 		return 0.0
 	}
-	return o.InvoiceCount
+	return g.InvoiceCount
 }
 
 type GetInvoiceSummaryResponse struct {
@@ -92,16 +92,16 @@ type GetInvoiceSummaryResponse struct {
 	ResponseBodies []GetInvoiceSummaryResponseBody
 }
 
-func (o *GetInvoiceSummaryResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (g *GetInvoiceSummaryResponse) GetHTTPMeta() components.HTTPMetadata {
+	if g == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return g.HTTPMeta
 }
 
-func (o *GetInvoiceSummaryResponse) GetResponseBodies() []GetInvoiceSummaryResponseBody {
-	if o == nil {
+func (g *GetInvoiceSummaryResponse) GetResponseBodies() []GetInvoiceSummaryResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.ResponseBodies
+	return g.ResponseBodies
 }

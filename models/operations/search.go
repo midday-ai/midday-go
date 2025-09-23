@@ -20,45 +20,45 @@ func (s SearchRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (s *SearchRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *SearchRequest) GetSearchTerm() *string {
-	if o == nil {
+func (s *SearchRequest) GetSearchTerm() *string {
+	if s == nil {
 		return nil
 	}
-	return o.SearchTerm
+	return s.SearchTerm
 }
 
-func (o *SearchRequest) GetLanguage() *string {
-	if o == nil {
+func (s *SearchRequest) GetLanguage() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Language
+	return s.Language
 }
 
-func (o *SearchRequest) GetLimit() *float64 {
-	if o == nil {
+func (s *SearchRequest) GetLimit() *float64 {
+	if s == nil {
 		return nil
 	}
-	return o.Limit
+	return s.Limit
 }
 
-func (o *SearchRequest) GetItemsPerTableLimit() *float64 {
-	if o == nil {
+func (s *SearchRequest) GetItemsPerTableLimit() *float64 {
+	if s == nil {
 		return nil
 	}
-	return o.ItemsPerTableLimit
+	return s.ItemsPerTableLimit
 }
 
-func (o *SearchRequest) GetRelevanceThreshold() *float64 {
-	if o == nil {
+func (s *SearchRequest) GetRelevanceThreshold() *float64 {
+	if s == nil {
 		return nil
 	}
-	return o.RelevanceThreshold
+	return s.RelevanceThreshold
 }
 
 type SearchResponseBody struct {
@@ -74,39 +74,39 @@ type SearchResponseBody struct {
 	Data any `json:"data,omitempty"`
 }
 
-func (o *SearchResponseBody) GetID() string {
-	if o == nil {
+func (s *SearchResponseBody) GetID() string {
+	if s == nil {
 		return ""
 	}
-	return o.ID
+	return s.ID
 }
 
-func (o *SearchResponseBody) GetType() string {
-	if o == nil {
+func (s *SearchResponseBody) GetType() string {
+	if s == nil {
 		return ""
 	}
-	return o.Type
+	return s.Type
 }
 
-func (o *SearchResponseBody) GetRelevance() float64 {
-	if o == nil {
+func (s *SearchResponseBody) GetRelevance() float64 {
+	if s == nil {
 		return 0.0
 	}
-	return o.Relevance
+	return s.Relevance
 }
 
-func (o *SearchResponseBody) GetCreatedAt() string {
-	if o == nil {
+func (s *SearchResponseBody) GetCreatedAt() string {
+	if s == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return s.CreatedAt
 }
 
-func (o *SearchResponseBody) GetData() any {
-	if o == nil {
+func (s *SearchResponseBody) GetData() any {
+	if s == nil {
 		return nil
 	}
-	return o.Data
+	return s.Data
 }
 
 type SearchResponse struct {
@@ -115,16 +115,16 @@ type SearchResponse struct {
 	ResponseBodies []SearchResponseBody
 }
 
-func (o *SearchResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (s *SearchResponse) GetHTTPMeta() components.HTTPMetadata {
+	if s == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return s.HTTPMeta
 }
 
-func (o *SearchResponse) GetResponseBodies() []SearchResponseBody {
-	if o == nil {
+func (s *SearchResponse) GetResponseBodies() []SearchResponseBody {
+	if s == nil {
 		return nil
 	}
-	return o.ResponseBodies
+	return s.ResponseBodies
 }

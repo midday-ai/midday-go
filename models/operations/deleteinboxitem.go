@@ -10,11 +10,11 @@ type DeleteInboxItemRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
-func (o *DeleteInboxItemRequest) GetID() string {
-	if o == nil {
+func (d *DeleteInboxItemRequest) GetID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ID
+	return d.ID
 }
 
 // DeleteInboxItemResponseBody - Response schema for a successfully deleted inbox item.
@@ -23,11 +23,11 @@ type DeleteInboxItemResponseBody struct {
 	ID string `json:"id"`
 }
 
-func (o *DeleteInboxItemResponseBody) GetID() string {
-	if o == nil {
+func (d *DeleteInboxItemResponseBody) GetID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ID
+	return d.ID
 }
 
 type DeleteInboxItemResponse struct {
@@ -36,16 +36,16 @@ type DeleteInboxItemResponse struct {
 	Object *DeleteInboxItemResponseBody
 }
 
-func (o *DeleteInboxItemResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (d *DeleteInboxItemResponse) GetHTTPMeta() components.HTTPMetadata {
+	if d == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return d.HTTPMeta
 }
 
-func (o *DeleteInboxItemResponse) GetObject() *DeleteInboxItemResponseBody {
-	if o == nil {
+func (d *DeleteInboxItemResponse) GetObject() *DeleteInboxItemResponseBody {
+	if d == nil {
 		return nil
 	}
-	return o.Object
+	return d.Object
 }

@@ -10,11 +10,11 @@ type GetCurrentTimerRequest struct {
 	AssignedID *string `queryParam:"style=form,explode=true,name=assignedId"`
 }
 
-func (o *GetCurrentTimerRequest) GetAssignedID() *string {
-	if o == nil {
+func (g *GetCurrentTimerRequest) GetAssignedID() *string {
+	if g == nil {
 		return nil
 	}
-	return o.AssignedID
+	return g.AssignedID
 }
 
 // GetCurrentTimerUser - User information for the person who created this tracker entry
@@ -27,25 +27,25 @@ type GetCurrentTimerUser struct {
 	AvatarURL string `json:"avatarUrl"`
 }
 
-func (o *GetCurrentTimerUser) GetID() string {
-	if o == nil {
+func (g *GetCurrentTimerUser) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GetCurrentTimerUser) GetFullName() string {
-	if o == nil {
+func (g *GetCurrentTimerUser) GetFullName() string {
+	if g == nil {
 		return ""
 	}
-	return o.FullName
+	return g.FullName
 }
 
-func (o *GetCurrentTimerUser) GetAvatarURL() string {
-	if o == nil {
+func (g *GetCurrentTimerUser) GetAvatarURL() string {
+	if g == nil {
 		return ""
 	}
-	return o.AvatarURL
+	return g.AvatarURL
 }
 
 // GetCurrentTimerCustomer - Customer information associated with the project
@@ -56,18 +56,18 @@ type GetCurrentTimerCustomer struct {
 	Name string `json:"name"`
 }
 
-func (o *GetCurrentTimerCustomer) GetID() string {
-	if o == nil {
+func (g *GetCurrentTimerCustomer) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GetCurrentTimerCustomer) GetName() string {
-	if o == nil {
+func (g *GetCurrentTimerCustomer) GetName() string {
+	if g == nil {
 		return ""
 	}
-	return o.Name
+	return g.Name
 }
 
 // GetCurrentTimerProject - Project information associated with this tracker entry
@@ -94,74 +94,74 @@ type GetCurrentTimerProject struct {
 	Customer *GetCurrentTimerCustomer `json:"customer"`
 }
 
-func (o *GetCurrentTimerProject) GetID() string {
-	if o == nil {
+func (g *GetCurrentTimerProject) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GetCurrentTimerProject) GetCreatedAt() string {
-	if o == nil {
+func (g *GetCurrentTimerProject) GetCreatedAt() string {
+	if g == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return g.CreatedAt
 }
 
-func (o *GetCurrentTimerProject) GetRate() *float64 {
-	if o == nil {
+func (g *GetCurrentTimerProject) GetRate() *float64 {
+	if g == nil {
 		return nil
 	}
-	return o.Rate
+	return g.Rate
 }
 
-func (o *GetCurrentTimerProject) GetCurrency() *string {
-	if o == nil {
+func (g *GetCurrentTimerProject) GetCurrency() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Currency
+	return g.Currency
 }
 
-func (o *GetCurrentTimerProject) GetStatus() string {
-	if o == nil {
+func (g *GetCurrentTimerProject) GetStatus() string {
+	if g == nil {
 		return ""
 	}
-	return o.Status
+	return g.Status
 }
 
-func (o *GetCurrentTimerProject) GetDescription() *string {
-	if o == nil {
+func (g *GetCurrentTimerProject) GetDescription() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Description
+	return g.Description
 }
 
-func (o *GetCurrentTimerProject) GetName() string {
-	if o == nil {
+func (g *GetCurrentTimerProject) GetName() string {
+	if g == nil {
 		return ""
 	}
-	return o.Name
+	return g.Name
 }
 
-func (o *GetCurrentTimerProject) GetBillable() *bool {
-	if o == nil {
+func (g *GetCurrentTimerProject) GetBillable() *bool {
+	if g == nil {
 		return nil
 	}
-	return o.Billable
+	return g.Billable
 }
 
-func (o *GetCurrentTimerProject) GetEstimate() *float64 {
-	if o == nil {
+func (g *GetCurrentTimerProject) GetEstimate() *float64 {
+	if g == nil {
 		return nil
 	}
-	return o.Estimate
+	return g.Estimate
 }
 
-func (o *GetCurrentTimerProject) GetCustomer() *GetCurrentTimerCustomer {
-	if o == nil {
+func (g *GetCurrentTimerProject) GetCustomer() *GetCurrentTimerCustomer {
+	if g == nil {
 		return nil
 	}
-	return o.Customer
+	return g.Customer
 }
 
 type GetCurrentTimerData struct {
@@ -193,95 +193,95 @@ type GetCurrentTimerData struct {
 	Project GetCurrentTimerProject `json:"project"`
 }
 
-func (o *GetCurrentTimerData) GetID() string {
-	if o == nil {
+func (g *GetCurrentTimerData) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GetCurrentTimerData) GetCreatedAt() string {
-	if o == nil {
+func (g *GetCurrentTimerData) GetCreatedAt() string {
+	if g == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return g.CreatedAt
 }
 
-func (o *GetCurrentTimerData) GetDuration() *float64 {
-	if o == nil {
+func (g *GetCurrentTimerData) GetDuration() *float64 {
+	if g == nil {
 		return nil
 	}
-	return o.Duration
+	return g.Duration
 }
 
-func (o *GetCurrentTimerData) GetStart() string {
-	if o == nil {
+func (g *GetCurrentTimerData) GetStart() string {
+	if g == nil {
 		return ""
 	}
-	return o.Start
+	return g.Start
 }
 
-func (o *GetCurrentTimerData) GetStop() string {
-	if o == nil {
+func (g *GetCurrentTimerData) GetStop() string {
+	if g == nil {
 		return ""
 	}
-	return o.Stop
+	return g.Stop
 }
 
-func (o *GetCurrentTimerData) GetTeamID() string {
-	if o == nil {
+func (g *GetCurrentTimerData) GetTeamID() string {
+	if g == nil {
 		return ""
 	}
-	return o.TeamID
+	return g.TeamID
 }
 
-func (o *GetCurrentTimerData) GetDescription() *string {
-	if o == nil {
+func (g *GetCurrentTimerData) GetDescription() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Description
+	return g.Description
 }
 
-func (o *GetCurrentTimerData) GetRate() *float64 {
-	if o == nil {
+func (g *GetCurrentTimerData) GetRate() *float64 {
+	if g == nil {
 		return nil
 	}
-	return o.Rate
+	return g.Rate
 }
 
-func (o *GetCurrentTimerData) GetCurrency() *string {
-	if o == nil {
+func (g *GetCurrentTimerData) GetCurrency() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Currency
+	return g.Currency
 }
 
-func (o *GetCurrentTimerData) GetBilled() bool {
-	if o == nil {
+func (g *GetCurrentTimerData) GetBilled() bool {
+	if g == nil {
 		return false
 	}
-	return o.Billed
+	return g.Billed
 }
 
-func (o *GetCurrentTimerData) GetDate() string {
-	if o == nil {
+func (g *GetCurrentTimerData) GetDate() string {
+	if g == nil {
 		return ""
 	}
-	return o.Date
+	return g.Date
 }
 
-func (o *GetCurrentTimerData) GetUser() GetCurrentTimerUser {
-	if o == nil {
+func (g *GetCurrentTimerData) GetUser() GetCurrentTimerUser {
+	if g == nil {
 		return GetCurrentTimerUser{}
 	}
-	return o.User
+	return g.User
 }
 
-func (o *GetCurrentTimerData) GetProject() GetCurrentTimerProject {
-	if o == nil {
+func (g *GetCurrentTimerData) GetProject() GetCurrentTimerProject {
+	if g == nil {
 		return GetCurrentTimerProject{}
 	}
-	return o.Project
+	return g.Project
 }
 
 // GetCurrentTimerResponseBody - Current timer retrieved successfully.
@@ -289,11 +289,11 @@ type GetCurrentTimerResponseBody struct {
 	Data *GetCurrentTimerData `json:"data"`
 }
 
-func (o *GetCurrentTimerResponseBody) GetData() *GetCurrentTimerData {
-	if o == nil {
+func (g *GetCurrentTimerResponseBody) GetData() *GetCurrentTimerData {
+	if g == nil {
 		return nil
 	}
-	return o.Data
+	return g.Data
 }
 
 type GetCurrentTimerResponse struct {
@@ -302,16 +302,16 @@ type GetCurrentTimerResponse struct {
 	Object *GetCurrentTimerResponseBody
 }
 
-func (o *GetCurrentTimerResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (g *GetCurrentTimerResponse) GetHTTPMeta() components.HTTPMetadata {
+	if g == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return g.HTTPMeta
 }
 
-func (o *GetCurrentTimerResponse) GetObject() *GetCurrentTimerResponseBody {
-	if o == nil {
+func (g *GetCurrentTimerResponse) GetObject() *GetCurrentTimerResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object
+	return g.Object
 }

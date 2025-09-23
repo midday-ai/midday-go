@@ -9,18 +9,18 @@ type Summary struct {
 	Currency string `json:"currency"`
 }
 
-func (o *Summary) GetAverageExpense() float64 {
-	if o == nil {
+func (s *Summary) GetAverageExpense() float64 {
+	if s == nil {
 		return 0.0
 	}
-	return o.AverageExpense
+	return s.AverageExpense
 }
 
-func (o *Summary) GetCurrency() string {
-	if o == nil {
+func (s *Summary) GetCurrency() string {
+	if s == nil {
 		return ""
 	}
-	return o.Currency
+	return s.Currency
 }
 
 type GetExpensesResponseSchemaMeta struct {
@@ -30,18 +30,18 @@ type GetExpensesResponseSchemaMeta struct {
 	Currency string `json:"currency"`
 }
 
-func (o *GetExpensesResponseSchemaMeta) GetType() string {
-	if o == nil {
+func (g *GetExpensesResponseSchemaMeta) GetType() string {
+	if g == nil {
 		return ""
 	}
-	return o.Type
+	return g.Type
 }
 
-func (o *GetExpensesResponseSchemaMeta) GetCurrency() string {
-	if o == nil {
+func (g *GetExpensesResponseSchemaMeta) GetCurrency() string {
+	if g == nil {
 		return ""
 	}
-	return o.Currency
+	return g.Currency
 }
 
 type GetExpensesResponseSchema struct {
@@ -50,23 +50,23 @@ type GetExpensesResponseSchema struct {
 	Result  []ExpensesResultArray         `json:"result"`
 }
 
-func (o *GetExpensesResponseSchema) GetSummary() Summary {
-	if o == nil {
+func (g *GetExpensesResponseSchema) GetSummary() Summary {
+	if g == nil {
 		return Summary{}
 	}
-	return o.Summary
+	return g.Summary
 }
 
-func (o *GetExpensesResponseSchema) GetMeta() GetExpensesResponseSchemaMeta {
-	if o == nil {
+func (g *GetExpensesResponseSchema) GetMeta() GetExpensesResponseSchemaMeta {
+	if g == nil {
 		return GetExpensesResponseSchemaMeta{}
 	}
-	return o.Meta
+	return g.Meta
 }
 
-func (o *GetExpensesResponseSchema) GetResult() []ExpensesResultArray {
-	if o == nil {
+func (g *GetExpensesResponseSchema) GetResult() []ExpensesResultArray {
+	if g == nil {
 		return []ExpensesResultArray{}
 	}
-	return o.Result
+	return g.Result
 }

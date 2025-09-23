@@ -44,25 +44,25 @@ type Customer struct {
 	Website string `json:"website"`
 }
 
-func (o *Customer) GetID() string {
-	if o == nil {
+func (c *Customer) GetID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ID
+	return c.ID
 }
 
-func (o *Customer) GetName() string {
-	if o == nil {
+func (c *Customer) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
 }
 
-func (o *Customer) GetWebsite() string {
-	if o == nil {
+func (c *Customer) GetWebsite() string {
+	if c == nil {
 		return ""
 	}
-	return o.Website
+	return c.Website
 }
 
 type TrackerProjectResponseTag struct {
@@ -72,18 +72,18 @@ type TrackerProjectResponseTag struct {
 	Name string `json:"name"`
 }
 
-func (o *TrackerProjectResponseTag) GetID() string {
-	if o == nil {
+func (t *TrackerProjectResponseTag) GetID() string {
+	if t == nil {
 		return ""
 	}
-	return o.ID
+	return t.ID
 }
 
-func (o *TrackerProjectResponseTag) GetName() string {
-	if o == nil {
+func (t *TrackerProjectResponseTag) GetName() string {
+	if t == nil {
 		return ""
 	}
-	return o.Name
+	return t.Name
 }
 
 type User struct {
@@ -95,25 +95,25 @@ type User struct {
 	AvatarURL string `json:"avatarUrl"`
 }
 
-func (o *User) GetID() string {
-	if o == nil {
+func (u *User) GetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *User) GetFullName() string {
-	if o == nil {
+func (u *User) GetFullName() string {
+	if u == nil {
 		return ""
 	}
-	return o.FullName
+	return u.FullName
 }
 
-func (o *User) GetAvatarURL() string {
-	if o == nil {
+func (u *User) GetAvatarURL() string {
+	if u == nil {
 		return ""
 	}
-	return o.AvatarURL
+	return u.AvatarURL
 }
 
 type TrackerProjectResponse struct {
@@ -143,86 +143,86 @@ type TrackerProjectResponse struct {
 	Users []User `json:"users"`
 }
 
-func (o *TrackerProjectResponse) GetID() string {
-	if o == nil {
+func (t *TrackerProjectResponse) GetID() string {
+	if t == nil {
 		return ""
 	}
-	return o.ID
+	return t.ID
 }
 
-func (o *TrackerProjectResponse) GetName() string {
-	if o == nil {
+func (t *TrackerProjectResponse) GetName() string {
+	if t == nil {
 		return ""
 	}
-	return o.Name
+	return t.Name
 }
 
-func (o *TrackerProjectResponse) GetDescription() *string {
-	if o == nil {
+func (t *TrackerProjectResponse) GetDescription() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Description
+	return t.Description
 }
 
-func (o *TrackerProjectResponse) GetStatus() TrackerProjectResponseStatus {
-	if o == nil {
+func (t *TrackerProjectResponse) GetStatus() TrackerProjectResponseStatus {
+	if t == nil {
 		return TrackerProjectResponseStatus("")
 	}
-	return o.Status
+	return t.Status
 }
 
-func (o *TrackerProjectResponse) GetEstimate() *float64 {
-	if o == nil {
+func (t *TrackerProjectResponse) GetEstimate() *float64 {
+	if t == nil {
 		return nil
 	}
-	return o.Estimate
+	return t.Estimate
 }
 
-func (o *TrackerProjectResponse) GetCurrency() *string {
-	if o == nil {
+func (t *TrackerProjectResponse) GetCurrency() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Currency
+	return t.Currency
 }
 
-func (o *TrackerProjectResponse) GetCreatedAt() string {
-	if o == nil {
+func (t *TrackerProjectResponse) GetCreatedAt() string {
+	if t == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return t.CreatedAt
 }
 
-func (o *TrackerProjectResponse) GetTotalDuration() *float64 {
-	if o == nil {
+func (t *TrackerProjectResponse) GetTotalDuration() *float64 {
+	if t == nil {
 		return nil
 	}
-	return o.TotalDuration
+	return t.TotalDuration
 }
 
-func (o *TrackerProjectResponse) GetTotalAmount() float64 {
-	if o == nil {
+func (t *TrackerProjectResponse) GetTotalAmount() float64 {
+	if t == nil {
 		return 0.0
 	}
-	return o.TotalAmount
+	return t.TotalAmount
 }
 
-func (o *TrackerProjectResponse) GetCustomer() *Customer {
-	if o == nil {
+func (t *TrackerProjectResponse) GetCustomer() *Customer {
+	if t == nil {
 		return nil
 	}
-	return o.Customer
+	return t.Customer
 }
 
-func (o *TrackerProjectResponse) GetTags() []TrackerProjectResponseTag {
-	if o == nil {
+func (t *TrackerProjectResponse) GetTags() []TrackerProjectResponseTag {
+	if t == nil {
 		return []TrackerProjectResponseTag{}
 	}
-	return o.Tags
+	return t.Tags
 }
 
-func (o *TrackerProjectResponse) GetUsers() []User {
-	if o == nil {
+func (t *TrackerProjectResponse) GetUsers() []User {
+	if t == nil {
 		return nil
 	}
-	return o.Users
+	return t.Users
 }

@@ -64,74 +64,74 @@ type UpdateCurrentUserRequest struct {
 	DateFormat *DateFormatRequest `json:"dateFormat,omitempty"`
 }
 
-func (o *UpdateCurrentUserRequest) GetFullName() *string {
-	if o == nil {
+func (u *UpdateCurrentUserRequest) GetFullName() *string {
+	if u == nil {
 		return nil
 	}
-	return o.FullName
+	return u.FullName
 }
 
-func (o *UpdateCurrentUserRequest) GetTeamID() *string {
-	if o == nil {
+func (u *UpdateCurrentUserRequest) GetTeamID() *string {
+	if u == nil {
 		return nil
 	}
-	return o.TeamID
+	return u.TeamID
 }
 
-func (o *UpdateCurrentUserRequest) GetEmail() *string {
-	if o == nil {
+func (u *UpdateCurrentUserRequest) GetEmail() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Email
+	return u.Email
 }
 
-func (o *UpdateCurrentUserRequest) GetAvatarURL() *string {
-	if o == nil {
+func (u *UpdateCurrentUserRequest) GetAvatarURL() *string {
+	if u == nil {
 		return nil
 	}
-	return o.AvatarURL
+	return u.AvatarURL
 }
 
-func (o *UpdateCurrentUserRequest) GetLocale() *string {
-	if o == nil {
+func (u *UpdateCurrentUserRequest) GetLocale() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Locale
+	return u.Locale
 }
 
-func (o *UpdateCurrentUserRequest) GetWeekStartsOnMonday() *bool {
-	if o == nil {
+func (u *UpdateCurrentUserRequest) GetWeekStartsOnMonday() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.WeekStartsOnMonday
+	return u.WeekStartsOnMonday
 }
 
-func (o *UpdateCurrentUserRequest) GetTimezone() *string {
-	if o == nil {
+func (u *UpdateCurrentUserRequest) GetTimezone() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Timezone
+	return u.Timezone
 }
 
-func (o *UpdateCurrentUserRequest) GetTimezoneAutoSync() *bool {
-	if o == nil {
+func (u *UpdateCurrentUserRequest) GetTimezoneAutoSync() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.TimezoneAutoSync
+	return u.TimezoneAutoSync
 }
 
-func (o *UpdateCurrentUserRequest) GetTimeFormat() *float64 {
-	if o == nil {
+func (u *UpdateCurrentUserRequest) GetTimeFormat() *float64 {
+	if u == nil {
 		return nil
 	}
-	return o.TimeFormat
+	return u.TimeFormat
 }
 
-func (o *UpdateCurrentUserRequest) GetDateFormat() *DateFormatRequest {
-	if o == nil {
+func (u *UpdateCurrentUserRequest) GetDateFormat() *DateFormatRequest {
+	if u == nil {
 		return nil
 	}
-	return o.DateFormat
+	return u.DateFormat
 }
 
 // UpdateCurrentUserDateFormatResponse - User's preferred date format. Available options: 'dd/MM/yyyy', 'MM/dd/yyyy', 'yyyy-MM-dd', 'dd.MM.yyyy'
@@ -179,32 +179,32 @@ type UpdateCurrentUserTeam struct {
 	Plan string `json:"plan"`
 }
 
-func (o *UpdateCurrentUserTeam) GetID() string {
-	if o == nil {
+func (u *UpdateCurrentUserTeam) GetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UpdateCurrentUserTeam) GetName() string {
-	if o == nil {
+func (u *UpdateCurrentUserTeam) GetName() string {
+	if u == nil {
 		return ""
 	}
-	return o.Name
+	return u.Name
 }
 
-func (o *UpdateCurrentUserTeam) GetLogoURL() string {
-	if o == nil {
+func (u *UpdateCurrentUserTeam) GetLogoURL() string {
+	if u == nil {
 		return ""
 	}
-	return o.LogoURL
+	return u.LogoURL
 }
 
-func (o *UpdateCurrentUserTeam) GetPlan() string {
-	if o == nil {
+func (u *UpdateCurrentUserTeam) GetPlan() string {
+	if u == nil {
 		return ""
 	}
-	return o.Plan
+	return u.Plan
 }
 
 // UpdateCurrentUserResponseBody - The updated user
@@ -233,81 +233,81 @@ type UpdateCurrentUserResponseBody struct {
 	Team *UpdateCurrentUserTeam `json:"team"`
 }
 
-func (o *UpdateCurrentUserResponseBody) GetID() string {
-	if o == nil {
+func (u *UpdateCurrentUserResponseBody) GetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UpdateCurrentUserResponseBody) GetFullName() string {
-	if o == nil {
+func (u *UpdateCurrentUserResponseBody) GetFullName() string {
+	if u == nil {
 		return ""
 	}
-	return o.FullName
+	return u.FullName
 }
 
-func (o *UpdateCurrentUserResponseBody) GetEmail() string {
-	if o == nil {
+func (u *UpdateCurrentUserResponseBody) GetEmail() string {
+	if u == nil {
 		return ""
 	}
-	return o.Email
+	return u.Email
 }
 
-func (o *UpdateCurrentUserResponseBody) GetAvatarURL() *string {
-	if o == nil {
+func (u *UpdateCurrentUserResponseBody) GetAvatarURL() *string {
+	if u == nil {
 		return nil
 	}
-	return o.AvatarURL
+	return u.AvatarURL
 }
 
-func (o *UpdateCurrentUserResponseBody) GetLocale() *string {
-	if o == nil {
+func (u *UpdateCurrentUserResponseBody) GetLocale() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Locale
+	return u.Locale
 }
 
-func (o *UpdateCurrentUserResponseBody) GetWeekStartsOnMonday() *bool {
-	if o == nil {
+func (u *UpdateCurrentUserResponseBody) GetWeekStartsOnMonday() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.WeekStartsOnMonday
+	return u.WeekStartsOnMonday
 }
 
-func (o *UpdateCurrentUserResponseBody) GetTimezone() *string {
-	if o == nil {
+func (u *UpdateCurrentUserResponseBody) GetTimezone() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Timezone
+	return u.Timezone
 }
 
-func (o *UpdateCurrentUserResponseBody) GetTimezoneAutoSync() *bool {
-	if o == nil {
+func (u *UpdateCurrentUserResponseBody) GetTimezoneAutoSync() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.TimezoneAutoSync
+	return u.TimezoneAutoSync
 }
 
-func (o *UpdateCurrentUserResponseBody) GetTimeFormat() *float64 {
-	if o == nil {
+func (u *UpdateCurrentUserResponseBody) GetTimeFormat() *float64 {
+	if u == nil {
 		return nil
 	}
-	return o.TimeFormat
+	return u.TimeFormat
 }
 
-func (o *UpdateCurrentUserResponseBody) GetDateFormat() *UpdateCurrentUserDateFormatResponse {
-	if o == nil {
+func (u *UpdateCurrentUserResponseBody) GetDateFormat() *UpdateCurrentUserDateFormatResponse {
+	if u == nil {
 		return nil
 	}
-	return o.DateFormat
+	return u.DateFormat
 }
 
-func (o *UpdateCurrentUserResponseBody) GetTeam() *UpdateCurrentUserTeam {
-	if o == nil {
+func (u *UpdateCurrentUserResponseBody) GetTeam() *UpdateCurrentUserTeam {
+	if u == nil {
 		return nil
 	}
-	return o.Team
+	return u.Team
 }
 
 type UpdateCurrentUserResponse struct {
@@ -316,16 +316,16 @@ type UpdateCurrentUserResponse struct {
 	Object *UpdateCurrentUserResponseBody
 }
 
-func (o *UpdateCurrentUserResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (u *UpdateCurrentUserResponse) GetHTTPMeta() components.HTTPMetadata {
+	if u == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return u.HTTPMeta
 }
 
-func (o *UpdateCurrentUserResponse) GetObject() *UpdateCurrentUserResponseBody {
-	if o == nil {
+func (u *UpdateCurrentUserResponse) GetObject() *UpdateCurrentUserResponseBody {
+	if u == nil {
 		return nil
 	}
-	return o.Object
+	return u.Object
 }

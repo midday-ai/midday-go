@@ -15,8 +15,8 @@ type UpdateTrackerEntryRequestBody struct {
 	Stop time.Time `json:"stop"`
 	// Array of dates for which to create tracker entries
 	Dates []string `json:"dates"`
-	// Unique identifier of the user assigned to this tracker entry
-	AssignedID *string `json:"assignedId"`
+	// Unique identifier of the user assigned to this tracker entry. If not provided, will use the authenticated user
+	AssignedID *string `json:"assignedId,omitempty"`
 	// Unique identifier of the project associated with this tracker entry
 	ProjectID string `json:"projectId"`
 	// Optional description or notes for the tracker entry
@@ -30,59 +30,59 @@ func (u UpdateTrackerEntryRequestBody) MarshalJSON() ([]byte, error) {
 }
 
 func (u *UpdateTrackerEntryRequestBody) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"start", "stop", "dates", "projectId", "duration"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UpdateTrackerEntryRequestBody) GetStart() time.Time {
-	if o == nil {
+func (u *UpdateTrackerEntryRequestBody) GetStart() time.Time {
+	if u == nil {
 		return time.Time{}
 	}
-	return o.Start
+	return u.Start
 }
 
-func (o *UpdateTrackerEntryRequestBody) GetStop() time.Time {
-	if o == nil {
+func (u *UpdateTrackerEntryRequestBody) GetStop() time.Time {
+	if u == nil {
 		return time.Time{}
 	}
-	return o.Stop
+	return u.Stop
 }
 
-func (o *UpdateTrackerEntryRequestBody) GetDates() []string {
-	if o == nil {
+func (u *UpdateTrackerEntryRequestBody) GetDates() []string {
+	if u == nil {
 		return []string{}
 	}
-	return o.Dates
+	return u.Dates
 }
 
-func (o *UpdateTrackerEntryRequestBody) GetAssignedID() *string {
-	if o == nil {
+func (u *UpdateTrackerEntryRequestBody) GetAssignedID() *string {
+	if u == nil {
 		return nil
 	}
-	return o.AssignedID
+	return u.AssignedID
 }
 
-func (o *UpdateTrackerEntryRequestBody) GetProjectID() string {
-	if o == nil {
+func (u *UpdateTrackerEntryRequestBody) GetProjectID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ProjectID
+	return u.ProjectID
 }
 
-func (o *UpdateTrackerEntryRequestBody) GetDescription() *string {
-	if o == nil {
+func (u *UpdateTrackerEntryRequestBody) GetDescription() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Description
+	return u.Description
 }
 
-func (o *UpdateTrackerEntryRequestBody) GetDuration() float64 {
-	if o == nil {
+func (u *UpdateTrackerEntryRequestBody) GetDuration() float64 {
+	if u == nil {
 		return 0.0
 	}
-	return o.Duration
+	return u.Duration
 }
 
 type UpdateTrackerEntryRequest struct {
@@ -90,18 +90,18 @@ type UpdateTrackerEntryRequest struct {
 	RequestBody *UpdateTrackerEntryRequestBody `request:"mediaType=application/json"`
 }
 
-func (o *UpdateTrackerEntryRequest) GetID() string {
-	if o == nil {
+func (u *UpdateTrackerEntryRequest) GetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UpdateTrackerEntryRequest) GetRequestBody() *UpdateTrackerEntryRequestBody {
-	if o == nil {
+func (u *UpdateTrackerEntryRequest) GetRequestBody() *UpdateTrackerEntryRequestBody {
+	if u == nil {
 		return nil
 	}
-	return o.RequestBody
+	return u.RequestBody
 }
 
 // UpdateTrackerEntryUser - User information for the person who created this tracker entry
@@ -114,25 +114,25 @@ type UpdateTrackerEntryUser struct {
 	AvatarURL string `json:"avatarUrl"`
 }
 
-func (o *UpdateTrackerEntryUser) GetID() string {
-	if o == nil {
+func (u *UpdateTrackerEntryUser) GetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UpdateTrackerEntryUser) GetFullName() string {
-	if o == nil {
+func (u *UpdateTrackerEntryUser) GetFullName() string {
+	if u == nil {
 		return ""
 	}
-	return o.FullName
+	return u.FullName
 }
 
-func (o *UpdateTrackerEntryUser) GetAvatarURL() string {
-	if o == nil {
+func (u *UpdateTrackerEntryUser) GetAvatarURL() string {
+	if u == nil {
 		return ""
 	}
-	return o.AvatarURL
+	return u.AvatarURL
 }
 
 // UpdateTrackerEntryCustomer - Customer information associated with the project
@@ -143,18 +143,18 @@ type UpdateTrackerEntryCustomer struct {
 	Name string `json:"name"`
 }
 
-func (o *UpdateTrackerEntryCustomer) GetID() string {
-	if o == nil {
+func (u *UpdateTrackerEntryCustomer) GetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UpdateTrackerEntryCustomer) GetName() string {
-	if o == nil {
+func (u *UpdateTrackerEntryCustomer) GetName() string {
+	if u == nil {
 		return ""
 	}
-	return o.Name
+	return u.Name
 }
 
 // UpdateTrackerEntryProject - Project information associated with this tracker entry
@@ -181,74 +181,74 @@ type UpdateTrackerEntryProject struct {
 	Customer *UpdateTrackerEntryCustomer `json:"customer"`
 }
 
-func (o *UpdateTrackerEntryProject) GetID() string {
-	if o == nil {
+func (u *UpdateTrackerEntryProject) GetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UpdateTrackerEntryProject) GetCreatedAt() string {
-	if o == nil {
+func (u *UpdateTrackerEntryProject) GetCreatedAt() string {
+	if u == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return u.CreatedAt
 }
 
-func (o *UpdateTrackerEntryProject) GetRate() *float64 {
-	if o == nil {
+func (u *UpdateTrackerEntryProject) GetRate() *float64 {
+	if u == nil {
 		return nil
 	}
-	return o.Rate
+	return u.Rate
 }
 
-func (o *UpdateTrackerEntryProject) GetCurrency() *string {
-	if o == nil {
+func (u *UpdateTrackerEntryProject) GetCurrency() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Currency
+	return u.Currency
 }
 
-func (o *UpdateTrackerEntryProject) GetStatus() string {
-	if o == nil {
+func (u *UpdateTrackerEntryProject) GetStatus() string {
+	if u == nil {
 		return ""
 	}
-	return o.Status
+	return u.Status
 }
 
-func (o *UpdateTrackerEntryProject) GetDescription() *string {
-	if o == nil {
+func (u *UpdateTrackerEntryProject) GetDescription() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Description
+	return u.Description
 }
 
-func (o *UpdateTrackerEntryProject) GetName() string {
-	if o == nil {
+func (u *UpdateTrackerEntryProject) GetName() string {
+	if u == nil {
 		return ""
 	}
-	return o.Name
+	return u.Name
 }
 
-func (o *UpdateTrackerEntryProject) GetBillable() *bool {
-	if o == nil {
+func (u *UpdateTrackerEntryProject) GetBillable() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Billable
+	return u.Billable
 }
 
-func (o *UpdateTrackerEntryProject) GetEstimate() *float64 {
-	if o == nil {
+func (u *UpdateTrackerEntryProject) GetEstimate() *float64 {
+	if u == nil {
 		return nil
 	}
-	return o.Estimate
+	return u.Estimate
 }
 
-func (o *UpdateTrackerEntryProject) GetCustomer() *UpdateTrackerEntryCustomer {
-	if o == nil {
+func (u *UpdateTrackerEntryProject) GetCustomer() *UpdateTrackerEntryCustomer {
+	if u == nil {
 		return nil
 	}
-	return o.Customer
+	return u.Customer
 }
 
 type UpdateTrackerEntryData struct {
@@ -280,95 +280,95 @@ type UpdateTrackerEntryData struct {
 	Project UpdateTrackerEntryProject `json:"project"`
 }
 
-func (o *UpdateTrackerEntryData) GetID() string {
-	if o == nil {
+func (u *UpdateTrackerEntryData) GetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UpdateTrackerEntryData) GetCreatedAt() string {
-	if o == nil {
+func (u *UpdateTrackerEntryData) GetCreatedAt() string {
+	if u == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return u.CreatedAt
 }
 
-func (o *UpdateTrackerEntryData) GetDuration() float64 {
-	if o == nil {
+func (u *UpdateTrackerEntryData) GetDuration() float64 {
+	if u == nil {
 		return 0.0
 	}
-	return o.Duration
+	return u.Duration
 }
 
-func (o *UpdateTrackerEntryData) GetStart() string {
-	if o == nil {
+func (u *UpdateTrackerEntryData) GetStart() string {
+	if u == nil {
 		return ""
 	}
-	return o.Start
+	return u.Start
 }
 
-func (o *UpdateTrackerEntryData) GetStop() string {
-	if o == nil {
+func (u *UpdateTrackerEntryData) GetStop() string {
+	if u == nil {
 		return ""
 	}
-	return o.Stop
+	return u.Stop
 }
 
-func (o *UpdateTrackerEntryData) GetTeamID() string {
-	if o == nil {
+func (u *UpdateTrackerEntryData) GetTeamID() string {
+	if u == nil {
 		return ""
 	}
-	return o.TeamID
+	return u.TeamID
 }
 
-func (o *UpdateTrackerEntryData) GetDescription() *string {
-	if o == nil {
+func (u *UpdateTrackerEntryData) GetDescription() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Description
+	return u.Description
 }
 
-func (o *UpdateTrackerEntryData) GetRate() *float64 {
-	if o == nil {
+func (u *UpdateTrackerEntryData) GetRate() *float64 {
+	if u == nil {
 		return nil
 	}
-	return o.Rate
+	return u.Rate
 }
 
-func (o *UpdateTrackerEntryData) GetCurrency() *string {
-	if o == nil {
+func (u *UpdateTrackerEntryData) GetCurrency() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Currency
+	return u.Currency
 }
 
-func (o *UpdateTrackerEntryData) GetBilled() bool {
-	if o == nil {
+func (u *UpdateTrackerEntryData) GetBilled() bool {
+	if u == nil {
 		return false
 	}
-	return o.Billed
+	return u.Billed
 }
 
-func (o *UpdateTrackerEntryData) GetDate() string {
-	if o == nil {
+func (u *UpdateTrackerEntryData) GetDate() string {
+	if u == nil {
 		return ""
 	}
-	return o.Date
+	return u.Date
 }
 
-func (o *UpdateTrackerEntryData) GetUser() UpdateTrackerEntryUser {
-	if o == nil {
+func (u *UpdateTrackerEntryData) GetUser() UpdateTrackerEntryUser {
+	if u == nil {
 		return UpdateTrackerEntryUser{}
 	}
-	return o.User
+	return u.User
 }
 
-func (o *UpdateTrackerEntryData) GetProject() UpdateTrackerEntryProject {
-	if o == nil {
+func (u *UpdateTrackerEntryData) GetProject() UpdateTrackerEntryProject {
+	if u == nil {
 		return UpdateTrackerEntryProject{}
 	}
-	return o.Project
+	return u.Project
 }
 
 // UpdateTrackerEntryResponseBody - Response schema for created tracker entries
@@ -377,11 +377,11 @@ type UpdateTrackerEntryResponseBody struct {
 	Data []UpdateTrackerEntryData `json:"data"`
 }
 
-func (o *UpdateTrackerEntryResponseBody) GetData() []UpdateTrackerEntryData {
-	if o == nil {
+func (u *UpdateTrackerEntryResponseBody) GetData() []UpdateTrackerEntryData {
+	if u == nil {
 		return []UpdateTrackerEntryData{}
 	}
-	return o.Data
+	return u.Data
 }
 
 type UpdateTrackerEntryResponse struct {
@@ -390,16 +390,16 @@ type UpdateTrackerEntryResponse struct {
 	Object *UpdateTrackerEntryResponseBody
 }
 
-func (o *UpdateTrackerEntryResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (u *UpdateTrackerEntryResponse) GetHTTPMeta() components.HTTPMetadata {
+	if u == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return u.HTTPMeta
 }
 
-func (o *UpdateTrackerEntryResponse) GetObject() *UpdateTrackerEntryResponseBody {
-	if o == nil {
+func (u *UpdateTrackerEntryResponse) GetObject() *UpdateTrackerEntryResponseBody {
+	if u == nil {
 		return nil
 	}
-	return o.Object
+	return u.Object
 }

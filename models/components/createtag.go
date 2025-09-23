@@ -7,9 +7,9 @@ type CreateTag struct {
 	Name string `json:"name"`
 }
 
-func (o *CreateTag) GetName() string {
-	if o == nil {
+func (c *CreateTag) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
 }

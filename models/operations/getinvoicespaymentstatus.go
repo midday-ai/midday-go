@@ -14,18 +14,18 @@ type GetInvoicesPaymentStatusResponseBody struct {
 	PaymentStatus string `json:"paymentStatus"`
 }
 
-func (o *GetInvoicesPaymentStatusResponseBody) GetScore() float64 {
-	if o == nil {
+func (g *GetInvoicesPaymentStatusResponseBody) GetScore() float64 {
+	if g == nil {
 		return 0.0
 	}
-	return o.Score
+	return g.Score
 }
 
-func (o *GetInvoicesPaymentStatusResponseBody) GetPaymentStatus() string {
-	if o == nil {
+func (g *GetInvoicesPaymentStatusResponseBody) GetPaymentStatus() string {
+	if g == nil {
 		return ""
 	}
-	return o.PaymentStatus
+	return g.PaymentStatus
 }
 
 type GetInvoicesPaymentStatusResponse struct {
@@ -34,16 +34,16 @@ type GetInvoicesPaymentStatusResponse struct {
 	Object *GetInvoicesPaymentStatusResponseBody
 }
 
-func (o *GetInvoicesPaymentStatusResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (g *GetInvoicesPaymentStatusResponse) GetHTTPMeta() components.HTTPMetadata {
+	if g == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return g.HTTPMeta
 }
 
-func (o *GetInvoicesPaymentStatusResponse) GetObject() *GetInvoicesPaymentStatusResponseBody {
-	if o == nil {
+func (g *GetInvoicesPaymentStatusResponse) GetObject() *GetInvoicesPaymentStatusResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object
+	return g.Object
 }

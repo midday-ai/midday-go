@@ -48,67 +48,67 @@ type ListTrackerProjectsRequest struct {
 	Sort      []string                   `queryParam:"style=form,explode=true,name=sort"`
 }
 
-func (o *ListTrackerProjectsRequest) GetCursor() *string {
-	if o == nil {
+func (l *ListTrackerProjectsRequest) GetCursor() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Cursor
+	return l.Cursor
 }
 
-func (o *ListTrackerProjectsRequest) GetPageSize() *float64 {
-	if o == nil {
+func (l *ListTrackerProjectsRequest) GetPageSize() *float64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListTrackerProjectsRequest) GetQ() *string {
-	if o == nil {
+func (l *ListTrackerProjectsRequest) GetQ() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Q
+	return l.Q
 }
 
-func (o *ListTrackerProjectsRequest) GetStart() *string {
-	if o == nil {
+func (l *ListTrackerProjectsRequest) GetStart() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Start
+	return l.Start
 }
 
-func (o *ListTrackerProjectsRequest) GetEnd() *string {
-	if o == nil {
+func (l *ListTrackerProjectsRequest) GetEnd() *string {
+	if l == nil {
 		return nil
 	}
-	return o.End
+	return l.End
 }
 
-func (o *ListTrackerProjectsRequest) GetStatus() *ListTrackerProjectsStatus {
-	if o == nil {
+func (l *ListTrackerProjectsRequest) GetStatus() *ListTrackerProjectsStatus {
+	if l == nil {
 		return nil
 	}
-	return o.Status
+	return l.Status
 }
 
-func (o *ListTrackerProjectsRequest) GetCustomers() []string {
-	if o == nil {
+func (l *ListTrackerProjectsRequest) GetCustomers() []string {
+	if l == nil {
 		return nil
 	}
-	return o.Customers
+	return l.Customers
 }
 
-func (o *ListTrackerProjectsRequest) GetTags() []string {
-	if o == nil {
+func (l *ListTrackerProjectsRequest) GetTags() []string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
-func (o *ListTrackerProjectsRequest) GetSort() []string {
-	if o == nil {
+func (l *ListTrackerProjectsRequest) GetSort() []string {
+	if l == nil {
 		return nil
 	}
-	return o.Sort
+	return l.Sort
 }
 
 type ListTrackerProjectsResponse struct {
@@ -117,16 +117,16 @@ type ListTrackerProjectsResponse struct {
 	TrackerProjectsResponse *components.TrackerProjectsResponse
 }
 
-func (o *ListTrackerProjectsResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (l *ListTrackerProjectsResponse) GetHTTPMeta() components.HTTPMetadata {
+	if l == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return l.HTTPMeta
 }
 
-func (o *ListTrackerProjectsResponse) GetTrackerProjectsResponse() *components.TrackerProjectsResponse {
-	if o == nil {
+func (l *ListTrackerProjectsResponse) GetTrackerProjectsResponse() *components.TrackerProjectsResponse {
+	if l == nil {
 		return nil
 	}
-	return o.TrackerProjectsResponse
+	return l.TrackerProjectsResponse
 }

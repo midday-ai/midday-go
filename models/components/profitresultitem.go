@@ -10,30 +10,30 @@ type ProfitResultItem struct {
 	Previous   ProfitPrevious   `json:"previous"`
 }
 
-func (o *ProfitResultItem) GetDate() string {
-	if o == nil {
+func (p *ProfitResultItem) GetDate() string {
+	if p == nil {
 		return ""
 	}
-	return o.Date
+	return p.Date
 }
 
-func (o *ProfitResultItem) GetPercentage() ProfitPercentage {
-	if o == nil {
+func (p *ProfitResultItem) GetPercentage() ProfitPercentage {
+	if p == nil {
 		return ProfitPercentage{}
 	}
-	return o.Percentage
+	return p.Percentage
 }
 
-func (o *ProfitResultItem) GetCurrent() ProfitCurrent {
-	if o == nil {
+func (p *ProfitResultItem) GetCurrent() ProfitCurrent {
+	if p == nil {
 		return ProfitCurrent{}
 	}
-	return o.Current
+	return p.Current
 }
 
-func (o *ProfitResultItem) GetPrevious() ProfitPrevious {
-	if o == nil {
+func (p *ProfitResultItem) GetPrevious() ProfitPrevious {
+	if p == nil {
 		return ProfitPrevious{}
 	}
-	return o.Previous
+	return p.Previous
 }

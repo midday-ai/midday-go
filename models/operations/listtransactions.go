@@ -83,116 +83,116 @@ type ListTransactionsRequest struct {
 	Type *ListTransactionsType `queryParam:"style=form,explode=true,name=type"`
 }
 
-func (o *ListTransactionsRequest) GetCursor() *string {
-	if o == nil {
+func (l *ListTransactionsRequest) GetCursor() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Cursor
+	return l.Cursor
 }
 
-func (o *ListTransactionsRequest) GetSort() []string {
-	if o == nil {
+func (l *ListTransactionsRequest) GetSort() []string {
+	if l == nil {
 		return nil
 	}
-	return o.Sort
+	return l.Sort
 }
 
-func (o *ListTransactionsRequest) GetPageSize() *float64 {
-	if o == nil {
+func (l *ListTransactionsRequest) GetPageSize() *float64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListTransactionsRequest) GetQ() *string {
-	if o == nil {
+func (l *ListTransactionsRequest) GetQ() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Q
+	return l.Q
 }
 
-func (o *ListTransactionsRequest) GetCategories() []string {
-	if o == nil {
+func (l *ListTransactionsRequest) GetCategories() []string {
+	if l == nil {
 		return nil
 	}
-	return o.Categories
+	return l.Categories
 }
 
-func (o *ListTransactionsRequest) GetTags() []string {
-	if o == nil {
+func (l *ListTransactionsRequest) GetTags() []string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
-func (o *ListTransactionsRequest) GetStart() *string {
-	if o == nil {
+func (l *ListTransactionsRequest) GetStart() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Start
+	return l.Start
 }
 
-func (o *ListTransactionsRequest) GetEnd() *string {
-	if o == nil {
+func (l *ListTransactionsRequest) GetEnd() *string {
+	if l == nil {
 		return nil
 	}
-	return o.End
+	return l.End
 }
 
-func (o *ListTransactionsRequest) GetAccounts() []string {
-	if o == nil {
+func (l *ListTransactionsRequest) GetAccounts() []string {
+	if l == nil {
 		return nil
 	}
-	return o.Accounts
+	return l.Accounts
 }
 
-func (o *ListTransactionsRequest) GetAssignees() []string {
-	if o == nil {
+func (l *ListTransactionsRequest) GetAssignees() []string {
+	if l == nil {
 		return nil
 	}
-	return o.Assignees
+	return l.Assignees
 }
 
-func (o *ListTransactionsRequest) GetStatuses() []string {
-	if o == nil {
+func (l *ListTransactionsRequest) GetStatuses() []string {
+	if l == nil {
 		return nil
 	}
-	return o.Statuses
+	return l.Statuses
 }
 
-func (o *ListTransactionsRequest) GetRecurring() []string {
-	if o == nil {
+func (l *ListTransactionsRequest) GetRecurring() []string {
+	if l == nil {
 		return nil
 	}
-	return o.Recurring
+	return l.Recurring
 }
 
-func (o *ListTransactionsRequest) GetAttachments() *Attachments {
-	if o == nil {
+func (l *ListTransactionsRequest) GetAttachments() *Attachments {
+	if l == nil {
 		return nil
 	}
-	return o.Attachments
+	return l.Attachments
 }
 
-func (o *ListTransactionsRequest) GetAmountRange() []*float64 {
-	if o == nil {
+func (l *ListTransactionsRequest) GetAmountRange() []*float64 {
+	if l == nil {
 		return nil
 	}
-	return o.AmountRange
+	return l.AmountRange
 }
 
-func (o *ListTransactionsRequest) GetAmount() []string {
-	if o == nil {
+func (l *ListTransactionsRequest) GetAmount() []string {
+	if l == nil {
 		return nil
 	}
-	return o.Amount
+	return l.Amount
 }
 
-func (o *ListTransactionsRequest) GetType() *ListTransactionsType {
-	if o == nil {
+func (l *ListTransactionsRequest) GetType() *ListTransactionsType {
+	if l == nil {
 		return nil
 	}
-	return o.Type
+	return l.Type
 }
 
 // ListTransactionsMeta - Pagination metadata for the transactions response
@@ -205,25 +205,25 @@ type ListTransactionsMeta struct {
 	HasNextPage bool `json:"hasNextPage"`
 }
 
-func (o *ListTransactionsMeta) GetCursor() *string {
-	if o == nil {
+func (l *ListTransactionsMeta) GetCursor() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Cursor
+	return l.Cursor
 }
 
-func (o *ListTransactionsMeta) GetHasPreviousPage() bool {
-	if o == nil {
+func (l *ListTransactionsMeta) GetHasPreviousPage() bool {
+	if l == nil {
 		return false
 	}
-	return o.HasPreviousPage
+	return l.HasPreviousPage
 }
 
-func (o *ListTransactionsMeta) GetHasNextPage() bool {
-	if o == nil {
+func (l *ListTransactionsMeta) GetHasNextPage() bool {
+	if l == nil {
 		return false
 	}
-	return o.HasNextPage
+	return l.HasNextPage
 }
 
 // ListTransactionsResponseBody - Retrieve a list of transactions for the authenticated team.
@@ -234,18 +234,18 @@ type ListTransactionsResponseBody struct {
 	Data []components.TransactionResponse `json:"data"`
 }
 
-func (o *ListTransactionsResponseBody) GetMeta() ListTransactionsMeta {
-	if o == nil {
+func (l *ListTransactionsResponseBody) GetMeta() ListTransactionsMeta {
+	if l == nil {
 		return ListTransactionsMeta{}
 	}
-	return o.Meta
+	return l.Meta
 }
 
-func (o *ListTransactionsResponseBody) GetData() []components.TransactionResponse {
-	if o == nil {
+func (l *ListTransactionsResponseBody) GetData() []components.TransactionResponse {
+	if l == nil {
 		return []components.TransactionResponse{}
 	}
-	return o.Data
+	return l.Data
 }
 
 type ListTransactionsResponse struct {
@@ -254,16 +254,16 @@ type ListTransactionsResponse struct {
 	Object *ListTransactionsResponseBody
 }
 
-func (o *ListTransactionsResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (l *ListTransactionsResponse) GetHTTPMeta() components.HTTPMetadata {
+	if l == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return l.HTTPMeta
 }
 
-func (o *ListTransactionsResponse) GetObject() *ListTransactionsResponseBody {
-	if o == nil {
+func (l *ListTransactionsResponse) GetObject() *ListTransactionsResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

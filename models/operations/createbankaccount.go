@@ -16,25 +16,25 @@ type CreateBankAccountRequest struct {
 	Manual *bool `json:"manual,omitempty"`
 }
 
-func (o *CreateBankAccountRequest) GetName() string {
-	if o == nil {
+func (c *CreateBankAccountRequest) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
 }
 
-func (o *CreateBankAccountRequest) GetCurrency() *string {
-	if o == nil {
+func (c *CreateBankAccountRequest) GetCurrency() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Currency
+	return c.Currency
 }
 
-func (o *CreateBankAccountRequest) GetManual() *bool {
-	if o == nil {
+func (c *CreateBankAccountRequest) GetManual() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Manual
+	return c.Manual
 }
 
 // CreateBankAccountResponseBody - A single bank account object response.
@@ -55,53 +55,53 @@ type CreateBankAccountResponseBody struct {
 	Manual *bool `json:"manual"`
 }
 
-func (o *CreateBankAccountResponseBody) GetID() string {
-	if o == nil {
+func (c *CreateBankAccountResponseBody) GetID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ID
+	return c.ID
 }
 
-func (o *CreateBankAccountResponseBody) GetName() *string {
-	if o == nil {
+func (c *CreateBankAccountResponseBody) GetName() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Name
+	return c.Name
 }
 
-func (o *CreateBankAccountResponseBody) GetCurrency() *string {
-	if o == nil {
+func (c *CreateBankAccountResponseBody) GetCurrency() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Currency
+	return c.Currency
 }
 
-func (o *CreateBankAccountResponseBody) GetType() *string {
-	if o == nil {
+func (c *CreateBankAccountResponseBody) GetType() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Type
+	return c.Type
 }
 
-func (o *CreateBankAccountResponseBody) GetEnabled() bool {
-	if o == nil {
+func (c *CreateBankAccountResponseBody) GetEnabled() bool {
+	if c == nil {
 		return false
 	}
-	return o.Enabled
+	return c.Enabled
 }
 
-func (o *CreateBankAccountResponseBody) GetBalance() *float64 {
-	if o == nil {
+func (c *CreateBankAccountResponseBody) GetBalance() *float64 {
+	if c == nil {
 		return nil
 	}
-	return o.Balance
+	return c.Balance
 }
 
-func (o *CreateBankAccountResponseBody) GetManual() *bool {
-	if o == nil {
+func (c *CreateBankAccountResponseBody) GetManual() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Manual
+	return c.Manual
 }
 
 type CreateBankAccountResponse struct {
@@ -110,16 +110,16 @@ type CreateBankAccountResponse struct {
 	Object *CreateBankAccountResponseBody
 }
 
-func (o *CreateBankAccountResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (c *CreateBankAccountResponse) GetHTTPMeta() components.HTTPMetadata {
+	if c == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return c.HTTPMeta
 }
 
-func (o *CreateBankAccountResponse) GetObject() *CreateBankAccountResponseBody {
-	if o == nil {
+func (c *CreateBankAccountResponse) GetObject() *CreateBankAccountResponseBody {
+	if c == nil {
 		return nil
 	}
-	return o.Object
+	return c.Object
 }

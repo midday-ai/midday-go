@@ -14,39 +14,39 @@ type ListDocumentsRequest struct {
 	Tags     []string `queryParam:"style=form,explode=true,name=tags"`
 }
 
-func (o *ListDocumentsRequest) GetCursor() *string {
-	if o == nil {
+func (l *ListDocumentsRequest) GetCursor() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Cursor
+	return l.Cursor
 }
 
-func (o *ListDocumentsRequest) GetSort() []string {
-	if o == nil {
+func (l *ListDocumentsRequest) GetSort() []string {
+	if l == nil {
 		return nil
 	}
-	return o.Sort
+	return l.Sort
 }
 
-func (o *ListDocumentsRequest) GetPageSize() *float64 {
-	if o == nil {
+func (l *ListDocumentsRequest) GetPageSize() *float64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListDocumentsRequest) GetQ() *string {
-	if o == nil {
+func (l *ListDocumentsRequest) GetQ() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Q
+	return l.Q
 }
 
-func (o *ListDocumentsRequest) GetTags() []string {
-	if o == nil {
+func (l *ListDocumentsRequest) GetTags() []string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListDocumentsMeta - Pagination metadata for the documents list.
@@ -59,25 +59,25 @@ type ListDocumentsMeta struct {
 	HasNextPage bool `json:"hasNextPage"`
 }
 
-func (o *ListDocumentsMeta) GetCursor() *string {
-	if o == nil {
+func (l *ListDocumentsMeta) GetCursor() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Cursor
+	return l.Cursor
 }
 
-func (o *ListDocumentsMeta) GetHasPreviousPage() bool {
-	if o == nil {
+func (l *ListDocumentsMeta) GetHasPreviousPage() bool {
+	if l == nil {
 		return false
 	}
-	return o.HasPreviousPage
+	return l.HasPreviousPage
 }
 
-func (o *ListDocumentsMeta) GetHasNextPage() bool {
-	if o == nil {
+func (l *ListDocumentsMeta) GetHasNextPage() bool {
+	if l == nil {
 		return false
 	}
-	return o.HasNextPage
+	return l.HasNextPage
 }
 
 // ListDocumentsMetadata - Metadata about the document.
@@ -88,18 +88,18 @@ type ListDocumentsMetadata struct {
 	Mimetype *string `json:"mimetype"`
 }
 
-func (o *ListDocumentsMetadata) GetSize() *float64 {
-	if o == nil {
+func (l *ListDocumentsMetadata) GetSize() *float64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListDocumentsMetadata) GetMimetype() *string {
-	if o == nil {
+func (l *ListDocumentsMetadata) GetMimetype() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Mimetype
+	return l.Mimetype
 }
 
 // ListDocumentsData - A single document object response.
@@ -120,53 +120,53 @@ type ListDocumentsData struct {
 	Date *string `json:"date"`
 }
 
-func (o *ListDocumentsData) GetID() string {
-	if o == nil {
+func (l *ListDocumentsData) GetID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ID
+	return l.ID
 }
 
-func (o *ListDocumentsData) GetTitle() *string {
-	if o == nil {
+func (l *ListDocumentsData) GetTitle() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Title
+	return l.Title
 }
 
-func (o *ListDocumentsData) GetPathTokens() []string {
-	if o == nil {
+func (l *ListDocumentsData) GetPathTokens() []string {
+	if l == nil {
 		return []string{}
 	}
-	return o.PathTokens
+	return l.PathTokens
 }
 
-func (o *ListDocumentsData) GetMetadata() *ListDocumentsMetadata {
-	if o == nil {
+func (l *ListDocumentsData) GetMetadata() *ListDocumentsMetadata {
+	if l == nil {
 		return nil
 	}
-	return o.Metadata
+	return l.Metadata
 }
 
-func (o *ListDocumentsData) GetProcessingStatus() string {
-	if o == nil {
+func (l *ListDocumentsData) GetProcessingStatus() string {
+	if l == nil {
 		return ""
 	}
-	return o.ProcessingStatus
+	return l.ProcessingStatus
 }
 
-func (o *ListDocumentsData) GetSummary() *string {
-	if o == nil {
+func (l *ListDocumentsData) GetSummary() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Summary
+	return l.Summary
 }
 
-func (o *ListDocumentsData) GetDate() *string {
-	if o == nil {
+func (l *ListDocumentsData) GetDate() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Date
+	return l.Date
 }
 
 // ListDocumentsResponseBody - Response containing a list of documents and pagination metadata.
@@ -177,18 +177,18 @@ type ListDocumentsResponseBody struct {
 	Data []ListDocumentsData `json:"data"`
 }
 
-func (o *ListDocumentsResponseBody) GetMeta() ListDocumentsMeta {
-	if o == nil {
+func (l *ListDocumentsResponseBody) GetMeta() ListDocumentsMeta {
+	if l == nil {
 		return ListDocumentsMeta{}
 	}
-	return o.Meta
+	return l.Meta
 }
 
-func (o *ListDocumentsResponseBody) GetData() []ListDocumentsData {
-	if o == nil {
+func (l *ListDocumentsResponseBody) GetData() []ListDocumentsData {
+	if l == nil {
 		return []ListDocumentsData{}
 	}
-	return o.Data
+	return l.Data
 }
 
 type ListDocumentsResponse struct {
@@ -197,16 +197,16 @@ type ListDocumentsResponse struct {
 	Object *ListDocumentsResponseBody
 }
 
-func (o *ListDocumentsResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (l *ListDocumentsResponse) GetHTTPMeta() components.HTTPMetadata {
+	if l == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return l.HTTPMeta
 }
 
-func (o *ListDocumentsResponse) GetObject() *ListDocumentsResponseBody {
-	if o == nil {
+func (l *ListDocumentsResponse) GetObject() *ListDocumentsResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

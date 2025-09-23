@@ -19,60 +19,60 @@ type ListInvoicesRequest struct {
 	Customers []string `queryParam:"style=form,explode=true,name=customers"`
 }
 
-func (o *ListInvoicesRequest) GetCursor() *string {
-	if o == nil {
+func (l *ListInvoicesRequest) GetCursor() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Cursor
+	return l.Cursor
 }
 
-func (o *ListInvoicesRequest) GetSort() []string {
-	if o == nil {
+func (l *ListInvoicesRequest) GetSort() []string {
+	if l == nil {
 		return nil
 	}
-	return o.Sort
+	return l.Sort
 }
 
-func (o *ListInvoicesRequest) GetPageSize() *float64 {
-	if o == nil {
+func (l *ListInvoicesRequest) GetPageSize() *float64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListInvoicesRequest) GetQ() *string {
-	if o == nil {
+func (l *ListInvoicesRequest) GetQ() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Q
+	return l.Q
 }
 
-func (o *ListInvoicesRequest) GetStart() *string {
-	if o == nil {
+func (l *ListInvoicesRequest) GetStart() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Start
+	return l.Start
 }
 
-func (o *ListInvoicesRequest) GetEnd() *string {
-	if o == nil {
+func (l *ListInvoicesRequest) GetEnd() *string {
+	if l == nil {
 		return nil
 	}
-	return o.End
+	return l.End
 }
 
-func (o *ListInvoicesRequest) GetStatuses() []string {
-	if o == nil {
+func (l *ListInvoicesRequest) GetStatuses() []string {
+	if l == nil {
 		return nil
 	}
-	return o.Statuses
+	return l.Statuses
 }
 
-func (o *ListInvoicesRequest) GetCustomers() []string {
-	if o == nil {
+func (l *ListInvoicesRequest) GetCustomers() []string {
+	if l == nil {
 		return nil
 	}
-	return o.Customers
+	return l.Customers
 }
 
 // ListInvoicesMeta - Pagination metadata
@@ -85,25 +85,25 @@ type ListInvoicesMeta struct {
 	HasNextPage bool `json:"hasNextPage"`
 }
 
-func (o *ListInvoicesMeta) GetCursor() *string {
-	if o == nil {
+func (l *ListInvoicesMeta) GetCursor() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Cursor
+	return l.Cursor
 }
 
-func (o *ListInvoicesMeta) GetHasPreviousPage() bool {
-	if o == nil {
+func (l *ListInvoicesMeta) GetHasPreviousPage() bool {
+	if l == nil {
 		return false
 	}
-	return o.HasPreviousPage
+	return l.HasPreviousPage
 }
 
-func (o *ListInvoicesMeta) GetHasNextPage() bool {
-	if o == nil {
+func (l *ListInvoicesMeta) GetHasNextPage() bool {
+	if l == nil {
 		return false
 	}
-	return o.HasNextPage
+	return l.HasNextPage
 }
 
 // ListInvoicesStatus - Current status of the invoice
@@ -157,32 +157,32 @@ type ListInvoicesCustomer struct {
 	Email *string `json:"email"`
 }
 
-func (o *ListInvoicesCustomer) GetID() string {
-	if o == nil {
+func (l *ListInvoicesCustomer) GetID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ID
+	return l.ID
 }
 
-func (o *ListInvoicesCustomer) GetName() string {
-	if o == nil {
+func (l *ListInvoicesCustomer) GetName() string {
+	if l == nil {
 		return ""
 	}
-	return o.Name
+	return l.Name
 }
 
-func (o *ListInvoicesCustomer) GetWebsite() *string {
-	if o == nil {
+func (l *ListInvoicesCustomer) GetWebsite() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Website
+	return l.Website
 }
 
-func (o *ListInvoicesCustomer) GetEmail() *string {
-	if o == nil {
+func (l *ListInvoicesCustomer) GetEmail() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Email
+	return l.Email
 }
 
 // ListInvoicesData - Invoice object
@@ -195,14 +195,14 @@ type ListInvoicesData struct {
 	DueDate string `json:"dueDate"`
 	// Issue date of the invoice in ISO 8601 format
 	IssueDate string `json:"issueDate"`
-	// Invoice number as shown to the customer
-	InvoiceNumber string `json:"invoiceNumber"`
+	// Invoice number as shown to the customer (auto-generated if not provided)
+	InvoiceNumber *string `json:"invoiceNumber,omitempty"`
 	// Total amount of the invoice
 	Amount float64 `json:"amount"`
 	// Currency code (ISO 4217) for the invoice amount
 	Currency string `json:"currency"`
 	// Customer details
-	Customer ListInvoicesCustomer `json:"customer"`
+	Customer *ListInvoicesCustomer `json:"customer"`
 	// Timestamp when the invoice was paid (ISO 8601), or null if unpaid
 	PaidAt *string `json:"paidAt"`
 	// Timestamp when a payment reminder was sent (ISO 8601), or null if never sent
@@ -229,153 +229,171 @@ type ListInvoicesData struct {
 	CreatedAt string `json:"createdAt"`
 	// Timestamp when the invoice was last updated (ISO 8601)
 	UpdatedAt string `json:"updatedAt"`
+	// URL to download the invoice PDF, or null if not generated
+	PdfURL *string `json:"pdfUrl"`
+	// URL to preview the invoice in the browser, or null if not generated
+	PreviewURL *string `json:"previewUrl"`
 }
 
-func (o *ListInvoicesData) GetID() string {
-	if o == nil {
+func (l *ListInvoicesData) GetID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ID
+	return l.ID
 }
 
-func (o *ListInvoicesData) GetStatus() ListInvoicesStatus {
-	if o == nil {
+func (l *ListInvoicesData) GetStatus() ListInvoicesStatus {
+	if l == nil {
 		return ListInvoicesStatus("")
 	}
-	return o.Status
+	return l.Status
 }
 
-func (o *ListInvoicesData) GetDueDate() string {
-	if o == nil {
+func (l *ListInvoicesData) GetDueDate() string {
+	if l == nil {
 		return ""
 	}
-	return o.DueDate
+	return l.DueDate
 }
 
-func (o *ListInvoicesData) GetIssueDate() string {
-	if o == nil {
+func (l *ListInvoicesData) GetIssueDate() string {
+	if l == nil {
 		return ""
 	}
-	return o.IssueDate
+	return l.IssueDate
 }
 
-func (o *ListInvoicesData) GetInvoiceNumber() string {
-	if o == nil {
-		return ""
+func (l *ListInvoicesData) GetInvoiceNumber() *string {
+	if l == nil {
+		return nil
 	}
-	return o.InvoiceNumber
+	return l.InvoiceNumber
 }
 
-func (o *ListInvoicesData) GetAmount() float64 {
-	if o == nil {
+func (l *ListInvoicesData) GetAmount() float64 {
+	if l == nil {
 		return 0.0
 	}
-	return o.Amount
+	return l.Amount
 }
 
-func (o *ListInvoicesData) GetCurrency() string {
-	if o == nil {
+func (l *ListInvoicesData) GetCurrency() string {
+	if l == nil {
 		return ""
 	}
-	return o.Currency
+	return l.Currency
 }
 
-func (o *ListInvoicesData) GetCustomer() ListInvoicesCustomer {
-	if o == nil {
-		return ListInvoicesCustomer{}
-	}
-	return o.Customer
-}
-
-func (o *ListInvoicesData) GetPaidAt() *string {
-	if o == nil {
+func (l *ListInvoicesData) GetCustomer() *ListInvoicesCustomer {
+	if l == nil {
 		return nil
 	}
-	return o.PaidAt
+	return l.Customer
 }
 
-func (o *ListInvoicesData) GetReminderSentAt() *string {
-	if o == nil {
+func (l *ListInvoicesData) GetPaidAt() *string {
+	if l == nil {
 		return nil
 	}
-	return o.ReminderSentAt
+	return l.PaidAt
 }
 
-func (o *ListInvoicesData) GetNote() *string {
-	if o == nil {
+func (l *ListInvoicesData) GetReminderSentAt() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Note
+	return l.ReminderSentAt
 }
 
-func (o *ListInvoicesData) GetVat() *float64 {
-	if o == nil {
+func (l *ListInvoicesData) GetNote() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Vat
+	return l.Note
 }
 
-func (o *ListInvoicesData) GetTax() *float64 {
-	if o == nil {
+func (l *ListInvoicesData) GetVat() *float64 {
+	if l == nil {
 		return nil
 	}
-	return o.Tax
+	return l.Vat
 }
 
-func (o *ListInvoicesData) GetDiscount() *float64 {
-	if o == nil {
+func (l *ListInvoicesData) GetTax() *float64 {
+	if l == nil {
 		return nil
 	}
-	return o.Discount
+	return l.Tax
 }
 
-func (o *ListInvoicesData) GetSubtotal() *float64 {
-	if o == nil {
+func (l *ListInvoicesData) GetDiscount() *float64 {
+	if l == nil {
 		return nil
 	}
-	return o.Subtotal
+	return l.Discount
 }
 
-func (o *ListInvoicesData) GetViewedAt() *string {
-	if o == nil {
+func (l *ListInvoicesData) GetSubtotal() *float64 {
+	if l == nil {
 		return nil
 	}
-	return o.ViewedAt
+	return l.Subtotal
 }
 
-func (o *ListInvoicesData) GetCustomerName() *string {
-	if o == nil {
+func (l *ListInvoicesData) GetViewedAt() *string {
+	if l == nil {
 		return nil
 	}
-	return o.CustomerName
+	return l.ViewedAt
 }
 
-func (o *ListInvoicesData) GetSentTo() *string {
-	if o == nil {
+func (l *ListInvoicesData) GetCustomerName() *string {
+	if l == nil {
 		return nil
 	}
-	return o.SentTo
+	return l.CustomerName
 }
 
-func (o *ListInvoicesData) GetSentAt() *string {
-	if o == nil {
+func (l *ListInvoicesData) GetSentTo() *string {
+	if l == nil {
 		return nil
 	}
-	return o.SentAt
+	return l.SentTo
 }
 
-func (o *ListInvoicesData) GetCreatedAt() string {
-	if o == nil {
+func (l *ListInvoicesData) GetSentAt() *string {
+	if l == nil {
+		return nil
+	}
+	return l.SentAt
+}
+
+func (l *ListInvoicesData) GetCreatedAt() string {
+	if l == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return l.CreatedAt
 }
 
-func (o *ListInvoicesData) GetUpdatedAt() string {
-	if o == nil {
+func (l *ListInvoicesData) GetUpdatedAt() string {
+	if l == nil {
 		return ""
 	}
-	return o.UpdatedAt
+	return l.UpdatedAt
+}
+
+func (l *ListInvoicesData) GetPdfURL() *string {
+	if l == nil {
+		return nil
+	}
+	return l.PdfURL
+}
+
+func (l *ListInvoicesData) GetPreviewURL() *string {
+	if l == nil {
+		return nil
+	}
+	return l.PreviewURL
 }
 
 // ListInvoicesResponseBody - Response containing a list of invoices and pagination metadata
@@ -386,18 +404,18 @@ type ListInvoicesResponseBody struct {
 	Data []ListInvoicesData `json:"data"`
 }
 
-func (o *ListInvoicesResponseBody) GetMeta() ListInvoicesMeta {
-	if o == nil {
+func (l *ListInvoicesResponseBody) GetMeta() ListInvoicesMeta {
+	if l == nil {
 		return ListInvoicesMeta{}
 	}
-	return o.Meta
+	return l.Meta
 }
 
-func (o *ListInvoicesResponseBody) GetData() []ListInvoicesData {
-	if o == nil {
+func (l *ListInvoicesResponseBody) GetData() []ListInvoicesData {
+	if l == nil {
 		return []ListInvoicesData{}
 	}
-	return o.Data
+	return l.Data
 }
 
 type ListInvoicesResponse struct {
@@ -406,16 +424,16 @@ type ListInvoicesResponse struct {
 	Object *ListInvoicesResponseBody
 }
 
-func (o *ListInvoicesResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (l *ListInvoicesResponse) GetHTTPMeta() components.HTTPMetadata {
+	if l == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return l.HTTPMeta
 }
 
-func (o *ListInvoicesResponse) GetObject() *ListInvoicesResponseBody {
-	if o == nil {
+func (l *ListInvoicesResponse) GetObject() *ListInvoicesResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

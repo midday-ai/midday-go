@@ -38,16 +38,16 @@ type RevenueMeta struct {
 	Currency string `json:"currency"`
 }
 
-func (o *RevenueMeta) GetType() RevenueMetaType {
-	if o == nil {
+func (r *RevenueMeta) GetType() RevenueMetaType {
+	if r == nil {
 		return RevenueMetaType("")
 	}
-	return o.Type
+	return r.Type
 }
 
-func (o *RevenueMeta) GetCurrency() string {
-	if o == nil {
+func (r *RevenueMeta) GetCurrency() string {
+	if r == nil {
 		return ""
 	}
-	return o.Currency
+	return r.Currency
 }

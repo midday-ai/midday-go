@@ -38,16 +38,16 @@ type ProfitMeta struct {
 	Currency string `json:"currency"`
 }
 
-func (o *ProfitMeta) GetType() ProfitMetaType {
-	if o == nil {
+func (p *ProfitMeta) GetType() ProfitMetaType {
+	if p == nil {
 		return ProfitMetaType("")
 	}
-	return o.Type
+	return p.Type
 }
 
-func (o *ProfitMeta) GetCurrency() string {
-	if o == nil {
+func (p *ProfitMeta) GetCurrency() string {
+	if p == nil {
 		return ""
 	}
-	return o.Currency
+	return p.Currency
 }

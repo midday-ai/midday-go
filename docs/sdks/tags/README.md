@@ -23,6 +23,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -31,7 +33,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Tags.List(ctx)
@@ -73,8 +77,9 @@ package main
 
 import(
 	"context"
-	middaygo "github.com/midday-ai/midday-go"
+	"os"
 	"github.com/midday-ai/midday-go/models/components"
+	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
 
@@ -82,7 +87,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Tags.Create(ctx, &components.CreateTag{
@@ -127,6 +134,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -135,7 +144,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Tags.Get(ctx, "b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f")
@@ -178,6 +189,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -186,7 +199,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Tags.Delete(ctx, "b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f")
@@ -229,6 +244,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/models/operations"
 	"log"
@@ -238,7 +255,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Tags.Update(ctx, "b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f", &operations.UpdateTagRequestBody{

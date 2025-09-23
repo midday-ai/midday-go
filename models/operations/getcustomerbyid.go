@@ -10,11 +10,11 @@ type GetCustomerByIDRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
-func (o *GetCustomerByIDRequest) GetID() string {
-	if o == nil {
+func (g *GetCustomerByIDRequest) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
 type GetCustomerByIDTag struct {
@@ -24,18 +24,18 @@ type GetCustomerByIDTag struct {
 	Name string `json:"name"`
 }
 
-func (o *GetCustomerByIDTag) GetID() string {
-	if o == nil {
+func (g *GetCustomerByIDTag) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GetCustomerByIDTag) GetName() string {
-	if o == nil {
+func (g *GetCustomerByIDTag) GetName() string {
+	if g == nil {
 		return ""
 	}
-	return o.Name
+	return g.Name
 }
 
 // GetCustomerByIDResponseBody - Retrieve a customer by ID for the authenticated team.
@@ -84,151 +84,151 @@ type GetCustomerByIDResponseBody struct {
 	Tags []GetCustomerByIDTag `json:"tags"`
 }
 
-func (o *GetCustomerByIDResponseBody) GetID() string {
-	if o == nil {
+func (g *GetCustomerByIDResponseBody) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GetCustomerByIDResponseBody) GetName() string {
-	if o == nil {
+func (g *GetCustomerByIDResponseBody) GetName() string {
+	if g == nil {
 		return ""
 	}
-	return o.Name
+	return g.Name
 }
 
-func (o *GetCustomerByIDResponseBody) GetEmail() string {
-	if o == nil {
+func (g *GetCustomerByIDResponseBody) GetEmail() string {
+	if g == nil {
 		return ""
 	}
-	return o.Email
+	return g.Email
 }
 
-func (o *GetCustomerByIDResponseBody) GetBillingEmail() *string {
-	if o == nil {
+func (g *GetCustomerByIDResponseBody) GetBillingEmail() *string {
+	if g == nil {
 		return nil
 	}
-	return o.BillingEmail
+	return g.BillingEmail
 }
 
-func (o *GetCustomerByIDResponseBody) GetPhone() *string {
-	if o == nil {
+func (g *GetCustomerByIDResponseBody) GetPhone() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Phone
+	return g.Phone
 }
 
-func (o *GetCustomerByIDResponseBody) GetWebsite() *string {
-	if o == nil {
+func (g *GetCustomerByIDResponseBody) GetWebsite() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Website
+	return g.Website
 }
 
-func (o *GetCustomerByIDResponseBody) GetCreatedAt() string {
-	if o == nil {
+func (g *GetCustomerByIDResponseBody) GetCreatedAt() string {
+	if g == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return g.CreatedAt
 }
 
-func (o *GetCustomerByIDResponseBody) GetCountry() *string {
-	if o == nil {
+func (g *GetCustomerByIDResponseBody) GetCountry() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Country
+	return g.Country
 }
 
-func (o *GetCustomerByIDResponseBody) GetAddressLine1() *string {
-	if o == nil {
+func (g *GetCustomerByIDResponseBody) GetAddressLine1() *string {
+	if g == nil {
 		return nil
 	}
-	return o.AddressLine1
+	return g.AddressLine1
 }
 
-func (o *GetCustomerByIDResponseBody) GetAddressLine2() *string {
-	if o == nil {
+func (g *GetCustomerByIDResponseBody) GetAddressLine2() *string {
+	if g == nil {
 		return nil
 	}
-	return o.AddressLine2
+	return g.AddressLine2
 }
 
-func (o *GetCustomerByIDResponseBody) GetCity() *string {
-	if o == nil {
+func (g *GetCustomerByIDResponseBody) GetCity() *string {
+	if g == nil {
 		return nil
 	}
-	return o.City
+	return g.City
 }
 
-func (o *GetCustomerByIDResponseBody) GetState() *string {
-	if o == nil {
+func (g *GetCustomerByIDResponseBody) GetState() *string {
+	if g == nil {
 		return nil
 	}
-	return o.State
+	return g.State
 }
 
-func (o *GetCustomerByIDResponseBody) GetZip() *string {
-	if o == nil {
+func (g *GetCustomerByIDResponseBody) GetZip() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Zip
+	return g.Zip
 }
 
-func (o *GetCustomerByIDResponseBody) GetNote() *string {
-	if o == nil {
+func (g *GetCustomerByIDResponseBody) GetNote() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Note
+	return g.Note
 }
 
-func (o *GetCustomerByIDResponseBody) GetVatNumber() *string {
-	if o == nil {
+func (g *GetCustomerByIDResponseBody) GetVatNumber() *string {
+	if g == nil {
 		return nil
 	}
-	return o.VatNumber
+	return g.VatNumber
 }
 
-func (o *GetCustomerByIDResponseBody) GetCountryCode() *string {
-	if o == nil {
+func (g *GetCustomerByIDResponseBody) GetCountryCode() *string {
+	if g == nil {
 		return nil
 	}
-	return o.CountryCode
+	return g.CountryCode
 }
 
-func (o *GetCustomerByIDResponseBody) GetToken() string {
-	if o == nil {
+func (g *GetCustomerByIDResponseBody) GetToken() string {
+	if g == nil {
 		return ""
 	}
-	return o.Token
+	return g.Token
 }
 
-func (o *GetCustomerByIDResponseBody) GetContact() *string {
-	if o == nil {
+func (g *GetCustomerByIDResponseBody) GetContact() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Contact
+	return g.Contact
 }
 
-func (o *GetCustomerByIDResponseBody) GetInvoiceCount() float64 {
-	if o == nil {
+func (g *GetCustomerByIDResponseBody) GetInvoiceCount() float64 {
+	if g == nil {
 		return 0.0
 	}
-	return o.InvoiceCount
+	return g.InvoiceCount
 }
 
-func (o *GetCustomerByIDResponseBody) GetProjectCount() float64 {
-	if o == nil {
+func (g *GetCustomerByIDResponseBody) GetProjectCount() float64 {
+	if g == nil {
 		return 0.0
 	}
-	return o.ProjectCount
+	return g.ProjectCount
 }
 
-func (o *GetCustomerByIDResponseBody) GetTags() []GetCustomerByIDTag {
-	if o == nil {
+func (g *GetCustomerByIDResponseBody) GetTags() []GetCustomerByIDTag {
+	if g == nil {
 		return []GetCustomerByIDTag{}
 	}
-	return o.Tags
+	return g.Tags
 }
 
 type GetCustomerByIDResponse struct {
@@ -237,16 +237,16 @@ type GetCustomerByIDResponse struct {
 	Object *GetCustomerByIDResponseBody
 }
 
-func (o *GetCustomerByIDResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (g *GetCustomerByIDResponse) GetHTTPMeta() components.HTTPMetadata {
+	if g == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return g.HTTPMeta
 }
 
-func (o *GetCustomerByIDResponse) GetObject() *GetCustomerByIDResponseBody {
-	if o == nil {
+func (g *GetCustomerByIDResponse) GetObject() *GetCustomerByIDResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object
+	return g.Object
 }

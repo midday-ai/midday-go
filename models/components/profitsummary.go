@@ -11,23 +11,23 @@ type ProfitSummary struct {
 	Currency string `json:"currency"`
 }
 
-func (o *ProfitSummary) GetCurrentTotal() float64 {
-	if o == nil {
+func (p *ProfitSummary) GetCurrentTotal() float64 {
+	if p == nil {
 		return 0.0
 	}
-	return o.CurrentTotal
+	return p.CurrentTotal
 }
 
-func (o *ProfitSummary) GetPrevTotal() float64 {
-	if o == nil {
+func (p *ProfitSummary) GetPrevTotal() float64 {
+	if p == nil {
 		return 0.0
 	}
-	return o.PrevTotal
+	return p.PrevTotal
 }
 
-func (o *ProfitSummary) GetCurrency() string {
-	if o == nil {
+func (p *ProfitSummary) GetCurrency() string {
+	if p == nil {
 		return ""
 	}
-	return o.Currency
+	return p.Currency
 }

@@ -41,16 +41,16 @@ type RevenuePercentage struct {
 	Status RevenuePercentageStatus `json:"status"`
 }
 
-func (o *RevenuePercentage) GetValue() float64 {
-	if o == nil {
+func (r *RevenuePercentage) GetValue() float64 {
+	if r == nil {
 		return 0.0
 	}
-	return o.Value
+	return r.Value
 }
 
-func (o *RevenuePercentage) GetStatus() RevenuePercentageStatus {
-	if o == nil {
+func (r *RevenuePercentage) GetStatus() RevenuePercentageStatus {
+	if r == nil {
 		return RevenuePercentageStatus("")
 	}
-	return o.Status
+	return r.Status
 }

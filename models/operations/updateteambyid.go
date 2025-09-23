@@ -21,39 +21,39 @@ type UpdateTeamByIDRequestBody struct {
 	CountryCode *string `json:"countryCode,omitempty"`
 }
 
-func (o *UpdateTeamByIDRequestBody) GetName() *string {
-	if o == nil {
+func (u *UpdateTeamByIDRequestBody) GetName() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Name
+	return u.Name
 }
 
-func (o *UpdateTeamByIDRequestBody) GetEmail() *string {
-	if o == nil {
+func (u *UpdateTeamByIDRequestBody) GetEmail() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Email
+	return u.Email
 }
 
-func (o *UpdateTeamByIDRequestBody) GetLogoURL() *string {
-	if o == nil {
+func (u *UpdateTeamByIDRequestBody) GetLogoURL() *string {
+	if u == nil {
 		return nil
 	}
-	return o.LogoURL
+	return u.LogoURL
 }
 
-func (o *UpdateTeamByIDRequestBody) GetBaseCurrency() *string {
-	if o == nil {
+func (u *UpdateTeamByIDRequestBody) GetBaseCurrency() *string {
+	if u == nil {
 		return nil
 	}
-	return o.BaseCurrency
+	return u.BaseCurrency
 }
 
-func (o *UpdateTeamByIDRequestBody) GetCountryCode() *string {
-	if o == nil {
+func (u *UpdateTeamByIDRequestBody) GetCountryCode() *string {
+	if u == nil {
 		return nil
 	}
-	return o.CountryCode
+	return u.CountryCode
 }
 
 type UpdateTeamByIDRequest struct {
@@ -61,18 +61,18 @@ type UpdateTeamByIDRequest struct {
 	RequestBody *UpdateTeamByIDRequestBody `request:"mediaType=application/json"`
 }
 
-func (o *UpdateTeamByIDRequest) GetID() string {
-	if o == nil {
+func (u *UpdateTeamByIDRequest) GetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UpdateTeamByIDRequest) GetRequestBody() *UpdateTeamByIDRequestBody {
-	if o == nil {
+func (u *UpdateTeamByIDRequest) GetRequestBody() *UpdateTeamByIDRequestBody {
+	if u == nil {
 		return nil
 	}
-	return o.RequestBody
+	return u.RequestBody
 }
 
 // UpdateTeamByIDPlan - Current subscription plan of the team
@@ -117,32 +117,32 @@ type UpdateTeamByIDResponseBody struct {
 	Plan UpdateTeamByIDPlan `json:"plan"`
 }
 
-func (o *UpdateTeamByIDResponseBody) GetID() string {
-	if o == nil {
+func (u *UpdateTeamByIDResponseBody) GetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UpdateTeamByIDResponseBody) GetName() string {
-	if o == nil {
+func (u *UpdateTeamByIDResponseBody) GetName() string {
+	if u == nil {
 		return ""
 	}
-	return o.Name
+	return u.Name
 }
 
-func (o *UpdateTeamByIDResponseBody) GetLogoURL() *string {
-	if o == nil {
+func (u *UpdateTeamByIDResponseBody) GetLogoURL() *string {
+	if u == nil {
 		return nil
 	}
-	return o.LogoURL
+	return u.LogoURL
 }
 
-func (o *UpdateTeamByIDResponseBody) GetPlan() UpdateTeamByIDPlan {
-	if o == nil {
+func (u *UpdateTeamByIDResponseBody) GetPlan() UpdateTeamByIDPlan {
+	if u == nil {
 		return UpdateTeamByIDPlan("")
 	}
-	return o.Plan
+	return u.Plan
 }
 
 type UpdateTeamByIDResponse struct {
@@ -151,16 +151,16 @@ type UpdateTeamByIDResponse struct {
 	Object *UpdateTeamByIDResponseBody
 }
 
-func (o *UpdateTeamByIDResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (u *UpdateTeamByIDResponse) GetHTTPMeta() components.HTTPMetadata {
+	if u == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return u.HTTPMeta
 }
 
-func (o *UpdateTeamByIDResponse) GetObject() *UpdateTeamByIDResponseBody {
-	if o == nil {
+func (u *UpdateTeamByIDResponse) GetObject() *UpdateTeamByIDResponseBody {
+	if u == nil {
 		return nil
 	}
-	return o.Object
+	return u.Object
 }

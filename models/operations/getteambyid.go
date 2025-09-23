@@ -12,11 +12,11 @@ type GetTeamByIDRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
-func (o *GetTeamByIDRequest) GetID() string {
-	if o == nil {
+func (g *GetTeamByIDRequest) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
 // GetTeamByIDPlan - Current subscription plan of the team
@@ -61,32 +61,32 @@ type GetTeamByIDResponseBody struct {
 	Plan GetTeamByIDPlan `json:"plan"`
 }
 
-func (o *GetTeamByIDResponseBody) GetID() string {
-	if o == nil {
+func (g *GetTeamByIDResponseBody) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GetTeamByIDResponseBody) GetName() string {
-	if o == nil {
+func (g *GetTeamByIDResponseBody) GetName() string {
+	if g == nil {
 		return ""
 	}
-	return o.Name
+	return g.Name
 }
 
-func (o *GetTeamByIDResponseBody) GetLogoURL() *string {
-	if o == nil {
+func (g *GetTeamByIDResponseBody) GetLogoURL() *string {
+	if g == nil {
 		return nil
 	}
-	return o.LogoURL
+	return g.LogoURL
 }
 
-func (o *GetTeamByIDResponseBody) GetPlan() GetTeamByIDPlan {
-	if o == nil {
+func (g *GetTeamByIDResponseBody) GetPlan() GetTeamByIDPlan {
+	if g == nil {
 		return GetTeamByIDPlan("")
 	}
-	return o.Plan
+	return g.Plan
 }
 
 type GetTeamByIDResponse struct {
@@ -95,16 +95,16 @@ type GetTeamByIDResponse struct {
 	Object *GetTeamByIDResponseBody
 }
 
-func (o *GetTeamByIDResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (g *GetTeamByIDResponse) GetHTTPMeta() components.HTTPMetadata {
+	if g == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return g.HTTPMeta
 }
 
-func (o *GetTeamByIDResponse) GetObject() *GetTeamByIDResponseBody {
-	if o == nil {
+func (g *GetTeamByIDResponse) GetObject() *GetTeamByIDResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object
+	return g.Object
 }

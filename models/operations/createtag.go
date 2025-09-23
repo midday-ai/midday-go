@@ -12,16 +12,16 @@ type CreateTagResponse struct {
 	TagsResponse *components.TagsResponse
 }
 
-func (o *CreateTagResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (c *CreateTagResponse) GetHTTPMeta() components.HTTPMetadata {
+	if c == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return c.HTTPMeta
 }
 
-func (o *CreateTagResponse) GetTagsResponse() *components.TagsResponse {
-	if o == nil {
+func (c *CreateTagResponse) GetTagsResponse() *components.TagsResponse {
+	if c == nil {
 		return nil
 	}
-	return o.TagsResponse
+	return c.TagsResponse
 }

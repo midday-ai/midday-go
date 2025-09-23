@@ -15,8 +15,8 @@ type Entry struct {
 	Stop time.Time `json:"stop"`
 	// Array of dates for which to create tracker entries
 	Dates []string `json:"dates"`
-	// Unique identifier of the user assigned to this tracker entry
-	AssignedID *string `json:"assignedId"`
+	// Unique identifier of the user assigned to this tracker entry. If not provided, will use the authenticated user
+	AssignedID *string `json:"assignedId,omitempty"`
 	// Unique identifier of the project associated with this tracker entry
 	ProjectID string `json:"projectId"`
 	// Optional description or notes for the tracker entry
@@ -30,59 +30,59 @@ func (e Entry) MarshalJSON() ([]byte, error) {
 }
 
 func (e *Entry) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"start", "stop", "dates", "projectId", "duration"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Entry) GetStart() time.Time {
-	if o == nil {
+func (e *Entry) GetStart() time.Time {
+	if e == nil {
 		return time.Time{}
 	}
-	return o.Start
+	return e.Start
 }
 
-func (o *Entry) GetStop() time.Time {
-	if o == nil {
+func (e *Entry) GetStop() time.Time {
+	if e == nil {
 		return time.Time{}
 	}
-	return o.Stop
+	return e.Stop
 }
 
-func (o *Entry) GetDates() []string {
-	if o == nil {
+func (e *Entry) GetDates() []string {
+	if e == nil {
 		return []string{}
 	}
-	return o.Dates
+	return e.Dates
 }
 
-func (o *Entry) GetAssignedID() *string {
-	if o == nil {
+func (e *Entry) GetAssignedID() *string {
+	if e == nil {
 		return nil
 	}
-	return o.AssignedID
+	return e.AssignedID
 }
 
-func (o *Entry) GetProjectID() string {
-	if o == nil {
+func (e *Entry) GetProjectID() string {
+	if e == nil {
 		return ""
 	}
-	return o.ProjectID
+	return e.ProjectID
 }
 
-func (o *Entry) GetDescription() *string {
-	if o == nil {
+func (e *Entry) GetDescription() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Description
+	return e.Description
 }
 
-func (o *Entry) GetDuration() float64 {
-	if o == nil {
+func (e *Entry) GetDuration() float64 {
+	if e == nil {
 		return 0.0
 	}
-	return o.Duration
+	return e.Duration
 }
 
 type CreateTrackerEntriesBulkRequest struct {
@@ -90,11 +90,11 @@ type CreateTrackerEntriesBulkRequest struct {
 	Entries []Entry `json:"entries"`
 }
 
-func (o *CreateTrackerEntriesBulkRequest) GetEntries() []Entry {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkRequest) GetEntries() []Entry {
+	if c == nil {
 		return []Entry{}
 	}
-	return o.Entries
+	return c.Entries
 }
 
 // CreateTrackerEntriesBulkUser - User information for the person who created this tracker entry
@@ -107,25 +107,25 @@ type CreateTrackerEntriesBulkUser struct {
 	AvatarURL string `json:"avatarUrl"`
 }
 
-func (o *CreateTrackerEntriesBulkUser) GetID() string {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkUser) GetID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ID
+	return c.ID
 }
 
-func (o *CreateTrackerEntriesBulkUser) GetFullName() string {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkUser) GetFullName() string {
+	if c == nil {
 		return ""
 	}
-	return o.FullName
+	return c.FullName
 }
 
-func (o *CreateTrackerEntriesBulkUser) GetAvatarURL() string {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkUser) GetAvatarURL() string {
+	if c == nil {
 		return ""
 	}
-	return o.AvatarURL
+	return c.AvatarURL
 }
 
 // CreateTrackerEntriesBulkCustomer - Customer information associated with the project
@@ -136,18 +136,18 @@ type CreateTrackerEntriesBulkCustomer struct {
 	Name string `json:"name"`
 }
 
-func (o *CreateTrackerEntriesBulkCustomer) GetID() string {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkCustomer) GetID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ID
+	return c.ID
 }
 
-func (o *CreateTrackerEntriesBulkCustomer) GetName() string {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkCustomer) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
 }
 
 // CreateTrackerEntriesBulkProject - Project information associated with this tracker entry
@@ -174,74 +174,74 @@ type CreateTrackerEntriesBulkProject struct {
 	Customer *CreateTrackerEntriesBulkCustomer `json:"customer"`
 }
 
-func (o *CreateTrackerEntriesBulkProject) GetID() string {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkProject) GetID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ID
+	return c.ID
 }
 
-func (o *CreateTrackerEntriesBulkProject) GetCreatedAt() string {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkProject) GetCreatedAt() string {
+	if c == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return c.CreatedAt
 }
 
-func (o *CreateTrackerEntriesBulkProject) GetRate() *float64 {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkProject) GetRate() *float64 {
+	if c == nil {
 		return nil
 	}
-	return o.Rate
+	return c.Rate
 }
 
-func (o *CreateTrackerEntriesBulkProject) GetCurrency() *string {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkProject) GetCurrency() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Currency
+	return c.Currency
 }
 
-func (o *CreateTrackerEntriesBulkProject) GetStatus() string {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkProject) GetStatus() string {
+	if c == nil {
 		return ""
 	}
-	return o.Status
+	return c.Status
 }
 
-func (o *CreateTrackerEntriesBulkProject) GetDescription() *string {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkProject) GetDescription() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Description
+	return c.Description
 }
 
-func (o *CreateTrackerEntriesBulkProject) GetName() string {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkProject) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
 }
 
-func (o *CreateTrackerEntriesBulkProject) GetBillable() *bool {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkProject) GetBillable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Billable
+	return c.Billable
 }
 
-func (o *CreateTrackerEntriesBulkProject) GetEstimate() *float64 {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkProject) GetEstimate() *float64 {
+	if c == nil {
 		return nil
 	}
-	return o.Estimate
+	return c.Estimate
 }
 
-func (o *CreateTrackerEntriesBulkProject) GetCustomer() *CreateTrackerEntriesBulkCustomer {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkProject) GetCustomer() *CreateTrackerEntriesBulkCustomer {
+	if c == nil {
 		return nil
 	}
-	return o.Customer
+	return c.Customer
 }
 
 type CreateTrackerEntriesBulkData struct {
@@ -273,95 +273,95 @@ type CreateTrackerEntriesBulkData struct {
 	Project CreateTrackerEntriesBulkProject `json:"project"`
 }
 
-func (o *CreateTrackerEntriesBulkData) GetID() string {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkData) GetID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ID
+	return c.ID
 }
 
-func (o *CreateTrackerEntriesBulkData) GetCreatedAt() string {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkData) GetCreatedAt() string {
+	if c == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return c.CreatedAt
 }
 
-func (o *CreateTrackerEntriesBulkData) GetDuration() float64 {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkData) GetDuration() float64 {
+	if c == nil {
 		return 0.0
 	}
-	return o.Duration
+	return c.Duration
 }
 
-func (o *CreateTrackerEntriesBulkData) GetStart() string {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkData) GetStart() string {
+	if c == nil {
 		return ""
 	}
-	return o.Start
+	return c.Start
 }
 
-func (o *CreateTrackerEntriesBulkData) GetStop() string {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkData) GetStop() string {
+	if c == nil {
 		return ""
 	}
-	return o.Stop
+	return c.Stop
 }
 
-func (o *CreateTrackerEntriesBulkData) GetTeamID() string {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkData) GetTeamID() string {
+	if c == nil {
 		return ""
 	}
-	return o.TeamID
+	return c.TeamID
 }
 
-func (o *CreateTrackerEntriesBulkData) GetDescription() *string {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkData) GetDescription() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Description
+	return c.Description
 }
 
-func (o *CreateTrackerEntriesBulkData) GetRate() *float64 {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkData) GetRate() *float64 {
+	if c == nil {
 		return nil
 	}
-	return o.Rate
+	return c.Rate
 }
 
-func (o *CreateTrackerEntriesBulkData) GetCurrency() *string {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkData) GetCurrency() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Currency
+	return c.Currency
 }
 
-func (o *CreateTrackerEntriesBulkData) GetBilled() bool {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkData) GetBilled() bool {
+	if c == nil {
 		return false
 	}
-	return o.Billed
+	return c.Billed
 }
 
-func (o *CreateTrackerEntriesBulkData) GetDate() string {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkData) GetDate() string {
+	if c == nil {
 		return ""
 	}
-	return o.Date
+	return c.Date
 }
 
-func (o *CreateTrackerEntriesBulkData) GetUser() CreateTrackerEntriesBulkUser {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkData) GetUser() CreateTrackerEntriesBulkUser {
+	if c == nil {
 		return CreateTrackerEntriesBulkUser{}
 	}
-	return o.User
+	return c.User
 }
 
-func (o *CreateTrackerEntriesBulkData) GetProject() CreateTrackerEntriesBulkProject {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkData) GetProject() CreateTrackerEntriesBulkProject {
+	if c == nil {
 		return CreateTrackerEntriesBulkProject{}
 	}
-	return o.Project
+	return c.Project
 }
 
 // CreateTrackerEntriesBulkResponseBody - Response schema for created tracker entries
@@ -370,11 +370,11 @@ type CreateTrackerEntriesBulkResponseBody struct {
 	Data []CreateTrackerEntriesBulkData `json:"data"`
 }
 
-func (o *CreateTrackerEntriesBulkResponseBody) GetData() []CreateTrackerEntriesBulkData {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkResponseBody) GetData() []CreateTrackerEntriesBulkData {
+	if c == nil {
 		return []CreateTrackerEntriesBulkData{}
 	}
-	return o.Data
+	return c.Data
 }
 
 type CreateTrackerEntriesBulkResponse struct {
@@ -383,16 +383,16 @@ type CreateTrackerEntriesBulkResponse struct {
 	Object *CreateTrackerEntriesBulkResponseBody
 }
 
-func (o *CreateTrackerEntriesBulkResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkResponse) GetHTTPMeta() components.HTTPMetadata {
+	if c == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return c.HTTPMeta
 }
 
-func (o *CreateTrackerEntriesBulkResponse) GetObject() *CreateTrackerEntriesBulkResponseBody {
-	if o == nil {
+func (c *CreateTrackerEntriesBulkResponse) GetObject() *CreateTrackerEntriesBulkResponseBody {
+	if c == nil {
 		return nil
 	}
-	return o.Object
+	return c.Object
 }

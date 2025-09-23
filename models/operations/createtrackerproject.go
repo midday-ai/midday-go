@@ -43,18 +43,18 @@ type CreateTrackerProjectTag struct {
 	Value string `json:"value"`
 }
 
-func (o *CreateTrackerProjectTag) GetID() string {
-	if o == nil {
+func (c *CreateTrackerProjectTag) GetID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ID
+	return c.ID
 }
 
-func (o *CreateTrackerProjectTag) GetValue() string {
-	if o == nil {
+func (c *CreateTrackerProjectTag) GetValue() string {
+	if c == nil {
 		return ""
 	}
-	return o.Value
+	return c.Value
 }
 
 // CreateTrackerProjectRequest - Tracker project to create
@@ -84,73 +84,73 @@ func (c CreateTrackerProjectRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CreateTrackerProjectRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"name"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateTrackerProjectRequest) GetName() string {
-	if o == nil {
+func (c *CreateTrackerProjectRequest) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
 }
 
-func (o *CreateTrackerProjectRequest) GetDescription() *string {
-	if o == nil {
+func (c *CreateTrackerProjectRequest) GetDescription() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Description
+	return c.Description
 }
 
-func (o *CreateTrackerProjectRequest) GetEstimate() *float64 {
-	if o == nil {
+func (c *CreateTrackerProjectRequest) GetEstimate() *float64 {
+	if c == nil {
 		return nil
 	}
-	return o.Estimate
+	return c.Estimate
 }
 
-func (o *CreateTrackerProjectRequest) GetBillable() *bool {
-	if o == nil {
+func (c *CreateTrackerProjectRequest) GetBillable() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Billable
+	return c.Billable
 }
 
-func (o *CreateTrackerProjectRequest) GetRate() *float64 {
-	if o == nil {
+func (c *CreateTrackerProjectRequest) GetRate() *float64 {
+	if c == nil {
 		return nil
 	}
-	return o.Rate
+	return c.Rate
 }
 
-func (o *CreateTrackerProjectRequest) GetCurrency() *string {
-	if o == nil {
+func (c *CreateTrackerProjectRequest) GetCurrency() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Currency
+	return c.Currency
 }
 
-func (o *CreateTrackerProjectRequest) GetStatus() *CreateTrackerProjectStatus {
-	if o == nil {
+func (c *CreateTrackerProjectRequest) GetStatus() *CreateTrackerProjectStatus {
+	if c == nil {
 		return nil
 	}
-	return o.Status
+	return c.Status
 }
 
-func (o *CreateTrackerProjectRequest) GetCustomerID() *string {
-	if o == nil {
+func (c *CreateTrackerProjectRequest) GetCustomerID() *string {
+	if c == nil {
 		return nil
 	}
-	return o.CustomerID
+	return c.CustomerID
 }
 
-func (o *CreateTrackerProjectRequest) GetTags() []CreateTrackerProjectTag {
-	if o == nil {
+func (c *CreateTrackerProjectRequest) GetTags() []CreateTrackerProjectTag {
+	if c == nil {
 		return nil
 	}
-	return o.Tags
+	return c.Tags
 }
 
 type CreateTrackerProjectResponse struct {
@@ -159,16 +159,16 @@ type CreateTrackerProjectResponse struct {
 	TrackerProjectResponse *components.TrackerProjectResponse
 }
 
-func (o *CreateTrackerProjectResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (c *CreateTrackerProjectResponse) GetHTTPMeta() components.HTTPMetadata {
+	if c == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return c.HTTPMeta
 }
 
-func (o *CreateTrackerProjectResponse) GetTrackerProjectResponse() *components.TrackerProjectResponse {
-	if o == nil {
+func (c *CreateTrackerProjectResponse) GetTrackerProjectResponse() *components.TrackerProjectResponse {
+	if c == nil {
 		return nil
 	}
-	return o.TrackerProjectResponse
+	return c.TrackerProjectResponse
 }

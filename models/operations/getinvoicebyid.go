@@ -12,11 +12,11 @@ type GetInvoiceByIDRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
-func (o *GetInvoiceByIDRequest) GetID() string {
-	if o == nil {
+func (g *GetInvoiceByIDRequest) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
 // GetInvoiceByIDStatus - Current status of the invoice
@@ -70,32 +70,32 @@ type GetInvoiceByIDCustomer struct {
 	Email *string `json:"email"`
 }
 
-func (o *GetInvoiceByIDCustomer) GetID() string {
-	if o == nil {
+func (g *GetInvoiceByIDCustomer) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GetInvoiceByIDCustomer) GetName() string {
-	if o == nil {
+func (g *GetInvoiceByIDCustomer) GetName() string {
+	if g == nil {
 		return ""
 	}
-	return o.Name
+	return g.Name
 }
 
-func (o *GetInvoiceByIDCustomer) GetWebsite() *string {
-	if o == nil {
+func (g *GetInvoiceByIDCustomer) GetWebsite() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Website
+	return g.Website
 }
 
-func (o *GetInvoiceByIDCustomer) GetEmail() *string {
-	if o == nil {
+func (g *GetInvoiceByIDCustomer) GetEmail() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Email
+	return g.Email
 }
 
 // GetInvoiceByIDResponseBody - Invoice object
@@ -108,14 +108,14 @@ type GetInvoiceByIDResponseBody struct {
 	DueDate string `json:"dueDate"`
 	// Issue date of the invoice in ISO 8601 format
 	IssueDate string `json:"issueDate"`
-	// Invoice number as shown to the customer
-	InvoiceNumber string `json:"invoiceNumber"`
+	// Invoice number as shown to the customer (auto-generated if not provided)
+	InvoiceNumber *string `json:"invoiceNumber,omitempty"`
 	// Total amount of the invoice
 	Amount float64 `json:"amount"`
 	// Currency code (ISO 4217) for the invoice amount
 	Currency string `json:"currency"`
 	// Customer details
-	Customer GetInvoiceByIDCustomer `json:"customer"`
+	Customer *GetInvoiceByIDCustomer `json:"customer"`
 	// Timestamp when the invoice was paid (ISO 8601), or null if unpaid
 	PaidAt *string `json:"paidAt"`
 	// Timestamp when a payment reminder was sent (ISO 8601), or null if never sent
@@ -142,153 +142,171 @@ type GetInvoiceByIDResponseBody struct {
 	CreatedAt string `json:"createdAt"`
 	// Timestamp when the invoice was last updated (ISO 8601)
 	UpdatedAt string `json:"updatedAt"`
+	// URL to download the invoice PDF, or null if not generated
+	PdfURL *string `json:"pdfUrl"`
+	// URL to preview the invoice in the browser, or null if not generated
+	PreviewURL *string `json:"previewUrl"`
 }
 
-func (o *GetInvoiceByIDResponseBody) GetID() string {
-	if o == nil {
+func (g *GetInvoiceByIDResponseBody) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GetInvoiceByIDResponseBody) GetStatus() GetInvoiceByIDStatus {
-	if o == nil {
+func (g *GetInvoiceByIDResponseBody) GetStatus() GetInvoiceByIDStatus {
+	if g == nil {
 		return GetInvoiceByIDStatus("")
 	}
-	return o.Status
+	return g.Status
 }
 
-func (o *GetInvoiceByIDResponseBody) GetDueDate() string {
-	if o == nil {
+func (g *GetInvoiceByIDResponseBody) GetDueDate() string {
+	if g == nil {
 		return ""
 	}
-	return o.DueDate
+	return g.DueDate
 }
 
-func (o *GetInvoiceByIDResponseBody) GetIssueDate() string {
-	if o == nil {
+func (g *GetInvoiceByIDResponseBody) GetIssueDate() string {
+	if g == nil {
 		return ""
 	}
-	return o.IssueDate
+	return g.IssueDate
 }
 
-func (o *GetInvoiceByIDResponseBody) GetInvoiceNumber() string {
-	if o == nil {
-		return ""
+func (g *GetInvoiceByIDResponseBody) GetInvoiceNumber() *string {
+	if g == nil {
+		return nil
 	}
-	return o.InvoiceNumber
+	return g.InvoiceNumber
 }
 
-func (o *GetInvoiceByIDResponseBody) GetAmount() float64 {
-	if o == nil {
+func (g *GetInvoiceByIDResponseBody) GetAmount() float64 {
+	if g == nil {
 		return 0.0
 	}
-	return o.Amount
+	return g.Amount
 }
 
-func (o *GetInvoiceByIDResponseBody) GetCurrency() string {
-	if o == nil {
+func (g *GetInvoiceByIDResponseBody) GetCurrency() string {
+	if g == nil {
 		return ""
 	}
-	return o.Currency
+	return g.Currency
 }
 
-func (o *GetInvoiceByIDResponseBody) GetCustomer() GetInvoiceByIDCustomer {
-	if o == nil {
-		return GetInvoiceByIDCustomer{}
-	}
-	return o.Customer
-}
-
-func (o *GetInvoiceByIDResponseBody) GetPaidAt() *string {
-	if o == nil {
+func (g *GetInvoiceByIDResponseBody) GetCustomer() *GetInvoiceByIDCustomer {
+	if g == nil {
 		return nil
 	}
-	return o.PaidAt
+	return g.Customer
 }
 
-func (o *GetInvoiceByIDResponseBody) GetReminderSentAt() *string {
-	if o == nil {
+func (g *GetInvoiceByIDResponseBody) GetPaidAt() *string {
+	if g == nil {
 		return nil
 	}
-	return o.ReminderSentAt
+	return g.PaidAt
 }
 
-func (o *GetInvoiceByIDResponseBody) GetNote() *string {
-	if o == nil {
+func (g *GetInvoiceByIDResponseBody) GetReminderSentAt() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Note
+	return g.ReminderSentAt
 }
 
-func (o *GetInvoiceByIDResponseBody) GetVat() *float64 {
-	if o == nil {
+func (g *GetInvoiceByIDResponseBody) GetNote() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Vat
+	return g.Note
 }
 
-func (o *GetInvoiceByIDResponseBody) GetTax() *float64 {
-	if o == nil {
+func (g *GetInvoiceByIDResponseBody) GetVat() *float64 {
+	if g == nil {
 		return nil
 	}
-	return o.Tax
+	return g.Vat
 }
 
-func (o *GetInvoiceByIDResponseBody) GetDiscount() *float64 {
-	if o == nil {
+func (g *GetInvoiceByIDResponseBody) GetTax() *float64 {
+	if g == nil {
 		return nil
 	}
-	return o.Discount
+	return g.Tax
 }
 
-func (o *GetInvoiceByIDResponseBody) GetSubtotal() *float64 {
-	if o == nil {
+func (g *GetInvoiceByIDResponseBody) GetDiscount() *float64 {
+	if g == nil {
 		return nil
 	}
-	return o.Subtotal
+	return g.Discount
 }
 
-func (o *GetInvoiceByIDResponseBody) GetViewedAt() *string {
-	if o == nil {
+func (g *GetInvoiceByIDResponseBody) GetSubtotal() *float64 {
+	if g == nil {
 		return nil
 	}
-	return o.ViewedAt
+	return g.Subtotal
 }
 
-func (o *GetInvoiceByIDResponseBody) GetCustomerName() *string {
-	if o == nil {
+func (g *GetInvoiceByIDResponseBody) GetViewedAt() *string {
+	if g == nil {
 		return nil
 	}
-	return o.CustomerName
+	return g.ViewedAt
 }
 
-func (o *GetInvoiceByIDResponseBody) GetSentTo() *string {
-	if o == nil {
+func (g *GetInvoiceByIDResponseBody) GetCustomerName() *string {
+	if g == nil {
 		return nil
 	}
-	return o.SentTo
+	return g.CustomerName
 }
 
-func (o *GetInvoiceByIDResponseBody) GetSentAt() *string {
-	if o == nil {
+func (g *GetInvoiceByIDResponseBody) GetSentTo() *string {
+	if g == nil {
 		return nil
 	}
-	return o.SentAt
+	return g.SentTo
 }
 
-func (o *GetInvoiceByIDResponseBody) GetCreatedAt() string {
-	if o == nil {
+func (g *GetInvoiceByIDResponseBody) GetSentAt() *string {
+	if g == nil {
+		return nil
+	}
+	return g.SentAt
+}
+
+func (g *GetInvoiceByIDResponseBody) GetCreatedAt() string {
+	if g == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return g.CreatedAt
 }
 
-func (o *GetInvoiceByIDResponseBody) GetUpdatedAt() string {
-	if o == nil {
+func (g *GetInvoiceByIDResponseBody) GetUpdatedAt() string {
+	if g == nil {
 		return ""
 	}
-	return o.UpdatedAt
+	return g.UpdatedAt
+}
+
+func (g *GetInvoiceByIDResponseBody) GetPdfURL() *string {
+	if g == nil {
+		return nil
+	}
+	return g.PdfURL
+}
+
+func (g *GetInvoiceByIDResponseBody) GetPreviewURL() *string {
+	if g == nil {
+		return nil
+	}
+	return g.PreviewURL
 }
 
 type GetInvoiceByIDResponse struct {
@@ -297,16 +315,16 @@ type GetInvoiceByIDResponse struct {
 	Object *GetInvoiceByIDResponseBody
 }
 
-func (o *GetInvoiceByIDResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (g *GetInvoiceByIDResponse) GetHTTPMeta() components.HTTPMetadata {
+	if g == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return g.HTTPMeta
 }
 
-func (o *GetInvoiceByIDResponse) GetObject() *GetInvoiceByIDResponseBody {
-	if o == nil {
+func (g *GetInvoiceByIDResponse) GetObject() *GetInvoiceByIDResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object
+	return g.Object
 }

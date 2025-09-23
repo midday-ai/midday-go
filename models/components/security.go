@@ -3,12 +3,20 @@
 package components
 
 type Security struct {
-	Token *string `security:"scheme,type=http,subtype=bearer,name=Authorization,env=midday_token"`
+	Oauth2 *string `security:"scheme,type=apiKey,subtype=header,name=Authorization,env=midday_oauth2"`
+	Token  *string `security:"scheme,type=http,subtype=bearer,name=Authorization,env=midday_token"`
 }
 
-func (o *Security) GetToken() *string {
-	if o == nil {
+func (s *Security) GetOauth2() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Token
+	return s.Oauth2
+}
+
+func (s *Security) GetToken() *string {
+	if s == nil {
+		return nil
+	}
+	return s.Token
 }

@@ -10,11 +10,11 @@ type GetInboxItemByIDRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
-func (o *GetInboxItemByIDRequest) GetID() string {
-	if o == nil {
+func (g *GetInboxItemByIDRequest) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
 // GetInboxItemByIDTransaction - Matched transaction for this inbox item, if any
@@ -31,39 +31,39 @@ type GetInboxItemByIDTransaction struct {
 	Date string `json:"date"`
 }
 
-func (o *GetInboxItemByIDTransaction) GetID() string {
-	if o == nil {
+func (g *GetInboxItemByIDTransaction) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GetInboxItemByIDTransaction) GetAmount() float64 {
-	if o == nil {
+func (g *GetInboxItemByIDTransaction) GetAmount() float64 {
+	if g == nil {
 		return 0.0
 	}
-	return o.Amount
+	return g.Amount
 }
 
-func (o *GetInboxItemByIDTransaction) GetCurrency() string {
-	if o == nil {
+func (g *GetInboxItemByIDTransaction) GetCurrency() string {
+	if g == nil {
 		return ""
 	}
-	return o.Currency
+	return g.Currency
 }
 
-func (o *GetInboxItemByIDTransaction) GetName() string {
-	if o == nil {
+func (g *GetInboxItemByIDTransaction) GetName() string {
+	if g == nil {
 		return ""
 	}
-	return o.Name
+	return g.Name
 }
 
-func (o *GetInboxItemByIDTransaction) GetDate() string {
-	if o == nil {
+func (g *GetInboxItemByIDTransaction) GetDate() string {
+	if g == nil {
 		return ""
 	}
-	return o.Date
+	return g.Date
 }
 
 // GetInboxItemByIDResponseBody - Inbox item object
@@ -96,95 +96,95 @@ type GetInboxItemByIDResponseBody struct {
 	Transaction *GetInboxItemByIDTransaction `json:"transaction"`
 }
 
-func (o *GetInboxItemByIDResponseBody) GetID() string {
-	if o == nil {
+func (g *GetInboxItemByIDResponseBody) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GetInboxItemByIDResponseBody) GetFileName() string {
-	if o == nil {
+func (g *GetInboxItemByIDResponseBody) GetFileName() string {
+	if g == nil {
 		return ""
 	}
-	return o.FileName
+	return g.FileName
 }
 
-func (o *GetInboxItemByIDResponseBody) GetFilePath() []string {
-	if o == nil {
+func (g *GetInboxItemByIDResponseBody) GetFilePath() []string {
+	if g == nil {
 		return []string{}
 	}
-	return o.FilePath
+	return g.FilePath
 }
 
-func (o *GetInboxItemByIDResponseBody) GetDisplayName() string {
-	if o == nil {
+func (g *GetInboxItemByIDResponseBody) GetDisplayName() string {
+	if g == nil {
 		return ""
 	}
-	return o.DisplayName
+	return g.DisplayName
 }
 
-func (o *GetInboxItemByIDResponseBody) GetAmount() *float64 {
-	if o == nil {
+func (g *GetInboxItemByIDResponseBody) GetAmount() *float64 {
+	if g == nil {
 		return nil
 	}
-	return o.Amount
+	return g.Amount
 }
 
-func (o *GetInboxItemByIDResponseBody) GetCurrency() *string {
-	if o == nil {
+func (g *GetInboxItemByIDResponseBody) GetCurrency() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Currency
+	return g.Currency
 }
 
-func (o *GetInboxItemByIDResponseBody) GetContentType() *string {
-	if o == nil {
+func (g *GetInboxItemByIDResponseBody) GetContentType() *string {
+	if g == nil {
 		return nil
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetInboxItemByIDResponseBody) GetDate() *string {
-	if o == nil {
+func (g *GetInboxItemByIDResponseBody) GetDate() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Date
+	return g.Date
 }
 
-func (o *GetInboxItemByIDResponseBody) GetStatus() string {
-	if o == nil {
+func (g *GetInboxItemByIDResponseBody) GetStatus() string {
+	if g == nil {
 		return ""
 	}
-	return o.Status
+	return g.Status
 }
 
-func (o *GetInboxItemByIDResponseBody) GetCreatedAt() string {
-	if o == nil {
+func (g *GetInboxItemByIDResponseBody) GetCreatedAt() string {
+	if g == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return g.CreatedAt
 }
 
-func (o *GetInboxItemByIDResponseBody) GetWebsite() *string {
-	if o == nil {
+func (g *GetInboxItemByIDResponseBody) GetWebsite() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Website
+	return g.Website
 }
 
-func (o *GetInboxItemByIDResponseBody) GetDescription() *string {
-	if o == nil {
+func (g *GetInboxItemByIDResponseBody) GetDescription() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Description
+	return g.Description
 }
 
-func (o *GetInboxItemByIDResponseBody) GetTransaction() *GetInboxItemByIDTransaction {
-	if o == nil {
+func (g *GetInboxItemByIDResponseBody) GetTransaction() *GetInboxItemByIDTransaction {
+	if g == nil {
 		return nil
 	}
-	return o.Transaction
+	return g.Transaction
 }
 
 type GetInboxItemByIDResponse struct {
@@ -193,16 +193,16 @@ type GetInboxItemByIDResponse struct {
 	Object *GetInboxItemByIDResponseBody
 }
 
-func (o *GetInboxItemByIDResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (g *GetInboxItemByIDResponse) GetHTTPMeta() components.HTTPMetadata {
+	if g == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return g.HTTPMeta
 }
 
-func (o *GetInboxItemByIDResponse) GetObject() *GetInboxItemByIDResponseBody {
-	if o == nil {
+func (g *GetInboxItemByIDResponse) GetObject() *GetInboxItemByIDResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object
+	return g.Object
 }

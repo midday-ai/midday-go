@@ -23,6 +23,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/models/operations"
 	"log"
@@ -32,15 +34,17 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.TrackerProjects.List(ctx, operations.ListTrackerProjectsRequest{
-        Cursor: middaygo.String("eyJpZCI6IjEyMyJ9"),
-        PageSize: middaygo.Float64(20),
-        Q: middaygo.String("website"),
-        Start: middaygo.String("2024-04-01"),
-        End: middaygo.String("2024-04-30"),
+        Cursor: middaygo.Pointer("eyJpZCI6IjEyMyJ9"),
+        PageSize: middaygo.Pointer[float64](20),
+        Q: middaygo.Pointer("website"),
+        Start: middaygo.Pointer("2024-04-01"),
+        End: middaygo.Pointer("2024-04-30"),
         Status: operations.ListTrackerProjectsStatusInProgress.ToPointer(),
         Customers: []string{
             "customer-1",
@@ -94,6 +98,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/models/operations"
 	"log"
@@ -103,12 +109,14 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.TrackerProjects.Create(ctx, &operations.CreateTrackerProjectRequest{
         Name: "New Project",
-        Billable: middaygo.Bool(true),
+        Billable: middaygo.Pointer(true),
     })
     if err != nil {
         log.Fatal(err)
@@ -149,6 +157,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -157,7 +167,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.TrackerProjects.Get(ctx, "b7e6c8e2-1f2a-4c3b-9e2d-1a2b3c4d5e6f")
@@ -200,6 +212,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -208,7 +222,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.TrackerProjects.Delete(ctx, "b7e6c8e2-1f2a-4c3b-9e2d-1a2b3c4d5e6f")
@@ -251,6 +267,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/models/operations"
 	"log"
@@ -260,18 +278,20 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.TrackerProjects.Update(ctx, "b7e6c8e2-1f2a-4c3b-9e2d-1a2b3c4d5e6f", &operations.UpdateTrackerProjectRequestBody{
         Name: "Website Redesign",
-        Description: middaygo.String("Complete redesign of the company website with modern UI/UX and improved performance"),
-        Estimate: middaygo.Float64(120),
-        Billable: middaygo.Bool(true),
-        Rate: middaygo.Float64(75),
-        Currency: middaygo.String("USD"),
+        Description: middaygo.Pointer("Complete redesign of the company website with modern UI/UX and improved performance"),
+        Estimate: middaygo.Pointer[float64](120),
+        Billable: middaygo.Pointer(true),
+        Rate: middaygo.Pointer[float64](75),
+        Currency: middaygo.Pointer("USD"),
         Status: operations.UpdateTrackerProjectStatusInProgress.ToPointer(),
-        CustomerID: middaygo.String("a1b2c3d4-e5f6-7890-abcd-1234567890ef"),
+        CustomerID: middaygo.Pointer("a1b2c3d4-e5f6-7890-abcd-1234567890ef"),
         Tags: []operations.UpdateTrackerProjectTag{
             operations.UpdateTrackerProjectTag{
                 ID: "f1e2d3c4-b5a6-7890-1234-567890abcdef",

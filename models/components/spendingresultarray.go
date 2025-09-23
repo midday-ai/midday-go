@@ -17,44 +17,44 @@ type SpendingResultArray struct {
 	Percentage float64 `json:"percentage"`
 }
 
-func (o *SpendingResultArray) GetName() string {
-	if o == nil {
+func (s *SpendingResultArray) GetName() string {
+	if s == nil {
 		return ""
 	}
-	return o.Name
+	return s.Name
 }
 
-func (o *SpendingResultArray) GetSlug() string {
-	if o == nil {
+func (s *SpendingResultArray) GetSlug() string {
+	if s == nil {
 		return ""
 	}
-	return o.Slug
+	return s.Slug
 }
 
-func (o *SpendingResultArray) GetAmount() float64 {
-	if o == nil {
+func (s *SpendingResultArray) GetAmount() float64 {
+	if s == nil {
 		return 0.0
 	}
-	return o.Amount
+	return s.Amount
 }
 
-func (o *SpendingResultArray) GetCurrency() string {
-	if o == nil {
+func (s *SpendingResultArray) GetCurrency() string {
+	if s == nil {
 		return ""
 	}
-	return o.Currency
+	return s.Currency
 }
 
-func (o *SpendingResultArray) GetColor() string {
-	if o == nil {
+func (s *SpendingResultArray) GetColor() string {
+	if s == nil {
 		return ""
 	}
-	return o.Color
+	return s.Color
 }
 
-func (o *SpendingResultArray) GetPercentage() float64 {
-	if o == nil {
+func (s *SpendingResultArray) GetPercentage() float64 {
+	if s == nil {
 		return 0.0
 	}
-	return o.Percentage
+	return s.Percentage
 }

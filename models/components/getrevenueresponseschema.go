@@ -8,23 +8,23 @@ type GetRevenueResponseSchema struct {
 	Result  []RevenueResultItem `json:"result"`
 }
 
-func (o *GetRevenueResponseSchema) GetSummary() RevenueSummary {
-	if o == nil {
+func (g *GetRevenueResponseSchema) GetSummary() RevenueSummary {
+	if g == nil {
 		return RevenueSummary{}
 	}
-	return o.Summary
+	return g.Summary
 }
 
-func (o *GetRevenueResponseSchema) GetMeta() RevenueMeta {
-	if o == nil {
+func (g *GetRevenueResponseSchema) GetMeta() RevenueMeta {
+	if g == nil {
 		return RevenueMeta{}
 	}
-	return o.Meta
+	return g.Meta
 }
 
-func (o *GetRevenueResponseSchema) GetResult() []RevenueResultItem {
-	if o == nil {
+func (g *GetRevenueResponseSchema) GetResult() []RevenueResultItem {
+	if g == nil {
 		return []RevenueResultItem{}
 	}
-	return o.Result
+	return g.Result
 }

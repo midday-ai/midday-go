@@ -53,32 +53,32 @@ type GetCurrentUserTeam struct {
 	Plan string `json:"plan"`
 }
 
-func (o *GetCurrentUserTeam) GetID() string {
-	if o == nil {
+func (g *GetCurrentUserTeam) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GetCurrentUserTeam) GetName() string {
-	if o == nil {
+func (g *GetCurrentUserTeam) GetName() string {
+	if g == nil {
 		return ""
 	}
-	return o.Name
+	return g.Name
 }
 
-func (o *GetCurrentUserTeam) GetLogoURL() string {
-	if o == nil {
+func (g *GetCurrentUserTeam) GetLogoURL() string {
+	if g == nil {
 		return ""
 	}
-	return o.LogoURL
+	return g.LogoURL
 }
 
-func (o *GetCurrentUserTeam) GetPlan() string {
-	if o == nil {
+func (g *GetCurrentUserTeam) GetPlan() string {
+	if g == nil {
 		return ""
 	}
-	return o.Plan
+	return g.Plan
 }
 
 // GetCurrentUserResponseBody - Retrieve the current user for the authenticated team.
@@ -107,81 +107,81 @@ type GetCurrentUserResponseBody struct {
 	Team *GetCurrentUserTeam `json:"team"`
 }
 
-func (o *GetCurrentUserResponseBody) GetID() string {
-	if o == nil {
+func (g *GetCurrentUserResponseBody) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GetCurrentUserResponseBody) GetFullName() string {
-	if o == nil {
+func (g *GetCurrentUserResponseBody) GetFullName() string {
+	if g == nil {
 		return ""
 	}
-	return o.FullName
+	return g.FullName
 }
 
-func (o *GetCurrentUserResponseBody) GetEmail() string {
-	if o == nil {
+func (g *GetCurrentUserResponseBody) GetEmail() string {
+	if g == nil {
 		return ""
 	}
-	return o.Email
+	return g.Email
 }
 
-func (o *GetCurrentUserResponseBody) GetAvatarURL() *string {
-	if o == nil {
+func (g *GetCurrentUserResponseBody) GetAvatarURL() *string {
+	if g == nil {
 		return nil
 	}
-	return o.AvatarURL
+	return g.AvatarURL
 }
 
-func (o *GetCurrentUserResponseBody) GetLocale() *string {
-	if o == nil {
+func (g *GetCurrentUserResponseBody) GetLocale() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Locale
+	return g.Locale
 }
 
-func (o *GetCurrentUserResponseBody) GetWeekStartsOnMonday() *bool {
-	if o == nil {
+func (g *GetCurrentUserResponseBody) GetWeekStartsOnMonday() *bool {
+	if g == nil {
 		return nil
 	}
-	return o.WeekStartsOnMonday
+	return g.WeekStartsOnMonday
 }
 
-func (o *GetCurrentUserResponseBody) GetTimezone() *string {
-	if o == nil {
+func (g *GetCurrentUserResponseBody) GetTimezone() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Timezone
+	return g.Timezone
 }
 
-func (o *GetCurrentUserResponseBody) GetTimezoneAutoSync() *bool {
-	if o == nil {
+func (g *GetCurrentUserResponseBody) GetTimezoneAutoSync() *bool {
+	if g == nil {
 		return nil
 	}
-	return o.TimezoneAutoSync
+	return g.TimezoneAutoSync
 }
 
-func (o *GetCurrentUserResponseBody) GetTimeFormat() *float64 {
-	if o == nil {
+func (g *GetCurrentUserResponseBody) GetTimeFormat() *float64 {
+	if g == nil {
 		return nil
 	}
-	return o.TimeFormat
+	return g.TimeFormat
 }
 
-func (o *GetCurrentUserResponseBody) GetDateFormat() *GetCurrentUserDateFormat {
-	if o == nil {
+func (g *GetCurrentUserResponseBody) GetDateFormat() *GetCurrentUserDateFormat {
+	if g == nil {
 		return nil
 	}
-	return o.DateFormat
+	return g.DateFormat
 }
 
-func (o *GetCurrentUserResponseBody) GetTeam() *GetCurrentUserTeam {
-	if o == nil {
+func (g *GetCurrentUserResponseBody) GetTeam() *GetCurrentUserTeam {
+	if g == nil {
 		return nil
 	}
-	return o.Team
+	return g.Team
 }
 
 type GetCurrentUserResponse struct {
@@ -190,16 +190,16 @@ type GetCurrentUserResponse struct {
 	Object *GetCurrentUserResponseBody
 }
 
-func (o *GetCurrentUserResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (g *GetCurrentUserResponse) GetHTTPMeta() components.HTTPMetadata {
+	if g == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return g.HTTPMeta
 }
 
-func (o *GetCurrentUserResponse) GetObject() *GetCurrentUserResponseBody {
-	if o == nil {
+func (g *GetCurrentUserResponse) GetObject() *GetCurrentUserResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object
+	return g.Object
 }

@@ -11,8 +11,9 @@ import (
 type ListInboxItemsStatus string
 
 const (
-	ListInboxItemsStatusDone    ListInboxItemsStatus = "done"
-	ListInboxItemsStatusPending ListInboxItemsStatus = "pending"
+	ListInboxItemsStatusDone           ListInboxItemsStatus = "done"
+	ListInboxItemsStatusPending        ListInboxItemsStatus = "pending"
+	ListInboxItemsStatusSuggestedMatch ListInboxItemsStatus = "suggested_match"
 )
 
 func (e ListInboxItemsStatus) ToPointer() *ListInboxItemsStatus {
@@ -27,6 +28,8 @@ func (e *ListInboxItemsStatus) UnmarshalJSON(data []byte) error {
 	case "done":
 		fallthrough
 	case "pending":
+		fallthrough
+	case "suggested_match":
 		*e = ListInboxItemsStatus(v)
 		return nil
 	default:
@@ -42,39 +45,39 @@ type ListInboxItemsRequest struct {
 	Status   *ListInboxItemsStatus `queryParam:"style=form,explode=true,name=status"`
 }
 
-func (o *ListInboxItemsRequest) GetCursor() *string {
-	if o == nil {
+func (l *ListInboxItemsRequest) GetCursor() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Cursor
+	return l.Cursor
 }
 
-func (o *ListInboxItemsRequest) GetOrder() *string {
-	if o == nil {
+func (l *ListInboxItemsRequest) GetOrder() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Order
+	return l.Order
 }
 
-func (o *ListInboxItemsRequest) GetPageSize() *float64 {
-	if o == nil {
+func (l *ListInboxItemsRequest) GetPageSize() *float64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListInboxItemsRequest) GetQ() *string {
-	if o == nil {
+func (l *ListInboxItemsRequest) GetQ() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Q
+	return l.Q
 }
 
-func (o *ListInboxItemsRequest) GetStatus() *ListInboxItemsStatus {
-	if o == nil {
+func (l *ListInboxItemsRequest) GetStatus() *ListInboxItemsStatus {
+	if l == nil {
 		return nil
 	}
-	return o.Status
+	return l.Status
 }
 
 // ListInboxItemsMeta - Pagination metadata for the inbox list response.
@@ -87,25 +90,25 @@ type ListInboxItemsMeta struct {
 	HasNextPage bool `json:"hasNextPage"`
 }
 
-func (o *ListInboxItemsMeta) GetCursor() *string {
-	if o == nil {
+func (l *ListInboxItemsMeta) GetCursor() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Cursor
+	return l.Cursor
 }
 
-func (o *ListInboxItemsMeta) GetHasPreviousPage() bool {
-	if o == nil {
+func (l *ListInboxItemsMeta) GetHasPreviousPage() bool {
+	if l == nil {
 		return false
 	}
-	return o.HasPreviousPage
+	return l.HasPreviousPage
 }
 
-func (o *ListInboxItemsMeta) GetHasNextPage() bool {
-	if o == nil {
+func (l *ListInboxItemsMeta) GetHasNextPage() bool {
+	if l == nil {
 		return false
 	}
-	return o.HasNextPage
+	return l.HasNextPage
 }
 
 // ListInboxItemsTransaction - Matched transaction for this inbox item, if any
@@ -122,39 +125,39 @@ type ListInboxItemsTransaction struct {
 	Date string `json:"date"`
 }
 
-func (o *ListInboxItemsTransaction) GetID() string {
-	if o == nil {
+func (l *ListInboxItemsTransaction) GetID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ID
+	return l.ID
 }
 
-func (o *ListInboxItemsTransaction) GetAmount() float64 {
-	if o == nil {
+func (l *ListInboxItemsTransaction) GetAmount() float64 {
+	if l == nil {
 		return 0.0
 	}
-	return o.Amount
+	return l.Amount
 }
 
-func (o *ListInboxItemsTransaction) GetCurrency() string {
-	if o == nil {
+func (l *ListInboxItemsTransaction) GetCurrency() string {
+	if l == nil {
 		return ""
 	}
-	return o.Currency
+	return l.Currency
 }
 
-func (o *ListInboxItemsTransaction) GetName() string {
-	if o == nil {
+func (l *ListInboxItemsTransaction) GetName() string {
+	if l == nil {
 		return ""
 	}
-	return o.Name
+	return l.Name
 }
 
-func (o *ListInboxItemsTransaction) GetDate() string {
-	if o == nil {
+func (l *ListInboxItemsTransaction) GetDate() string {
+	if l == nil {
 		return ""
 	}
-	return o.Date
+	return l.Date
 }
 
 // ListInboxItemsData - Inbox item object
@@ -187,95 +190,95 @@ type ListInboxItemsData struct {
 	Transaction *ListInboxItemsTransaction `json:"transaction"`
 }
 
-func (o *ListInboxItemsData) GetID() string {
-	if o == nil {
+func (l *ListInboxItemsData) GetID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ID
+	return l.ID
 }
 
-func (o *ListInboxItemsData) GetFileName() string {
-	if o == nil {
+func (l *ListInboxItemsData) GetFileName() string {
+	if l == nil {
 		return ""
 	}
-	return o.FileName
+	return l.FileName
 }
 
-func (o *ListInboxItemsData) GetFilePath() []string {
-	if o == nil {
+func (l *ListInboxItemsData) GetFilePath() []string {
+	if l == nil {
 		return []string{}
 	}
-	return o.FilePath
+	return l.FilePath
 }
 
-func (o *ListInboxItemsData) GetDisplayName() string {
-	if o == nil {
+func (l *ListInboxItemsData) GetDisplayName() string {
+	if l == nil {
 		return ""
 	}
-	return o.DisplayName
+	return l.DisplayName
 }
 
-func (o *ListInboxItemsData) GetAmount() *float64 {
-	if o == nil {
+func (l *ListInboxItemsData) GetAmount() *float64 {
+	if l == nil {
 		return nil
 	}
-	return o.Amount
+	return l.Amount
 }
 
-func (o *ListInboxItemsData) GetCurrency() *string {
-	if o == nil {
+func (l *ListInboxItemsData) GetCurrency() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Currency
+	return l.Currency
 }
 
-func (o *ListInboxItemsData) GetContentType() *string {
-	if o == nil {
+func (l *ListInboxItemsData) GetContentType() *string {
+	if l == nil {
 		return nil
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListInboxItemsData) GetDate() *string {
-	if o == nil {
+func (l *ListInboxItemsData) GetDate() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Date
+	return l.Date
 }
 
-func (o *ListInboxItemsData) GetStatus() string {
-	if o == nil {
+func (l *ListInboxItemsData) GetStatus() string {
+	if l == nil {
 		return ""
 	}
-	return o.Status
+	return l.Status
 }
 
-func (o *ListInboxItemsData) GetCreatedAt() string {
-	if o == nil {
+func (l *ListInboxItemsData) GetCreatedAt() string {
+	if l == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return l.CreatedAt
 }
 
-func (o *ListInboxItemsData) GetWebsite() *string {
-	if o == nil {
+func (l *ListInboxItemsData) GetWebsite() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Website
+	return l.Website
 }
 
-func (o *ListInboxItemsData) GetDescription() *string {
-	if o == nil {
+func (l *ListInboxItemsData) GetDescription() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Description
+	return l.Description
 }
 
-func (o *ListInboxItemsData) GetTransaction() *ListInboxItemsTransaction {
-	if o == nil {
+func (l *ListInboxItemsData) GetTransaction() *ListInboxItemsTransaction {
+	if l == nil {
 		return nil
 	}
-	return o.Transaction
+	return l.Transaction
 }
 
 // ListInboxItemsResponseBody - Retrieve a list of inbox items for the authenticated team.
@@ -286,18 +289,18 @@ type ListInboxItemsResponseBody struct {
 	Data []ListInboxItemsData `json:"data"`
 }
 
-func (o *ListInboxItemsResponseBody) GetMeta() ListInboxItemsMeta {
-	if o == nil {
+func (l *ListInboxItemsResponseBody) GetMeta() ListInboxItemsMeta {
+	if l == nil {
 		return ListInboxItemsMeta{}
 	}
-	return o.Meta
+	return l.Meta
 }
 
-func (o *ListInboxItemsResponseBody) GetData() []ListInboxItemsData {
-	if o == nil {
+func (l *ListInboxItemsResponseBody) GetData() []ListInboxItemsData {
+	if l == nil {
 		return []ListInboxItemsData{}
 	}
-	return o.Data
+	return l.Data
 }
 
 type ListInboxItemsResponse struct {
@@ -306,16 +309,16 @@ type ListInboxItemsResponse struct {
 	Object *ListInboxItemsResponseBody
 }
 
-func (o *ListInboxItemsResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (l *ListInboxItemsResponse) GetHTTPMeta() components.HTTPMetadata {
+	if l == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return l.HTTPMeta
 }
 
-func (o *ListInboxItemsResponse) GetObject() *ListInboxItemsResponseBody {
-	if o == nil {
+func (l *ListInboxItemsResponse) GetObject() *ListInboxItemsResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

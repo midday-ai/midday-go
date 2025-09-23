@@ -98,67 +98,67 @@ type UpdateTransactionsRequest struct {
 	TagID *string `json:"tagId,omitempty"`
 }
 
-func (o *UpdateTransactionsRequest) GetIds() []string {
-	if o == nil {
+func (u *UpdateTransactionsRequest) GetIds() []string {
+	if u == nil {
 		return []string{}
 	}
-	return o.Ids
+	return u.Ids
 }
 
-func (o *UpdateTransactionsRequest) GetCategorySlug() *string {
-	if o == nil {
+func (u *UpdateTransactionsRequest) GetCategorySlug() *string {
+	if u == nil {
 		return nil
 	}
-	return o.CategorySlug
+	return u.CategorySlug
 }
 
-func (o *UpdateTransactionsRequest) GetStatus() *UpdateTransactionsStatus {
-	if o == nil {
+func (u *UpdateTransactionsRequest) GetStatus() *UpdateTransactionsStatus {
+	if u == nil {
 		return nil
 	}
-	return o.Status
+	return u.Status
 }
 
-func (o *UpdateTransactionsRequest) GetFrequency() *UpdateTransactionsFrequency {
-	if o == nil {
+func (u *UpdateTransactionsRequest) GetFrequency() *UpdateTransactionsFrequency {
+	if u == nil {
 		return nil
 	}
-	return o.Frequency
+	return u.Frequency
 }
 
-func (o *UpdateTransactionsRequest) GetInternal() *bool {
-	if o == nil {
+func (u *UpdateTransactionsRequest) GetInternal() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Internal
+	return u.Internal
 }
 
-func (o *UpdateTransactionsRequest) GetNote() *string {
-	if o == nil {
+func (u *UpdateTransactionsRequest) GetNote() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Note
+	return u.Note
 }
 
-func (o *UpdateTransactionsRequest) GetAssignedID() *string {
-	if o == nil {
+func (u *UpdateTransactionsRequest) GetAssignedID() *string {
+	if u == nil {
 		return nil
 	}
-	return o.AssignedID
+	return u.AssignedID
 }
 
-func (o *UpdateTransactionsRequest) GetRecurring() *bool {
-	if o == nil {
+func (u *UpdateTransactionsRequest) GetRecurring() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Recurring
+	return u.Recurring
 }
 
-func (o *UpdateTransactionsRequest) GetTagID() *string {
-	if o == nil {
+func (u *UpdateTransactionsRequest) GetTagID() *string {
+	if u == nil {
 		return nil
 	}
-	return o.TagID
+	return u.TagID
 }
 
 // UpdateTransactionsMeta - Pagination metadata for the transactions response
@@ -171,25 +171,25 @@ type UpdateTransactionsMeta struct {
 	HasNextPage bool `json:"hasNextPage"`
 }
 
-func (o *UpdateTransactionsMeta) GetCursor() *string {
-	if o == nil {
+func (u *UpdateTransactionsMeta) GetCursor() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Cursor
+	return u.Cursor
 }
 
-func (o *UpdateTransactionsMeta) GetHasPreviousPage() bool {
-	if o == nil {
+func (u *UpdateTransactionsMeta) GetHasPreviousPage() bool {
+	if u == nil {
 		return false
 	}
-	return o.HasPreviousPage
+	return u.HasPreviousPage
 }
 
-func (o *UpdateTransactionsMeta) GetHasNextPage() bool {
-	if o == nil {
+func (u *UpdateTransactionsMeta) GetHasNextPage() bool {
+	if u == nil {
 		return false
 	}
-	return o.HasNextPage
+	return u.HasNextPage
 }
 
 // UpdateTransactionsResponseBody - Transactions updated
@@ -200,18 +200,18 @@ type UpdateTransactionsResponseBody struct {
 	Data []components.TransactionResponse `json:"data"`
 }
 
-func (o *UpdateTransactionsResponseBody) GetMeta() UpdateTransactionsMeta {
-	if o == nil {
+func (u *UpdateTransactionsResponseBody) GetMeta() UpdateTransactionsMeta {
+	if u == nil {
 		return UpdateTransactionsMeta{}
 	}
-	return o.Meta
+	return u.Meta
 }
 
-func (o *UpdateTransactionsResponseBody) GetData() []components.TransactionResponse {
-	if o == nil {
+func (u *UpdateTransactionsResponseBody) GetData() []components.TransactionResponse {
+	if u == nil {
 		return []components.TransactionResponse{}
 	}
-	return o.Data
+	return u.Data
 }
 
 type UpdateTransactionsResponse struct {
@@ -220,16 +220,16 @@ type UpdateTransactionsResponse struct {
 	Object *UpdateTransactionsResponseBody
 }
 
-func (o *UpdateTransactionsResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (u *UpdateTransactionsResponse) GetHTTPMeta() components.HTTPMetadata {
+	if u == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return u.HTTPMeta
 }
 
-func (o *UpdateTransactionsResponse) GetObject() *UpdateTransactionsResponseBody {
-	if o == nil {
+func (u *UpdateTransactionsResponse) GetObject() *UpdateTransactionsResponseBody {
+	if u == nil {
 		return nil
 	}
-	return o.Object
+	return u.Object
 }

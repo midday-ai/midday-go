@@ -10,18 +10,18 @@ type TrackerProjectsResponseMeta struct {
 	HasPreviousPage bool `json:"hasPreviousPage"`
 }
 
-func (o *TrackerProjectsResponseMeta) GetHasNextPage() bool {
-	if o == nil {
+func (t *TrackerProjectsResponseMeta) GetHasNextPage() bool {
+	if t == nil {
 		return false
 	}
-	return o.HasNextPage
+	return t.HasNextPage
 }
 
-func (o *TrackerProjectsResponseMeta) GetHasPreviousPage() bool {
-	if o == nil {
+func (t *TrackerProjectsResponseMeta) GetHasPreviousPage() bool {
+	if t == nil {
 		return false
 	}
-	return o.HasPreviousPage
+	return t.HasPreviousPage
 }
 
 type TrackerProjectsResponse struct {
@@ -31,16 +31,16 @@ type TrackerProjectsResponse struct {
 	Data []TrackerProjectResponse `json:"data"`
 }
 
-func (o *TrackerProjectsResponse) GetMeta() TrackerProjectsResponseMeta {
-	if o == nil {
+func (t *TrackerProjectsResponse) GetMeta() TrackerProjectsResponseMeta {
+	if t == nil {
 		return TrackerProjectsResponseMeta{}
 	}
-	return o.Meta
+	return t.Meta
 }
 
-func (o *TrackerProjectsResponse) GetData() []TrackerProjectResponse {
-	if o == nil {
+func (t *TrackerProjectsResponse) GetData() []TrackerProjectResponse {
+	if t == nil {
 		return []TrackerProjectResponse{}
 	}
-	return o.Data
+	return t.Data
 }

@@ -10,11 +10,11 @@ type GetTimerStatusRequest struct {
 	AssignedID *string `queryParam:"style=form,explode=true,name=assignedId"`
 }
 
-func (o *GetTimerStatusRequest) GetAssignedID() *string {
-	if o == nil {
+func (g *GetTimerStatusRequest) GetAssignedID() *string {
+	if g == nil {
 		return nil
 	}
-	return o.AssignedID
+	return g.AssignedID
 }
 
 type TrackerProject struct {
@@ -22,18 +22,18 @@ type TrackerProject struct {
 	Name string `json:"name"`
 }
 
-func (o *TrackerProject) GetID() string {
-	if o == nil {
+func (t *TrackerProject) GetID() string {
+	if t == nil {
 		return ""
 	}
-	return o.ID
+	return t.ID
 }
 
-func (o *TrackerProject) GetName() string {
-	if o == nil {
+func (t *TrackerProject) GetName() string {
+	if t == nil {
 		return ""
 	}
-	return o.Name
+	return t.Name
 }
 
 // CurrentEntry - Current running timer details, null if not running
@@ -45,39 +45,39 @@ type CurrentEntry struct {
 	TrackerProject TrackerProject `json:"trackerProject"`
 }
 
-func (o *CurrentEntry) GetID() string {
-	if o == nil {
+func (c *CurrentEntry) GetID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ID
+	return c.ID
 }
 
-func (o *CurrentEntry) GetStart() *string {
-	if o == nil {
+func (c *CurrentEntry) GetStart() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Start
+	return c.Start
 }
 
-func (o *CurrentEntry) GetDescription() *string {
-	if o == nil {
+func (c *CurrentEntry) GetDescription() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Description
+	return c.Description
 }
 
-func (o *CurrentEntry) GetProjectID() string {
-	if o == nil {
+func (c *CurrentEntry) GetProjectID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ProjectID
+	return c.ProjectID
 }
 
-func (o *CurrentEntry) GetTrackerProject() TrackerProject {
-	if o == nil {
+func (c *CurrentEntry) GetTrackerProject() TrackerProject {
+	if c == nil {
 		return TrackerProject{}
 	}
-	return o.TrackerProject
+	return c.TrackerProject
 }
 
 type GetTimerStatusData struct {
@@ -89,25 +89,25 @@ type GetTimerStatusData struct {
 	ElapsedTime float64 `json:"elapsedTime"`
 }
 
-func (o *GetTimerStatusData) GetIsRunning() bool {
-	if o == nil {
+func (g *GetTimerStatusData) GetIsRunning() bool {
+	if g == nil {
 		return false
 	}
-	return o.IsRunning
+	return g.IsRunning
 }
 
-func (o *GetTimerStatusData) GetCurrentEntry() *CurrentEntry {
-	if o == nil {
+func (g *GetTimerStatusData) GetCurrentEntry() *CurrentEntry {
+	if g == nil {
 		return nil
 	}
-	return o.CurrentEntry
+	return g.CurrentEntry
 }
 
-func (o *GetTimerStatusData) GetElapsedTime() float64 {
-	if o == nil {
+func (g *GetTimerStatusData) GetElapsedTime() float64 {
+	if g == nil {
 		return 0.0
 	}
-	return o.ElapsedTime
+	return g.ElapsedTime
 }
 
 // GetTimerStatusResponseBody - Timer status retrieved successfully.
@@ -115,11 +115,11 @@ type GetTimerStatusResponseBody struct {
 	Data GetTimerStatusData `json:"data"`
 }
 
-func (o *GetTimerStatusResponseBody) GetData() GetTimerStatusData {
-	if o == nil {
+func (g *GetTimerStatusResponseBody) GetData() GetTimerStatusData {
+	if g == nil {
 		return GetTimerStatusData{}
 	}
-	return o.Data
+	return g.Data
 }
 
 type GetTimerStatusResponse struct {
@@ -128,16 +128,16 @@ type GetTimerStatusResponse struct {
 	Object *GetTimerStatusResponseBody
 }
 
-func (o *GetTimerStatusResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (g *GetTimerStatusResponse) GetHTTPMeta() components.HTTPMetadata {
+	if g == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return g.HTTPMeta
 }
 
-func (o *GetTimerStatusResponse) GetObject() *GetTimerStatusResponseBody {
-	if o == nil {
+func (g *GetTimerStatusResponse) GetObject() *GetTimerStatusResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object
+	return g.Object
 }

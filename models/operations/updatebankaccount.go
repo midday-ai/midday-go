@@ -60,46 +60,46 @@ type UpdateBankAccountRequestBody struct {
 	Type *UpdateBankAccountType `json:"type,omitempty"`
 }
 
-func (o *UpdateBankAccountRequestBody) GetID() *string {
-	if o == nil {
+func (u *UpdateBankAccountRequestBody) GetID() *string {
+	if u == nil {
 		return nil
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UpdateBankAccountRequestBody) GetName() *string {
-	if o == nil {
+func (u *UpdateBankAccountRequestBody) GetName() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Name
+	return u.Name
 }
 
-func (o *UpdateBankAccountRequestBody) GetEnabled() *bool {
-	if o == nil {
+func (u *UpdateBankAccountRequestBody) GetEnabled() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Enabled
+	return u.Enabled
 }
 
-func (o *UpdateBankAccountRequestBody) GetBalance() *float64 {
-	if o == nil {
+func (u *UpdateBankAccountRequestBody) GetBalance() *float64 {
+	if u == nil {
 		return nil
 	}
-	return o.Balance
+	return u.Balance
 }
 
-func (o *UpdateBankAccountRequestBody) GetCurrency() *string {
-	if o == nil {
+func (u *UpdateBankAccountRequestBody) GetCurrency() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Currency
+	return u.Currency
 }
 
-func (o *UpdateBankAccountRequestBody) GetType() *UpdateBankAccountType {
-	if o == nil {
+func (u *UpdateBankAccountRequestBody) GetType() *UpdateBankAccountType {
+	if u == nil {
 		return nil
 	}
-	return o.Type
+	return u.Type
 }
 
 type UpdateBankAccountRequest struct {
@@ -107,18 +107,18 @@ type UpdateBankAccountRequest struct {
 	RequestBody *UpdateBankAccountRequestBody `request:"mediaType=application/json"`
 }
 
-func (o *UpdateBankAccountRequest) GetID() string {
-	if o == nil {
+func (u *UpdateBankAccountRequest) GetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UpdateBankAccountRequest) GetRequestBody() *UpdateBankAccountRequestBody {
-	if o == nil {
+func (u *UpdateBankAccountRequest) GetRequestBody() *UpdateBankAccountRequestBody {
+	if u == nil {
 		return nil
 	}
-	return o.RequestBody
+	return u.RequestBody
 }
 
 // UpdateBankAccountResponseBody - A single bank account object response.
@@ -139,53 +139,53 @@ type UpdateBankAccountResponseBody struct {
 	Manual *bool `json:"manual"`
 }
 
-func (o *UpdateBankAccountResponseBody) GetID() string {
-	if o == nil {
+func (u *UpdateBankAccountResponseBody) GetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UpdateBankAccountResponseBody) GetName() *string {
-	if o == nil {
+func (u *UpdateBankAccountResponseBody) GetName() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Name
+	return u.Name
 }
 
-func (o *UpdateBankAccountResponseBody) GetCurrency() *string {
-	if o == nil {
+func (u *UpdateBankAccountResponseBody) GetCurrency() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Currency
+	return u.Currency
 }
 
-func (o *UpdateBankAccountResponseBody) GetType() *string {
-	if o == nil {
+func (u *UpdateBankAccountResponseBody) GetType() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Type
+	return u.Type
 }
 
-func (o *UpdateBankAccountResponseBody) GetEnabled() bool {
-	if o == nil {
+func (u *UpdateBankAccountResponseBody) GetEnabled() bool {
+	if u == nil {
 		return false
 	}
-	return o.Enabled
+	return u.Enabled
 }
 
-func (o *UpdateBankAccountResponseBody) GetBalance() *float64 {
-	if o == nil {
+func (u *UpdateBankAccountResponseBody) GetBalance() *float64 {
+	if u == nil {
 		return nil
 	}
-	return o.Balance
+	return u.Balance
 }
 
-func (o *UpdateBankAccountResponseBody) GetManual() *bool {
-	if o == nil {
+func (u *UpdateBankAccountResponseBody) GetManual() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Manual
+	return u.Manual
 }
 
 type UpdateBankAccountResponse struct {
@@ -194,16 +194,16 @@ type UpdateBankAccountResponse struct {
 	Object *UpdateBankAccountResponseBody
 }
 
-func (o *UpdateBankAccountResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (u *UpdateBankAccountResponse) GetHTTPMeta() components.HTTPMetadata {
+	if u == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return u.HTTPMeta
 }
 
-func (o *UpdateBankAccountResponse) GetObject() *UpdateBankAccountResponseBody {
-	if o == nil {
+func (u *UpdateBankAccountResponse) GetObject() *UpdateBankAccountResponseBody {
+	if u == nil {
 		return nil
 	}
-	return o.Object
+	return u.Object
 }

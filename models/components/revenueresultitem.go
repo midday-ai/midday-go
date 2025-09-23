@@ -10,30 +10,30 @@ type RevenueResultItem struct {
 	Previous   RevenuePrevious   `json:"previous"`
 }
 
-func (o *RevenueResultItem) GetDate() string {
-	if o == nil {
+func (r *RevenueResultItem) GetDate() string {
+	if r == nil {
 		return ""
 	}
-	return o.Date
+	return r.Date
 }
 
-func (o *RevenueResultItem) GetPercentage() RevenuePercentage {
-	if o == nil {
+func (r *RevenueResultItem) GetPercentage() RevenuePercentage {
+	if r == nil {
 		return RevenuePercentage{}
 	}
-	return o.Percentage
+	return r.Percentage
 }
 
-func (o *RevenueResultItem) GetCurrent() RevenueCurrent {
-	if o == nil {
+func (r *RevenueResultItem) GetCurrent() RevenueCurrent {
+	if r == nil {
 		return RevenueCurrent{}
 	}
-	return o.Current
+	return r.Current
 }
 
-func (o *RevenueResultItem) GetPrevious() RevenuePrevious {
-	if o == nil {
+func (r *RevenueResultItem) GetPrevious() RevenuePrevious {
+	if r == nil {
 		return RevenuePrevious{}
 	}
-	return o.Previous
+	return r.Previous
 }

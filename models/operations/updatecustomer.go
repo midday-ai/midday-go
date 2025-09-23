@@ -13,18 +13,18 @@ type UpdateCustomerTagRequest struct {
 	Name string `json:"name"`
 }
 
-func (o *UpdateCustomerTagRequest) GetID() string {
-	if o == nil {
+func (u *UpdateCustomerTagRequest) GetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UpdateCustomerTagRequest) GetName() string {
-	if o == nil {
+func (u *UpdateCustomerTagRequest) GetName() string {
+	if u == nil {
 		return ""
 	}
-	return o.Name
+	return u.Name
 }
 
 type UpdateCustomerRequestBody struct {
@@ -64,123 +64,123 @@ type UpdateCustomerRequestBody struct {
 	Tags []UpdateCustomerTagRequest `json:"tags,omitempty"`
 }
 
-func (o *UpdateCustomerRequestBody) GetID() *string {
-	if o == nil {
+func (u *UpdateCustomerRequestBody) GetID() *string {
+	if u == nil {
 		return nil
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UpdateCustomerRequestBody) GetName() string {
-	if o == nil {
+func (u *UpdateCustomerRequestBody) GetName() string {
+	if u == nil {
 		return ""
 	}
-	return o.Name
+	return u.Name
 }
 
-func (o *UpdateCustomerRequestBody) GetEmail() string {
-	if o == nil {
+func (u *UpdateCustomerRequestBody) GetEmail() string {
+	if u == nil {
 		return ""
 	}
-	return o.Email
+	return u.Email
 }
 
-func (o *UpdateCustomerRequestBody) GetBillingEmail() *string {
-	if o == nil {
+func (u *UpdateCustomerRequestBody) GetBillingEmail() *string {
+	if u == nil {
 		return nil
 	}
-	return o.BillingEmail
+	return u.BillingEmail
 }
 
-func (o *UpdateCustomerRequestBody) GetCountry() *string {
-	if o == nil {
+func (u *UpdateCustomerRequestBody) GetCountry() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Country
+	return u.Country
 }
 
-func (o *UpdateCustomerRequestBody) GetAddressLine1() *string {
-	if o == nil {
+func (u *UpdateCustomerRequestBody) GetAddressLine1() *string {
+	if u == nil {
 		return nil
 	}
-	return o.AddressLine1
+	return u.AddressLine1
 }
 
-func (o *UpdateCustomerRequestBody) GetAddressLine2() *string {
-	if o == nil {
+func (u *UpdateCustomerRequestBody) GetAddressLine2() *string {
+	if u == nil {
 		return nil
 	}
-	return o.AddressLine2
+	return u.AddressLine2
 }
 
-func (o *UpdateCustomerRequestBody) GetCity() *string {
-	if o == nil {
+func (u *UpdateCustomerRequestBody) GetCity() *string {
+	if u == nil {
 		return nil
 	}
-	return o.City
+	return u.City
 }
 
-func (o *UpdateCustomerRequestBody) GetState() *string {
-	if o == nil {
+func (u *UpdateCustomerRequestBody) GetState() *string {
+	if u == nil {
 		return nil
 	}
-	return o.State
+	return u.State
 }
 
-func (o *UpdateCustomerRequestBody) GetZip() *string {
-	if o == nil {
+func (u *UpdateCustomerRequestBody) GetZip() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Zip
+	return u.Zip
 }
 
-func (o *UpdateCustomerRequestBody) GetPhone() *string {
-	if o == nil {
+func (u *UpdateCustomerRequestBody) GetPhone() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Phone
+	return u.Phone
 }
 
-func (o *UpdateCustomerRequestBody) GetWebsite() *string {
-	if o == nil {
+func (u *UpdateCustomerRequestBody) GetWebsite() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Website
+	return u.Website
 }
 
-func (o *UpdateCustomerRequestBody) GetNote() *string {
-	if o == nil {
+func (u *UpdateCustomerRequestBody) GetNote() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Note
+	return u.Note
 }
 
-func (o *UpdateCustomerRequestBody) GetVatNumber() *string {
-	if o == nil {
+func (u *UpdateCustomerRequestBody) GetVatNumber() *string {
+	if u == nil {
 		return nil
 	}
-	return o.VatNumber
+	return u.VatNumber
 }
 
-func (o *UpdateCustomerRequestBody) GetCountryCode() *string {
-	if o == nil {
+func (u *UpdateCustomerRequestBody) GetCountryCode() *string {
+	if u == nil {
 		return nil
 	}
-	return o.CountryCode
+	return u.CountryCode
 }
 
-func (o *UpdateCustomerRequestBody) GetContact() *string {
-	if o == nil {
+func (u *UpdateCustomerRequestBody) GetContact() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Contact
+	return u.Contact
 }
 
-func (o *UpdateCustomerRequestBody) GetTags() []UpdateCustomerTagRequest {
-	if o == nil {
+func (u *UpdateCustomerRequestBody) GetTags() []UpdateCustomerTagRequest {
+	if u == nil {
 		return nil
 	}
-	return o.Tags
+	return u.Tags
 }
 
 type UpdateCustomerRequest struct {
@@ -188,18 +188,18 @@ type UpdateCustomerRequest struct {
 	RequestBody *UpdateCustomerRequestBody `request:"mediaType=application/json"`
 }
 
-func (o *UpdateCustomerRequest) GetID() string {
-	if o == nil {
+func (u *UpdateCustomerRequest) GetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UpdateCustomerRequest) GetRequestBody() *UpdateCustomerRequestBody {
-	if o == nil {
+func (u *UpdateCustomerRequest) GetRequestBody() *UpdateCustomerRequestBody {
+	if u == nil {
 		return nil
 	}
-	return o.RequestBody
+	return u.RequestBody
 }
 
 type UpdateCustomerTagResponse struct {
@@ -209,18 +209,18 @@ type UpdateCustomerTagResponse struct {
 	Name string `json:"name"`
 }
 
-func (o *UpdateCustomerTagResponse) GetID() string {
-	if o == nil {
+func (u *UpdateCustomerTagResponse) GetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UpdateCustomerTagResponse) GetName() string {
-	if o == nil {
+func (u *UpdateCustomerTagResponse) GetName() string {
+	if u == nil {
 		return ""
 	}
-	return o.Name
+	return u.Name
 }
 
 // UpdateCustomerResponseBody - Customer updated
@@ -269,151 +269,151 @@ type UpdateCustomerResponseBody struct {
 	Tags []UpdateCustomerTagResponse `json:"tags"`
 }
 
-func (o *UpdateCustomerResponseBody) GetID() string {
-	if o == nil {
+func (u *UpdateCustomerResponseBody) GetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UpdateCustomerResponseBody) GetName() string {
-	if o == nil {
+func (u *UpdateCustomerResponseBody) GetName() string {
+	if u == nil {
 		return ""
 	}
-	return o.Name
+	return u.Name
 }
 
-func (o *UpdateCustomerResponseBody) GetEmail() string {
-	if o == nil {
+func (u *UpdateCustomerResponseBody) GetEmail() string {
+	if u == nil {
 		return ""
 	}
-	return o.Email
+	return u.Email
 }
 
-func (o *UpdateCustomerResponseBody) GetBillingEmail() *string {
-	if o == nil {
+func (u *UpdateCustomerResponseBody) GetBillingEmail() *string {
+	if u == nil {
 		return nil
 	}
-	return o.BillingEmail
+	return u.BillingEmail
 }
 
-func (o *UpdateCustomerResponseBody) GetPhone() *string {
-	if o == nil {
+func (u *UpdateCustomerResponseBody) GetPhone() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Phone
+	return u.Phone
 }
 
-func (o *UpdateCustomerResponseBody) GetWebsite() *string {
-	if o == nil {
+func (u *UpdateCustomerResponseBody) GetWebsite() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Website
+	return u.Website
 }
 
-func (o *UpdateCustomerResponseBody) GetCreatedAt() string {
-	if o == nil {
+func (u *UpdateCustomerResponseBody) GetCreatedAt() string {
+	if u == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return u.CreatedAt
 }
 
-func (o *UpdateCustomerResponseBody) GetCountry() *string {
-	if o == nil {
+func (u *UpdateCustomerResponseBody) GetCountry() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Country
+	return u.Country
 }
 
-func (o *UpdateCustomerResponseBody) GetAddressLine1() *string {
-	if o == nil {
+func (u *UpdateCustomerResponseBody) GetAddressLine1() *string {
+	if u == nil {
 		return nil
 	}
-	return o.AddressLine1
+	return u.AddressLine1
 }
 
-func (o *UpdateCustomerResponseBody) GetAddressLine2() *string {
-	if o == nil {
+func (u *UpdateCustomerResponseBody) GetAddressLine2() *string {
+	if u == nil {
 		return nil
 	}
-	return o.AddressLine2
+	return u.AddressLine2
 }
 
-func (o *UpdateCustomerResponseBody) GetCity() *string {
-	if o == nil {
+func (u *UpdateCustomerResponseBody) GetCity() *string {
+	if u == nil {
 		return nil
 	}
-	return o.City
+	return u.City
 }
 
-func (o *UpdateCustomerResponseBody) GetState() *string {
-	if o == nil {
+func (u *UpdateCustomerResponseBody) GetState() *string {
+	if u == nil {
 		return nil
 	}
-	return o.State
+	return u.State
 }
 
-func (o *UpdateCustomerResponseBody) GetZip() *string {
-	if o == nil {
+func (u *UpdateCustomerResponseBody) GetZip() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Zip
+	return u.Zip
 }
 
-func (o *UpdateCustomerResponseBody) GetNote() *string {
-	if o == nil {
+func (u *UpdateCustomerResponseBody) GetNote() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Note
+	return u.Note
 }
 
-func (o *UpdateCustomerResponseBody) GetVatNumber() *string {
-	if o == nil {
+func (u *UpdateCustomerResponseBody) GetVatNumber() *string {
+	if u == nil {
 		return nil
 	}
-	return o.VatNumber
+	return u.VatNumber
 }
 
-func (o *UpdateCustomerResponseBody) GetCountryCode() *string {
-	if o == nil {
+func (u *UpdateCustomerResponseBody) GetCountryCode() *string {
+	if u == nil {
 		return nil
 	}
-	return o.CountryCode
+	return u.CountryCode
 }
 
-func (o *UpdateCustomerResponseBody) GetToken() string {
-	if o == nil {
+func (u *UpdateCustomerResponseBody) GetToken() string {
+	if u == nil {
 		return ""
 	}
-	return o.Token
+	return u.Token
 }
 
-func (o *UpdateCustomerResponseBody) GetContact() *string {
-	if o == nil {
+func (u *UpdateCustomerResponseBody) GetContact() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Contact
+	return u.Contact
 }
 
-func (o *UpdateCustomerResponseBody) GetInvoiceCount() float64 {
-	if o == nil {
+func (u *UpdateCustomerResponseBody) GetInvoiceCount() float64 {
+	if u == nil {
 		return 0.0
 	}
-	return o.InvoiceCount
+	return u.InvoiceCount
 }
 
-func (o *UpdateCustomerResponseBody) GetProjectCount() float64 {
-	if o == nil {
+func (u *UpdateCustomerResponseBody) GetProjectCount() float64 {
+	if u == nil {
 		return 0.0
 	}
-	return o.ProjectCount
+	return u.ProjectCount
 }
 
-func (o *UpdateCustomerResponseBody) GetTags() []UpdateCustomerTagResponse {
-	if o == nil {
+func (u *UpdateCustomerResponseBody) GetTags() []UpdateCustomerTagResponse {
+	if u == nil {
 		return []UpdateCustomerTagResponse{}
 	}
-	return o.Tags
+	return u.Tags
 }
 
 type UpdateCustomerResponse struct {
@@ -422,16 +422,16 @@ type UpdateCustomerResponse struct {
 	Object *UpdateCustomerResponseBody
 }
 
-func (o *UpdateCustomerResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (u *UpdateCustomerResponse) GetHTTPMeta() components.HTTPMetadata {
+	if u == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return u.HTTPMeta
 }
 
-func (o *UpdateCustomerResponse) GetObject() *UpdateCustomerResponseBody {
-	if o == nil {
+func (u *UpdateCustomerResponse) GetObject() *UpdateCustomerResponseBody {
+	if u == nil {
 		return nil
 	}
-	return o.Object
+	return u.Object
 }

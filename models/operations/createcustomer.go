@@ -13,18 +13,18 @@ type CreateCustomerTagRequest struct {
 	Name string `json:"name"`
 }
 
-func (o *CreateCustomerTagRequest) GetID() string {
-	if o == nil {
+func (c *CreateCustomerTagRequest) GetID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ID
+	return c.ID
 }
 
-func (o *CreateCustomerTagRequest) GetName() string {
-	if o == nil {
+func (c *CreateCustomerTagRequest) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
 }
 
 type CreateCustomerRequest struct {
@@ -64,123 +64,123 @@ type CreateCustomerRequest struct {
 	Tags []CreateCustomerTagRequest `json:"tags,omitempty"`
 }
 
-func (o *CreateCustomerRequest) GetID() *string {
-	if o == nil {
+func (c *CreateCustomerRequest) GetID() *string {
+	if c == nil {
 		return nil
 	}
-	return o.ID
+	return c.ID
 }
 
-func (o *CreateCustomerRequest) GetName() string {
-	if o == nil {
+func (c *CreateCustomerRequest) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
 }
 
-func (o *CreateCustomerRequest) GetEmail() string {
-	if o == nil {
+func (c *CreateCustomerRequest) GetEmail() string {
+	if c == nil {
 		return ""
 	}
-	return o.Email
+	return c.Email
 }
 
-func (o *CreateCustomerRequest) GetBillingEmail() *string {
-	if o == nil {
+func (c *CreateCustomerRequest) GetBillingEmail() *string {
+	if c == nil {
 		return nil
 	}
-	return o.BillingEmail
+	return c.BillingEmail
 }
 
-func (o *CreateCustomerRequest) GetCountry() *string {
-	if o == nil {
+func (c *CreateCustomerRequest) GetCountry() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Country
+	return c.Country
 }
 
-func (o *CreateCustomerRequest) GetAddressLine1() *string {
-	if o == nil {
+func (c *CreateCustomerRequest) GetAddressLine1() *string {
+	if c == nil {
 		return nil
 	}
-	return o.AddressLine1
+	return c.AddressLine1
 }
 
-func (o *CreateCustomerRequest) GetAddressLine2() *string {
-	if o == nil {
+func (c *CreateCustomerRequest) GetAddressLine2() *string {
+	if c == nil {
 		return nil
 	}
-	return o.AddressLine2
+	return c.AddressLine2
 }
 
-func (o *CreateCustomerRequest) GetCity() *string {
-	if o == nil {
+func (c *CreateCustomerRequest) GetCity() *string {
+	if c == nil {
 		return nil
 	}
-	return o.City
+	return c.City
 }
 
-func (o *CreateCustomerRequest) GetState() *string {
-	if o == nil {
+func (c *CreateCustomerRequest) GetState() *string {
+	if c == nil {
 		return nil
 	}
-	return o.State
+	return c.State
 }
 
-func (o *CreateCustomerRequest) GetZip() *string {
-	if o == nil {
+func (c *CreateCustomerRequest) GetZip() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Zip
+	return c.Zip
 }
 
-func (o *CreateCustomerRequest) GetPhone() *string {
-	if o == nil {
+func (c *CreateCustomerRequest) GetPhone() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Phone
+	return c.Phone
 }
 
-func (o *CreateCustomerRequest) GetWebsite() *string {
-	if o == nil {
+func (c *CreateCustomerRequest) GetWebsite() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Website
+	return c.Website
 }
 
-func (o *CreateCustomerRequest) GetNote() *string {
-	if o == nil {
+func (c *CreateCustomerRequest) GetNote() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Note
+	return c.Note
 }
 
-func (o *CreateCustomerRequest) GetVatNumber() *string {
-	if o == nil {
+func (c *CreateCustomerRequest) GetVatNumber() *string {
+	if c == nil {
 		return nil
 	}
-	return o.VatNumber
+	return c.VatNumber
 }
 
-func (o *CreateCustomerRequest) GetCountryCode() *string {
-	if o == nil {
+func (c *CreateCustomerRequest) GetCountryCode() *string {
+	if c == nil {
 		return nil
 	}
-	return o.CountryCode
+	return c.CountryCode
 }
 
-func (o *CreateCustomerRequest) GetContact() *string {
-	if o == nil {
+func (c *CreateCustomerRequest) GetContact() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Contact
+	return c.Contact
 }
 
-func (o *CreateCustomerRequest) GetTags() []CreateCustomerTagRequest {
-	if o == nil {
+func (c *CreateCustomerRequest) GetTags() []CreateCustomerTagRequest {
+	if c == nil {
 		return nil
 	}
-	return o.Tags
+	return c.Tags
 }
 
 type CreateCustomerTagResponse struct {
@@ -190,18 +190,18 @@ type CreateCustomerTagResponse struct {
 	Name string `json:"name"`
 }
 
-func (o *CreateCustomerTagResponse) GetID() string {
-	if o == nil {
+func (c *CreateCustomerTagResponse) GetID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ID
+	return c.ID
 }
 
-func (o *CreateCustomerTagResponse) GetName() string {
-	if o == nil {
+func (c *CreateCustomerTagResponse) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
 }
 
 // CreateCustomerResponseBody - Customer created
@@ -250,151 +250,151 @@ type CreateCustomerResponseBody struct {
 	Tags []CreateCustomerTagResponse `json:"tags"`
 }
 
-func (o *CreateCustomerResponseBody) GetID() string {
-	if o == nil {
+func (c *CreateCustomerResponseBody) GetID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ID
+	return c.ID
 }
 
-func (o *CreateCustomerResponseBody) GetName() string {
-	if o == nil {
+func (c *CreateCustomerResponseBody) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
 }
 
-func (o *CreateCustomerResponseBody) GetEmail() string {
-	if o == nil {
+func (c *CreateCustomerResponseBody) GetEmail() string {
+	if c == nil {
 		return ""
 	}
-	return o.Email
+	return c.Email
 }
 
-func (o *CreateCustomerResponseBody) GetBillingEmail() *string {
-	if o == nil {
+func (c *CreateCustomerResponseBody) GetBillingEmail() *string {
+	if c == nil {
 		return nil
 	}
-	return o.BillingEmail
+	return c.BillingEmail
 }
 
-func (o *CreateCustomerResponseBody) GetPhone() *string {
-	if o == nil {
+func (c *CreateCustomerResponseBody) GetPhone() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Phone
+	return c.Phone
 }
 
-func (o *CreateCustomerResponseBody) GetWebsite() *string {
-	if o == nil {
+func (c *CreateCustomerResponseBody) GetWebsite() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Website
+	return c.Website
 }
 
-func (o *CreateCustomerResponseBody) GetCreatedAt() string {
-	if o == nil {
+func (c *CreateCustomerResponseBody) GetCreatedAt() string {
+	if c == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return c.CreatedAt
 }
 
-func (o *CreateCustomerResponseBody) GetCountry() *string {
-	if o == nil {
+func (c *CreateCustomerResponseBody) GetCountry() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Country
+	return c.Country
 }
 
-func (o *CreateCustomerResponseBody) GetAddressLine1() *string {
-	if o == nil {
+func (c *CreateCustomerResponseBody) GetAddressLine1() *string {
+	if c == nil {
 		return nil
 	}
-	return o.AddressLine1
+	return c.AddressLine1
 }
 
-func (o *CreateCustomerResponseBody) GetAddressLine2() *string {
-	if o == nil {
+func (c *CreateCustomerResponseBody) GetAddressLine2() *string {
+	if c == nil {
 		return nil
 	}
-	return o.AddressLine2
+	return c.AddressLine2
 }
 
-func (o *CreateCustomerResponseBody) GetCity() *string {
-	if o == nil {
+func (c *CreateCustomerResponseBody) GetCity() *string {
+	if c == nil {
 		return nil
 	}
-	return o.City
+	return c.City
 }
 
-func (o *CreateCustomerResponseBody) GetState() *string {
-	if o == nil {
+func (c *CreateCustomerResponseBody) GetState() *string {
+	if c == nil {
 		return nil
 	}
-	return o.State
+	return c.State
 }
 
-func (o *CreateCustomerResponseBody) GetZip() *string {
-	if o == nil {
+func (c *CreateCustomerResponseBody) GetZip() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Zip
+	return c.Zip
 }
 
-func (o *CreateCustomerResponseBody) GetNote() *string {
-	if o == nil {
+func (c *CreateCustomerResponseBody) GetNote() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Note
+	return c.Note
 }
 
-func (o *CreateCustomerResponseBody) GetVatNumber() *string {
-	if o == nil {
+func (c *CreateCustomerResponseBody) GetVatNumber() *string {
+	if c == nil {
 		return nil
 	}
-	return o.VatNumber
+	return c.VatNumber
 }
 
-func (o *CreateCustomerResponseBody) GetCountryCode() *string {
-	if o == nil {
+func (c *CreateCustomerResponseBody) GetCountryCode() *string {
+	if c == nil {
 		return nil
 	}
-	return o.CountryCode
+	return c.CountryCode
 }
 
-func (o *CreateCustomerResponseBody) GetToken() string {
-	if o == nil {
+func (c *CreateCustomerResponseBody) GetToken() string {
+	if c == nil {
 		return ""
 	}
-	return o.Token
+	return c.Token
 }
 
-func (o *CreateCustomerResponseBody) GetContact() *string {
-	if o == nil {
+func (c *CreateCustomerResponseBody) GetContact() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Contact
+	return c.Contact
 }
 
-func (o *CreateCustomerResponseBody) GetInvoiceCount() float64 {
-	if o == nil {
+func (c *CreateCustomerResponseBody) GetInvoiceCount() float64 {
+	if c == nil {
 		return 0.0
 	}
-	return o.InvoiceCount
+	return c.InvoiceCount
 }
 
-func (o *CreateCustomerResponseBody) GetProjectCount() float64 {
-	if o == nil {
+func (c *CreateCustomerResponseBody) GetProjectCount() float64 {
+	if c == nil {
 		return 0.0
 	}
-	return o.ProjectCount
+	return c.ProjectCount
 }
 
-func (o *CreateCustomerResponseBody) GetTags() []CreateCustomerTagResponse {
-	if o == nil {
+func (c *CreateCustomerResponseBody) GetTags() []CreateCustomerTagResponse {
+	if c == nil {
 		return []CreateCustomerTagResponse{}
 	}
-	return o.Tags
+	return c.Tags
 }
 
 type CreateCustomerResponse struct {
@@ -403,16 +403,16 @@ type CreateCustomerResponse struct {
 	Object *CreateCustomerResponseBody
 }
 
-func (o *CreateCustomerResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (c *CreateCustomerResponse) GetHTTPMeta() components.HTTPMetadata {
+	if c == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return c.HTTPMeta
 }
 
-func (o *CreateCustomerResponse) GetObject() *CreateCustomerResponseBody {
-	if o == nil {
+func (c *CreateCustomerResponse) GetObject() *CreateCustomerResponseBody {
+	if c == nil {
 		return nil
 	}
-	return o.Object
+	return c.Object
 }

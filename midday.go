@@ -2,7 +2,7 @@
 
 package middaygo
 
-// Generated from OpenAPI doc version 0.0.1 and generator version 2.686.7
+// Generated from OpenAPI doc version 0.0.1 and generator version 2.709.0
 
 import (
 	"context"
@@ -50,20 +50,22 @@ func Pointer[T any](v T) *T { return &v }
 
 // Midday API: Midday is a platform for Invoicing, Time tracking, File reconciliation, Storage, Financial Overview & your own Assistant.
 type Midday struct {
-	SDKVersion   string
-	Transactions *Transactions
-	Teams        *Teams
-	Users        *Users
-	Customers    *Customers
-	BankAccounts *BankAccounts
-	Tags         *Tags
-	Documents    *Documents
-	Inbox        *Inbox
-	Invoices     *Invoices
+	SDKVersion    string
+	OAuth         *OAuth
+	Notifications *Notifications
+	Transactions  *Transactions
+	Teams         *Teams
+	Users         *Users
+	Customers     *Customers
+	BankAccounts  *BankAccounts
+	Tags          *Tags
+	Documents     *Documents
+	Inbox         *Inbox
+	Invoices      *Invoices
 	// Search
 	// Search across all data, invoices, documents, customers, transactions, and more.
 	Search          *Search
-	Metrics         *Metrics
+	Reports         *Reports
 	TrackerProjects *TrackerProjects
 	TrackerEntries  *TrackerEntries
 	TrackerTimer    *TrackerTimer
@@ -111,10 +113,9 @@ func WithClient(client HTTPClient) SDKOption {
 }
 
 // WithSecurity configures the SDK to use the provided security details
-func WithSecurity(token string) SDKOption {
+func WithSecurity(security components.Security) SDKOption {
 	return func(sdk *Midday) {
-		security := components.Security{Token: &token}
-		sdk.sdkConfiguration.Security = utils.AsSecuritySource(&security)
+		sdk.sdkConfiguration.Security = utils.AsSecuritySource(security)
 	}
 }
 
@@ -143,9 +144,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *Midday {
 	sdk := &Midday{
-		SDKVersion: "0.1.0",
+		SDKVersion: "0.2.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.1.0 2.686.7 0.0.1 github.com/midday-ai/midday-go",
+			UserAgent:  "speakeasy-sdk/go 0.2.0 2.709.0 0.0.1 github.com/midday-ai/midday-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
@@ -168,6 +169,8 @@ func New(opts ...SDKOption) *Midday {
 
 	sdk.sdkConfiguration = sdk.hooks.SDKInit(sdk.sdkConfiguration)
 
+	sdk.OAuth = newOAuth(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Notifications = newNotifications(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Transactions = newTransactions(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Teams = newTeams(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Users = newUsers(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -178,7 +181,7 @@ func New(opts ...SDKOption) *Midday {
 	sdk.Inbox = newInbox(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Invoices = newInvoices(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Search = newSearch(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Metrics = newMetrics(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Reports = newReports(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.TrackerProjects = newTrackerProjects(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.TrackerEntries = newTrackerEntries(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.TrackerTimer = newTrackerTimer(sdk, sdk.sdkConfiguration, sdk.hooks)

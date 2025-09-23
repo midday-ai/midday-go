@@ -11,23 +11,23 @@ type GetBurnRateResponseSchema struct {
 	Currency string `json:"currency"`
 }
 
-func (o *GetBurnRateResponseSchema) GetDate() string {
-	if o == nil {
+func (g *GetBurnRateResponseSchema) GetDate() string {
+	if g == nil {
 		return ""
 	}
-	return o.Date
+	return g.Date
 }
 
-func (o *GetBurnRateResponseSchema) GetValue() float64 {
-	if o == nil {
+func (g *GetBurnRateResponseSchema) GetValue() float64 {
+	if g == nil {
 		return 0.0
 	}
-	return o.Value
+	return g.Value
 }
 
-func (o *GetBurnRateResponseSchema) GetCurrency() string {
-	if o == nil {
+func (g *GetBurnRateResponseSchema) GetCurrency() string {
+	if g == nil {
 		return ""
 	}
-	return o.Currency
+	return g.Currency
 }

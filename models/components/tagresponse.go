@@ -9,16 +9,16 @@ type TagResponse struct {
 	Name string `json:"name"`
 }
 
-func (o *TagResponse) GetID() string {
-	if o == nil {
+func (t *TagResponse) GetID() string {
+	if t == nil {
 		return ""
 	}
-	return o.ID
+	return t.ID
 }
 
-func (o *TagResponse) GetName() string {
-	if o == nil {
+func (t *TagResponse) GetName() string {
+	if t == nil {
 		return ""
 	}
-	return o.Name
+	return t.Name
 }

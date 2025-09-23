@@ -12,25 +12,25 @@ type ListTrackerEntriesRequest struct {
 	ProjectID *string `queryParam:"style=form,explode=true,name=projectId"`
 }
 
-func (o *ListTrackerEntriesRequest) GetFrom() string {
-	if o == nil {
+func (l *ListTrackerEntriesRequest) GetFrom() string {
+	if l == nil {
 		return ""
 	}
-	return o.From
+	return l.From
 }
 
-func (o *ListTrackerEntriesRequest) GetTo() string {
-	if o == nil {
+func (l *ListTrackerEntriesRequest) GetTo() string {
+	if l == nil {
 		return ""
 	}
-	return o.To
+	return l.To
 }
 
-func (o *ListTrackerEntriesRequest) GetProjectID() *string {
-	if o == nil {
+func (l *ListTrackerEntriesRequest) GetProjectID() *string {
+	if l == nil {
 		return nil
 	}
-	return o.ProjectID
+	return l.ProjectID
 }
 
 // ListTrackerEntriesMeta - Metadata about the tracker entries response including totals and date range
@@ -45,32 +45,32 @@ type ListTrackerEntriesMeta struct {
 	To string `json:"to"`
 }
 
-func (o *ListTrackerEntriesMeta) GetTotalDuration() float64 {
-	if o == nil {
+func (l *ListTrackerEntriesMeta) GetTotalDuration() float64 {
+	if l == nil {
 		return 0.0
 	}
-	return o.TotalDuration
+	return l.TotalDuration
 }
 
-func (o *ListTrackerEntriesMeta) GetTotalAmount() float64 {
-	if o == nil {
+func (l *ListTrackerEntriesMeta) GetTotalAmount() float64 {
+	if l == nil {
 		return 0.0
 	}
-	return o.TotalAmount
+	return l.TotalAmount
 }
 
-func (o *ListTrackerEntriesMeta) GetFrom() string {
-	if o == nil {
+func (l *ListTrackerEntriesMeta) GetFrom() string {
+	if l == nil {
 		return ""
 	}
-	return o.From
+	return l.From
 }
 
-func (o *ListTrackerEntriesMeta) GetTo() string {
-	if o == nil {
+func (l *ListTrackerEntriesMeta) GetTo() string {
+	if l == nil {
 		return ""
 	}
-	return o.To
+	return l.To
 }
 
 // ListTrackerEntriesUser - User information for the person who created this tracker entry
@@ -83,25 +83,25 @@ type ListTrackerEntriesUser struct {
 	AvatarURL string `json:"avatarUrl"`
 }
 
-func (o *ListTrackerEntriesUser) GetID() string {
-	if o == nil {
+func (l *ListTrackerEntriesUser) GetID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ID
+	return l.ID
 }
 
-func (o *ListTrackerEntriesUser) GetFullName() string {
-	if o == nil {
+func (l *ListTrackerEntriesUser) GetFullName() string {
+	if l == nil {
 		return ""
 	}
-	return o.FullName
+	return l.FullName
 }
 
-func (o *ListTrackerEntriesUser) GetAvatarURL() string {
-	if o == nil {
+func (l *ListTrackerEntriesUser) GetAvatarURL() string {
+	if l == nil {
 		return ""
 	}
-	return o.AvatarURL
+	return l.AvatarURL
 }
 
 // ListTrackerEntriesCustomer - Customer information associated with the project
@@ -112,18 +112,18 @@ type ListTrackerEntriesCustomer struct {
 	Name string `json:"name"`
 }
 
-func (o *ListTrackerEntriesCustomer) GetID() string {
-	if o == nil {
+func (l *ListTrackerEntriesCustomer) GetID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ID
+	return l.ID
 }
 
-func (o *ListTrackerEntriesCustomer) GetName() string {
-	if o == nil {
+func (l *ListTrackerEntriesCustomer) GetName() string {
+	if l == nil {
 		return ""
 	}
-	return o.Name
+	return l.Name
 }
 
 // ListTrackerEntriesProject - Project information associated with this tracker entry
@@ -150,74 +150,74 @@ type ListTrackerEntriesProject struct {
 	Customer *ListTrackerEntriesCustomer `json:"customer"`
 }
 
-func (o *ListTrackerEntriesProject) GetID() string {
-	if o == nil {
+func (l *ListTrackerEntriesProject) GetID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ID
+	return l.ID
 }
 
-func (o *ListTrackerEntriesProject) GetCreatedAt() string {
-	if o == nil {
+func (l *ListTrackerEntriesProject) GetCreatedAt() string {
+	if l == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return l.CreatedAt
 }
 
-func (o *ListTrackerEntriesProject) GetRate() *float64 {
-	if o == nil {
+func (l *ListTrackerEntriesProject) GetRate() *float64 {
+	if l == nil {
 		return nil
 	}
-	return o.Rate
+	return l.Rate
 }
 
-func (o *ListTrackerEntriesProject) GetCurrency() *string {
-	if o == nil {
+func (l *ListTrackerEntriesProject) GetCurrency() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Currency
+	return l.Currency
 }
 
-func (o *ListTrackerEntriesProject) GetStatus() string {
-	if o == nil {
+func (l *ListTrackerEntriesProject) GetStatus() string {
+	if l == nil {
 		return ""
 	}
-	return o.Status
+	return l.Status
 }
 
-func (o *ListTrackerEntriesProject) GetDescription() *string {
-	if o == nil {
+func (l *ListTrackerEntriesProject) GetDescription() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Description
+	return l.Description
 }
 
-func (o *ListTrackerEntriesProject) GetName() string {
-	if o == nil {
+func (l *ListTrackerEntriesProject) GetName() string {
+	if l == nil {
 		return ""
 	}
-	return o.Name
+	return l.Name
 }
 
-func (o *ListTrackerEntriesProject) GetBillable() *bool {
-	if o == nil {
+func (l *ListTrackerEntriesProject) GetBillable() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.Billable
+	return l.Billable
 }
 
-func (o *ListTrackerEntriesProject) GetEstimate() *float64 {
-	if o == nil {
+func (l *ListTrackerEntriesProject) GetEstimate() *float64 {
+	if l == nil {
 		return nil
 	}
-	return o.Estimate
+	return l.Estimate
 }
 
-func (o *ListTrackerEntriesProject) GetCustomer() *ListTrackerEntriesCustomer {
-	if o == nil {
+func (l *ListTrackerEntriesProject) GetCustomer() *ListTrackerEntriesCustomer {
+	if l == nil {
 		return nil
 	}
-	return o.Customer
+	return l.Customer
 }
 
 type Result struct {
@@ -249,95 +249,95 @@ type Result struct {
 	Project ListTrackerEntriesProject `json:"project"`
 }
 
-func (o *Result) GetID() string {
-	if o == nil {
+func (r *Result) GetID() string {
+	if r == nil {
 		return ""
 	}
-	return o.ID
+	return r.ID
 }
 
-func (o *Result) GetCreatedAt() string {
-	if o == nil {
+func (r *Result) GetCreatedAt() string {
+	if r == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return r.CreatedAt
 }
 
-func (o *Result) GetDuration() float64 {
-	if o == nil {
+func (r *Result) GetDuration() float64 {
+	if r == nil {
 		return 0.0
 	}
-	return o.Duration
+	return r.Duration
 }
 
-func (o *Result) GetStart() string {
-	if o == nil {
+func (r *Result) GetStart() string {
+	if r == nil {
 		return ""
 	}
-	return o.Start
+	return r.Start
 }
 
-func (o *Result) GetStop() string {
-	if o == nil {
+func (r *Result) GetStop() string {
+	if r == nil {
 		return ""
 	}
-	return o.Stop
+	return r.Stop
 }
 
-func (o *Result) GetTeamID() string {
-	if o == nil {
+func (r *Result) GetTeamID() string {
+	if r == nil {
 		return ""
 	}
-	return o.TeamID
+	return r.TeamID
 }
 
-func (o *Result) GetDescription() *string {
-	if o == nil {
+func (r *Result) GetDescription() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Description
+	return r.Description
 }
 
-func (o *Result) GetRate() *float64 {
-	if o == nil {
+func (r *Result) GetRate() *float64 {
+	if r == nil {
 		return nil
 	}
-	return o.Rate
+	return r.Rate
 }
 
-func (o *Result) GetCurrency() *string {
-	if o == nil {
+func (r *Result) GetCurrency() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Currency
+	return r.Currency
 }
 
-func (o *Result) GetBilled() bool {
-	if o == nil {
+func (r *Result) GetBilled() bool {
+	if r == nil {
 		return false
 	}
-	return o.Billed
+	return r.Billed
 }
 
-func (o *Result) GetDate() string {
-	if o == nil {
+func (r *Result) GetDate() string {
+	if r == nil {
 		return ""
 	}
-	return o.Date
+	return r.Date
 }
 
-func (o *Result) GetUser() ListTrackerEntriesUser {
-	if o == nil {
+func (r *Result) GetUser() ListTrackerEntriesUser {
+	if r == nil {
 		return ListTrackerEntriesUser{}
 	}
-	return o.User
+	return r.User
 }
 
-func (o *Result) GetProject() ListTrackerEntriesProject {
-	if o == nil {
+func (r *Result) GetProject() ListTrackerEntriesProject {
+	if r == nil {
 		return ListTrackerEntriesProject{}
 	}
-	return o.Project
+	return r.Project
 }
 
 // ListTrackerEntriesResponseBody - List all tracker entries for the authenticated team.
@@ -348,18 +348,18 @@ type ListTrackerEntriesResponseBody struct {
 	Result map[string][]Result `json:"result"`
 }
 
-func (o *ListTrackerEntriesResponseBody) GetMeta() ListTrackerEntriesMeta {
-	if o == nil {
+func (l *ListTrackerEntriesResponseBody) GetMeta() ListTrackerEntriesMeta {
+	if l == nil {
 		return ListTrackerEntriesMeta{}
 	}
-	return o.Meta
+	return l.Meta
 }
 
-func (o *ListTrackerEntriesResponseBody) GetResult() map[string][]Result {
-	if o == nil {
+func (l *ListTrackerEntriesResponseBody) GetResult() map[string][]Result {
+	if l == nil {
 		return map[string][]Result{}
 	}
-	return o.Result
+	return l.Result
 }
 
 type ListTrackerEntriesResponse struct {
@@ -368,16 +368,16 @@ type ListTrackerEntriesResponse struct {
 	Object *ListTrackerEntriesResponseBody
 }
 
-func (o *ListTrackerEntriesResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (l *ListTrackerEntriesResponse) GetHTTPMeta() components.HTTPMetadata {
+	if l == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return l.HTTPMeta
 }
 
-func (o *ListTrackerEntriesResponse) GetObject() *ListTrackerEntriesResponseBody {
-	if o == nil {
+func (l *ListTrackerEntriesResponse) GetObject() *ListTrackerEntriesResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

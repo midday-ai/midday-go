@@ -10,11 +10,11 @@ type GetTagByIDRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
-func (o *GetTagByIDRequest) GetID() string {
-	if o == nil {
+func (g *GetTagByIDRequest) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
 type GetTagByIDResponse struct {
@@ -23,16 +23,16 @@ type GetTagByIDResponse struct {
 	TagResponse *components.TagResponse
 }
 
-func (o *GetTagByIDResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (g *GetTagByIDResponse) GetHTTPMeta() components.HTTPMetadata {
+	if g == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return g.HTTPMeta
 }
 
-func (o *GetTagByIDResponse) GetTagResponse() *components.TagResponse {
-	if o == nil {
+func (g *GetTagByIDResponse) GetTagResponse() *components.TagResponse {
+	if g == nil {
 		return nil
 	}
-	return o.TagResponse
+	return g.TagResponse
 }

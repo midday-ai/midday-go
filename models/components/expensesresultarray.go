@@ -15,37 +15,37 @@ type ExpensesResultArray struct {
 	Total float64 `json:"total"`
 }
 
-func (o *ExpensesResultArray) GetDate() string {
-	if o == nil {
+func (e *ExpensesResultArray) GetDate() string {
+	if e == nil {
 		return ""
 	}
-	return o.Date
+	return e.Date
 }
 
-func (o *ExpensesResultArray) GetValue() float64 {
-	if o == nil {
+func (e *ExpensesResultArray) GetValue() float64 {
+	if e == nil {
 		return 0.0
 	}
-	return o.Value
+	return e.Value
 }
 
-func (o *ExpensesResultArray) GetCurrency() string {
-	if o == nil {
+func (e *ExpensesResultArray) GetCurrency() string {
+	if e == nil {
 		return ""
 	}
-	return o.Currency
+	return e.Currency
 }
 
-func (o *ExpensesResultArray) GetRecurring() float64 {
-	if o == nil {
+func (e *ExpensesResultArray) GetRecurring() float64 {
+	if e == nil {
 		return 0.0
 	}
-	return o.Recurring
+	return e.Recurring
 }
 
-func (o *ExpensesResultArray) GetTotal() float64 {
-	if o == nil {
+func (e *ExpensesResultArray) GetTotal() float64 {
+	if e == nil {
 		return 0.0
 	}
-	return o.Total
+	return e.Total
 }

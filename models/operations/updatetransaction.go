@@ -94,53 +94,53 @@ type UpdateTransactionRequestBody struct {
 	AssignedID *string `json:"assignedId,omitempty"`
 }
 
-func (o *UpdateTransactionRequestBody) GetCategorySlug() *string {
-	if o == nil {
+func (u *UpdateTransactionRequestBody) GetCategorySlug() *string {
+	if u == nil {
 		return nil
 	}
-	return o.CategorySlug
+	return u.CategorySlug
 }
 
-func (o *UpdateTransactionRequestBody) GetStatus() *UpdateTransactionStatus {
-	if o == nil {
+func (u *UpdateTransactionRequestBody) GetStatus() *UpdateTransactionStatus {
+	if u == nil {
 		return nil
 	}
-	return o.Status
+	return u.Status
 }
 
-func (o *UpdateTransactionRequestBody) GetInternal() *bool {
-	if o == nil {
+func (u *UpdateTransactionRequestBody) GetInternal() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Internal
+	return u.Internal
 }
 
-func (o *UpdateTransactionRequestBody) GetRecurring() *bool {
-	if o == nil {
+func (u *UpdateTransactionRequestBody) GetRecurring() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Recurring
+	return u.Recurring
 }
 
-func (o *UpdateTransactionRequestBody) GetFrequency() *UpdateTransactionFrequency {
-	if o == nil {
+func (u *UpdateTransactionRequestBody) GetFrequency() *UpdateTransactionFrequency {
+	if u == nil {
 		return nil
 	}
-	return o.Frequency
+	return u.Frequency
 }
 
-func (o *UpdateTransactionRequestBody) GetNote() *string {
-	if o == nil {
+func (u *UpdateTransactionRequestBody) GetNote() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Note
+	return u.Note
 }
 
-func (o *UpdateTransactionRequestBody) GetAssignedID() *string {
-	if o == nil {
+func (u *UpdateTransactionRequestBody) GetAssignedID() *string {
+	if u == nil {
 		return nil
 	}
-	return o.AssignedID
+	return u.AssignedID
 }
 
 type UpdateTransactionRequest struct {
@@ -148,18 +148,18 @@ type UpdateTransactionRequest struct {
 	RequestBody *UpdateTransactionRequestBody `request:"mediaType=application/json"`
 }
 
-func (o *UpdateTransactionRequest) GetID() string {
-	if o == nil {
+func (u *UpdateTransactionRequest) GetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UpdateTransactionRequest) GetRequestBody() *UpdateTransactionRequestBody {
-	if o == nil {
+func (u *UpdateTransactionRequest) GetRequestBody() *UpdateTransactionRequestBody {
+	if u == nil {
 		return nil
 	}
-	return o.RequestBody
+	return u.RequestBody
 }
 
 type UpdateTransactionResponse struct {
@@ -168,16 +168,16 @@ type UpdateTransactionResponse struct {
 	TransactionResponse *components.TransactionResponse
 }
 
-func (o *UpdateTransactionResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (u *UpdateTransactionResponse) GetHTTPMeta() components.HTTPMetadata {
+	if u == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return u.HTTPMeta
 }
 
-func (o *UpdateTransactionResponse) GetTransactionResponse() *components.TransactionResponse {
-	if o == nil {
+func (u *UpdateTransactionResponse) GetTransactionResponse() *components.TransactionResponse {
+	if u == nil {
 		return nil
 	}
-	return o.TransactionResponse
+	return u.TransactionResponse
 }

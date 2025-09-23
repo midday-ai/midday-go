@@ -10,11 +10,11 @@ type DeleteTransactionRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
-func (o *DeleteTransactionRequest) GetID() string {
-	if o == nil {
+func (d *DeleteTransactionRequest) GetID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ID
+	return d.ID
 }
 
 // DeleteTransactionResponseBody - Transaction deleted
@@ -23,11 +23,11 @@ type DeleteTransactionResponseBody struct {
 	ID string `json:"id"`
 }
 
-func (o *DeleteTransactionResponseBody) GetID() string {
-	if o == nil {
+func (d *DeleteTransactionResponseBody) GetID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ID
+	return d.ID
 }
 
 type DeleteTransactionResponse struct {
@@ -36,16 +36,16 @@ type DeleteTransactionResponse struct {
 	Object *DeleteTransactionResponseBody
 }
 
-func (o *DeleteTransactionResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (d *DeleteTransactionResponse) GetHTTPMeta() components.HTTPMetadata {
+	if d == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return d.HTTPMeta
 }
 
-func (o *DeleteTransactionResponse) GetObject() *DeleteTransactionResponseBody {
-	if o == nil {
+func (d *DeleteTransactionResponse) GetObject() *DeleteTransactionResponseBody {
+	if d == nil {
 		return nil
 	}
-	return o.Object
+	return d.Object
 }

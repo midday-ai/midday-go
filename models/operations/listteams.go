@@ -49,32 +49,32 @@ type ListTeamsData struct {
 	Plan ListTeamsPlan `json:"plan"`
 }
 
-func (o *ListTeamsData) GetID() string {
-	if o == nil {
+func (l *ListTeamsData) GetID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ID
+	return l.ID
 }
 
-func (o *ListTeamsData) GetName() string {
-	if o == nil {
+func (l *ListTeamsData) GetName() string {
+	if l == nil {
 		return ""
 	}
-	return o.Name
+	return l.Name
 }
 
-func (o *ListTeamsData) GetLogoURL() *string {
-	if o == nil {
+func (l *ListTeamsData) GetLogoURL() *string {
+	if l == nil {
 		return nil
 	}
-	return o.LogoURL
+	return l.LogoURL
 }
 
-func (o *ListTeamsData) GetPlan() ListTeamsPlan {
-	if o == nil {
+func (l *ListTeamsData) GetPlan() ListTeamsPlan {
+	if l == nil {
 		return ListTeamsPlan("")
 	}
-	return o.Plan
+	return l.Plan
 }
 
 // ListTeamsResponseBody - Retrieve a list of teams for the authenticated user.
@@ -83,11 +83,11 @@ type ListTeamsResponseBody struct {
 	Data []ListTeamsData `json:"data"`
 }
 
-func (o *ListTeamsResponseBody) GetData() []ListTeamsData {
-	if o == nil {
+func (l *ListTeamsResponseBody) GetData() []ListTeamsData {
+	if l == nil {
 		return []ListTeamsData{}
 	}
-	return o.Data
+	return l.Data
 }
 
 type ListTeamsResponse struct {
@@ -96,16 +96,16 @@ type ListTeamsResponse struct {
 	Object *ListTeamsResponseBody
 }
 
-func (o *ListTeamsResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (l *ListTeamsResponse) GetHTTPMeta() components.HTTPMetadata {
+	if l == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return l.HTTPMeta
 }
 
-func (o *ListTeamsResponse) GetObject() *ListTeamsResponseBody {
-	if o == nil {
+func (l *ListTeamsResponse) GetObject() *ListTeamsResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

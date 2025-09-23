@@ -11,18 +11,18 @@ type ListBankAccountsRequest struct {
 	Manual  *bool `queryParam:"style=form,explode=true,name=manual"`
 }
 
-func (o *ListBankAccountsRequest) GetEnabled() *bool {
-	if o == nil {
+func (l *ListBankAccountsRequest) GetEnabled() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.Enabled
+	return l.Enabled
 }
 
-func (o *ListBankAccountsRequest) GetManual() *bool {
-	if o == nil {
+func (l *ListBankAccountsRequest) GetManual() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.Manual
+	return l.Manual
 }
 
 // ListBankAccountsData - A single bank account object response.
@@ -43,53 +43,53 @@ type ListBankAccountsData struct {
 	Manual *bool `json:"manual"`
 }
 
-func (o *ListBankAccountsData) GetID() string {
-	if o == nil {
+func (l *ListBankAccountsData) GetID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ID
+	return l.ID
 }
 
-func (o *ListBankAccountsData) GetName() *string {
-	if o == nil {
+func (l *ListBankAccountsData) GetName() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Name
+	return l.Name
 }
 
-func (o *ListBankAccountsData) GetCurrency() *string {
-	if o == nil {
+func (l *ListBankAccountsData) GetCurrency() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Currency
+	return l.Currency
 }
 
-func (o *ListBankAccountsData) GetType() *string {
-	if o == nil {
+func (l *ListBankAccountsData) GetType() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Type
+	return l.Type
 }
 
-func (o *ListBankAccountsData) GetEnabled() bool {
-	if o == nil {
+func (l *ListBankAccountsData) GetEnabled() bool {
+	if l == nil {
 		return false
 	}
-	return o.Enabled
+	return l.Enabled
 }
 
-func (o *ListBankAccountsData) GetBalance() *float64 {
-	if o == nil {
+func (l *ListBankAccountsData) GetBalance() *float64 {
+	if l == nil {
 		return nil
 	}
-	return o.Balance
+	return l.Balance
 }
 
-func (o *ListBankAccountsData) GetManual() *bool {
-	if o == nil {
+func (l *ListBankAccountsData) GetManual() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.Manual
+	return l.Manual
 }
 
 // ListBankAccountsResponseBody - Response containing a list of bank accounts.
@@ -98,11 +98,11 @@ type ListBankAccountsResponseBody struct {
 	Data []ListBankAccountsData `json:"data"`
 }
 
-func (o *ListBankAccountsResponseBody) GetData() []ListBankAccountsData {
-	if o == nil {
+func (l *ListBankAccountsResponseBody) GetData() []ListBankAccountsData {
+	if l == nil {
 		return []ListBankAccountsData{}
 	}
-	return o.Data
+	return l.Data
 }
 
 type ListBankAccountsResponse struct {
@@ -111,16 +111,16 @@ type ListBankAccountsResponse struct {
 	Object *ListBankAccountsResponseBody
 }
 
-func (o *ListBankAccountsResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (l *ListBankAccountsResponse) GetHTTPMeta() components.HTTPMetadata {
+	if l == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return l.HTTPMeta
 }
 
-func (o *ListBankAccountsResponse) GetObject() *ListBankAccountsResponseBody {
-	if o == nil {
+func (l *ListBankAccountsResponse) GetObject() *ListBankAccountsResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

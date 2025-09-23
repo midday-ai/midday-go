@@ -43,18 +43,18 @@ type UpdateTrackerProjectTag struct {
 	Value string `json:"value"`
 }
 
-func (o *UpdateTrackerProjectTag) GetID() string {
-	if o == nil {
+func (u *UpdateTrackerProjectTag) GetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UpdateTrackerProjectTag) GetValue() string {
-	if o == nil {
+func (u *UpdateTrackerProjectTag) GetValue() string {
+	if u == nil {
 		return ""
 	}
-	return o.Value
+	return u.Value
 }
 
 type UpdateTrackerProjectRequestBody struct {
@@ -83,73 +83,73 @@ func (u UpdateTrackerProjectRequestBody) MarshalJSON() ([]byte, error) {
 }
 
 func (u *UpdateTrackerProjectRequestBody) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"name"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UpdateTrackerProjectRequestBody) GetName() string {
-	if o == nil {
+func (u *UpdateTrackerProjectRequestBody) GetName() string {
+	if u == nil {
 		return ""
 	}
-	return o.Name
+	return u.Name
 }
 
-func (o *UpdateTrackerProjectRequestBody) GetDescription() *string {
-	if o == nil {
+func (u *UpdateTrackerProjectRequestBody) GetDescription() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Description
+	return u.Description
 }
 
-func (o *UpdateTrackerProjectRequestBody) GetEstimate() *float64 {
-	if o == nil {
+func (u *UpdateTrackerProjectRequestBody) GetEstimate() *float64 {
+	if u == nil {
 		return nil
 	}
-	return o.Estimate
+	return u.Estimate
 }
 
-func (o *UpdateTrackerProjectRequestBody) GetBillable() *bool {
-	if o == nil {
+func (u *UpdateTrackerProjectRequestBody) GetBillable() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Billable
+	return u.Billable
 }
 
-func (o *UpdateTrackerProjectRequestBody) GetRate() *float64 {
-	if o == nil {
+func (u *UpdateTrackerProjectRequestBody) GetRate() *float64 {
+	if u == nil {
 		return nil
 	}
-	return o.Rate
+	return u.Rate
 }
 
-func (o *UpdateTrackerProjectRequestBody) GetCurrency() *string {
-	if o == nil {
+func (u *UpdateTrackerProjectRequestBody) GetCurrency() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Currency
+	return u.Currency
 }
 
-func (o *UpdateTrackerProjectRequestBody) GetStatus() *UpdateTrackerProjectStatus {
-	if o == nil {
+func (u *UpdateTrackerProjectRequestBody) GetStatus() *UpdateTrackerProjectStatus {
+	if u == nil {
 		return nil
 	}
-	return o.Status
+	return u.Status
 }
 
-func (o *UpdateTrackerProjectRequestBody) GetCustomerID() *string {
-	if o == nil {
+func (u *UpdateTrackerProjectRequestBody) GetCustomerID() *string {
+	if u == nil {
 		return nil
 	}
-	return o.CustomerID
+	return u.CustomerID
 }
 
-func (o *UpdateTrackerProjectRequestBody) GetTags() []UpdateTrackerProjectTag {
-	if o == nil {
+func (u *UpdateTrackerProjectRequestBody) GetTags() []UpdateTrackerProjectTag {
+	if u == nil {
 		return nil
 	}
-	return o.Tags
+	return u.Tags
 }
 
 type UpdateTrackerProjectRequest struct {
@@ -157,18 +157,18 @@ type UpdateTrackerProjectRequest struct {
 	RequestBody *UpdateTrackerProjectRequestBody `request:"mediaType=application/json"`
 }
 
-func (o *UpdateTrackerProjectRequest) GetID() string {
-	if o == nil {
+func (u *UpdateTrackerProjectRequest) GetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UpdateTrackerProjectRequest) GetRequestBody() *UpdateTrackerProjectRequestBody {
-	if o == nil {
+func (u *UpdateTrackerProjectRequest) GetRequestBody() *UpdateTrackerProjectRequestBody {
+	if u == nil {
 		return nil
 	}
-	return o.RequestBody
+	return u.RequestBody
 }
 
 type UpdateTrackerProjectResponse struct {
@@ -177,16 +177,16 @@ type UpdateTrackerProjectResponse struct {
 	TrackerProjectResponse *components.TrackerProjectResponse
 }
 
-func (o *UpdateTrackerProjectResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (u *UpdateTrackerProjectResponse) GetHTTPMeta() components.HTTPMetadata {
+	if u == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return u.HTTPMeta
 }
 
-func (o *UpdateTrackerProjectResponse) GetTrackerProjectResponse() *components.TrackerProjectResponse {
-	if o == nil {
+func (u *UpdateTrackerProjectResponse) GetTrackerProjectResponse() *components.TrackerProjectResponse {
+	if u == nil {
 		return nil
 	}
-	return o.TrackerProjectResponse
+	return u.TrackerProjectResponse
 }

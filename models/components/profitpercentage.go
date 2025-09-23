@@ -41,16 +41,16 @@ type ProfitPercentage struct {
 	Status ProfitPercentageStatus `json:"status"`
 }
 
-func (o *ProfitPercentage) GetValue() float64 {
-	if o == nil {
+func (p *ProfitPercentage) GetValue() float64 {
+	if p == nil {
 		return 0.0
 	}
-	return o.Value
+	return p.Value
 }
 
-func (o *ProfitPercentage) GetStatus() ProfitPercentageStatus {
-	if o == nil {
+func (p *ProfitPercentage) GetStatus() ProfitPercentageStatus {
+	if p == nil {
 		return ProfitPercentageStatus("")
 	}
-	return o.Status
+	return p.Status
 }

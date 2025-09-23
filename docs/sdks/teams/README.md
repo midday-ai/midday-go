@@ -22,6 +22,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -30,7 +32,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Teams.List(ctx)
@@ -72,6 +76,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -80,7 +86,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Teams.Get(ctx, "123e4567-e89b-12d3-a456-426614174000")
@@ -123,6 +131,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/models/operations"
 	"log"
@@ -132,15 +142,17 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Teams.Update(ctx, "123e4567-e89b-12d3-a456-426614174000", &operations.UpdateTeamByIDRequestBody{
-        Name: middaygo.String("Acme Corporation"),
-        Email: middaygo.String("team@acme.com"),
-        LogoURL: middaygo.String("https://cdn.midday.ai/logos/acme-corp.png"),
-        BaseCurrency: middaygo.String("USD"),
-        CountryCode: middaygo.String("US"),
+        Name: middaygo.Pointer("Acme Corporation"),
+        Email: middaygo.Pointer("team@acme.com"),
+        LogoURL: middaygo.Pointer("https://cdn.midday.ai/logos/acme-corp.png"),
+        BaseCurrency: middaygo.Pointer("USD"),
+        CountryCode: middaygo.Pointer("US"),
     })
     if err != nil {
         log.Fatal(err)
@@ -182,6 +194,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -190,7 +204,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Teams.Members(ctx, "123e4567-e89b-12d3-a456-426614174000")

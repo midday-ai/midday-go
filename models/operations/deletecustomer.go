@@ -10,11 +10,11 @@ type DeleteCustomerRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
-func (o *DeleteCustomerRequest) GetID() string {
-	if o == nil {
+func (d *DeleteCustomerRequest) GetID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ID
+	return d.ID
 }
 
 type DeleteCustomerTag struct {
@@ -24,18 +24,18 @@ type DeleteCustomerTag struct {
 	Name string `json:"name"`
 }
 
-func (o *DeleteCustomerTag) GetID() string {
-	if o == nil {
+func (d *DeleteCustomerTag) GetID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ID
+	return d.ID
 }
 
-func (o *DeleteCustomerTag) GetName() string {
-	if o == nil {
+func (d *DeleteCustomerTag) GetName() string {
+	if d == nil {
 		return ""
 	}
-	return o.Name
+	return d.Name
 }
 
 // DeleteCustomerResponseBody - Customer deleted
@@ -84,151 +84,151 @@ type DeleteCustomerResponseBody struct {
 	Tags []DeleteCustomerTag `json:"tags"`
 }
 
-func (o *DeleteCustomerResponseBody) GetID() string {
-	if o == nil {
+func (d *DeleteCustomerResponseBody) GetID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ID
+	return d.ID
 }
 
-func (o *DeleteCustomerResponseBody) GetName() string {
-	if o == nil {
+func (d *DeleteCustomerResponseBody) GetName() string {
+	if d == nil {
 		return ""
 	}
-	return o.Name
+	return d.Name
 }
 
-func (o *DeleteCustomerResponseBody) GetEmail() string {
-	if o == nil {
+func (d *DeleteCustomerResponseBody) GetEmail() string {
+	if d == nil {
 		return ""
 	}
-	return o.Email
+	return d.Email
 }
 
-func (o *DeleteCustomerResponseBody) GetBillingEmail() *string {
-	if o == nil {
+func (d *DeleteCustomerResponseBody) GetBillingEmail() *string {
+	if d == nil {
 		return nil
 	}
-	return o.BillingEmail
+	return d.BillingEmail
 }
 
-func (o *DeleteCustomerResponseBody) GetPhone() *string {
-	if o == nil {
+func (d *DeleteCustomerResponseBody) GetPhone() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Phone
+	return d.Phone
 }
 
-func (o *DeleteCustomerResponseBody) GetWebsite() *string {
-	if o == nil {
+func (d *DeleteCustomerResponseBody) GetWebsite() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Website
+	return d.Website
 }
 
-func (o *DeleteCustomerResponseBody) GetCreatedAt() string {
-	if o == nil {
+func (d *DeleteCustomerResponseBody) GetCreatedAt() string {
+	if d == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return d.CreatedAt
 }
 
-func (o *DeleteCustomerResponseBody) GetCountry() *string {
-	if o == nil {
+func (d *DeleteCustomerResponseBody) GetCountry() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Country
+	return d.Country
 }
 
-func (o *DeleteCustomerResponseBody) GetAddressLine1() *string {
-	if o == nil {
+func (d *DeleteCustomerResponseBody) GetAddressLine1() *string {
+	if d == nil {
 		return nil
 	}
-	return o.AddressLine1
+	return d.AddressLine1
 }
 
-func (o *DeleteCustomerResponseBody) GetAddressLine2() *string {
-	if o == nil {
+func (d *DeleteCustomerResponseBody) GetAddressLine2() *string {
+	if d == nil {
 		return nil
 	}
-	return o.AddressLine2
+	return d.AddressLine2
 }
 
-func (o *DeleteCustomerResponseBody) GetCity() *string {
-	if o == nil {
+func (d *DeleteCustomerResponseBody) GetCity() *string {
+	if d == nil {
 		return nil
 	}
-	return o.City
+	return d.City
 }
 
-func (o *DeleteCustomerResponseBody) GetState() *string {
-	if o == nil {
+func (d *DeleteCustomerResponseBody) GetState() *string {
+	if d == nil {
 		return nil
 	}
-	return o.State
+	return d.State
 }
 
-func (o *DeleteCustomerResponseBody) GetZip() *string {
-	if o == nil {
+func (d *DeleteCustomerResponseBody) GetZip() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Zip
+	return d.Zip
 }
 
-func (o *DeleteCustomerResponseBody) GetNote() *string {
-	if o == nil {
+func (d *DeleteCustomerResponseBody) GetNote() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Note
+	return d.Note
 }
 
-func (o *DeleteCustomerResponseBody) GetVatNumber() *string {
-	if o == nil {
+func (d *DeleteCustomerResponseBody) GetVatNumber() *string {
+	if d == nil {
 		return nil
 	}
-	return o.VatNumber
+	return d.VatNumber
 }
 
-func (o *DeleteCustomerResponseBody) GetCountryCode() *string {
-	if o == nil {
+func (d *DeleteCustomerResponseBody) GetCountryCode() *string {
+	if d == nil {
 		return nil
 	}
-	return o.CountryCode
+	return d.CountryCode
 }
 
-func (o *DeleteCustomerResponseBody) GetToken() string {
-	if o == nil {
+func (d *DeleteCustomerResponseBody) GetToken() string {
+	if d == nil {
 		return ""
 	}
-	return o.Token
+	return d.Token
 }
 
-func (o *DeleteCustomerResponseBody) GetContact() *string {
-	if o == nil {
+func (d *DeleteCustomerResponseBody) GetContact() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Contact
+	return d.Contact
 }
 
-func (o *DeleteCustomerResponseBody) GetInvoiceCount() float64 {
-	if o == nil {
+func (d *DeleteCustomerResponseBody) GetInvoiceCount() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.InvoiceCount
+	return d.InvoiceCount
 }
 
-func (o *DeleteCustomerResponseBody) GetProjectCount() float64 {
-	if o == nil {
+func (d *DeleteCustomerResponseBody) GetProjectCount() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.ProjectCount
+	return d.ProjectCount
 }
 
-func (o *DeleteCustomerResponseBody) GetTags() []DeleteCustomerTag {
-	if o == nil {
+func (d *DeleteCustomerResponseBody) GetTags() []DeleteCustomerTag {
+	if d == nil {
 		return []DeleteCustomerTag{}
 	}
-	return o.Tags
+	return d.Tags
 }
 
 type DeleteCustomerResponse struct {
@@ -237,16 +237,16 @@ type DeleteCustomerResponse struct {
 	Object *DeleteCustomerResponseBody
 }
 
-func (o *DeleteCustomerResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (d *DeleteCustomerResponse) GetHTTPMeta() components.HTTPMetadata {
+	if d == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return d.HTTPMeta
 }
 
-func (o *DeleteCustomerResponse) GetObject() *DeleteCustomerResponseBody {
-	if o == nil {
+func (d *DeleteCustomerResponse) GetObject() *DeleteCustomerResponseBody {
+	if d == nil {
 		return nil
 	}
-	return o.Object
+	return d.Object
 }

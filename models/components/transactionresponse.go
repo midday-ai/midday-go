@@ -18,46 +18,46 @@ type Category struct {
 	Slug string `json:"slug"`
 }
 
-func (o *Category) GetID() string {
-	if o == nil {
+func (c *Category) GetID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ID
+	return c.ID
 }
 
-func (o *Category) GetName() string {
-	if o == nil {
+func (c *Category) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
 }
 
-func (o *Category) GetColor() string {
-	if o == nil {
+func (c *Category) GetColor() string {
+	if c == nil {
 		return ""
 	}
-	return o.Color
+	return c.Color
 }
 
-func (o *Category) GetTaxRate() *float64 {
-	if o == nil {
+func (c *Category) GetTaxRate() *float64 {
+	if c == nil {
 		return nil
 	}
-	return o.TaxRate
+	return c.TaxRate
 }
 
-func (o *Category) GetTaxType() *string {
-	if o == nil {
+func (c *Category) GetTaxType() *string {
+	if c == nil {
 		return nil
 	}
-	return o.TaxType
+	return c.TaxType
 }
 
-func (o *Category) GetSlug() string {
-	if o == nil {
+func (c *Category) GetSlug() string {
+	if c == nil {
 		return ""
 	}
-	return o.Slug
+	return c.Slug
 }
 
 // Connection - Bank connection information associated with the account
@@ -70,25 +70,25 @@ type Connection struct {
 	LogoURL *string `json:"logoUrl"`
 }
 
-func (o *Connection) GetID() string {
-	if o == nil {
+func (c *Connection) GetID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ID
+	return c.ID
 }
 
-func (o *Connection) GetName() string {
-	if o == nil {
+func (c *Connection) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
 }
 
-func (o *Connection) GetLogoURL() *string {
-	if o == nil {
+func (c *Connection) GetLogoURL() *string {
+	if c == nil {
 		return nil
 	}
-	return o.LogoURL
+	return c.LogoURL
 }
 
 // Account - Bank account information associated with the transaction
@@ -103,32 +103,32 @@ type Account struct {
 	Connection Connection `json:"connection"`
 }
 
-func (o *Account) GetID() string {
-	if o == nil {
+func (a *Account) GetID() string {
+	if a == nil {
 		return ""
 	}
-	return o.ID
+	return a.ID
 }
 
-func (o *Account) GetName() string {
-	if o == nil {
+func (a *Account) GetName() string {
+	if a == nil {
 		return ""
 	}
-	return o.Name
+	return a.Name
 }
 
-func (o *Account) GetCurrency() string {
-	if o == nil {
+func (a *Account) GetCurrency() string {
+	if a == nil {
 		return ""
 	}
-	return o.Currency
+	return a.Currency
 }
 
-func (o *Account) GetConnection() Connection {
-	if o == nil {
+func (a *Account) GetConnection() Connection {
+	if a == nil {
 		return Connection{}
 	}
-	return o.Connection
+	return a.Connection
 }
 
 type TransactionResponseTag struct {
@@ -138,18 +138,18 @@ type TransactionResponseTag struct {
 	Name *string `json:"name"`
 }
 
-func (o *TransactionResponseTag) GetID() string {
-	if o == nil {
+func (t *TransactionResponseTag) GetID() string {
+	if t == nil {
 		return ""
 	}
-	return o.ID
+	return t.ID
 }
 
-func (o *TransactionResponseTag) GetName() *string {
-	if o == nil {
+func (t *TransactionResponseTag) GetName() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Name
+	return t.Name
 }
 
 type Attachment struct {
@@ -165,39 +165,39 @@ type Attachment struct {
 	Filename *string `json:"filename"`
 }
 
-func (o *Attachment) GetID() string {
-	if o == nil {
+func (a *Attachment) GetID() string {
+	if a == nil {
 		return ""
 	}
-	return o.ID
+	return a.ID
 }
 
-func (o *Attachment) GetPath() []string {
-	if o == nil {
+func (a *Attachment) GetPath() []string {
+	if a == nil {
 		return []string{}
 	}
-	return o.Path
+	return a.Path
 }
 
-func (o *Attachment) GetSize() float64 {
-	if o == nil {
+func (a *Attachment) GetSize() float64 {
+	if a == nil {
 		return 0.0
 	}
-	return o.Size
+	return a.Size
 }
 
-func (o *Attachment) GetType() string {
-	if o == nil {
+func (a *Attachment) GetType() string {
+	if a == nil {
 		return ""
 	}
-	return o.Type
+	return a.Type
 }
 
-func (o *Attachment) GetFilename() *string {
-	if o == nil {
+func (a *Attachment) GetFilename() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Filename
+	return a.Filename
 }
 
 type TransactionResponse struct {
@@ -243,142 +243,142 @@ type TransactionResponse struct {
 	Attachments []Attachment `json:"attachments"`
 }
 
-func (o *TransactionResponse) GetID() string {
-	if o == nil {
+func (t *TransactionResponse) GetID() string {
+	if t == nil {
 		return ""
 	}
-	return o.ID
+	return t.ID
 }
 
-func (o *TransactionResponse) GetName() string {
-	if o == nil {
+func (t *TransactionResponse) GetName() string {
+	if t == nil {
 		return ""
 	}
-	return o.Name
+	return t.Name
 }
 
-func (o *TransactionResponse) GetAmount() float64 {
-	if o == nil {
+func (t *TransactionResponse) GetAmount() float64 {
+	if t == nil {
 		return 0.0
 	}
-	return o.Amount
+	return t.Amount
 }
 
-func (o *TransactionResponse) GetTaxAmount() *float64 {
-	if o == nil {
+func (t *TransactionResponse) GetTaxAmount() *float64 {
+	if t == nil {
 		return nil
 	}
-	return o.TaxAmount
+	return t.TaxAmount
 }
 
-func (o *TransactionResponse) GetTaxRate() *float64 {
-	if o == nil {
+func (t *TransactionResponse) GetTaxRate() *float64 {
+	if t == nil {
 		return nil
 	}
-	return o.TaxRate
+	return t.TaxRate
 }
 
-func (o *TransactionResponse) GetTaxType() *string {
-	if o == nil {
+func (t *TransactionResponse) GetTaxType() *string {
+	if t == nil {
 		return nil
 	}
-	return o.TaxType
+	return t.TaxType
 }
 
-func (o *TransactionResponse) GetCurrency() string {
-	if o == nil {
+func (t *TransactionResponse) GetCurrency() string {
+	if t == nil {
 		return ""
 	}
-	return o.Currency
+	return t.Currency
 }
 
-func (o *TransactionResponse) GetCounterpartyName() *string {
-	if o == nil {
+func (t *TransactionResponse) GetCounterpartyName() *string {
+	if t == nil {
 		return nil
 	}
-	return o.CounterpartyName
+	return t.CounterpartyName
 }
 
-func (o *TransactionResponse) GetDate() string {
-	if o == nil {
+func (t *TransactionResponse) GetDate() string {
+	if t == nil {
 		return ""
 	}
-	return o.Date
+	return t.Date
 }
 
-func (o *TransactionResponse) GetCategory() *Category {
-	if o == nil {
+func (t *TransactionResponse) GetCategory() *Category {
+	if t == nil {
 		return nil
 	}
-	return o.Category
+	return t.Category
 }
 
-func (o *TransactionResponse) GetStatus() string {
-	if o == nil {
+func (t *TransactionResponse) GetStatus() string {
+	if t == nil {
 		return ""
 	}
-	return o.Status
+	return t.Status
 }
 
-func (o *TransactionResponse) GetInternal() *bool {
-	if o == nil {
+func (t *TransactionResponse) GetInternal() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Internal
+	return t.Internal
 }
 
-func (o *TransactionResponse) GetRecurring() *bool {
-	if o == nil {
+func (t *TransactionResponse) GetRecurring() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Recurring
+	return t.Recurring
 }
 
-func (o *TransactionResponse) GetManual() *bool {
-	if o == nil {
+func (t *TransactionResponse) GetManual() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.Manual
+	return t.Manual
 }
 
-func (o *TransactionResponse) GetFrequency() *string {
-	if o == nil {
+func (t *TransactionResponse) GetFrequency() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Frequency
+	return t.Frequency
 }
 
-func (o *TransactionResponse) GetIsFulfilled() bool {
-	if o == nil {
+func (t *TransactionResponse) GetIsFulfilled() bool {
+	if t == nil {
 		return false
 	}
-	return o.IsFulfilled
+	return t.IsFulfilled
 }
 
-func (o *TransactionResponse) GetNote() *string {
-	if o == nil {
+func (t *TransactionResponse) GetNote() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Note
+	return t.Note
 }
 
-func (o *TransactionResponse) GetAccount() Account {
-	if o == nil {
+func (t *TransactionResponse) GetAccount() Account {
+	if t == nil {
 		return Account{}
 	}
-	return o.Account
+	return t.Account
 }
 
-func (o *TransactionResponse) GetTags() []TransactionResponseTag {
-	if o == nil {
+func (t *TransactionResponse) GetTags() []TransactionResponseTag {
+	if t == nil {
 		return nil
 	}
-	return o.Tags
+	return t.Tags
 }
 
-func (o *TransactionResponse) GetAttachments() []Attachment {
-	if o == nil {
+func (t *TransactionResponse) GetAttachments() []Attachment {
+	if t == nil {
 		return nil
 	}
-	return o.Attachments
+	return t.Attachments
 }

@@ -22,6 +22,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/types"
 	"github.com/midday-ai/midday-go/models/operations"
@@ -32,15 +34,17 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.TrackerTimer.StartTimer(ctx, &operations.StartTimerRequest{
         ProjectID: "b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2",
-        AssignedID: middaygo.String("a1b2c3d4-e5f6-7890-abcd-ef1234567890"),
-        Description: middaygo.String("Working on implementing timer feature"),
+        AssignedID: middaygo.Pointer("a1b2c3d4-e5f6-7890-abcd-ef1234567890"),
+        Description: middaygo.Pointer("Working on implementing timer feature"),
         Start: types.MustNewTimeFromString("2024-04-15T09:00:00.000Z"),
-        ContinueFromEntry: middaygo.String("c4d5e6f7-2a3b-4c5d-8e9f-3a4b5c6d7e8f"),
+        ContinueFromEntry: middaygo.Pointer("c4d5e6f7-2a3b-4c5d-8e9f-3a4b5c6d7e8f"),
     })
     if err != nil {
         log.Fatal(err)
@@ -81,6 +85,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/types"
 	"github.com/midday-ai/midday-go/models/operations"
@@ -91,12 +97,14 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.TrackerTimer.StopTimer(ctx, &operations.StopTimerRequest{
-        EntryID: middaygo.String("b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2"),
-        AssignedID: middaygo.String("a1b2c3d4-e5f6-7890-abcd-ef1234567890"),
+        EntryID: middaygo.Pointer("b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2"),
+        AssignedID: middaygo.Pointer("a1b2c3d4-e5f6-7890-abcd-ef1234567890"),
         Stop: types.MustNewTimeFromString("2024-04-15T17:00:00.000Z"),
     })
     if err != nil {
@@ -138,6 +146,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -146,10 +156,12 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
-    res, err := s.TrackerTimer.GetCurrentTimer(ctx, middaygo.String("a1b2c3d4-e5f6-7890-abcd-ef1234567890"))
+    res, err := s.TrackerTimer.GetCurrentTimer(ctx, middaygo.Pointer("a1b2c3d4-e5f6-7890-abcd-ef1234567890"))
     if err != nil {
         log.Fatal(err)
     }
@@ -189,6 +201,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -197,10 +211,12 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.Pointer(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
-    res, err := s.TrackerTimer.GetTimerStatus(ctx, middaygo.String("a1b2c3d4-e5f6-7890-abcd-ef1234567890"))
+    res, err := s.TrackerTimer.GetTimerStatus(ctx, middaygo.Pointer("a1b2c3d4-e5f6-7890-abcd-ef1234567890"))
     if err != nil {
         log.Fatal(err)
     }
