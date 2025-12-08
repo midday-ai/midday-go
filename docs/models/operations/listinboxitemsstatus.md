@@ -3,7 +3,8 @@
 
 ## Values
 
-| Name                          | Value                         |
-| ----------------------------- | ----------------------------- |
-| `ListInboxItemsStatusDone`    | done                          |
-| `ListInboxItemsStatusPending` | pending                       |
+| Name                                 | Value                                |
+| ------------------------------------ | ------------------------------------ |
+| `ListInboxItemsStatusDone`           | done                                 |
+| `ListInboxItemsStatusPending`        | pending                              |
+| `ListInboxItemsStatusSuggestedMatch` | suggested_match                      |

@@ -11,11 +11,14 @@ import (
 type UpdateInboxItemStatus string
 
 const (
-	UpdateInboxItemStatusNew        UpdateInboxItemStatus = "new"
-	UpdateInboxItemStatusArchived   UpdateInboxItemStatus = "archived"
-	UpdateInboxItemStatusProcessing UpdateInboxItemStatus = "processing"
-	UpdateInboxItemStatusDone       UpdateInboxItemStatus = "done"
-	UpdateInboxItemStatusPending    UpdateInboxItemStatus = "pending"
+	UpdateInboxItemStatusNew            UpdateInboxItemStatus = "new"
+	UpdateInboxItemStatusArchived       UpdateInboxItemStatus = "archived"
+	UpdateInboxItemStatusProcessing     UpdateInboxItemStatus = "processing"
+	UpdateInboxItemStatusDone           UpdateInboxItemStatus = "done"
+	UpdateInboxItemStatusPending        UpdateInboxItemStatus = "pending"
+	UpdateInboxItemStatusDeleted        UpdateInboxItemStatus = "deleted"
+	UpdateInboxItemStatusAnalyzing      UpdateInboxItemStatus = "analyzing"
+	UpdateInboxItemStatusSuggestedMatch UpdateInboxItemStatus = "suggested_match"
 )
 
 func (e UpdateInboxItemStatus) ToPointer() *UpdateInboxItemStatus {
@@ -36,6 +39,12 @@ func (e *UpdateInboxItemStatus) UnmarshalJSON(data []byte) error {
 	case "done":
 		fallthrough
 	case "pending":
+		fallthrough
+	case "deleted":
+		fallthrough
+	case "analyzing":
+		fallthrough
+	case "suggested_match":
 		*e = UpdateInboxItemStatus(v)
 		return nil
 	default:

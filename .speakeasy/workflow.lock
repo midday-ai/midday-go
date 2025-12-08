@@ -2,19 +2,19 @@ speakeasyVersion: 1.606.0
 sources:
     Midday-OAS:
         sourceNamespace: midday-api
-        sourceRevisionDigest: sha256:f914bc30ad4ad47a5888b409e12b3dde9ccf093bf10ea24be3416a97ab950e4e
-        sourceBlobDigest: sha256:e4822e044b4565fa816fe6cdd727bc82ccbac8008057a1da0e440106d8c3a87a
+        sourceRevisionDigest: sha256:ec0531072e6255230022481a20681d2e2807aa4790d88a9e6cc7955b40428800
+        sourceBlobDigest: sha256:7d8c1d820eeeca2a44fc889957658e75e71f8a880eddc9492eec72df160c794f
         tags:
             - latest
-            - speakeasy-sdk-regen-1749687693
+            - speakeasy-sdk-regen-1758759628
 targets:
     midday:
         source: Midday-OAS
         sourceNamespace: midday-api
-        sourceRevisionDigest: sha256:f914bc30ad4ad47a5888b409e12b3dde9ccf093bf10ea24be3416a97ab950e4e
-        sourceBlobDigest: sha256:e4822e044b4565fa816fe6cdd727bc82ccbac8008057a1da0e440106d8c3a87a
+        sourceRevisionDigest: sha256:ec0531072e6255230022481a20681d2e2807aa4790d88a9e6cc7955b40428800
+        sourceBlobDigest: sha256:7d8c1d820eeeca2a44fc889957658e75e71f8a880eddc9492eec72df160c794f
         codeSamplesNamespace: midday-oas-go-code-samples
-        codeSamplesRevisionDigest: sha256:c37ffda8783f0a2730b2ec00b348ad1050a6a4e106c6422a080115f6cbaf6ffc
+        codeSamplesRevisionDigest: sha256:68a8df8afbe639fd195bfc77880f2400c54e8c944a02eebcd289708b0536c3e3
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

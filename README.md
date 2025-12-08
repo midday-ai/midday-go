@@ -53,61 +53,28 @@ package main
 import (
 	"context"
 	middaygo "github.com/midday-ai/midday-go"
+	"github.com/midday-ai/midday-go/models/components"
 	"github.com/midday-ai/midday-go/models/operations"
 	"log"
+	"os"
 )
 
 func main() {
 	ctx := context.Background()
 
 	s := middaygo.New(
-		middaygo.WithSecurity("MIDDAY_API_KEY"),
+		middaygo.WithSecurity(components.Security{
+			Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+		}),
 	)
 
-	res, err := s.Transactions.List(ctx, operations.ListTransactionsRequest{
-		Cursor: middaygo.String("eyJpZCI6IjEyMyJ9"),
-		Sort: []string{
-			"date",
-			"desc",
-		},
-		PageSize: middaygo.Float64(50),
-		Q:        middaygo.String("office supplies"),
-		Categories: []string{
-			"office-supplies",
-			"travel",
-		},
-		Tags: []string{
-			"tag-1",
-			"tag-2",
-		},
-		Start: middaygo.String("2024-04-01T00:00:00.000Z"),
-		End:   middaygo.String("2024-04-30T23:59:59.999Z"),
-		Accounts: []string{
-			"account-1",
-			"account-2",
-		},
-		Assignees: []string{
-			"user-1",
-			"user-2",
-		},
-		Statuses: []string{
-			"pending",
-			"completed",
-		},
-		Recurring: []string{
-			"monthly",
-			"annually",
-		},
-		Attachments: operations.AttachmentsInclude.ToPointer(),
-		AmountRange: []*float64{
-			middaygo.Float64(100),
-			middaygo.Float64(1000),
-		},
-		Amount: []string{
-			"150.75",
-			"299.99",
-		},
-		Type: operations.ListTransactionsTypeExpense.ToPointer(),
+	res, err := s.OAuth.GetOAuthAuthorization(ctx, operations.GetOAuthAuthorizationRequest{
+		ResponseType:  operations.ResponseTypeCode,
+		ClientID:      "mid_client_abcdef123456789",
+		RedirectURI:   "https://myapp.com/callback",
+		Scope:         "transactions.read invoices.read",
+		State:         "abc123xyz789_secure-random-state-value-with-sufficient-entropy",
+		CodeChallenge: middaygo.String("E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM"),
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -125,74 +92,42 @@ func main() {
 
 ### Per-Client Security Schemes
 
-This SDK supports the following security scheme globally:
+This SDK supports the following security schemes globally:
 
-| Name    | Type | Scheme      | Environment Variable |
-| ------- | ---- | ----------- | -------------------- |
-| `Token` | http | HTTP Bearer | `MIDDAY_TOKEN`       |
+| Name     | Type   | Scheme      | Environment Variable |
+| -------- | ------ | ----------- | -------------------- |
+| `Oauth2` | apiKey | API key     | `MIDDAY_OAUTH2`      |
+| `Token`  | http   | HTTP Bearer | `MIDDAY_TOKEN`       |
 
-You can configure it using the `WithSecurity` option when initializing the SDK client instance. For example:
+You can set the security parameters through the `WithSecurity` option when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
 ```go
 package main
 
 import (
 	"context"
 	middaygo "github.com/midday-ai/midday-go"
+	"github.com/midday-ai/midday-go/models/components"
 	"github.com/midday-ai/midday-go/models/operations"
 	"log"
+	"os"
 )
 
 func main() {
 	ctx := context.Background()
 
 	s := middaygo.New(
-		middaygo.WithSecurity("MIDDAY_API_KEY"),
+		middaygo.WithSecurity(components.Security{
+			Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+		}),
 	)
 
-	res, err := s.Transactions.List(ctx, operations.ListTransactionsRequest{
-		Cursor: middaygo.String("eyJpZCI6IjEyMyJ9"),
-		Sort: []string{
-			"date",
-			"desc",
-		},
-		PageSize: middaygo.Float64(50),
-		Q:        middaygo.String("office supplies"),
-		Categories: []string{
-			"office-supplies",
-			"travel",
-		},
-		Tags: []string{
-			"tag-1",
-			"tag-2",
-		},
-		Start: middaygo.String("2024-04-01T00:00:00.000Z"),
-		End:   middaygo.String("2024-04-30T23:59:59.999Z"),
-		Accounts: []string{
-			"account-1",
-			"account-2",
-		},
-		Assignees: []string{
-			"user-1",
-			"user-2",
-		},
-		Statuses: []string{
-			"pending",
-			"completed",
-		},
-		Recurring: []string{
-			"monthly",
-			"annually",
-		},
-		Attachments: operations.AttachmentsInclude.ToPointer(),
-		AmountRange: []*float64{
-			middaygo.Float64(100),
-			middaygo.Float64(1000),
-		},
-		Amount: []string{
-			"150.75",
-			"299.99",
-		},
-		Type: operations.ListTransactionsTypeExpense.ToPointer(),
+	res, err := s.OAuth.GetOAuthAuthorization(ctx, operations.GetOAuthAuthorizationRequest{
+		ResponseType:  operations.ResponseTypeCode,
+		ClientID:      "mid_client_abcdef123456789",
+		RedirectURI:   "https://myapp.com/callback",
+		Scope:         "transactions.read invoices.read",
+		State:         "abc123xyz789_secure-random-state-value-with-sufficient-entropy",
+		CodeChallenge: middaygo.String("E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM"),
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -232,6 +167,7 @@ func main() {
 * [List](docs/sdks/documents/README.md#list) - List all documents
 * [Get](docs/sdks/documents/README.md#get) - Retrieve a document
 * [Delete](docs/sdks/documents/README.md#delete) - Delete a document
+* [GetPreSignedURL](docs/sdks/documents/README.md#getpresignedurl) - Generate pre-signed URL for document
 
 ### [Inbox](docs/sdks/inbox/README.md)
 
@@ -239,24 +175,40 @@ func main() {
 * [Get](docs/sdks/inbox/README.md#get) - Retrieve a inbox item
 * [Delete](docs/sdks/inbox/README.md#delete) - Delete a inbox item
 * [Update](docs/sdks/inbox/README.md#update) - Update a inbox item
+* [GetPreSignedURL](docs/sdks/inbox/README.md#getpresignedurl) - Generate pre-signed URL for inbox attachment
 
 ### [Invoices](docs/sdks/invoices/README.md)
 
 * [List](docs/sdks/invoices/README.md#list) - List all invoices
+* [Create](docs/sdks/invoices/README.md#create) - Create an invoice
 * [GetInvoicesPaymentStatus](docs/sdks/invoices/README.md#getinvoicespaymentstatus) - Payment status
 * [Summary](docs/sdks/invoices/README.md#summary) - Invoice summary
 * [Get](docs/sdks/invoices/README.md#get) - Retrieve a invoice
+* [Update](docs/sdks/invoices/README.md#update) - Update an invoice
 * [Delete](docs/sdks/invoices/README.md#delete) - Delete a invoice
 
-### [Metrics](docs/sdks/metrics/README.md)
 
-* [Revenue](docs/sdks/metrics/README.md#revenue) - Revenue metrics
-* [Profit](docs/sdks/metrics/README.md#profit) - Profit metrics
-* [BurnRate](docs/sdks/metrics/README.md#burnrate) - Burn rate metrics
-* [Runway](docs/sdks/metrics/README.md#runway) - Runway metrics
-* [Expenses](docs/sdks/metrics/README.md#expenses) - Expense metrics
-* [Spending](docs/sdks/metrics/README.md#spending) - Spending metrics
+### [Notifications](docs/sdks/notifications/README.md)
 
+* [List](docs/sdks/notifications/README.md#list) - List all notifications
+* [UpdateStatus](docs/sdks/notifications/README.md#updatestatus) - Update notification status
+* [UpdateAllStatus](docs/sdks/notifications/README.md#updateallstatus) - Update status of all notifications
+
+### [OAuth](docs/sdks/oauth/README.md)
+
+* [GetOAuthAuthorization](docs/sdks/oauth/README.md#getoauthauthorization) - OAuth Authorization Endpoint
+* [PostOAuthAuthorization](docs/sdks/oauth/README.md#postoauthauthorization) - OAuth Authorization Decision
+* [PostOAuthToken](docs/sdks/oauth/README.md#postoauthtoken) - OAuth Token Exchange
+* [PostOAuthRevoke](docs/sdks/oauth/README.md#postoauthrevoke) - OAuth Token Revocation
+
+### [Reports](docs/sdks/reports/README.md)
+
+* [Revenue](docs/sdks/reports/README.md#revenue) - Revenue reports
+* [Profit](docs/sdks/reports/README.md#profit) - Profit reports
+* [BurnRate](docs/sdks/reports/README.md#burnrate) - Burn rate reports
+* [Runway](docs/sdks/reports/README.md#runway) - Runway reports
+* [Expenses](docs/sdks/reports/README.md#expenses) - Expense reports
+* [Spending](docs/sdks/reports/README.md#spending) - Spending reports
 
 ### [Search](docs/sdks/search/README.md)
 
@@ -307,6 +259,7 @@ func main() {
 * [Get](docs/sdks/transactions/README.md#get) - Retrieve a transaction
 * [Delete](docs/sdks/transactions/README.md#delete) - Delete a transaction
 * [Update](docs/sdks/transactions/README.md#update) - Update a transaction
+* [GetAttachmentPreSignedURL](docs/sdks/transactions/README.md#getattachmentpresignedurl) - Generate pre-signed URL for transaction attachment
 * [CreateMany](docs/sdks/transactions/README.md#createmany) - Bulk create transactions
 * [DeleteMany](docs/sdks/transactions/README.md#deletemany) - Bulk delete transactions
 * [UpdateMany](docs/sdks/transactions/README.md#updatemany) - Bulk update transactions
@@ -331,63 +284,30 @@ package main
 import (
 	"context"
 	middaygo "github.com/midday-ai/midday-go"
+	"github.com/midday-ai/midday-go/models/components"
 	"github.com/midday-ai/midday-go/models/operations"
 	"github.com/midday-ai/midday-go/retry"
 	"log"
 	"models/operations"
+	"os"
 )
 
 func main() {
 	ctx := context.Background()
 
 	s := middaygo.New(
-		middaygo.WithSecurity("MIDDAY_API_KEY"),
+		middaygo.WithSecurity(components.Security{
+			Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+		}),
 	)
 
-	res, err := s.Transactions.List(ctx, operations.ListTransactionsRequest{
-		Cursor: middaygo.String("eyJpZCI6IjEyMyJ9"),
-		Sort: []string{
-			"date",
-			"desc",
-		},
-		PageSize: middaygo.Float64(50),
-		Q:        middaygo.String("office supplies"),
-		Categories: []string{
-			"office-supplies",
-			"travel",
-		},
-		Tags: []string{
-			"tag-1",
-			"tag-2",
-		},
-		Start: middaygo.String("2024-04-01T00:00:00.000Z"),
-		End:   middaygo.String("2024-04-30T23:59:59.999Z"),
-		Accounts: []string{
-			"account-1",
-			"account-2",
-		},
-		Assignees: []string{
-			"user-1",
-			"user-2",
-		},
-		Statuses: []string{
-			"pending",
-			"completed",
-		},
-		Recurring: []string{
-			"monthly",
-			"annually",
-		},
-		Attachments: operations.AttachmentsInclude.ToPointer(),
-		AmountRange: []*float64{
-			middaygo.Float64(100),
-			middaygo.Float64(1000),
-		},
-		Amount: []string{
-			"150.75",
-			"299.99",
-		},
-		Type: operations.ListTransactionsTypeExpense.ToPointer(),
+	res, err := s.OAuth.GetOAuthAuthorization(ctx, operations.GetOAuthAuthorizationRequest{
+		ResponseType:  operations.ResponseTypeCode,
+		ClientID:      "mid_client_abcdef123456789",
+		RedirectURI:   "https://myapp.com/callback",
+		Scope:         "transactions.read invoices.read",
+		State:         "abc123xyz789_secure-random-state-value-with-sufficient-entropy",
+		CodeChallenge: middaygo.String("E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM"),
 	}, operations.WithRetries(
 		retry.Config{
 			Strategy: "backoff",
@@ -416,9 +336,11 @@ package main
 import (
 	"context"
 	middaygo "github.com/midday-ai/midday-go"
+	"github.com/midday-ai/midday-go/models/components"
 	"github.com/midday-ai/midday-go/models/operations"
 	"github.com/midday-ai/midday-go/retry"
 	"log"
+	"os"
 )
 
 func main() {
@@ -436,53 +358,18 @@ func main() {
 				},
 				RetryConnectionErrors: false,
 			}),
-		middaygo.WithSecurity("MIDDAY_API_KEY"),
+		middaygo.WithSecurity(components.Security{
+			Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+		}),
 	)
 
-	res, err := s.Transactions.List(ctx, operations.ListTransactionsRequest{
-		Cursor: middaygo.String("eyJpZCI6IjEyMyJ9"),
-		Sort: []string{
-			"date",
-			"desc",
-		},
-		PageSize: middaygo.Float64(50),
-		Q:        middaygo.String("office supplies"),
-		Categories: []string{
-			"office-supplies",
-			"travel",
-		},
-		Tags: []string{
-			"tag-1",
-			"tag-2",
-		},
-		Start: middaygo.String("2024-04-01T00:00:00.000Z"),
-		End:   middaygo.String("2024-04-30T23:59:59.999Z"),
-		Accounts: []string{
-			"account-1",
-			"account-2",
-		},
-		Assignees: []string{
-			"user-1",
-			"user-2",
-		},
-		Statuses: []string{
-			"pending",
-			"completed",
-		},
-		Recurring: []string{
-			"monthly",
-			"annually",
-		},
-		Attachments: operations.AttachmentsInclude.ToPointer(),
-		AmountRange: []*float64{
-			middaygo.Float64(100),
-			middaygo.Float64(1000),
-		},
-		Amount: []string{
-			"150.75",
-			"299.99",
-		},
-		Type: operations.ListTransactionsTypeExpense.ToPointer(),
+	res, err := s.OAuth.GetOAuthAuthorization(ctx, operations.GetOAuthAuthorizationRequest{
+		ResponseType:  operations.ResponseTypeCode,
+		ClientID:      "mid_client_abcdef123456789",
+		RedirectURI:   "https://myapp.com/callback",
+		Scope:         "transactions.read invoices.read",
+		State:         "abc123xyz789_secure-random-state-value-with-sufficient-entropy",
+		CodeChallenge: middaygo.String("E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM"),
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -502,11 +389,12 @@ Handling errors in this SDK should largely match your expectations. All operatio
 
 By Default, an API error will return `apierrors.APIError`. When custom error responses are specified for an operation, the SDK may also return their associated error. You can refer to respective *Errors* tables in SDK docs for more details on possible error types for each operation.
 
-For example, the `List` function may return the following errors:
+For example, the `GetOAuthAuthorization` function may return the following errors:
 
-| Error Type         | Status Code | Content Type |
-| ------------------ | ----------- | ------------ |
-| apierrors.APIError | 4XX, 5XX    | \*/\*        |
+| Error Type                                     | Status Code | Content Type     |
+| ---------------------------------------------- | ----------- | ---------------- |
+| apierrors.GetOAuthAuthorizationBadRequestError | 400         | application/json |
+| apierrors.APIError                             | 4XX, 5XX    | \*/\*            |
 
 ### Example
 
@@ -518,63 +406,36 @@ import (
 	"errors"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/models/apierrors"
+	"github.com/midday-ai/midday-go/models/components"
 	"github.com/midday-ai/midday-go/models/operations"
 	"log"
+	"os"
 )
 
 func main() {
 	ctx := context.Background()
 
 	s := middaygo.New(
-		middaygo.WithSecurity("MIDDAY_API_KEY"),
+		middaygo.WithSecurity(components.Security{
+			Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+		}),
 	)
 
-	res, err := s.Transactions.List(ctx, operations.ListTransactionsRequest{
-		Cursor: middaygo.String("eyJpZCI6IjEyMyJ9"),
-		Sort: []string{
-			"date",
-			"desc",
-		},
-		PageSize: middaygo.Float64(50),
-		Q:        middaygo.String("office supplies"),
-		Categories: []string{
-			"office-supplies",
-			"travel",
-		},
-		Tags: []string{
-			"tag-1",
-			"tag-2",
-		},
-		Start: middaygo.String("2024-04-01T00:00:00.000Z"),
-		End:   middaygo.String("2024-04-30T23:59:59.999Z"),
-		Accounts: []string{
-			"account-1",
-			"account-2",
-		},
-		Assignees: []string{
-			"user-1",
-			"user-2",
-		},
-		Statuses: []string{
-			"pending",
-			"completed",
-		},
-		Recurring: []string{
-			"monthly",
-			"annually",
-		},
-		Attachments: operations.AttachmentsInclude.ToPointer(),
-		AmountRange: []*float64{
-			middaygo.Float64(100),
-			middaygo.Float64(1000),
-		},
-		Amount: []string{
-			"150.75",
-			"299.99",
-		},
-		Type: operations.ListTransactionsTypeExpense.ToPointer(),
+	res, err := s.OAuth.GetOAuthAuthorization(ctx, operations.GetOAuthAuthorizationRequest{
+		ResponseType:  operations.ResponseTypeCode,
+		ClientID:      "mid_client_abcdef123456789",
+		RedirectURI:   "https://myapp.com/callback",
+		Scope:         "transactions.read invoices.read",
+		State:         "abc123xyz789_secure-random-state-value-with-sufficient-entropy",
+		CodeChallenge: middaygo.String("E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM"),
 	})
 	if err != nil {
+
+		var e *apierrors.GetOAuthAuthorizationBadRequestError
+		if errors.As(err, &e) {
+			// handle error
+			log.Fatal(e.Error())
+		}
 
 		var e *apierrors.APIError
 		if errors.As(err, &e) {
@@ -599,8 +460,10 @@ package main
 import (
 	"context"
 	middaygo "github.com/midday-ai/midday-go"
+	"github.com/midday-ai/midday-go/models/components"
 	"github.com/midday-ai/midday-go/models/operations"
 	"log"
+	"os"
 )
 
 func main() {
@@ -608,53 +471,18 @@ func main() {
 
 	s := middaygo.New(
 		middaygo.WithServerURL("https://api.midday.ai"),
-		middaygo.WithSecurity("MIDDAY_API_KEY"),
+		middaygo.WithSecurity(components.Security{
+			Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+		}),
 	)
 
-	res, err := s.Transactions.List(ctx, operations.ListTransactionsRequest{
-		Cursor: middaygo.String("eyJpZCI6IjEyMyJ9"),
-		Sort: []string{
-			"date",
-			"desc",
-		},
-		PageSize: middaygo.Float64(50),
-		Q:        middaygo.String("office supplies"),
-		Categories: []string{
-			"office-supplies",
-			"travel",
-		},
-		Tags: []string{
-			"tag-1",
-			"tag-2",
-		},
-		Start: middaygo.String("2024-04-01T00:00:00.000Z"),
-		End:   middaygo.String("2024-04-30T23:59:59.999Z"),
-		Accounts: []string{
-			"account-1",
-			"account-2",
-		},
-		Assignees: []string{
-			"user-1",
-			"user-2",
-		},
-		Statuses: []string{
-			"pending",
-			"completed",
-		},
-		Recurring: []string{
-			"monthly",
-			"annually",
-		},
-		Attachments: operations.AttachmentsInclude.ToPointer(),
-		AmountRange: []*float64{
-			middaygo.Float64(100),
-			middaygo.Float64(1000),
-		},
-		Amount: []string{
-			"150.75",
-			"299.99",
-		},
-		Type: operations.ListTransactionsTypeExpense.ToPointer(),
+	res, err := s.OAuth.GetOAuthAuthorization(ctx, operations.GetOAuthAuthorizationRequest{
+		ResponseType:  operations.ResponseTypeCode,
+		ClientID:      "mid_client_abcdef123456789",
+		RedirectURI:   "https://myapp.com/callback",
+		Scope:         "transactions.read invoices.read",
+		State:         "abc123xyz789_secure-random-state-value-with-sufficient-entropy",
+		CodeChallenge: middaygo.String("E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM"),
 	})
 	if err != nil {
 		log.Fatal(err)

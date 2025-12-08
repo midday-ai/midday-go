@@ -11,8 +11,9 @@ import (
 type ListInboxItemsStatus string
 
 const (
-	ListInboxItemsStatusDone    ListInboxItemsStatus = "done"
-	ListInboxItemsStatusPending ListInboxItemsStatus = "pending"
+	ListInboxItemsStatusDone           ListInboxItemsStatus = "done"
+	ListInboxItemsStatusPending        ListInboxItemsStatus = "pending"
+	ListInboxItemsStatusSuggestedMatch ListInboxItemsStatus = "suggested_match"
 )
 
 func (e ListInboxItemsStatus) ToPointer() *ListInboxItemsStatus {
@@ -27,6 +28,8 @@ func (e *ListInboxItemsStatus) UnmarshalJSON(data []byte) error {
 	case "done":
 		fallthrough
 	case "pending":
+		fallthrough
+	case "suggested_match":
 		*e = ListInboxItemsStatus(v)
 		return nil
 	default:

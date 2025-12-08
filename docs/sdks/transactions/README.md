@@ -10,6 +10,7 @@
 * [Get](#get) - Retrieve a transaction
 * [Delete](#delete) - Delete a transaction
 * [Update](#update) - Update a transaction
+* [GetAttachmentPreSignedURL](#getattachmentpresignedurl) - Generate pre-signed URL for transaction attachment
 * [CreateMany](#createmany) - Bulk create transactions
 * [DeleteMany](#deletemany) - Bulk delete transactions
 * [UpdateMany](#updatemany) - Bulk update transactions
@@ -26,6 +27,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/models/operations"
 	"log"
@@ -35,7 +38,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Transactions.List(ctx, operations.ListTransactionsRequest{
@@ -122,6 +127,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -130,7 +137,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Transactions.Create(ctx, nil)
@@ -173,6 +182,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -181,7 +192,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Transactions.Get(ctx, "391723c9-de99-4039-b8e2-4fa5bbdf9480")
@@ -224,6 +237,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -232,7 +247,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Transactions.Delete(ctx, "92766ee2-a2bc-44aa-97af-6891695fc321")
@@ -275,6 +292,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -283,7 +302,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Transactions.Update(ctx, "f0c1d0ef-5679-4c1b-9698-2c64e97e8c1d", nil)
@@ -315,6 +336,66 @@ func main() {
 | ------------------ | ------------------ | ------------------ |
 | apierrors.APIError | 4XX, 5XX           | \*/\*              |
 
+## GetAttachmentPreSignedURL
+
+Generate a pre-signed URL for accessing a transaction attachment. The URL is valid for 60 seconds and allows secure temporary access to the attachment file.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="getTransactionAttachmentPreSignedUrl" method="post" path="/transactions/{transactionId}/attachments/{attachmentId}/presigned-url" -->
+```go
+package main
+
+import(
+	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
+	middaygo "github.com/midday-ai/midday-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := middaygo.New(
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
+    )
+
+    res, err := s.Transactions.GetAttachmentPreSignedURL(ctx, "b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4", "a43dc3a5-6925-4d91-ac9c-4c1a34bdb388", middaygo.Bool(true))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Object != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `transactionID`                                          | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      | b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4                     |
+| `attachmentID`                                           | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      | a43dc3a5-6925-4d91-ac9c-4c1a34bdb388                     |
+| `download`                                               | **bool*                                                  | :heavy_minus_sign:                                       | N/A                                                      | true                                                     |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.GetTransactionAttachmentPreSignedURLResponse](../../models/operations/gettransactionattachmentpresignedurlresponse.md), error**
+
+### Errors
+
+| Error Type                                                        | Status Code                                                       | Content Type                                                      |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| apierrors.GetTransactionAttachmentPreSignedURLBadRequestError     | 400                                                               | application/json                                                  |
+| apierrors.GetTransactionAttachmentPreSignedURLNotFoundError       | 404                                                               | application/json                                                  |
+| apierrors.GetTransactionAttachmentPreSignedURLInternalServerError | 500                                                               | application/json                                                  |
+| apierrors.APIError                                                | 4XX, 5XX                                                          | \*/\*                                                             |
+
 ## CreateMany
 
 Bulk create transactions for the authenticated team.
@@ -327,6 +408,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -335,7 +418,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Transactions.CreateMany(ctx, nil)
@@ -378,6 +463,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -386,7 +473,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Transactions.DeleteMany(ctx, nil)
@@ -429,6 +518,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -437,7 +528,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Transactions.UpdateMany(ctx, nil)

@@ -195,14 +195,14 @@ type ListInvoicesData struct {
 	DueDate string `json:"dueDate"`
 	// Issue date of the invoice in ISO 8601 format
 	IssueDate string `json:"issueDate"`
-	// Invoice number as shown to the customer
-	InvoiceNumber string `json:"invoiceNumber"`
+	// Invoice number as shown to the customer (auto-generated if not provided)
+	InvoiceNumber *string `json:"invoiceNumber,omitempty"`
 	// Total amount of the invoice
 	Amount float64 `json:"amount"`
 	// Currency code (ISO 4217) for the invoice amount
 	Currency string `json:"currency"`
 	// Customer details
-	Customer ListInvoicesCustomer `json:"customer"`
+	Customer *ListInvoicesCustomer `json:"customer"`
 	// Timestamp when the invoice was paid (ISO 8601), or null if unpaid
 	PaidAt *string `json:"paidAt"`
 	// Timestamp when a payment reminder was sent (ISO 8601), or null if never sent
@@ -229,6 +229,10 @@ type ListInvoicesData struct {
 	CreatedAt string `json:"createdAt"`
 	// Timestamp when the invoice was last updated (ISO 8601)
 	UpdatedAt string `json:"updatedAt"`
+	// URL to download the invoice PDF, or null if not generated
+	PdfURL *string `json:"pdfUrl"`
+	// URL to preview the invoice in the browser, or null if not generated
+	PreviewURL *string `json:"previewUrl"`
 }
 
 func (o *ListInvoicesData) GetID() string {
@@ -259,9 +263,9 @@ func (o *ListInvoicesData) GetIssueDate() string {
 	return o.IssueDate
 }
 
-func (o *ListInvoicesData) GetInvoiceNumber() string {
+func (o *ListInvoicesData) GetInvoiceNumber() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.InvoiceNumber
 }
@@ -280,9 +284,9 @@ func (o *ListInvoicesData) GetCurrency() string {
 	return o.Currency
 }
 
-func (o *ListInvoicesData) GetCustomer() ListInvoicesCustomer {
+func (o *ListInvoicesData) GetCustomer() *ListInvoicesCustomer {
 	if o == nil {
-		return ListInvoicesCustomer{}
+		return nil
 	}
 	return o.Customer
 }
@@ -376,6 +380,20 @@ func (o *ListInvoicesData) GetUpdatedAt() string {
 		return ""
 	}
 	return o.UpdatedAt
+}
+
+func (o *ListInvoicesData) GetPdfURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PdfURL
+}
+
+func (o *ListInvoicesData) GetPreviewURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PreviewURL
 }
 
 // ListInvoicesResponseBody - Response containing a list of invoices and pagination metadata
