@@ -3,6 +3,8 @@
 
 ## Overview
 
+Manage bank accounts
+
 ### Available Operations
 
 * [List](#list) - List all bank accounts
@@ -23,6 +25,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -31,7 +35,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.BankAccounts.List(ctx, nil, nil)
@@ -49,8 +55,8 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `enabled`                                                | **bool*                                                  | :heavy_minus_sign:                                       | N/A                                                      |
-| `manual`                                                 | **bool*                                                  | :heavy_minus_sign:                                       | N/A                                                      |
+| `enabled`                                                | **bool*                                                  | :heavy_minus_sign:                                       | Whether the bank account is enabled.                     |
+| `manual`                                                 | **bool*                                                  | :heavy_minus_sign:                                       | Whether the bank account is a manual account.            |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
 
 ### Response
@@ -75,6 +81,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/models/operations"
 	"log"
@@ -84,10 +92,12 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
-    res, err := s.BankAccounts.Create(ctx, &operations.CreateBankAccountRequest{
+    res, err := s.BankAccounts.Create(ctx, operations.CreateBankAccountRequest{
         Name: "Checking Account",
         Currency: middaygo.String("USD"),
         Manual: middaygo.Bool(false),
@@ -131,6 +141,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -139,7 +151,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.BankAccounts.Get(ctx, "b7e6c2a0-1f2d-4c3b-9a8e-123456789abc")
@@ -157,7 +171,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      | b7e6c2a0-1f2d-4c3b-9a8e-123456789abc                     |
+| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | The unique identifier of the bank account.               | b7e6c2a0-1f2d-4c3b-9a8e-123456789abc                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -182,6 +196,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -190,7 +206,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.BankAccounts.Delete(ctx, "b7e6c2a0-1f2d-4c3b-9a8e-123456789abc")
@@ -208,7 +226,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      | b7e6c2a0-1f2d-4c3b-9a8e-123456789abc                     |
+| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | The unique identifier of the bank account.               | b7e6c2a0-1f2d-4c3b-9a8e-123456789abc                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -233,6 +251,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/models/operations"
 	"log"
@@ -242,10 +262,12 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
-    res, err := s.BankAccounts.Update(ctx, "b7e6c2a0-1f2d-4c3b-9a8e-123456789abc", &operations.UpdateBankAccountRequestBody{
+    res, err := s.BankAccounts.Update(ctx, "b7e6c2a0-1f2d-4c3b-9a8e-123456789abc", operations.UpdateBankAccountRequestBody{
         ID: middaygo.String("b7e6c2a0-1f2d-4c3b-9a8e-123456789abc"),
         Name: middaygo.String("Checking Account"),
         Enabled: middaygo.Bool(true),
@@ -266,8 +288,8 @@ func main() {
 | Parameter                                                                                                                               | Type                                                                                                                                    | Required                                                                                                                                | Description                                                                                                                             | Example                                                                                                                                 |
 | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                                                                   | [context.Context](https://pkg.go.dev/context#Context)                                                                                   | :heavy_check_mark:                                                                                                                      | The context to use for the request.                                                                                                     |                                                                                                                                         |
-| `id`                                                                                                                                    | *string*                                                                                                                                | :heavy_check_mark:                                                                                                                      | N/A                                                                                                                                     | b7e6c2a0-1f2d-4c3b-9a8e-123456789abc                                                                                                    |
-| `requestBody`                                                                                                                           | [*operations.UpdateBankAccountRequestBody](../../models/operations/updatebankaccountrequestbody.md)                                     | :heavy_minus_sign:                                                                                                                      | N/A                                                                                                                                     | {<br/>"id": "b7e6c2a0-1f2d-4c3b-9a8e-123456789abc",<br/>"name": "Checking Account",<br/>"enabled": true,<br/>"balance": 1500.75,<br/>"type": "depository"<br/>} |
+| `id`                                                                                                                                    | *string*                                                                                                                                | :heavy_check_mark:                                                                                                                      | The unique identifier of the bank account.                                                                                              | b7e6c2a0-1f2d-4c3b-9a8e-123456789abc                                                                                                    |
+| `requestBody`                                                                                                                           | [operations.UpdateBankAccountRequestBody](../../models/operations/updatebankaccountrequestbody.md)                                      | :heavy_check_mark:                                                                                                                      | N/A                                                                                                                                     | {<br/>"id": "b7e6c2a0-1f2d-4c3b-9a8e-123456789abc",<br/>"name": "Checking Account",<br/>"enabled": true,<br/>"balance": 1500.75,<br/>"type": "depository"<br/>} |
 | `opts`                                                                                                                                  | [][operations.Option](../../models/operations/option.md)                                                                                | :heavy_minus_sign:                                                                                                                      | The options for this request.                                                                                                           |                                                                                                                                         |
 
 ### Response

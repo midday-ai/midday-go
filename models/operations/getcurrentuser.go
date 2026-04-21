@@ -48,7 +48,7 @@ type GetCurrentUserTeam struct {
 	// Name of the team or organization
 	Name string `json:"name"`
 	// URL to the team's logo image
-	LogoURL string `json:"logoUrl"`
+	LogoURL *string `json:"logoUrl"`
 	// Current subscription plan of the team
 	Plan string `json:"plan"`
 }
@@ -67,9 +67,9 @@ func (o *GetCurrentUserTeam) GetName() string {
 	return o.Name
 }
 
-func (o *GetCurrentUserTeam) GetLogoURL() string {
+func (o *GetCurrentUserTeam) GetLogoURL() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.LogoURL
 }
@@ -103,6 +103,8 @@ type GetCurrentUserResponseBody struct {
 	TimeFormat *float64 `json:"timeFormat"`
 	// User's preferred date format. Available options: 'dd/MM/yyyy', 'MM/dd/yyyy', 'yyyy-MM-dd', 'dd.MM.yyyy'
 	DateFormat *GetCurrentUserDateFormat `json:"dateFormat"`
+	// Team file key (JWT token) for proxy/download access to team files. This compact JWT token contains the team ID and is shared by all team members. Use this token as the `fk` query parameter when accessing file endpoints (proxy, download). The token is team-scoped and provides access to files belonging to the user's team. Returns null if the user has no team.
+	FileKey *string `json:"fileKey"`
 	// Team information that the user belongs to
 	Team *GetCurrentUserTeam `json:"team"`
 }
@@ -177,6 +179,13 @@ func (o *GetCurrentUserResponseBody) GetDateFormat() *GetCurrentUserDateFormat {
 	return o.DateFormat
 }
 
+func (o *GetCurrentUserResponseBody) GetFileKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FileKey
+}
+
 func (o *GetCurrentUserResponseBody) GetTeam() *GetCurrentUserTeam {
 	if o == nil {
 		return nil
@@ -188,6 +197,8 @@ type GetCurrentUserResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Retrieve the current user for the authenticated team.
 	Object *GetCurrentUserResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *GetCurrentUserResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -202,4 +213,11 @@ func (o *GetCurrentUserResponse) GetObject() *GetCurrentUserResponseBody {
 		return nil
 	}
 	return o.Object
+}
+
+func (o *GetCurrentUserResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }

@@ -3,6 +3,8 @@
 
 ## Overview
 
+Manage teams
+
 ### Available Operations
 
 * [List](#list) - List all teams
@@ -22,6 +24,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -30,7 +34,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Teams.List(ctx)
@@ -72,6 +78,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -80,7 +88,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Teams.Get(ctx, "123e4567-e89b-12d3-a456-426614174000")
@@ -98,7 +108,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      | 123e4567-e89b-12d3-a456-426614174000                     |
+| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | Unique identifier of the team                            | 123e4567-e89b-12d3-a456-426614174000                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -123,6 +133,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/models/operations"
 	"log"
@@ -132,15 +144,20 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
-    res, err := s.Teams.Update(ctx, "123e4567-e89b-12d3-a456-426614174000", &operations.UpdateTeamByIDRequestBody{
+    res, err := s.Teams.Update(ctx, "123e4567-e89b-12d3-a456-426614174000", operations.UpdateTeamByIDRequestBody{
         Name: middaygo.String("Acme Corporation"),
         Email: middaygo.String("team@acme.com"),
         LogoURL: middaygo.String("https://cdn.midday.ai/logos/acme-corp.png"),
         BaseCurrency: middaygo.String("USD"),
         CountryCode: middaygo.String("US"),
+        FiscalYearStartMonth: middaygo.Int64(4),
+        CompanyType: operations.CompanyTypeSoloFounder.ToPointer(),
+        HeardAbout: operations.HeardAboutTwitter.ToPointer(),
     })
     if err != nil {
         log.Fatal(err)
@@ -153,12 +170,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   | Example                                                                                       |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                         | [context.Context](https://pkg.go.dev/context#Context)                                         | :heavy_check_mark:                                                                            | The context to use for the request.                                                           |                                                                                               |
-| `id`                                                                                          | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           | 123e4567-e89b-12d3-a456-426614174000                                                          |
-| `requestBody`                                                                                 | [*operations.UpdateTeamByIDRequestBody](../../models/operations/updateteambyidrequestbody.md) | :heavy_minus_sign:                                                                            | N/A                                                                                           |                                                                                               |
-| `opts`                                                                                        | [][operations.Option](../../models/operations/option.md)                                      | :heavy_minus_sign:                                                                            | The options for this request.                                                                 |                                                                                               |
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  | Example                                                                                      |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                        | :heavy_check_mark:                                                                           | The context to use for the request.                                                          |                                                                                              |
+| `id`                                                                                         | *string*                                                                                     | :heavy_check_mark:                                                                           | Unique identifier of the team                                                                | 123e4567-e89b-12d3-a456-426614174000                                                         |
+| `requestBody`                                                                                | [operations.UpdateTeamByIDRequestBody](../../models/operations/updateteambyidrequestbody.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |                                                                                              |
+| `opts`                                                                                       | [][operations.Option](../../models/operations/option.md)                                     | :heavy_minus_sign:                                                                           | The options for this request.                                                                |                                                                                              |
 
 ### Response
 
@@ -182,6 +199,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -190,7 +209,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Teams.Members(ctx, "123e4567-e89b-12d3-a456-426614174000")
@@ -208,7 +229,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      | 123e4567-e89b-12d3-a456-426614174000                     |
+| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | Unique identifier of the team                            | 123e4567-e89b-12d3-a456-426614174000                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
