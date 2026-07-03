@@ -7,6 +7,7 @@ import (
 )
 
 type GetTimerStatusRequest struct {
+	// Unique identifier of the user whose current timer should be retrieved. If not provided, will use the authenticated user
 	AssignedID *string `queryParam:"style=form,explode=true,name=assignedId"`
 }
 
@@ -17,19 +18,19 @@ func (o *GetTimerStatusRequest) GetAssignedID() *string {
 	return o.AssignedID
 }
 
-type TrackerProject struct {
+type GetTimerStatusTrackerProject struct {
 	ID   string `json:"id"`
 	Name string `json:"name"`
 }
 
-func (o *TrackerProject) GetID() string {
+func (o *GetTimerStatusTrackerProject) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *TrackerProject) GetName() string {
+func (o *GetTimerStatusTrackerProject) GetName() string {
 	if o == nil {
 		return ""
 	}
@@ -38,11 +39,11 @@ func (o *TrackerProject) GetName() string {
 
 // CurrentEntry - Current running timer details, null if not running
 type CurrentEntry struct {
-	ID             string         `json:"id"`
-	Start          *string        `json:"start"`
-	Description    *string        `json:"description"`
-	ProjectID      string         `json:"projectId"`
-	TrackerProject TrackerProject `json:"trackerProject"`
+	ID             string                       `json:"id"`
+	Start          *string                      `json:"start"`
+	Description    *string                      `json:"description"`
+	ProjectID      string                       `json:"projectId"`
+	TrackerProject GetTimerStatusTrackerProject `json:"trackerProject"`
 }
 
 func (o *CurrentEntry) GetID() string {
@@ -73,9 +74,9 @@ func (o *CurrentEntry) GetProjectID() string {
 	return o.ProjectID
 }
 
-func (o *CurrentEntry) GetTrackerProject() TrackerProject {
+func (o *CurrentEntry) GetTrackerProject() GetTimerStatusTrackerProject {
 	if o == nil {
-		return TrackerProject{}
+		return GetTimerStatusTrackerProject{}
 	}
 	return o.TrackerProject
 }
@@ -126,6 +127,8 @@ type GetTimerStatusResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Timer status retrieved successfully.
 	Object *GetTimerStatusResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *GetTimerStatusResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -140,4 +143,11 @@ func (o *GetTimerStatusResponse) GetObject() *GetTimerStatusResponseBody {
 		return nil
 	}
 	return o.Object
+}
+
+func (o *GetTimerStatusResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }

@@ -1,0 +1,11 @@
+# GetInboxPreSignedURLInternalServerError
+
+Internal server error - Failed to generate pre-signed URL
+
+
+## Fields
+
+| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `Error`                                                            | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
+| `HTTPMeta`                                                         | [components.HTTPMetadata](../../models/components/httpmetadata.md) | :heavy_check_mark:                                                 | N/A                                                                |
