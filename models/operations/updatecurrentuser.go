@@ -44,8 +44,6 @@ func (e *DateFormatRequest) UnmarshalJSON(data []byte) error {
 type UpdateCurrentUserRequest struct {
 	// Full name of the user. Must be between 2 and 32 characters
 	FullName *string `json:"fullName,omitempty"`
-	// Unique identifier of the team the user belongs to
-	TeamID *string `json:"teamId,omitempty"`
 	// Email address of the user
 	Email *string `json:"email,omitempty"`
 	// URL to the user's avatar image. Must be hosted on midday.ai domain
@@ -69,13 +67,6 @@ func (o *UpdateCurrentUserRequest) GetFullName() *string {
 		return nil
 	}
 	return o.FullName
-}
-
-func (o *UpdateCurrentUserRequest) GetTeamID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.TeamID
 }
 
 func (o *UpdateCurrentUserRequest) GetEmail() *string {
@@ -174,7 +165,7 @@ type UpdateCurrentUserTeam struct {
 	// Name of the team or organization
 	Name string `json:"name"`
 	// URL to the team's logo image
-	LogoURL string `json:"logoUrl"`
+	LogoURL *string `json:"logoUrl"`
 	// Current subscription plan of the team
 	Plan string `json:"plan"`
 }
@@ -193,9 +184,9 @@ func (o *UpdateCurrentUserTeam) GetName() string {
 	return o.Name
 }
 
-func (o *UpdateCurrentUserTeam) GetLogoURL() string {
+func (o *UpdateCurrentUserTeam) GetLogoURL() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.LogoURL
 }
@@ -229,6 +220,8 @@ type UpdateCurrentUserResponseBody struct {
 	TimeFormat *float64 `json:"timeFormat"`
 	// User's preferred date format. Available options: 'dd/MM/yyyy', 'MM/dd/yyyy', 'yyyy-MM-dd', 'dd.MM.yyyy'
 	DateFormat *UpdateCurrentUserDateFormatResponse `json:"dateFormat"`
+	// Team file key (JWT token) for proxy/download access to team files. This compact JWT token contains the team ID and is shared by all team members. Use this token as the `fk` query parameter when accessing file endpoints (proxy, download). The token is team-scoped and provides access to files belonging to the user's team. Returns null if the user has no team.
+	FileKey *string `json:"fileKey"`
 	// Team information that the user belongs to
 	Team *UpdateCurrentUserTeam `json:"team"`
 }
@@ -303,6 +296,13 @@ func (o *UpdateCurrentUserResponseBody) GetDateFormat() *UpdateCurrentUserDateFo
 	return o.DateFormat
 }
 
+func (o *UpdateCurrentUserResponseBody) GetFileKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FileKey
+}
+
 func (o *UpdateCurrentUserResponseBody) GetTeam() *UpdateCurrentUserTeam {
 	if o == nil {
 		return nil
@@ -314,6 +314,8 @@ type UpdateCurrentUserResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// The updated user
 	Object *UpdateCurrentUserResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *UpdateCurrentUserResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -328,4 +330,11 @@ func (o *UpdateCurrentUserResponse) GetObject() *UpdateCurrentUserResponseBody {
 		return nil
 	}
 	return o.Object
+}
+
+func (o *UpdateCurrentUserResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }

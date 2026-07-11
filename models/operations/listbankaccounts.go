@@ -7,8 +7,10 @@ import (
 )
 
 type ListBankAccountsRequest struct {
+	// Whether the bank account is enabled.
 	Enabled *bool `queryParam:"style=form,explode=true,name=enabled"`
-	Manual  *bool `queryParam:"style=form,explode=true,name=manual"`
+	// Whether the bank account is a manual account.
+	Manual *bool `queryParam:"style=form,explode=true,name=manual"`
 }
 
 func (o *ListBankAccountsRequest) GetEnabled() *bool {
@@ -109,6 +111,8 @@ type ListBankAccountsResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Retrieve a list of bank accounts
 	Object *ListBankAccountsResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *ListBankAccountsResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -123,4 +127,11 @@ func (o *ListBankAccountsResponse) GetObject() *ListBankAccountsResponseBody {
 		return nil
 	}
 	return o.Object
+}
+
+func (o *ListBankAccountsResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }

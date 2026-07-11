@@ -60,7 +60,7 @@ func (o *Category) GetSlug() string {
 	return o.Slug
 }
 
-// Connection - Bank connection information associated with the account
+// Connection - Bank connection information associated with the account. Null for manual accounts.
 type Connection struct {
 	// Unique identifier of the bank connection
 	ID string `json:"id"`
@@ -91,7 +91,7 @@ func (o *Connection) GetLogoURL() *string {
 	return o.LogoURL
 }
 
-// Account - Bank account information associated with the transaction
+// Account - Bank account information associated with the transaction. Null when no account is linked.
 type Account struct {
 	// Unique identifier of the bank account
 	ID string `json:"id"`
@@ -99,8 +99,8 @@ type Account struct {
 	Name string `json:"name"`
 	// Currency of the bank account in ISO 4217 format
 	Currency string `json:"currency"`
-	// Bank connection information associated with the account
-	Connection Connection `json:"connection"`
+	// Bank connection information associated with the account. Null for manual accounts.
+	Connection *Connection `json:"connection"`
 }
 
 func (o *Account) GetID() string {
@@ -124,9 +124,9 @@ func (o *Account) GetCurrency() string {
 	return o.Currency
 }
 
-func (o *Account) GetConnection() Connection {
+func (o *Account) GetConnection() *Connection {
 	if o == nil {
-		return Connection{}
+		return nil
 	}
 	return o.Connection
 }
@@ -235,8 +235,8 @@ type TransactionResponse struct {
 	IsFulfilled bool `json:"isFulfilled"`
 	// Optional note or memo attached to the transaction
 	Note *string `json:"note"`
-	// Bank account information associated with the transaction
-	Account Account `json:"account"`
+	// Bank account information associated with the transaction. Null when no account is linked.
+	Account *Account `json:"account"`
 	// Array of tags associated with the transaction for categorization and filtering
 	Tags []TransactionResponseTag `json:"tags"`
 	// Array of file attachments associated with the transaction (receipts, invoices, etc.)
@@ -362,9 +362,9 @@ func (o *TransactionResponse) GetNote() *string {
 	return o.Note
 }
 
-func (o *TransactionResponse) GetAccount() Account {
+func (o *TransactionResponse) GetAccount() *Account {
 	if o == nil {
-		return Account{}
+		return nil
 	}
 	return o.Account
 }

@@ -110,6 +110,8 @@ type GetDocumentByIDResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Retrieve a document by its unique identifier
 	Object *GetDocumentByIDResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *GetDocumentByIDResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -124,4 +126,11 @@ func (o *GetDocumentByIDResponse) GetObject() *GetDocumentByIDResponseBody {
 		return nil
 	}
 	return o.Object
+}
+
+func (o *GetDocumentByIDResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }

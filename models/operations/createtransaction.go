@@ -6,45 +6,6 @@ import (
 	"github.com/midday-ai/midday-go/models/components"
 )
 
-type CreateTransactionAttachment struct {
-	// Path(s) of the attachment file(s).
-	Path []string `json:"path"`
-	// Name of the attachment file.
-	Name string `json:"name"`
-	// Size of the attachment file in bytes.
-	Size float64 `json:"size"`
-	// MIME type of the attachment file.
-	Type string `json:"type"`
-}
-
-func (o *CreateTransactionAttachment) GetPath() []string {
-	if o == nil {
-		return []string{}
-	}
-	return o.Path
-}
-
-func (o *CreateTransactionAttachment) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-func (o *CreateTransactionAttachment) GetSize() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.Size
-}
-
-func (o *CreateTransactionAttachment) GetType() string {
-	if o == nil {
-		return ""
-	}
-	return o.Type
-}
-
 type CreateTransactionRequest struct {
 	// Name of the transaction.
 	Name string `json:"name"`
@@ -65,7 +26,7 @@ type CreateTransactionRequest struct {
 	// Whether the transaction is internal.
 	Internal *bool `json:"internal,omitempty"`
 	// Array of attachments for the transaction.
-	Attachments []CreateTransactionAttachment `json:"attachments,omitempty"`
+	Attachments []components.CreateTransactionAttachment `json:"attachments,omitempty"`
 }
 
 func (o *CreateTransactionRequest) GetName() string {
@@ -131,7 +92,7 @@ func (o *CreateTransactionRequest) GetInternal() *bool {
 	return o.Internal
 }
 
-func (o *CreateTransactionRequest) GetAttachments() []CreateTransactionAttachment {
+func (o *CreateTransactionRequest) GetAttachments() []components.CreateTransactionAttachment {
 	if o == nil {
 		return nil
 	}
@@ -142,6 +103,8 @@ type CreateTransactionResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Transaction created
 	TransactionResponse *components.TransactionResponse
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *CreateTransactionResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -156,4 +119,11 @@ func (o *CreateTransactionResponse) GetTransactionResponse() *components.Transac
 		return nil
 	}
 	return o.TransactionResponse
+}
+
+func (o *CreateTransactionResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }

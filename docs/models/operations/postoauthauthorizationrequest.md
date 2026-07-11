@@ -1,0 +1,14 @@
+# PostOAuthAuthorizationRequest
+
+
+## Fields
+
+| Field                                                      | Type                                                       | Required                                                   | Description                                                | Example                                                    |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `ClientID`                                                 | *string*                                                   | :heavy_check_mark:                                         | Client ID of the OAuth application                         | mid_client_abcdef123456789                                 |
+| `Decision`                                                 | [operations.Decision](../../models/operations/decision.md) | :heavy_check_mark:                                         | User's authorization decision                              | allow                                                      |
+| `Scopes`                                                   | [][operations.Scope](../../models/operations/scope.md)     | :heavy_check_mark:                                         | Scopes the user has approved                               | [<br/>"transactions.read",<br/>"invoices.read"<br/>]       |
+| `RedirectURI`                                              | *string*                                                   | :heavy_check_mark:                                         | Redirect URI for OAuth callback                            | https://myapp.com/callback                                 |
+| `State`                                                    | **string*                                                  | :heavy_minus_sign:                                         | Opaque state parameter for CSRF protection                 | abc123xyz789_secure-random-state-value                     |
+| `CodeChallenge`                                            | **string*                                                  | :heavy_minus_sign:                                         | Code challenge for PKCE (S256 method assumed)              | E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM                |
+| `TeamID`                                                   | *string*                                                   | :heavy_check_mark:                                         | Team ID to authorize the application for                   | 123e4567-e89b-12d3-a456-426614174000                       |
