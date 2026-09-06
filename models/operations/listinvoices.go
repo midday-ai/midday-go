@@ -9,14 +9,28 @@ import (
 )
 
 type ListInvoicesRequest struct {
-	Cursor    *string  `queryParam:"style=form,explode=true,name=cursor"`
-	Sort      []string `queryParam:"style=form,explode=true,name=sort"`
-	PageSize  *float64 `queryParam:"style=form,explode=true,name=pageSize"`
-	Q         *string  `queryParam:"style=form,explode=true,name=q"`
-	Start     *string  `queryParam:"style=form,explode=true,name=start"`
-	End       *string  `queryParam:"style=form,explode=true,name=end"`
-	Statuses  []string `queryParam:"style=form,explode=true,name=statuses"`
+	// A cursor for pagination, representing the last item from the previous page.
+	Cursor *string `queryParam:"style=form,explode=true,name=cursor"`
+	// Sort as [column, direction]. Columns: created_at, due_date, issue_date, amount, status, customer, invoice_number. Direction: asc or desc.
+	Sort []string `queryParam:"style=form,explode=true,name=sort"`
+	// Number of invoices to return per page (1-100).
+	PageSize *float64 `queryParam:"style=form,explode=true,name=pageSize"`
+	// Search query string to filter invoices by text.
+	Q *string `queryParam:"style=form,explode=true,name=q"`
+	// Start date (inclusive) for filtering invoices, in ISO 8601 format.
+	Start *string `queryParam:"style=form,explode=true,name=start"`
+	// End date (inclusive) for filtering invoices, in ISO 8601 format.
+	End *string `queryParam:"style=form,explode=true,name=end"`
+	// List of invoice statuses to filter by (e.g., 'paid', 'unpaid', 'overdue').
+	Statuses []string `queryParam:"style=form,explode=true,name=statuses"`
+	// List of customer IDs to filter invoices.
 	Customers []string `queryParam:"style=form,explode=true,name=customers"`
+	// List of invoice IDs to filter by.
+	Ids []string `queryParam:"style=form,explode=true,name=ids"`
+	// List of recurring series IDs to filter invoices by (shows all invoices from these series).
+	RecurringIds []string `queryParam:"style=form,explode=true,name=recurringIds"`
+	// Filter by recurring status. true = only recurring invoices, false = only non-recurring invoices.
+	Recurring *bool `queryParam:"style=form,explode=true,name=recurring"`
 }
 
 func (o *ListInvoicesRequest) GetCursor() *string {
@@ -73,6 +87,27 @@ func (o *ListInvoicesRequest) GetCustomers() []string {
 		return nil
 	}
 	return o.Customers
+}
+
+func (o *ListInvoicesRequest) GetIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Ids
+}
+
+func (o *ListInvoicesRequest) GetRecurringIds() []string {
+	if o == nil {
+		return nil
+	}
+	return o.RecurringIds
+}
+
+func (o *ListInvoicesRequest) GetRecurring() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Recurring
 }
 
 // ListInvoicesMeta - Pagination metadata
@@ -195,14 +230,14 @@ type ListInvoicesData struct {
 	DueDate string `json:"dueDate"`
 	// Issue date of the invoice in ISO 8601 format
 	IssueDate string `json:"issueDate"`
-	// Invoice number as shown to the customer
-	InvoiceNumber string `json:"invoiceNumber"`
-	// Total amount of the invoice
-	Amount float64 `json:"amount"`
+	// Invoice number as shown to the customer (auto-generated if not provided)
+	InvoiceNumber *string `json:"invoiceNumber,omitempty"`
+	// Total amount of the invoice, or null if not yet calculated
+	Amount *float64 `json:"amount"`
 	// Currency code (ISO 4217) for the invoice amount
-	Currency string `json:"currency"`
+	Currency *string `json:"currency"`
 	// Customer details
-	Customer ListInvoicesCustomer `json:"customer"`
+	Customer *ListInvoicesCustomer `json:"customer"`
 	// Timestamp when the invoice was paid (ISO 8601), or null if unpaid
 	PaidAt *string `json:"paidAt"`
 	// Timestamp when a payment reminder was sent (ISO 8601), or null if never sent
@@ -229,6 +264,10 @@ type ListInvoicesData struct {
 	CreatedAt string `json:"createdAt"`
 	// Timestamp when the invoice was last updated (ISO 8601)
 	UpdatedAt string `json:"updatedAt"`
+	// URL to download the invoice PDF, or null if not generated
+	PdfURL *string `json:"pdfUrl"`
+	// URL to preview the invoice in the browser, or null if not generated
+	PreviewURL *string `json:"previewUrl"`
 }
 
 func (o *ListInvoicesData) GetID() string {
@@ -259,30 +298,30 @@ func (o *ListInvoicesData) GetIssueDate() string {
 	return o.IssueDate
 }
 
-func (o *ListInvoicesData) GetInvoiceNumber() string {
+func (o *ListInvoicesData) GetInvoiceNumber() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.InvoiceNumber
 }
 
-func (o *ListInvoicesData) GetAmount() float64 {
+func (o *ListInvoicesData) GetAmount() *float64 {
 	if o == nil {
-		return 0.0
+		return nil
 	}
 	return o.Amount
 }
 
-func (o *ListInvoicesData) GetCurrency() string {
+func (o *ListInvoicesData) GetCurrency() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Currency
 }
 
-func (o *ListInvoicesData) GetCustomer() ListInvoicesCustomer {
+func (o *ListInvoicesData) GetCustomer() *ListInvoicesCustomer {
 	if o == nil {
-		return ListInvoicesCustomer{}
+		return nil
 	}
 	return o.Customer
 }
@@ -378,6 +417,20 @@ func (o *ListInvoicesData) GetUpdatedAt() string {
 	return o.UpdatedAt
 }
 
+func (o *ListInvoicesData) GetPdfURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PdfURL
+}
+
+func (o *ListInvoicesData) GetPreviewURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PreviewURL
+}
+
 // ListInvoicesResponseBody - Response containing a list of invoices and pagination metadata
 type ListInvoicesResponseBody struct {
 	// Pagination metadata
@@ -404,6 +457,8 @@ type ListInvoicesResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// A list of invoices for the authenticated team.
 	Object *ListInvoicesResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *ListInvoicesResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -418,4 +473,11 @@ func (o *ListInvoicesResponse) GetObject() *ListInvoicesResponseBody {
 		return nil
 	}
 	return o.Object
+}
+
+func (o *ListInvoicesResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }

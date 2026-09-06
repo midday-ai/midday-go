@@ -1,0 +1,10 @@
+# SlackInteractionsResponse
+
+
+## Fields
+
+| Field                                                                                                 | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `HTTPMeta`                                                                                            | [components.HTTPMetadata](../../models/components/httpmetadata.md)                                    | :heavy_check_mark:                                                                                    | N/A                                                                                                   |
+| `Object`                                                                                              | [*operations.SlackInteractionsResponseBody](../../models/operations/slackinteractionsresponsebody.md) | :heavy_minus_sign:                                                                                    | Interaction handled successfully                                                                      |
+| `ErrorResponse`                                                                                       | [*components.ErrorResponse](../../models/components/errorresponse.md)                                 | :heavy_minus_sign:                                                                                    | An error occurred                                                                                     |
