@@ -1,0 +1,9 @@
+# GetOAuthAuthorizationResponse
+
+
+## Fields
+
+| Field                                                                                                         | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `HTTPMeta`                                                                                                    | [components.HTTPMetadata](../../models/components/httpmetadata.md)                                            | :heavy_check_mark:                                                                                            | N/A                                                                                                           |
+| `Object`                                                                                                      | [*operations.GetOAuthAuthorizationResponseBody](../../models/operations/getoauthauthorizationresponsebody.md) | :heavy_minus_sign:                                                                                            | Application information for consent screen                                                                    |

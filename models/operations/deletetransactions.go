@@ -22,6 +22,8 @@ type DeleteTransactionsResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Transactions deleted
 	ResponseBodies []DeleteTransactionsResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *DeleteTransactionsResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -36,4 +38,11 @@ func (o *DeleteTransactionsResponse) GetResponseBodies() []DeleteTransactionsRes
 		return nil
 	}
 	return o.ResponseBodies
+}
+
+func (o *DeleteTransactionsResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }

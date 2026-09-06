@@ -7,6 +7,7 @@ import (
 )
 
 type GetTransactionByIDRequest struct {
+	// Transaction ID (UUID).
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
@@ -21,6 +22,8 @@ type GetTransactionByIDResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Transaction details
 	TransactionResponse *components.TransactionResponse
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *GetTransactionByIDResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -35,4 +38,11 @@ func (o *GetTransactionByIDResponse) GetTransactionResponse() *components.Transa
 		return nil
 	}
 	return o.TransactionResponse
+}
+
+func (o *GetTransactionByIDResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }

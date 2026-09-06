@@ -12,3 +12,4 @@ Status of the transaction.
 | `UpdateTransactionStatusCompleted` | completed                          |
 | `UpdateTransactionStatusPosted`    | posted                             |
 | `UpdateTransactionStatusExcluded`  | excluded                           |
+| `UpdateTransactionStatusExported`  | exported                           |

@@ -153,6 +153,7 @@ func (o *UpdateTrackerProjectRequestBody) GetTags() []UpdateTrackerProjectTag {
 }
 
 type UpdateTrackerProjectRequest struct {
+	// Unique identifier of the project to retrieve
 	ID          string                           `pathParam:"style=simple,explode=false,name=id"`
 	RequestBody *UpdateTrackerProjectRequestBody `request:"mediaType=application/json"`
 }
@@ -175,6 +176,8 @@ type UpdateTrackerProjectResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Tracker project updated successfully.
 	TrackerProjectResponse *components.TrackerProjectResponse
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *UpdateTrackerProjectResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -189,4 +192,11 @@ func (o *UpdateTrackerProjectResponse) GetTrackerProjectResponse() *components.T
 		return nil
 	}
 	return o.TrackerProjectResponse
+}
+
+func (o *UpdateTrackerProjectResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }
