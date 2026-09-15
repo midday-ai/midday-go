@@ -3,6 +3,8 @@
 
 ## Overview
 
+Manage time tracker entries
+
 ### Available Operations
 
 * [List](#list) - List all tracker entries
@@ -23,6 +25,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -31,7 +35,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.TrackerEntries.List(ctx, "2024-04-01", "2024-04-30", middaygo.String("b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2"))
@@ -46,13 +52,13 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `from`                                                   | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      | 2024-04-01                                               |
-| `to`                                                     | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      | 2024-04-30                                               |
-| `projectID`                                              | **string*                                                | :heavy_minus_sign:                                       | N/A                                                      | b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2                     |
-| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+| Parameter                                                         | Type                                                              | Required                                                          | Description                                                       | Example                                                           |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `ctx`                                                             | [context.Context](https://pkg.go.dev/context#Context)             | :heavy_check_mark:                                                | The context to use for the request.                               |                                                                   |
+| `from`                                                            | *string*                                                          | :heavy_check_mark:                                                | Start date of the range (inclusive) in YYYY-MM-DD format          | 2024-04-01                                                        |
+| `to`                                                              | *string*                                                          | :heavy_check_mark:                                                | End date of the range (inclusive) in YYYY-MM-DD format            | 2024-04-30                                                        |
+| `projectID`                                                       | **string*                                                         | :heavy_minus_sign:                                                | Optional project ID to filter tracker entries by specific project | b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2                              |
+| `opts`                                                            | [][operations.Option](../../models/operations/option.md)          | :heavy_minus_sign:                                                | The options for this request.                                     |                                                                   |
 
 ### Response
 
@@ -76,6 +82,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/types"
 	"github.com/midday-ai/midday-go/models/operations"
@@ -86,7 +94,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.TrackerEntries.Create(ctx, &operations.CreateTrackerEntryRequest{
@@ -140,6 +150,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/types"
 	"github.com/midday-ai/midday-go/models/operations"
@@ -150,7 +162,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.TrackerEntries.CreateBulk(ctx, &operations.CreateTrackerEntriesBulkRequest{
@@ -218,6 +232,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -226,7 +242,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.TrackerEntries.Delete(ctx, "b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2")
@@ -244,7 +262,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      | b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2                     |
+| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | Unique identifier of the tracker entry to delete         | b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -269,6 +287,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/types"
 	"github.com/midday-ai/midday-go/models/operations"
@@ -279,7 +299,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.TrackerEntries.Update(ctx, "b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2", &operations.UpdateTrackerEntryRequestBody{
@@ -308,7 +330,7 @@ func main() {
 | Parameter                                                                                             | Type                                                                                                  | Required                                                                                              | Description                                                                                           | Example                                                                                               |
 | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                                 | [context.Context](https://pkg.go.dev/context#Context)                                                 | :heavy_check_mark:                                                                                    | The context to use for the request.                                                                   |                                                                                                       |
-| `id`                                                                                                  | *string*                                                                                              | :heavy_check_mark:                                                                                    | N/A                                                                                                   | b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2                                                                  |
+| `id`                                                                                                  | *string*                                                                                              | :heavy_check_mark:                                                                                    | Unique identifier of the tracker entry to delete                                                      | b3b6e2c2-1f2a-4e3b-9c1d-2a4b6e2c21f2                                                                  |
 | `requestBody`                                                                                         | [*operations.UpdateTrackerEntryRequestBody](../../models/operations/updatetrackerentryrequestbody.md) | :heavy_minus_sign:                                                                                    | N/A                                                                                                   |                                                                                                       |
 | `opts`                                                                                                | [][operations.Option](../../models/operations/option.md)                                              | :heavy_minus_sign:                                                                                    | The options for this request.                                                                         |                                                                                                       |
 

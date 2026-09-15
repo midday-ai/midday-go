@@ -7,8 +7,11 @@ import (
 )
 
 type ListTrackerEntriesRequest struct {
-	From      string  `queryParam:"style=form,explode=true,name=from"`
-	To        string  `queryParam:"style=form,explode=true,name=to"`
+	// Start date of the range (inclusive) in YYYY-MM-DD format
+	From string `queryParam:"style=form,explode=true,name=from"`
+	// End date of the range (inclusive) in YYYY-MM-DD format
+	To string `queryParam:"style=form,explode=true,name=to"`
+	// Optional project ID to filter tracker entries by specific project
 	ProjectID *string `queryParam:"style=form,explode=true,name=projectId"`
 }
 
@@ -366,6 +369,8 @@ type ListTrackerEntriesResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// List all tracker entries for the authenticated team.
 	Object *ListTrackerEntriesResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *ListTrackerEntriesResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -380,4 +385,11 @@ func (o *ListTrackerEntriesResponse) GetObject() *ListTrackerEntriesResponseBody
 		return nil
 	}
 	return o.Object
+}
+
+func (o *ListTrackerEntriesResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }
