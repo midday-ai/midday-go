@@ -157,6 +157,8 @@ type CreateTrackerProjectResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Tracker project created successfully.
 	TrackerProjectResponse *components.TrackerProjectResponse
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *CreateTrackerProjectResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -171,4 +173,11 @@ func (o *CreateTrackerProjectResponse) GetTrackerProjectResponse() *components.T
 		return nil
 	}
 	return o.TrackerProjectResponse
+}
+
+func (o *CreateTrackerProjectResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }

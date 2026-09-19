@@ -7,11 +7,20 @@ import (
 )
 
 type ListDocumentsRequest struct {
-	Cursor   *string  `queryParam:"style=form,explode=true,name=cursor"`
-	Sort     []string `queryParam:"style=form,explode=true,name=sort"`
+	// A cursor for pagination. Pass the value returned from the previous response to get the next page.
+	Cursor *string `queryParam:"style=form,explode=true,name=cursor"`
+	// Sort as [column, direction]. Currently documents are sorted by created date descending.
+	Sort []string `queryParam:"style=form,explode=true,name=sort"`
+	// Number of documents to return per page.
 	PageSize *float64 `queryParam:"style=form,explode=true,name=pageSize"`
-	Q        *string  `queryParam:"style=form,explode=true,name=q"`
-	Tags     []string `queryParam:"style=form,explode=true,name=tags"`
+	// Search query string to filter documents by text.
+	Q *string `queryParam:"style=form,explode=true,name=q"`
+	// Array of tag IDs to filter documents by tags.
+	Tags []string `queryParam:"style=form,explode=true,name=tags"`
+	// Start date for filtering documents (ISO 8601 date).
+	Start *string `queryParam:"style=form,explode=true,name=start"`
+	// End date for filtering documents (ISO 8601 date).
+	End *string `queryParam:"style=form,explode=true,name=end"`
 }
 
 func (o *ListDocumentsRequest) GetCursor() *string {
@@ -47,6 +56,20 @@ func (o *ListDocumentsRequest) GetTags() []string {
 		return nil
 	}
 	return o.Tags
+}
+
+func (o *ListDocumentsRequest) GetStart() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Start
+}
+
+func (o *ListDocumentsRequest) GetEnd() *string {
+	if o == nil {
+		return nil
+	}
+	return o.End
 }
 
 // ListDocumentsMeta - Pagination metadata for the documents list.
@@ -195,6 +218,8 @@ type ListDocumentsResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Retrieve a list of documents for the authenticated team.
 	Object *ListDocumentsResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *ListDocumentsResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -209,4 +234,11 @@ func (o *ListDocumentsResponse) GetObject() *ListDocumentsResponseBody {
 		return nil
 	}
 	return o.Object
+}
+
+func (o *ListDocumentsResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }

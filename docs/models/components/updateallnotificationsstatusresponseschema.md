@@ -1,0 +1,8 @@
+# UpdateAllNotificationsStatusResponseSchema
+
+
+## Fields
+
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `Data`                                                                           | [][components.NotificationSchema](../../models/components/notificationschema.md) | :heavy_check_mark:                                                               | Array of updated notifications                                                   |
