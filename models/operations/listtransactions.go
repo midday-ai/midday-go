@@ -8,6 +8,47 @@ import (
 	"github.com/midday-ai/midday-go/models/components"
 )
 
+type ListTransactionsStatus string
+
+const (
+	ListTransactionsStatusBlank        ListTransactionsStatus = "blank"
+	ListTransactionsStatusReceiptMatch ListTransactionsStatus = "receipt_match"
+	ListTransactionsStatusInReview     ListTransactionsStatus = "in_review"
+	ListTransactionsStatusExportError  ListTransactionsStatus = "export_error"
+	ListTransactionsStatusExported     ListTransactionsStatus = "exported"
+	ListTransactionsStatusExcluded     ListTransactionsStatus = "excluded"
+	ListTransactionsStatusArchived     ListTransactionsStatus = "archived"
+)
+
+func (e ListTransactionsStatus) ToPointer() *ListTransactionsStatus {
+	return &e
+}
+func (e *ListTransactionsStatus) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "blank":
+		fallthrough
+	case "receipt_match":
+		fallthrough
+	case "in_review":
+		fallthrough
+	case "export_error":
+		fallthrough
+	case "exported":
+		fallthrough
+	case "excluded":
+		fallthrough
+	case "archived":
+		*e = ListTransactionsStatus(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ListTransactionsStatus: %v", v)
+	}
+}
+
 // Attachments - Filter transactions based on attachment presence. 'include' returns only transactions with attachments, 'exclude' returns only transactions without attachments
 type Attachments string
 
@@ -35,7 +76,7 @@ func (e *Attachments) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// ListTransactionsType - Transaction type to filter by. 'income' for money received, 'expense' for money spent
+// ListTransactionsType - Filter by transaction type. 'income' for money received, 'expense' for money spent
 type ListTransactionsType string
 
 const (
@@ -62,25 +103,72 @@ func (e *ListTransactionsType) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// Manual - Filter transactions based on whether they were manually imported. 'include' returns only manual transactions, 'exclude' returns only non-manual transactions
+type Manual string
+
+const (
+	ManualInclude Manual = "include"
+	ManualExclude Manual = "exclude"
+)
+
+func (e Manual) ToPointer() *Manual {
+	return &e
+}
+func (e *Manual) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "include":
+		fallthrough
+	case "exclude":
+		*e = Manual(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for Manual: %v", v)
+	}
+}
+
 type ListTransactionsRequest struct {
-	Cursor     *string  `queryParam:"style=form,explode=true,name=cursor"`
-	Sort       []string `queryParam:"style=form,explode=true,name=sort"`
-	PageSize   *float64 `queryParam:"style=form,explode=true,name=pageSize"`
-	Q          *string  `queryParam:"style=form,explode=true,name=q"`
+	// Cursor for pagination, representing the last item from the previous page
+	Cursor *string `queryParam:"style=form,explode=true,name=cursor"`
+	// Sort as [column, direction]. Columns: date, amount, name, status, attachment, assigned, bank_account, category, tags, counterparty. Direction: asc or desc.
+	Sort []string `queryParam:"style=form,explode=true,name=sort"`
+	// Number of transactions to return per page (1-10000)
+	PageSize *float64 `queryParam:"style=form,explode=true,name=pageSize"`
+	// Search query string to filter transactions by name, description, or other text fields
+	Q *string `queryParam:"style=form,explode=true,name=q"`
+	// Array of category slugs to filter transactions by specific categories
 	Categories []string `queryParam:"style=form,explode=true,name=categories"`
-	Tags       []string `queryParam:"style=form,explode=true,name=tags"`
-	Start      *string  `queryParam:"style=form,explode=true,name=start"`
-	End        *string  `queryParam:"style=form,explode=true,name=end"`
-	Accounts   []string `queryParam:"style=form,explode=true,name=accounts"`
-	Assignees  []string `queryParam:"style=form,explode=true,name=assignees"`
-	Statuses   []string `queryParam:"style=form,explode=true,name=statuses"`
-	Recurring  []string `queryParam:"style=form,explode=true,name=recurring"`
+	// Array of tag IDs to filter transactions by specific tags
+	Tags []string `queryParam:"style=form,explode=true,name=tags"`
+	// Start date (inclusive) for filtering transactions in ISO 8601 format
+	Start *string `queryParam:"style=form,explode=true,name=start"`
+	// End date (inclusive) for filtering transactions in ISO 8601 format
+	End *string `queryParam:"style=form,explode=true,name=end"`
+	// Array of bank account IDs to filter transactions by specific accounts
+	Accounts []string `queryParam:"style=form,explode=true,name=accounts"`
+	// Array of user IDs to filter transactions by assigned users
+	Assignees []string `queryParam:"style=form,explode=true,name=assignees"`
+	// Array of transaction list status filters. Supported UI filters: 'blank', 'receipt_match', 'in_review', 'export_error', 'exported', 'excluded', 'archived'
+	Statuses []ListTransactionsStatus `queryParam:"style=form,explode=true,name=statuses"`
+	// Array of recurring frequency values to filter by. Available frequencies: 'weekly', 'monthly', 'annually', 'irregular'
+	Recurring []string `queryParam:"style=form,explode=true,name=recurring"`
 	// Filter transactions based on attachment presence. 'include' returns only transactions with attachments, 'exclude' returns only transactions without attachments
 	Attachments *Attachments `queryParam:"style=form,explode=true,name=attachments"`
-	AmountRange []*float64   `queryParam:"style=form,explode=true,name=amountRange"`
-	Amount      []string     `queryParam:"style=form,explode=true,name=amount"`
-	// Transaction type to filter by. 'income' for money received, 'expense' for money spent
+	// Amount range as [min, max] to filter transactions by monetary value
+	AmountRange []*float64 `queryParam:"style=form,explode=true,name=amountRange"`
+	// Array of specific amounts (as strings) to filter transactions by exact values
+	Amount []string `queryParam:"style=form,explode=true,name=amount"`
+	// Filter by transaction type. 'income' for money received, 'expense' for money spent
 	Type *ListTransactionsType `queryParam:"style=form,explode=true,name=type"`
+	// Filter transactions based on whether they were manually imported. 'include' returns only manual transactions, 'exclude' returns only non-manual transactions
+	Manual *Manual `queryParam:"style=form,explode=true,name=manual"`
+	// Filter by export status. true = only exported transactions, false = only NOT exported transactions, undefined = no filter
+	Exported *bool `queryParam:"style=form,explode=true,name=exported"`
+	// Filter by fulfillment status. true = transactions ready for review (has attachments OR status=completed), false = not ready, undefined = no filter
+	Fulfilled *bool `queryParam:"style=form,explode=true,name=fulfilled"`
 }
 
 func (o *ListTransactionsRequest) GetCursor() *string {
@@ -153,7 +241,7 @@ func (o *ListTransactionsRequest) GetAssignees() []string {
 	return o.Assignees
 }
 
-func (o *ListTransactionsRequest) GetStatuses() []string {
+func (o *ListTransactionsRequest) GetStatuses() []ListTransactionsStatus {
 	if o == nil {
 		return nil
 	}
@@ -193,6 +281,27 @@ func (o *ListTransactionsRequest) GetType() *ListTransactionsType {
 		return nil
 	}
 	return o.Type
+}
+
+func (o *ListTransactionsRequest) GetManual() *Manual {
+	if o == nil {
+		return nil
+	}
+	return o.Manual
+}
+
+func (o *ListTransactionsRequest) GetExported() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Exported
+}
+
+func (o *ListTransactionsRequest) GetFulfilled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Fulfilled
 }
 
 // ListTransactionsMeta - Pagination metadata for the transactions response
@@ -252,6 +361,8 @@ type ListTransactionsResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Retrieve a list of transactions for the authenticated team.
 	Object *ListTransactionsResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *ListTransactionsResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -266,4 +377,11 @@ func (o *ListTransactionsResponse) GetObject() *ListTransactionsResponseBody {
 		return nil
 	}
 	return o.Object
+}
+
+func (o *ListTransactionsResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }

@@ -15,8 +15,8 @@ type CreateTrackerEntryRequest struct {
 	Stop time.Time `json:"stop"`
 	// Array of dates for which to create tracker entries
 	Dates []string `json:"dates"`
-	// Unique identifier of the user assigned to this tracker entry
-	AssignedID *string `json:"assignedId"`
+	// Unique identifier of the user assigned to this tracker entry. If not provided, will use the authenticated user
+	AssignedID *string `json:"assignedId,omitempty"`
 	// Unique identifier of the project associated with this tracker entry
 	ProjectID string `json:"projectId"`
 	// Optional description or notes for the tracker entry
@@ -369,6 +369,8 @@ type CreateTrackerEntryResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Tracker entry created successfully.
 	Object *CreateTrackerEntryResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *CreateTrackerEntryResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -383,4 +385,11 @@ func (o *CreateTrackerEntryResponse) GetObject() *CreateTrackerEntryResponseBody
 		return nil
 	}
 	return o.Object
+}
+
+func (o *CreateTrackerEntryResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }

@@ -7,6 +7,7 @@ import (
 )
 
 type GetCurrentTimerRequest struct {
+	// Unique identifier of the user whose current timer should be retrieved. If not provided, will use the authenticated user
 	AssignedID *string `queryParam:"style=form,explode=true,name=assignedId"`
 }
 
@@ -173,8 +174,8 @@ type GetCurrentTimerData struct {
 	Duration *float64 `json:"duration"`
 	// Start time of the tracker entry in ISO 8601 format
 	Start string `json:"start"`
-	// Stop time of the tracker entry in ISO 8601 format
-	Stop string `json:"stop"`
+	// Stop time of the tracker entry in ISO 8601 format. Null for running timers.
+	Stop *string `json:"stop"`
 	// Unique identifier of the team that owns this tracker entry
 	TeamID string `json:"teamId"`
 	// Description or notes for the tracker entry
@@ -221,9 +222,9 @@ func (o *GetCurrentTimerData) GetStart() string {
 	return o.Start
 }
 
-func (o *GetCurrentTimerData) GetStop() string {
+func (o *GetCurrentTimerData) GetStop() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Stop
 }
@@ -300,6 +301,8 @@ type GetCurrentTimerResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Current timer retrieved successfully.
 	Object *GetCurrentTimerResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *GetCurrentTimerResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -314,4 +317,11 @@ func (o *GetCurrentTimerResponse) GetObject() *GetCurrentTimerResponseBody {
 		return nil
 	}
 	return o.Object
+}
+
+func (o *GetCurrentTimerResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }
