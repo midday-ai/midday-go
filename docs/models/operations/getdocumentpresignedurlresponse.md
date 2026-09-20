@@ -1,0 +1,9 @@
+# GetDocumentPreSignedURLResponse
+
+
+## Fields
+
+| Field                                                                                                             | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `HTTPMeta`                                                                                                        | [components.HTTPMetadata](../../models/components/httpmetadata.md)                                                | :heavy_check_mark:                                                                                                | N/A                                                                                                               |
+| `Object`                                                                                                          | [*operations.GetDocumentPreSignedURLResponseBody](../../models/operations/getdocumentpresignedurlresponsebody.md) | :heavy_minus_sign:                                                                                                | Pre-signed URL generated successfully                                                                             |

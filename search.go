@@ -17,6 +17,7 @@ import (
 	"net/url"
 )
 
+// Search endpoints
 type Search struct {
 	rootSDK          *Midday
 	sdkConfiguration config.SDKConfiguration
@@ -102,6 +103,16 @@ func (s *Search) Search(ctx context.Context, request operations.SearchRequest, o
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  300000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -110,11 +121,7 @@ func (s *Search) Search(ctx context.Context, request operations.SearchRequest, o
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil && req.Body != http.NoBody && req.GetBody != nil {
@@ -230,11 +237,26 @@ func (s *Search) Search(ctx context.Context, request operations.SearchRequest, o
 		}
 		return nil, apierrors.NewAPIError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
+		switch {
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+
+			var out components.ErrorResponse
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, err
+			}
+
+			res.ErrorResponse = &out
+		default:
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+			return nil, apierrors.NewAPIError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
-		return nil, apierrors.NewAPIError("unknown status code returned", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil

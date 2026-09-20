@@ -8,15 +8,15 @@ import (
 	"github.com/midday-ai/midday-go/models/components"
 )
 
-// GetInvoiceSummaryStatus - Filter summary by invoice status
 type GetInvoiceSummaryStatus string
 
 const (
-	GetInvoiceSummaryStatusDraft    GetInvoiceSummaryStatus = "draft"
-	GetInvoiceSummaryStatusOverdue  GetInvoiceSummaryStatus = "overdue"
-	GetInvoiceSummaryStatusPaid     GetInvoiceSummaryStatus = "paid"
-	GetInvoiceSummaryStatusUnpaid   GetInvoiceSummaryStatus = "unpaid"
-	GetInvoiceSummaryStatusCanceled GetInvoiceSummaryStatus = "canceled"
+	GetInvoiceSummaryStatusDraft     GetInvoiceSummaryStatus = "draft"
+	GetInvoiceSummaryStatusOverdue   GetInvoiceSummaryStatus = "overdue"
+	GetInvoiceSummaryStatusPaid      GetInvoiceSummaryStatus = "paid"
+	GetInvoiceSummaryStatusUnpaid    GetInvoiceSummaryStatus = "unpaid"
+	GetInvoiceSummaryStatusCanceled  GetInvoiceSummaryStatus = "canceled"
+	GetInvoiceSummaryStatusScheduled GetInvoiceSummaryStatus = "scheduled"
 )
 
 func (e GetInvoiceSummaryStatus) ToPointer() *GetInvoiceSummaryStatus {
@@ -37,6 +37,8 @@ func (e *GetInvoiceSummaryStatus) UnmarshalJSON(data []byte) error {
 	case "unpaid":
 		fallthrough
 	case "canceled":
+		fallthrough
+	case "scheduled":
 		*e = GetInvoiceSummaryStatus(v)
 		return nil
 	default:
@@ -45,24 +47,66 @@ func (e *GetInvoiceSummaryStatus) UnmarshalJSON(data []byte) error {
 }
 
 type GetInvoiceSummaryRequest struct {
-	// Filter summary by invoice status
-	Status *GetInvoiceSummaryStatus `queryParam:"style=form,explode=true,name=status"`
+	// Filter summary by invoice statuses
+	Statuses []GetInvoiceSummaryStatus `queryParam:"style=form,explode=true,name=statuses"`
 }
 
-func (o *GetInvoiceSummaryRequest) GetStatus() *GetInvoiceSummaryStatus {
+func (o *GetInvoiceSummaryRequest) GetStatuses() []GetInvoiceSummaryStatus {
 	if o == nil {
 		return nil
 	}
-	return o.Status
+	return o.Statuses
 }
 
-type GetInvoiceSummaryResponseBody struct {
-	// Currency of the invoice
+type Breakdown struct {
+	// Original currency of the invoices
 	Currency string `json:"currency"`
-	// Total amount of the invoice
+	// Total amount in original currency
+	OriginalAmount float64 `json:"originalAmount"`
+	// Amount converted to base currency
+	ConvertedAmount float64 `json:"convertedAmount"`
+	// Number of invoices in this currency
+	Count float64 `json:"count"`
+}
+
+func (o *Breakdown) GetCurrency() string {
+	if o == nil {
+		return ""
+	}
+	return o.Currency
+}
+
+func (o *Breakdown) GetOriginalAmount() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.OriginalAmount
+}
+
+func (o *Breakdown) GetConvertedAmount() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.ConvertedAmount
+}
+
+func (o *Breakdown) GetCount() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Count
+}
+
+// GetInvoiceSummaryResponseBody - Invoice summary object containing total amount converted to team's base currency and total invoice count.
+type GetInvoiceSummaryResponseBody struct {
+	// Base currency of the team
+	Currency string `json:"currency"`
+	// Total amount of all invoices converted to base currency
 	TotalAmount float64 `json:"totalAmount"`
-	// Number of invoices for this currency
+	// Total number of invoices
 	InvoiceCount float64 `json:"invoiceCount"`
+	// Currency breakdown when multiple currencies are involved
+	Breakdown []Breakdown `json:"breakdown,omitempty"`
 }
 
 func (o *GetInvoiceSummaryResponseBody) GetCurrency() string {
@@ -86,10 +130,19 @@ func (o *GetInvoiceSummaryResponseBody) GetInvoiceCount() float64 {
 	return o.InvoiceCount
 }
 
+func (o *GetInvoiceSummaryResponseBody) GetBreakdown() []Breakdown {
+	if o == nil {
+		return nil
+	}
+	return o.Breakdown
+}
+
 type GetInvoiceSummaryResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Summary of invoices for the authenticated team.
-	ResponseBodies []GetInvoiceSummaryResponseBody
+	Object *GetInvoiceSummaryResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *GetInvoiceSummaryResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -99,9 +152,16 @@ func (o *GetInvoiceSummaryResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *GetInvoiceSummaryResponse) GetResponseBodies() []GetInvoiceSummaryResponseBody {
+func (o *GetInvoiceSummaryResponse) GetObject() *GetInvoiceSummaryResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.ResponseBodies
+	return o.Object
+}
+
+func (o *GetInvoiceSummaryResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }

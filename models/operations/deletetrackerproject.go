@@ -7,6 +7,7 @@ import (
 )
 
 type DeleteTrackerProjectRequest struct {
+	// Unique identifier of the project to retrieve
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
@@ -34,6 +35,8 @@ type DeleteTrackerProjectResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Tracker project deleted successfully.
 	Object *DeleteTrackerProjectResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *DeleteTrackerProjectResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -48,4 +51,11 @@ func (o *DeleteTrackerProjectResponse) GetObject() *DeleteTrackerProjectResponse
 		return nil
 	}
 	return o.Object
+}
+
+func (o *DeleteTrackerProjectResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }
