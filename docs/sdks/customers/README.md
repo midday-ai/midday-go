@@ -3,6 +3,8 @@
 
 ## Overview
 
+Manage customers
+
 ### Available Operations
 
 * [List](#list) - List all customers
@@ -23,6 +25,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -31,7 +35,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Customers.List(ctx, middaygo.String("acme"), []string{
@@ -49,14 +55,14 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `q`                                                      | **string*                                                | :heavy_minus_sign:                                       | N/A                                                      | acme                                                     |
-| `sort`                                                   | []*string*                                               | :heavy_minus_sign:                                       | N/A                                                      | [<br/>"name",<br/>"asc"<br/>]                            |
-| `cursor`                                                 | **string*                                                | :heavy_minus_sign:                                       | N/A                                                      | eyJpZCI6IjEyMyJ9                                         |
-| `pageSize`                                               | **float64*                                               | :heavy_minus_sign:                                       | N/A                                                      | 20                                                       |
-| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+| Parameter                                                                                                                                                                              | Type                                                                                                                                                                                   | Required                                                                                                                                                                               | Description                                                                                                                                                                            | Example                                                                                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                                                                                                                  | :heavy_check_mark:                                                                                                                                                                     | The context to use for the request.                                                                                                                                                    |                                                                                                                                                                                        |
+| `q`                                                                                                                                                                                    | **string*                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                     | Search query string to filter customers by name, email, or other text fields                                                                                                           | acme                                                                                                                                                                                   |
+| `sort`                                                                                                                                                                                 | []*string*                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                     | Sort as [column, direction]. Columns: name, created_at, contact, email, invoices, projects, tags, industry, country, total_revenue, outstanding, last_invoice. Direction: asc or desc. | [<br/>"name",<br/>"asc"<br/>]                                                                                                                                                          |
+| `cursor`                                                                                                                                                                               | **string*                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                     | Cursor for pagination, representing the last item from the previous page                                                                                                               | eyJpZCI6IjEyMyJ9                                                                                                                                                                       |
+| `pageSize`                                                                                                                                                                             | **float64*                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                     | Number of customers to return per page (1-100)                                                                                                                                         | 20                                                                                                                                                                                     |
+| `opts`                                                                                                                                                                                 | [][operations.Option](../../models/operations/option.md)                                                                                                                               | :heavy_minus_sign:                                                                                                                                                                     | The options for this request.                                                                                                                                                          |                                                                                                                                                                                        |
 
 ### Response
 
@@ -80,6 +86,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/models/operations"
 	"log"
@@ -89,14 +97,16 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
-    res, err := s.Customers.Create(ctx, &operations.CreateCustomerRequest{
+    res, err := s.Customers.Create(ctx, operations.CreateCustomerRequest{
         ID: middaygo.String("b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4"),
         Name: "Acme Corporation",
         Email: "contact@acme.com",
-        BillingEmail: middaygo.String("finance@acme.com"),
+        BillingEmail: middaygo.String("finance@acme.com, accounting@acme.com"),
         Country: middaygo.String("United States"),
         AddressLine1: middaygo.String("123 Main Street"),
         AddressLine2: middaygo.String("Suite 400"),
@@ -159,6 +169,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -167,7 +179,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Customers.Get(ctx, "b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4")
@@ -185,7 +199,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      | b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4                     |
+| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | Unique identifier of the customer to retrieve            | b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -210,6 +224,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -218,7 +234,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Customers.Delete(ctx, "b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4")
@@ -236,7 +254,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      | b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4                     |
+| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | Unique identifier of the customer to retrieve            | b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -261,6 +279,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/models/operations"
 	"log"
@@ -270,14 +290,16 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
-    res, err := s.Customers.Update(ctx, "b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4", &operations.UpdateCustomerRequestBody{
+    res, err := s.Customers.Update(ctx, "b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4", operations.UpdateCustomerRequestBody{
         ID: middaygo.String("b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4"),
         Name: "Acme Corporation",
         Email: "contact@acme.com",
-        BillingEmail: middaygo.String("finance@acme.com"),
+        BillingEmail: middaygo.String("finance@acme.com, accounting@acme.com"),
         Country: middaygo.String("United States"),
         AddressLine1: middaygo.String("123 Main Street"),
         AddressLine2: middaygo.String("Suite 400"),
@@ -312,12 +334,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   | Example                                                                                       |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                         | [context.Context](https://pkg.go.dev/context#Context)                                         | :heavy_check_mark:                                                                            | The context to use for the request.                                                           |                                                                                               |
-| `id`                                                                                          | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           | b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4                                                          |
-| `requestBody`                                                                                 | [*operations.UpdateCustomerRequestBody](../../models/operations/updatecustomerrequestbody.md) | :heavy_minus_sign:                                                                            | N/A                                                                                           |                                                                                               |
-| `opts`                                                                                        | [][operations.Option](../../models/operations/option.md)                                      | :heavy_minus_sign:                                                                            | The options for this request.                                                                 |                                                                                               |
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  | Example                                                                                      |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                        | :heavy_check_mark:                                                                           | The context to use for the request.                                                          |                                                                                              |
+| `id`                                                                                         | *string*                                                                                     | :heavy_check_mark:                                                                           | Unique identifier of the customer to retrieve                                                | b3b7c1e2-4c2a-4e7a-9c1a-2b7c1e24c2a4                                                         |
+| `requestBody`                                                                                | [operations.UpdateCustomerRequestBody](../../models/operations/updatecustomerrequestbody.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |                                                                                              |
+| `opts`                                                                                       | [][operations.Option](../../models/operations/option.md)                                     | :heavy_minus_sign:                                                                           | The options for this request.                                                                |                                                                                              |
 
 ### Response
 

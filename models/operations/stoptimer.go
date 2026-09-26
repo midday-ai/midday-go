@@ -3,6 +3,8 @@
 package operations
 
 import (
+	"errors"
+	"fmt"
 	"github.com/midday-ai/midday-go/internal/utils"
 	"github.com/midday-ai/midday-go/models/components"
 	"time"
@@ -47,6 +49,112 @@ func (o *StopTimerRequest) GetStop() *time.Time {
 		return nil
 	}
 	return o.Stop
+}
+
+type StopTimerProject2 struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
+
+func (o *StopTimerProject2) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *StopTimerProject2) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+type StopTimerTrackerProject struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
+
+func (o *StopTimerTrackerProject) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *StopTimerTrackerProject) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+type StopTimerData2 struct {
+	ID string `json:"id"`
+	// Always true for discarded timer entries (duration < 60s)
+	Discarded      bool                     `json:"discarded"`
+	Duration       float64                  `json:"duration"`
+	Project        *StopTimerProject2       `json:"project,omitempty"`
+	TrackerProject *StopTimerTrackerProject `json:"trackerProject,omitempty"`
+	Start          *string                  `json:"start"`
+	Stop           *string                  `json:"stop"`
+	Description    *string                  `json:"description"`
+}
+
+func (o *StopTimerData2) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *StopTimerData2) GetDiscarded() bool {
+	if o == nil {
+		return false
+	}
+	return o.Discarded
+}
+
+func (o *StopTimerData2) GetDuration() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Duration
+}
+
+func (o *StopTimerData2) GetProject() *StopTimerProject2 {
+	if o == nil {
+		return nil
+	}
+	return o.Project
+}
+
+func (o *StopTimerData2) GetTrackerProject() *StopTimerTrackerProject {
+	if o == nil {
+		return nil
+	}
+	return o.TrackerProject
+}
+
+func (o *StopTimerData2) GetStart() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Start
+}
+
+func (o *StopTimerData2) GetStop() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Stop
+}
+
+func (o *StopTimerData2) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
 }
 
 // StopTimerUser - User information for the person who created this tracker entry
@@ -102,8 +210,8 @@ func (o *StopTimerCustomer) GetName() string {
 	return o.Name
 }
 
-// StopTimerProject - Project information associated with this tracker entry
-type StopTimerProject struct {
+// StopTimerProject1 - Project information associated with this tracker entry
+type StopTimerProject1 struct {
 	// Unique identifier of the project
 	ID string `json:"id"`
 	// Date and time when the project was created in ISO 8601 format
@@ -126,77 +234,77 @@ type StopTimerProject struct {
 	Customer *StopTimerCustomer `json:"customer"`
 }
 
-func (o *StopTimerProject) GetID() string {
+func (o *StopTimerProject1) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *StopTimerProject) GetCreatedAt() string {
+func (o *StopTimerProject1) GetCreatedAt() string {
 	if o == nil {
 		return ""
 	}
 	return o.CreatedAt
 }
 
-func (o *StopTimerProject) GetRate() *float64 {
+func (o *StopTimerProject1) GetRate() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Rate
 }
 
-func (o *StopTimerProject) GetCurrency() *string {
+func (o *StopTimerProject1) GetCurrency() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Currency
 }
 
-func (o *StopTimerProject) GetStatus() string {
+func (o *StopTimerProject1) GetStatus() string {
 	if o == nil {
 		return ""
 	}
 	return o.Status
 }
 
-func (o *StopTimerProject) GetDescription() *string {
+func (o *StopTimerProject1) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *StopTimerProject) GetName() string {
+func (o *StopTimerProject1) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *StopTimerProject) GetBillable() *bool {
+func (o *StopTimerProject1) GetBillable() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Billable
 }
 
-func (o *StopTimerProject) GetEstimate() *float64 {
+func (o *StopTimerProject1) GetEstimate() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Estimate
 }
 
-func (o *StopTimerProject) GetCustomer() *StopTimerCustomer {
+func (o *StopTimerProject1) GetCustomer() *StopTimerCustomer {
 	if o == nil {
 		return nil
 	}
 	return o.Customer
 }
 
-type StopTimerData struct {
+type StopTimerData1 struct {
 	// Unique identifier of the tracker entry
 	ID string `json:"id"`
 	// Date and time when the tracker entry was created in ISO 8601 format
@@ -205,8 +313,8 @@ type StopTimerData struct {
 	Duration *float64 `json:"duration"`
 	// Start time of the tracker entry in ISO 8601 format
 	Start string `json:"start"`
-	// Stop time of the tracker entry in ISO 8601 format
-	Stop string `json:"stop"`
+	// Stop time of the tracker entry in ISO 8601 format. Null for running timers.
+	Stop *string `json:"stop"`
 	// Unique identifier of the team that owns this tracker entry
 	TeamID string `json:"teamId"`
 	// Description or notes for the tracker entry
@@ -222,108 +330,171 @@ type StopTimerData struct {
 	// User information for the person who created this tracker entry
 	User StopTimerUser `json:"user"`
 	// Project information associated with this tracker entry
-	Project StopTimerProject `json:"project"`
+	Project StopTimerProject1 `json:"project"`
 }
 
-func (o *StopTimerData) GetID() string {
+func (o *StopTimerData1) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *StopTimerData) GetCreatedAt() string {
+func (o *StopTimerData1) GetCreatedAt() string {
 	if o == nil {
 		return ""
 	}
 	return o.CreatedAt
 }
 
-func (o *StopTimerData) GetDuration() *float64 {
+func (o *StopTimerData1) GetDuration() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Duration
 }
 
-func (o *StopTimerData) GetStart() string {
+func (o *StopTimerData1) GetStart() string {
 	if o == nil {
 		return ""
 	}
 	return o.Start
 }
 
-func (o *StopTimerData) GetStop() string {
+func (o *StopTimerData1) GetStop() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Stop
 }
 
-func (o *StopTimerData) GetTeamID() string {
+func (o *StopTimerData1) GetTeamID() string {
 	if o == nil {
 		return ""
 	}
 	return o.TeamID
 }
 
-func (o *StopTimerData) GetDescription() *string {
+func (o *StopTimerData1) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *StopTimerData) GetRate() *float64 {
+func (o *StopTimerData1) GetRate() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Rate
 }
 
-func (o *StopTimerData) GetCurrency() *string {
+func (o *StopTimerData1) GetCurrency() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Currency
 }
 
-func (o *StopTimerData) GetBilled() bool {
+func (o *StopTimerData1) GetBilled() bool {
 	if o == nil {
 		return false
 	}
 	return o.Billed
 }
 
-func (o *StopTimerData) GetDate() string {
+func (o *StopTimerData1) GetDate() string {
 	if o == nil {
 		return ""
 	}
 	return o.Date
 }
 
-func (o *StopTimerData) GetUser() StopTimerUser {
+func (o *StopTimerData1) GetUser() StopTimerUser {
 	if o == nil {
 		return StopTimerUser{}
 	}
 	return o.User
 }
 
-func (o *StopTimerData) GetProject() StopTimerProject {
+func (o *StopTimerData1) GetProject() StopTimerProject1 {
 	if o == nil {
-		return StopTimerProject{}
+		return StopTimerProject1{}
 	}
 	return o.Project
 }
 
-// StopTimerResponseBody - Timer stopped successfully.
-type StopTimerResponseBody struct {
-	Data StopTimerData `json:"data"`
+type DataType string
+
+const (
+	DataTypeStopTimerData1 DataType = "stopTimer_data_1"
+	DataTypeStopTimerData2 DataType = "stopTimer_data_2"
+)
+
+type Data struct {
+	StopTimerData1 *StopTimerData1 `queryParam:"inline"`
+	StopTimerData2 *StopTimerData2 `queryParam:"inline"`
+
+	Type DataType
 }
 
-func (o *StopTimerResponseBody) GetData() StopTimerData {
+func CreateDataStopTimerData1(stopTimerData1 StopTimerData1) Data {
+	typ := DataTypeStopTimerData1
+
+	return Data{
+		StopTimerData1: &stopTimerData1,
+		Type:           typ,
+	}
+}
+
+func CreateDataStopTimerData2(stopTimerData2 StopTimerData2) Data {
+	typ := DataTypeStopTimerData2
+
+	return Data{
+		StopTimerData2: &stopTimerData2,
+		Type:           typ,
+	}
+}
+
+func (u *Data) UnmarshalJSON(data []byte) error {
+
+	var stopTimerData2 StopTimerData2 = StopTimerData2{}
+	if err := utils.UnmarshalJSON(data, &stopTimerData2, "", true, true); err == nil {
+		u.StopTimerData2 = &stopTimerData2
+		u.Type = DataTypeStopTimerData2
+		return nil
+	}
+
+	var stopTimerData1 StopTimerData1 = StopTimerData1{}
+	if err := utils.UnmarshalJSON(data, &stopTimerData1, "", true, true); err == nil {
+		u.StopTimerData1 = &stopTimerData1
+		u.Type = DataTypeStopTimerData1
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Data", string(data))
+}
+
+func (u Data) MarshalJSON() ([]byte, error) {
+	if u.StopTimerData1 != nil {
+		return utils.MarshalJSON(u.StopTimerData1, "", true)
+	}
+
+	if u.StopTimerData2 != nil {
+		return utils.MarshalJSON(u.StopTimerData2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type Data: all fields are null")
+}
+
+// StopTimerResponseBody - Timer stopped successfully.
+type StopTimerResponseBody struct {
+	Data Data `json:"data"`
+}
+
+func (o *StopTimerResponseBody) GetData() Data {
 	if o == nil {
-		return StopTimerData{}
+		return Data{}
 	}
 	return o.Data
 }
@@ -332,6 +503,8 @@ type StopTimerResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Timer stopped successfully.
 	Object *StopTimerResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *StopTimerResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -346,4 +519,11 @@ func (o *StopTimerResponse) GetObject() *StopTimerResponseBody {
 		return nil
 	}
 	return o.Object
+}
+
+func (o *StopTimerResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }
