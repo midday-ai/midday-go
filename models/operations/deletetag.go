@@ -7,6 +7,7 @@ import (
 )
 
 type DeleteTagRequest struct {
+	// The UUID of the tag to delete.
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
@@ -19,6 +20,8 @@ func (o *DeleteTagRequest) GetID() string {
 
 type DeleteTagResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *DeleteTagResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -26,4 +29,11 @@ func (o *DeleteTagResponse) GetHTTPMeta() components.HTTPMetadata {
 		return components.HTTPMetadata{}
 	}
 	return o.HTTPMeta
+}
+
+func (o *DeleteTagResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }

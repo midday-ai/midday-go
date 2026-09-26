@@ -17,6 +17,7 @@ const (
 	UpdateTransactionsStatusCompleted UpdateTransactionsStatus = "completed"
 	UpdateTransactionsStatusPosted    UpdateTransactionsStatus = "posted"
 	UpdateTransactionsStatusExcluded  UpdateTransactionsStatus = "excluded"
+	UpdateTransactionsStatusExported  UpdateTransactionsStatus = "exported"
 )
 
 func (e UpdateTransactionsStatus) ToPointer() *UpdateTransactionsStatus {
@@ -37,6 +38,8 @@ func (e *UpdateTransactionsStatus) UnmarshalJSON(data []byte) error {
 	case "posted":
 		fallthrough
 	case "excluded":
+		fallthrough
+	case "exported":
 		*e = UpdateTransactionsStatus(v)
 		return nil
 	default:
@@ -218,6 +221,8 @@ type UpdateTransactionsResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Transactions updated
 	Object *UpdateTransactionsResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *UpdateTransactionsResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -232,4 +237,11 @@ func (o *UpdateTransactionsResponse) GetObject() *UpdateTransactionsResponseBody
 		return nil
 	}
 	return o.Object
+}
+
+func (o *UpdateTransactionsResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }
