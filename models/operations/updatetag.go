@@ -19,8 +19,9 @@ func (o *UpdateTagRequestBody) GetName() string {
 }
 
 type UpdateTagRequest struct {
-	ID          string                `pathParam:"style=simple,explode=false,name=id"`
-	RequestBody *UpdateTagRequestBody `request:"mediaType=application/json"`
+	// The ID of the tag to update.
+	ID          string               `pathParam:"style=simple,explode=false,name=id"`
+	RequestBody UpdateTagRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *UpdateTagRequest) GetID() string {
@@ -30,9 +31,9 @@ func (o *UpdateTagRequest) GetID() string {
 	return o.ID
 }
 
-func (o *UpdateTagRequest) GetRequestBody() *UpdateTagRequestBody {
+func (o *UpdateTagRequest) GetRequestBody() UpdateTagRequestBody {
 	if o == nil {
-		return nil
+		return UpdateTagRequestBody{}
 	}
 	return o.RequestBody
 }
@@ -41,6 +42,8 @@ type UpdateTagResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Tag updated
 	TagResponse *components.TagResponse
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *UpdateTagResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -55,4 +58,11 @@ func (o *UpdateTagResponse) GetTagResponse() *components.TagResponse {
 		return nil
 	}
 	return o.TagResponse
+}
+
+func (o *UpdateTagResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }
