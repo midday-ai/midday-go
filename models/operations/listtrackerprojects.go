@@ -36,16 +36,24 @@ func (e *ListTrackerProjectsStatus) UnmarshalJSON(data []byte) error {
 }
 
 type ListTrackerProjectsRequest struct {
-	Cursor   *string  `queryParam:"style=form,explode=true,name=cursor"`
+	// Cursor for pagination, representing the last item from the previous page
+	Cursor *string `queryParam:"style=form,explode=true,name=cursor"`
+	// Number of projects to return per page (1-100)
 	PageSize *float64 `queryParam:"style=form,explode=true,name=pageSize"`
-	Q        *string  `queryParam:"style=form,explode=true,name=q"`
-	Start    *string  `queryParam:"style=form,explode=true,name=start"`
-	End      *string  `queryParam:"style=form,explode=true,name=end"`
+	// Search query string to filter projects by name or description
+	Q *string `queryParam:"style=form,explode=true,name=q"`
+	// Start date for filtering projects by creation date in YYYY-MM-DD format
+	Start *string `queryParam:"style=form,explode=true,name=start"`
+	// End date for filtering projects by creation date in YYYY-MM-DD format
+	End *string `queryParam:"style=form,explode=true,name=end"`
 	// Filter projects by status
-	Status    *ListTrackerProjectsStatus `queryParam:"style=form,explode=true,name=status"`
-	Customers []string                   `queryParam:"style=form,explode=true,name=customers"`
-	Tags      []string                   `queryParam:"style=form,explode=true,name=tags"`
-	Sort      []string                   `queryParam:"style=form,explode=true,name=sort"`
+	Status *ListTrackerProjectsStatus `queryParam:"style=form,explode=true,name=status"`
+	// Array of customer IDs to filter projects by specific customers
+	Customers []string `queryParam:"style=form,explode=true,name=customers"`
+	// Array of tag IDs to filter projects by specific tags
+	Tags []string `queryParam:"style=form,explode=true,name=tags"`
+	// Sort as [column, direction]. Columns: name, created_at, time, amount, assigned, customer, tags. Direction: asc or desc.
+	Sort []string `queryParam:"style=form,explode=true,name=sort"`
 }
 
 func (o *ListTrackerProjectsRequest) GetCursor() *string {
@@ -115,6 +123,8 @@ type ListTrackerProjectsResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// List all tracker projects for the authenticated team.
 	TrackerProjectsResponse *components.TrackerProjectsResponse
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *ListTrackerProjectsResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -129,4 +139,11 @@ func (o *ListTrackerProjectsResponse) GetTrackerProjectsResponse() *components.T
 		return nil
 	}
 	return o.TrackerProjectsResponse
+}
+
+func (o *ListTrackerProjectsResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }

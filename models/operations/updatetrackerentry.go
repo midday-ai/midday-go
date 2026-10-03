@@ -15,8 +15,8 @@ type UpdateTrackerEntryRequestBody struct {
 	Stop time.Time `json:"stop"`
 	// Array of dates for which to create tracker entries
 	Dates []string `json:"dates"`
-	// Unique identifier of the user assigned to this tracker entry
-	AssignedID *string `json:"assignedId"`
+	// Unique identifier of the user assigned to this tracker entry. If not provided, will use the authenticated user
+	AssignedID *string `json:"assignedId,omitempty"`
 	// Unique identifier of the project associated with this tracker entry
 	ProjectID string `json:"projectId"`
 	// Optional description or notes for the tracker entry
@@ -86,6 +86,7 @@ func (o *UpdateTrackerEntryRequestBody) GetDuration() float64 {
 }
 
 type UpdateTrackerEntryRequest struct {
+	// Unique identifier of the tracker entry to delete
 	ID          string                         `pathParam:"style=simple,explode=false,name=id"`
 	RequestBody *UpdateTrackerEntryRequestBody `request:"mediaType=application/json"`
 }
@@ -388,6 +389,8 @@ type UpdateTrackerEntryResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Tracker entry updated successfully.
 	Object *UpdateTrackerEntryResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *UpdateTrackerEntryResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -402,4 +405,11 @@ func (o *UpdateTrackerEntryResponse) GetObject() *UpdateTrackerEntryResponseBody
 		return nil
 	}
 	return o.Object
+}
+
+func (o *UpdateTrackerEntryResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }
