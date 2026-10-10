@@ -8,11 +8,15 @@ import (
 	"github.com/midday-ai/midday-go/models/components"
 )
 
+// ListInboxItemsStatus - Filter by processing status: done (processed), pending (awaiting action), suggested_match (auto-matched), no_match (unmatched), other
 type ListInboxItemsStatus string
 
 const (
-	ListInboxItemsStatusDone    ListInboxItemsStatus = "done"
-	ListInboxItemsStatusPending ListInboxItemsStatus = "pending"
+	ListInboxItemsStatusDone           ListInboxItemsStatus = "done"
+	ListInboxItemsStatusPending        ListInboxItemsStatus = "pending"
+	ListInboxItemsStatusSuggestedMatch ListInboxItemsStatus = "suggested_match"
+	ListInboxItemsStatusNoMatch        ListInboxItemsStatus = "no_match"
+	ListInboxItemsStatusOther          ListInboxItemsStatus = "other"
 )
 
 func (e ListInboxItemsStatus) ToPointer() *ListInboxItemsStatus {
@@ -27,6 +31,12 @@ func (e *ListInboxItemsStatus) UnmarshalJSON(data []byte) error {
 	case "done":
 		fallthrough
 	case "pending":
+		fallthrough
+	case "suggested_match":
+		fallthrough
+	case "no_match":
+		fallthrough
+	case "other":
 		*e = ListInboxItemsStatus(v)
 		return nil
 	default:
@@ -34,12 +44,48 @@ func (e *ListInboxItemsStatus) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// Tab filter: all or other
+type Tab string
+
+const (
+	TabAll   Tab = "all"
+	TabOther Tab = "other"
+)
+
+func (e Tab) ToPointer() *Tab {
+	return &e
+}
+func (e *Tab) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "all":
+		fallthrough
+	case "other":
+		*e = Tab(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for Tab: %v", v)
+	}
+}
+
 type ListInboxItemsRequest struct {
-	Cursor   *string               `queryParam:"style=form,explode=true,name=cursor"`
-	Order    *string               `queryParam:"style=form,explode=true,name=order"`
-	PageSize *float64              `queryParam:"style=form,explode=true,name=pageSize"`
-	Q        *string               `queryParam:"style=form,explode=true,name=q"`
-	Status   *ListInboxItemsStatus `queryParam:"style=form,explode=true,name=status"`
+	// Pagination cursor from previous response
+	Cursor *string `queryParam:"style=form,explode=true,name=cursor"`
+	// Sort direction: asc or desc
+	Order *string `queryParam:"style=form,explode=true,name=order"`
+	// Sort field. Valid values: alphabetical, document_date. Defaults to created date.
+	Sort *string `queryParam:"style=form,explode=true,name=sort"`
+	// Number of items per page (1-100)
+	PageSize *float64 `queryParam:"style=form,explode=true,name=pageSize"`
+	// Search query to filter inbox items
+	Q *string `queryParam:"style=form,explode=true,name=q"`
+	// Filter by processing status: done (processed), pending (awaiting action), suggested_match (auto-matched), no_match (unmatched), other
+	Status *ListInboxItemsStatus `queryParam:"style=form,explode=true,name=status"`
+	// Tab filter: all or other
+	Tab *Tab `queryParam:"style=form,explode=true,name=tab"`
 }
 
 func (o *ListInboxItemsRequest) GetCursor() *string {
@@ -54,6 +100,13 @@ func (o *ListInboxItemsRequest) GetOrder() *string {
 		return nil
 	}
 	return o.Order
+}
+
+func (o *ListInboxItemsRequest) GetSort() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Sort
 }
 
 func (o *ListInboxItemsRequest) GetPageSize() *float64 {
@@ -75,6 +128,13 @@ func (o *ListInboxItemsRequest) GetStatus() *ListInboxItemsStatus {
 		return nil
 	}
 	return o.Status
+}
+
+func (o *ListInboxItemsRequest) GetTab() *Tab {
+	if o == nil {
+		return nil
+	}
+	return o.Tab
 }
 
 // ListInboxItemsMeta - Pagination metadata for the inbox list response.
@@ -304,6 +364,8 @@ type ListInboxItemsResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Retrieve a list of inbox items for the authenticated team.
 	Object *ListInboxItemsResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *ListInboxItemsResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -318,4 +380,11 @@ func (o *ListInboxItemsResponse) GetObject() *ListInboxItemsResponseBody {
 		return nil
 	}
 	return o.Object
+}
+
+func (o *ListInboxItemsResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }

@@ -1,0 +1,10 @@
+# PostOAuthRegisterResponse
+
+
+## Fields
+
+| Field                                                                                                   | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `HTTPMeta`                                                                                              | [components.HTTPMetadata](../../models/components/httpmetadata.md)                                      | :heavy_check_mark:                                                                                      | N/A                                                                                                     |
+| `TwoHundredApplicationJSONObject`                                                                       | [*operations.PostOAuthRegisterResponseBody1](../../models/operations/postoauthregisterresponsebody1.md) | :heavy_minus_sign:                                                                                      | Existing client returned (deduplicated)                                                                 |
+| `TwoHundredAndOneApplicationJSONObject`                                                                 | [*operations.PostOAuthRegisterResponseBody2](../../models/operations/postoauthregisterresponsebody2.md) | :heavy_minus_sign:                                                                                      | Client registered successfully                                                                          |

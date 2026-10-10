@@ -103,8 +103,9 @@ func (o *UpdateBankAccountRequestBody) GetType() *UpdateBankAccountType {
 }
 
 type UpdateBankAccountRequest struct {
-	ID          string                        `pathParam:"style=simple,explode=false,name=id"`
-	RequestBody *UpdateBankAccountRequestBody `request:"mediaType=application/json"`
+	// The unique identifier of the bank account.
+	ID          string                       `pathParam:"style=simple,explode=false,name=id"`
+	RequestBody UpdateBankAccountRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *UpdateBankAccountRequest) GetID() string {
@@ -114,9 +115,9 @@ func (o *UpdateBankAccountRequest) GetID() string {
 	return o.ID
 }
 
-func (o *UpdateBankAccountRequest) GetRequestBody() *UpdateBankAccountRequestBody {
+func (o *UpdateBankAccountRequest) GetRequestBody() UpdateBankAccountRequestBody {
 	if o == nil {
-		return nil
+		return UpdateBankAccountRequestBody{}
 	}
 	return o.RequestBody
 }
@@ -192,6 +193,8 @@ type UpdateBankAccountResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Bank account updated
 	Object *UpdateBankAccountResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *UpdateBankAccountResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -206,4 +209,11 @@ func (o *UpdateBankAccountResponse) GetObject() *UpdateBankAccountResponseBody {
 		return nil
 	}
 	return o.Object
+}
+
+func (o *UpdateBankAccountResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }

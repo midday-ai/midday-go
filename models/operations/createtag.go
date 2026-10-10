@@ -9,7 +9,9 @@ import (
 type CreateTagResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Tag created
-	TagsResponse *components.TagsResponse
+	TagResponse *components.TagResponse
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *CreateTagResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -19,9 +21,16 @@ func (o *CreateTagResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *CreateTagResponse) GetTagsResponse() *components.TagsResponse {
+func (o *CreateTagResponse) GetTagResponse() *components.TagResponse {
 	if o == nil {
 		return nil
 	}
-	return o.TagsResponse
+	return o.TagResponse
+}
+
+func (o *CreateTagResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }
