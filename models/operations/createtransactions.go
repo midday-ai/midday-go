@@ -6,45 +6,6 @@ import (
 	"github.com/midday-ai/midday-go/models/components"
 )
 
-type CreateTransactionsAttachment struct {
-	// Path(s) of the attachment file(s).
-	Path []string `json:"path"`
-	// Name of the attachment file.
-	Name string `json:"name"`
-	// Size of the attachment file in bytes.
-	Size float64 `json:"size"`
-	// MIME type of the attachment file.
-	Type string `json:"type"`
-}
-
-func (o *CreateTransactionsAttachment) GetPath() []string {
-	if o == nil {
-		return []string{}
-	}
-	return o.Path
-}
-
-func (o *CreateTransactionsAttachment) GetName() string {
-	if o == nil {
-		return ""
-	}
-	return o.Name
-}
-
-func (o *CreateTransactionsAttachment) GetSize() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.Size
-}
-
-func (o *CreateTransactionsAttachment) GetType() string {
-	if o == nil {
-		return ""
-	}
-	return o.Type
-}
-
 type RequestBody struct {
 	// Name of the transaction.
 	Name string `json:"name"`
@@ -65,7 +26,7 @@ type RequestBody struct {
 	// Whether the transaction is internal.
 	Internal *bool `json:"internal,omitempty"`
 	// Array of attachments for the transaction.
-	Attachments []CreateTransactionsAttachment `json:"attachments,omitempty"`
+	Attachments []components.CreateTransactionAttachment `json:"attachments,omitempty"`
 }
 
 func (o *RequestBody) GetName() string {
@@ -131,7 +92,7 @@ func (o *RequestBody) GetInternal() *bool {
 	return o.Internal
 }
 
-func (o *RequestBody) GetAttachments() []CreateTransactionsAttachment {
+func (o *RequestBody) GetAttachments() []components.CreateTransactionAttachment {
 	if o == nil {
 		return nil
 	}
@@ -142,6 +103,8 @@ type CreateTransactionsResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Transactions created
 	TransactionResponses []components.TransactionResponse
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *CreateTransactionsResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -156,4 +119,11 @@ func (o *CreateTransactionsResponse) GetTransactionResponses() []components.Tran
 		return nil
 	}
 	return o.TransactionResponses
+}
+
+func (o *CreateTransactionsResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }

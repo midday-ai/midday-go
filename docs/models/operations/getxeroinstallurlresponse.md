@@ -1,0 +1,9 @@
+# GetXeroInstallURLResponse
+
+
+## Fields
+
+| Field                                                                                                 | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `HTTPMeta`                                                                                            | [components.HTTPMetadata](../../models/components/httpmetadata.md)                                    | :heavy_check_mark:                                                                                    | N/A                                                                                                   |
+| `Object`                                                                                              | [*operations.GetXeroInstallURLResponseBody](../../models/operations/getxeroinstallurlresponsebody.md) | :heavy_minus_sign:                                                                                    | Xero install URL                                                                                      |

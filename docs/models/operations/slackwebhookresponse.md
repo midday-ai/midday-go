@@ -1,0 +1,10 @@
+# SlackWebhookResponse
+
+
+## Fields
+
+| Field                                                                                       | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `HTTPMeta`                                                                                  | [components.HTTPMetadata](../../models/components/httpmetadata.md)                          | :heavy_check_mark:                                                                          | N/A                                                                                         |
+| `Object`                                                                                    | [*operations.SlackWebhookResponseBody](../../models/operations/slackwebhookresponsebody.md) | :heavy_minus_sign:                                                                          | Webhook processed successfully                                                              |
+| `ErrorResponse`                                                                             | [*components.ErrorResponse](../../models/components/errorresponse.md)                       | :heavy_minus_sign:                                                                          | An error occurred                                                                           |
