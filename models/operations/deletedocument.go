@@ -33,6 +33,8 @@ type DeleteDocumentResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Document deleted successfully
 	Object *DeleteDocumentResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *DeleteDocumentResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -47,4 +49,11 @@ func (o *DeleteDocumentResponse) GetObject() *DeleteDocumentResponseBody {
 		return nil
 	}
 	return o.Object
+}
+
+func (o *DeleteDocumentResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }

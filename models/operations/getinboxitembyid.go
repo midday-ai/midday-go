@@ -7,6 +7,7 @@ import (
 )
 
 type GetInboxItemByIDRequest struct {
+	// The unique identifier of the inbox item.
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
@@ -191,6 +192,8 @@ type GetInboxItemByIDResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Retrieve an inbox item by its ID.
 	Object *GetInboxItemByIDResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *GetInboxItemByIDResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -205,4 +208,11 @@ func (o *GetInboxItemByIDResponse) GetObject() *GetInboxItemByIDResponseBody {
 		return nil
 	}
 	return o.Object
+}
+
+func (o *GetInboxItemByIDResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }
