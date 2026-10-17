@@ -1,0 +1,9 @@
+# NotificationsResponseSchema
+
+
+## Fields
+
+| Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `Data`                                                                                                   | [][components.NotificationSchema](../../models/components/notificationschema.md)                         | :heavy_check_mark:                                                                                       | Array of notifications                                                                                   |
+| `Meta`                                                                                                   | [components.NotificationsResponseSchemaMeta](../../models/components/notificationsresponseschemameta.md) | :heavy_check_mark:                                                                                       | Pagination metadata                                                                                      |

@@ -17,6 +17,7 @@ const (
 	UpdateTransactionStatusCompleted UpdateTransactionStatus = "completed"
 	UpdateTransactionStatusPosted    UpdateTransactionStatus = "posted"
 	UpdateTransactionStatusExcluded  UpdateTransactionStatus = "excluded"
+	UpdateTransactionStatusExported  UpdateTransactionStatus = "exported"
 )
 
 func (e UpdateTransactionStatus) ToPointer() *UpdateTransactionStatus {
@@ -37,6 +38,8 @@ func (e *UpdateTransactionStatus) UnmarshalJSON(data []byte) error {
 	case "posted":
 		fallthrough
 	case "excluded":
+		fallthrough
+	case "exported":
 		*e = UpdateTransactionStatus(v)
 		return nil
 	default:
@@ -78,6 +81,16 @@ func (e *UpdateTransactionFrequency) UnmarshalJSON(data []byte) error {
 }
 
 type UpdateTransactionRequestBody struct {
+	// Name/description of the transaction.
+	Name *string `json:"name,omitempty"`
+	// Amount of the transaction.
+	Amount *float64 `json:"amount,omitempty"`
+	// Currency of the transaction.
+	Currency *string `json:"currency,omitempty"`
+	// Date of the transaction (ISO 8601).
+	Date *string `json:"date,omitempty"`
+	// Bank account ID associated with the transaction.
+	BankAccountID *string `json:"bankAccountId,omitempty"`
 	// Category slug for the transaction.
 	CategorySlug *string `json:"categorySlug,omitempty"`
 	// Status of the transaction.
@@ -92,6 +105,45 @@ type UpdateTransactionRequestBody struct {
 	Note *string `json:"note,omitempty"`
 	// Assigned user ID for the transaction.
 	AssignedID *string `json:"assignedId,omitempty"`
+	// Tax rate as a percentage (e.g., 25 for 25% VAT). Only set when tax is calculated from a percentage.
+	TaxRate *float64 `json:"taxRate,omitempty"`
+	// Tax amount in the transaction currency. Always set when tax is present.
+	TaxAmount *float64 `json:"taxAmount,omitempty"`
+}
+
+func (o *UpdateTransactionRequestBody) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *UpdateTransactionRequestBody) GetAmount() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Amount
+}
+
+func (o *UpdateTransactionRequestBody) GetCurrency() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Currency
+}
+
+func (o *UpdateTransactionRequestBody) GetDate() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Date
+}
+
+func (o *UpdateTransactionRequestBody) GetBankAccountID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.BankAccountID
 }
 
 func (o *UpdateTransactionRequestBody) GetCategorySlug() *string {
@@ -143,9 +195,24 @@ func (o *UpdateTransactionRequestBody) GetAssignedID() *string {
 	return o.AssignedID
 }
 
+func (o *UpdateTransactionRequestBody) GetTaxRate() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.TaxRate
+}
+
+func (o *UpdateTransactionRequestBody) GetTaxAmount() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.TaxAmount
+}
+
 type UpdateTransactionRequest struct {
-	ID          string                        `pathParam:"style=simple,explode=false,name=id"`
-	RequestBody *UpdateTransactionRequestBody `request:"mediaType=application/json"`
+	// Transaction ID (UUID).
+	ID          string                       `pathParam:"style=simple,explode=false,name=id"`
+	RequestBody UpdateTransactionRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *UpdateTransactionRequest) GetID() string {
@@ -155,9 +222,9 @@ func (o *UpdateTransactionRequest) GetID() string {
 	return o.ID
 }
 
-func (o *UpdateTransactionRequest) GetRequestBody() *UpdateTransactionRequestBody {
+func (o *UpdateTransactionRequest) GetRequestBody() UpdateTransactionRequestBody {
 	if o == nil {
-		return nil
+		return UpdateTransactionRequestBody{}
 	}
 	return o.RequestBody
 }
@@ -166,6 +233,8 @@ type UpdateTransactionResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Transaction updated
 	TransactionResponse *components.TransactionResponse
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *UpdateTransactionResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -180,4 +249,11 @@ func (o *UpdateTransactionResponse) GetTransactionResponse() *components.Transac
 		return nil
 	}
 	return o.TransactionResponse
+}
+
+func (o *UpdateTransactionResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }
