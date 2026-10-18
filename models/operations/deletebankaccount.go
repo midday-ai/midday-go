@@ -7,6 +7,7 @@ import (
 )
 
 type DeleteBankAccountRequest struct {
+	// The unique identifier of the bank account.
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
@@ -88,6 +89,8 @@ type DeleteBankAccountResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Bank account deleted
 	Object *DeleteBankAccountResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *DeleteBankAccountResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -102,4 +105,11 @@ func (o *DeleteBankAccountResponse) GetObject() *DeleteBankAccountResponseBody {
 		return nil
 	}
 	return o.Object
+}
+
+func (o *DeleteBankAccountResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }
