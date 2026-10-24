@@ -1,0 +1,11 @@
+# PostOAuthRevokeRequest
+
+
+## Fields
+
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                | Example                                                                    |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `Token`                                                                    | *string*                                                                   | :heavy_check_mark:                                                         | Token to revoke (access token or refresh token)                            | mid_access_token_abcdef123456789                                           |
+| `TokenTypeHint`                                                            | [*operations.TokenTypeHint](../../models/operations/tokentypehint.md)      | :heavy_minus_sign:                                                         | Hint about the token type                                                  | access_token                                                               |
+| `ClientID`                                                                 | *string*                                                                   | :heavy_check_mark:                                                         | Client ID of the OAuth application                                         | mid_client_abcdef123456789                                                 |
+| `ClientSecret`                                                             | **string*                                                                  | :heavy_minus_sign:                                                         | Client secret of the OAuth application (required for confidential clients) | mid_secret_abcdef123456789                                                 |

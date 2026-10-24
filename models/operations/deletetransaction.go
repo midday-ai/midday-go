@@ -7,6 +7,7 @@ import (
 )
 
 type DeleteTransactionRequest struct {
+	// Transaction ID (UUID).
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
@@ -34,6 +35,8 @@ type DeleteTransactionResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Transaction deleted
 	Object *DeleteTransactionResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *DeleteTransactionResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -48,4 +51,11 @@ func (o *DeleteTransactionResponse) GetObject() *DeleteTransactionResponseBody {
 		return nil
 	}
 	return o.Object
+}
+
+func (o *DeleteTransactionResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }
