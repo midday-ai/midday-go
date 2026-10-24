@@ -3,6 +3,8 @@
 
 ## Overview
 
+Manage tracker projects
+
 ### Available Operations
 
 * [List](#list) - List all tracker projects
@@ -23,6 +25,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/models/operations"
 	"log"
@@ -32,7 +36,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.TrackerProjects.List(ctx, operations.ListTrackerProjectsRequest{
@@ -51,8 +57,8 @@ func main() {
             "tag-2",
         },
         Sort: []string{
-            "-createdAt",
-            "name",
+            "created_at",
+            "desc",
         },
     })
     if err != nil {
@@ -94,6 +100,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/models/operations"
 	"log"
@@ -103,7 +111,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.TrackerProjects.Create(ctx, &operations.CreateTrackerProjectRequest{
@@ -149,6 +159,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -157,7 +169,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.TrackerProjects.Get(ctx, "b7e6c8e2-1f2a-4c3b-9e2d-1a2b3c4d5e6f")
@@ -175,7 +189,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      | b7e6c8e2-1f2a-4c3b-9e2d-1a2b3c4d5e6f                     |
+| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | Unique identifier of the project to retrieve             | b7e6c8e2-1f2a-4c3b-9e2d-1a2b3c4d5e6f                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -200,6 +214,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -208,7 +224,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.TrackerProjects.Delete(ctx, "b7e6c8e2-1f2a-4c3b-9e2d-1a2b3c4d5e6f")
@@ -226,7 +244,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      | b7e6c8e2-1f2a-4c3b-9e2d-1a2b3c4d5e6f                     |
+| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | Unique identifier of the project to retrieve             | b7e6c8e2-1f2a-4c3b-9e2d-1a2b3c4d5e6f                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -251,6 +269,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/models/operations"
 	"log"
@@ -260,7 +280,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.TrackerProjects.Update(ctx, "b7e6c8e2-1f2a-4c3b-9e2d-1a2b3c4d5e6f", &operations.UpdateTrackerProjectRequestBody{
@@ -297,7 +319,7 @@ func main() {
 | Parameter                                                                                                 | Type                                                                                                      | Required                                                                                                  | Description                                                                                               | Example                                                                                                   |
 | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                                     | [context.Context](https://pkg.go.dev/context#Context)                                                     | :heavy_check_mark:                                                                                        | The context to use for the request.                                                                       |                                                                                                           |
-| `id`                                                                                                      | *string*                                                                                                  | :heavy_check_mark:                                                                                        | N/A                                                                                                       | b7e6c8e2-1f2a-4c3b-9e2d-1a2b3c4d5e6f                                                                      |
+| `id`                                                                                                      | *string*                                                                                                  | :heavy_check_mark:                                                                                        | Unique identifier of the project to retrieve                                                              | b7e6c8e2-1f2a-4c3b-9e2d-1a2b3c4d5e6f                                                                      |
 | `requestBody`                                                                                             | [*operations.UpdateTrackerProjectRequestBody](../../models/operations/updatetrackerprojectrequestbody.md) | :heavy_minus_sign:                                                                                        | N/A                                                                                                       |                                                                                                           |
 | `opts`                                                                                                    | [][operations.Option](../../models/operations/option.md)                                                  | :heavy_minus_sign:                                                                                        | The options for this request.                                                                             |                                                                                                           |
 

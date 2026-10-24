@@ -1,0 +1,9 @@
+# GetGmailInstallURLResponse
+
+
+## Fields
+
+| Field                                                                                                   | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `HTTPMeta`                                                                                              | [components.HTTPMetadata](../../models/components/httpmetadata.md)                                      | :heavy_check_mark:                                                                                      | N/A                                                                                                     |
+| `Object`                                                                                                | [*operations.GetGmailInstallURLResponseBody](../../models/operations/getgmailinstallurlresponsebody.md) | :heavy_minus_sign:                                                                                      | Gmail install URL                                                                                       |
