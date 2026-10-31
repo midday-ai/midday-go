@@ -34,6 +34,8 @@ type DeleteInvoiceResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Delete a invoice by its unique identifier for the authenticated team.
 	Object *DeleteInvoiceResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *DeleteInvoiceResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -48,4 +50,11 @@ func (o *DeleteInvoiceResponse) GetObject() *DeleteInvoiceResponseBody {
 		return nil
 	}
 	return o.Object
+}
+
+func (o *DeleteInvoiceResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }

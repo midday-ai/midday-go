@@ -1,0 +1,9 @@
+# CheckDesktopUpdateResponse
+
+
+## Fields
+
+| Field                                                                                                   | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `HTTPMeta`                                                                                              | [components.HTTPMetadata](../../models/components/httpmetadata.md)                                      | :heavy_check_mark:                                                                                      | N/A                                                                                                     |
+| `Object`                                                                                                | [*operations.CheckDesktopUpdateResponseBody](../../models/operations/checkdesktopupdateresponsebody.md) | :heavy_minus_sign:                                                                                      | Update manifest in Tauri updater format                                                                 |
