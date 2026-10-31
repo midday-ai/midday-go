@@ -9,6 +9,7 @@ import (
 )
 
 type ListTeamMembersRequest struct {
+	// Unique identifier of the team
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
@@ -102,6 +103,8 @@ type ListTeamMembersResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Team members
 	Object *ListTeamMembersResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *ListTeamMembersResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -116,4 +119,11 @@ func (o *ListTeamMembersResponse) GetObject() *ListTeamMembersResponseBody {
 		return nil
 	}
 	return o.Object
+}
+
+func (o *ListTeamMembersResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }
