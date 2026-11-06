@@ -12,3 +12,4 @@ Status to set for the transactions.
 | `UpdateTransactionsStatusCompleted` | completed                           |
 | `UpdateTransactionsStatusPosted`    | posted                              |
 | `UpdateTransactionsStatusExcluded`  | excluded                            |
+| `UpdateTransactionsStatusExported`  | exported                            |

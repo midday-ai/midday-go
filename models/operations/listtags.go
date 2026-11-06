@@ -10,6 +10,8 @@ type ListTagsResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Retrieve a list of tags for the authenticated team.
 	TagsResponse *components.TagsResponse
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *ListTagsResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -24,4 +26,11 @@ func (o *ListTagsResponse) GetTagsResponse() *components.TagsResponse {
 		return nil
 	}
 	return o.TagsResponse
+}
+
+func (o *ListTagsResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }

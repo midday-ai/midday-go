@@ -94,6 +94,8 @@ type ListTeamsResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Retrieve a list of teams for the authenticated user.
 	Object *ListTeamsResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *ListTeamsResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -108,4 +110,11 @@ func (o *ListTeamsResponse) GetObject() *ListTeamsResponseBody {
 		return nil
 	}
 	return o.Object
+}
+
+func (o *ListTeamsResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }
