@@ -1,0 +1,10 @@
+# UpdateNotificationStatusResponse
+
+
+## Fields
+
+| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `HTTPMeta`                                                                                      | [components.HTTPMetadata](../../models/components/httpmetadata.md)                              | :heavy_check_mark:                                                                              | N/A                                                                                             |
+| `NotificationResponseSchema`                                                                    | [*components.NotificationResponseSchema](../../models/components/notificationresponseschema.md) | :heavy_minus_sign:                                                                              | Notification status updated successfully.                                                       |
+| `ErrorResponse`                                                                                 | [*components.ErrorResponse](../../models/components/errorresponse.md)                           | :heavy_minus_sign:                                                                              | An error occurred                                                                               |
