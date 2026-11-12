@@ -1,0 +1,9 @@
+# GetFortnoxInstallURLResponse
+
+
+## Fields
+
+| Field                                                                                                       | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `HTTPMeta`                                                                                                  | [components.HTTPMetadata](../../models/components/httpmetadata.md)                                          | :heavy_check_mark:                                                                                          | N/A                                                                                                         |
+| `Object`                                                                                                    | [*operations.GetFortnoxInstallURLResponseBody](../../models/operations/getfortnoxinstallurlresponsebody.md) | :heavy_minus_sign:                                                                                          | Fortnox install URL                                                                                         |

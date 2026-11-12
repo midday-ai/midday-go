@@ -108,14 +108,14 @@ type GetInvoiceByIDResponseBody struct {
 	DueDate string `json:"dueDate"`
 	// Issue date of the invoice in ISO 8601 format
 	IssueDate string `json:"issueDate"`
-	// Invoice number as shown to the customer
-	InvoiceNumber string `json:"invoiceNumber"`
-	// Total amount of the invoice
-	Amount float64 `json:"amount"`
+	// Invoice number as shown to the customer (auto-generated if not provided)
+	InvoiceNumber *string `json:"invoiceNumber,omitempty"`
+	// Total amount of the invoice, or null if not yet calculated
+	Amount *float64 `json:"amount"`
 	// Currency code (ISO 4217) for the invoice amount
-	Currency string `json:"currency"`
+	Currency *string `json:"currency"`
 	// Customer details
-	Customer GetInvoiceByIDCustomer `json:"customer"`
+	Customer *GetInvoiceByIDCustomer `json:"customer"`
 	// Timestamp when the invoice was paid (ISO 8601), or null if unpaid
 	PaidAt *string `json:"paidAt"`
 	// Timestamp when a payment reminder was sent (ISO 8601), or null if never sent
@@ -142,6 +142,10 @@ type GetInvoiceByIDResponseBody struct {
 	CreatedAt string `json:"createdAt"`
 	// Timestamp when the invoice was last updated (ISO 8601)
 	UpdatedAt string `json:"updatedAt"`
+	// URL to download the invoice PDF, or null if not generated
+	PdfURL *string `json:"pdfUrl"`
+	// URL to preview the invoice in the browser, or null if not generated
+	PreviewURL *string `json:"previewUrl"`
 }
 
 func (o *GetInvoiceByIDResponseBody) GetID() string {
@@ -172,30 +176,30 @@ func (o *GetInvoiceByIDResponseBody) GetIssueDate() string {
 	return o.IssueDate
 }
 
-func (o *GetInvoiceByIDResponseBody) GetInvoiceNumber() string {
+func (o *GetInvoiceByIDResponseBody) GetInvoiceNumber() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.InvoiceNumber
 }
 
-func (o *GetInvoiceByIDResponseBody) GetAmount() float64 {
+func (o *GetInvoiceByIDResponseBody) GetAmount() *float64 {
 	if o == nil {
-		return 0.0
+		return nil
 	}
 	return o.Amount
 }
 
-func (o *GetInvoiceByIDResponseBody) GetCurrency() string {
+func (o *GetInvoiceByIDResponseBody) GetCurrency() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Currency
 }
 
-func (o *GetInvoiceByIDResponseBody) GetCustomer() GetInvoiceByIDCustomer {
+func (o *GetInvoiceByIDResponseBody) GetCustomer() *GetInvoiceByIDCustomer {
 	if o == nil {
-		return GetInvoiceByIDCustomer{}
+		return nil
 	}
 	return o.Customer
 }
@@ -291,10 +295,26 @@ func (o *GetInvoiceByIDResponseBody) GetUpdatedAt() string {
 	return o.UpdatedAt
 }
 
+func (o *GetInvoiceByIDResponseBody) GetPdfURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PdfURL
+}
+
+func (o *GetInvoiceByIDResponseBody) GetPreviewURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PreviewURL
+}
+
 type GetInvoiceByIDResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Retrieve a invoice by its unique identifier for the authenticated team.
 	Object *GetInvoiceByIDResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *GetInvoiceByIDResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -309,4 +329,11 @@ func (o *GetInvoiceByIDResponse) GetObject() *GetInvoiceByIDResponseBody {
 		return nil
 	}
 	return o.Object
+}
+
+func (o *GetInvoiceByIDResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }

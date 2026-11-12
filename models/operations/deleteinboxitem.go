@@ -7,6 +7,7 @@ import (
 )
 
 type DeleteInboxItemRequest struct {
+	// The unique identifier of the inbox item to delete.
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
@@ -34,6 +35,8 @@ type DeleteInboxItemResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Delete a inbox item by its ID.
 	Object *DeleteInboxItemResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *DeleteInboxItemResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -48,4 +51,11 @@ func (o *DeleteInboxItemResponse) GetObject() *DeleteInboxItemResponseBody {
 		return nil
 	}
 	return o.Object
+}
+
+func (o *DeleteInboxItemResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }
