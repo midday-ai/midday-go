@@ -7,6 +7,7 @@ import (
 )
 
 type DeleteTrackerEntryRequest struct {
+	// Unique identifier of the tracker entry to delete
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
@@ -34,6 +35,8 @@ type DeleteTrackerEntryResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Tracker entry deleted successfully.
 	Object *DeleteTrackerEntryResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *DeleteTrackerEntryResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -48,4 +51,11 @@ func (o *DeleteTrackerEntryResponse) GetObject() *DeleteTrackerEntryResponseBody
 		return nil
 	}
 	return o.Object
+}
+
+func (o *DeleteTrackerEntryResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }
