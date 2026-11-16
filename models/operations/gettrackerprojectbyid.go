@@ -7,6 +7,7 @@ import (
 )
 
 type GetTrackerProjectByIDRequest struct {
+	// Unique identifier of the project to retrieve
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
@@ -21,6 +22,8 @@ type GetTrackerProjectByIDResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Tracker project by ID for the authenticated team.
 	TrackerProjectResponse *components.TrackerProjectResponse
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *GetTrackerProjectByIDResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -35,4 +38,11 @@ func (o *GetTrackerProjectByIDResponse) GetTrackerProjectResponse() *components.
 		return nil
 	}
 	return o.TrackerProjectResponse
+}
+
+func (o *GetTrackerProjectByIDResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }

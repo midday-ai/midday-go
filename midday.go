@@ -48,25 +48,51 @@ func Float64(f float64) *float64 { return &f }
 // Pointer provides a helper function to return a pointer to a type
 func Pointer[T any](v T) *T { return &v }
 
-// Midday API: Midday is a platform for Invoicing, Time tracking, File reconciliation, Storage, Financial Overview & your own Assistant.
+// Midday API: Midday is a platform for Invoicing, Time tracking, File reconciliation, Storage & Financial Overview.
 type Midday struct {
-	SDKVersion   string
+	SDKVersion string
+	// OAuth authorization flow
+	OAuth *OAuth
+	// Webhook endpoints
+	Webhooks *Webhooks
+	// File operations
+	Files *Files
+	// Integration endpoints
+	Integrations *Integrations
+	// Invoice payment processing
+	InvoicePayments *InvoicePayments
+	// Desktop app endpoints
+	Desktop *Desktop
+	// Manage notifications
+	Notifications *Notifications
+	// Manage transactions
 	Transactions *Transactions
-	Teams        *Teams
-	Users        *Users
-	Customers    *Customers
+	// Manage teams
+	Teams *Teams
+	// Manage users
+	Users *Users
+	// Manage customers
+	Customers *Customers
+	// Manage bank accounts
 	BankAccounts *BankAccounts
-	Tags         *Tags
-	Documents    *Documents
-	Inbox        *Inbox
-	Invoices     *Invoices
-	// Search
-	// Search across all data, invoices, documents, customers, transactions, and more.
-	Search          *Search
-	Metrics         *Metrics
+	// Manage tags
+	Tags *Tags
+	// Manage documents
+	Documents *Documents
+	// Manage inbox items
+	Inbox *Inbox
+	// Manage invoices
+	Invoices *Invoices
+	// Search endpoints
+	Search *Search
+	// Financial reports
+	Reports *Reports
+	// Manage tracker projects
 	TrackerProjects *TrackerProjects
-	TrackerEntries  *TrackerEntries
-	TrackerTimer    *TrackerTimer
+	// Manage time tracker entries
+	TrackerEntries *TrackerEntries
+	// Timer operations
+	TrackerTimer *TrackerTimer
 
 	sdkConfiguration config.SDKConfiguration
 	hooks            *hooks.Hooks
@@ -111,10 +137,9 @@ func WithClient(client HTTPClient) SDKOption {
 }
 
 // WithSecurity configures the SDK to use the provided security details
-func WithSecurity(token string) SDKOption {
+func WithSecurity(security components.Security) SDKOption {
 	return func(sdk *Midday) {
-		security := components.Security{Token: &token}
-		sdk.sdkConfiguration.Security = utils.AsSecuritySource(&security)
+		sdk.sdkConfiguration.Security = utils.AsSecuritySource(security)
 	}
 }
 
@@ -143,9 +168,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *Midday {
 	sdk := &Midday{
-		SDKVersion: "0.1.0",
+		SDKVersion: "0.2.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.1.0 2.686.7 0.0.1 github.com/midday-ai/midday-go",
+			UserAgent:  "speakeasy-sdk/go 0.2.0 2.686.7 0.0.1 github.com/midday-ai/midday-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
@@ -168,6 +193,13 @@ func New(opts ...SDKOption) *Midday {
 
 	sdk.sdkConfiguration = sdk.hooks.SDKInit(sdk.sdkConfiguration)
 
+	sdk.OAuth = newOAuth(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Webhooks = newWebhooks(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Files = newFiles(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Integrations = newIntegrations(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.InvoicePayments = newInvoicePayments(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Desktop = newDesktop(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Notifications = newNotifications(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Transactions = newTransactions(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Teams = newTeams(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Users = newUsers(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -178,7 +210,7 @@ func New(opts ...SDKOption) *Midday {
 	sdk.Inbox = newInbox(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Invoices = newInvoices(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Search = newSearch(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Metrics = newMetrics(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Reports = newReports(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.TrackerProjects = newTrackerProjects(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.TrackerEntries = newTrackerEntries(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.TrackerTimer = newTrackerTimer(sdk, sdk.sdkConfiguration, sdk.hooks)
