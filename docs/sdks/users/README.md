@@ -3,6 +3,8 @@
 
 ## Overview
 
+Manage users
+
 ### Available Operations
 
 * [Get](#get) - Retrieve the current user
@@ -20,6 +22,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -28,7 +32,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Users.Get(ctx)
@@ -70,6 +76,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/models/operations"
 	"log"
@@ -79,12 +87,13 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
-    res, err := s.Users.Update(ctx, &operations.UpdateCurrentUserRequest{
+    res, err := s.Users.Update(ctx, operations.UpdateCurrentUserRequest{
         FullName: middaygo.String("Jane Doe"),
-        TeamID: middaygo.String("team-abc123"),
         Email: middaygo.String("jane.doe@acme.com"),
         AvatarURL: middaygo.String("https://cdn.midday.ai/avatars/jane-doe.jpg"),
         Locale: middaygo.String("en-US"),
