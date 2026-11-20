@@ -34,7 +34,7 @@ type CreateCustomerRequest struct {
 	Name string `json:"name"`
 	// Primary email address of the customer
 	Email string `json:"email"`
-	// Billing email address of the customer
+	// Billing email addresses of the customer (comma-separated for multiple)
 	BillingEmail *string `json:"billingEmail,omitempty"`
 	// Country name where the customer is located
 	Country *string `json:"country,omitempty"`
@@ -212,7 +212,7 @@ type CreateCustomerResponseBody struct {
 	Name string `json:"name"`
 	// Primary email address of the customer
 	Email string `json:"email"`
-	// Billing email address of the customer
+	// Billing email addresses of the customer (comma-separated for multiple)
 	BillingEmail *string `json:"billingEmail"`
 	// Primary phone number of the customer
 	Phone *string `json:"phone"`
@@ -246,8 +246,60 @@ type CreateCustomerResponseBody struct {
 	InvoiceCount float64 `json:"invoiceCount"`
 	// Total number of projects associated with this customer
 	ProjectCount float64 `json:"projectCount"`
+	// Total revenue from paid invoices for this customer (in invoice currency). Only returned in list queries.
+	TotalRevenue *float64 `json:"totalRevenue,omitempty"`
+	// Total outstanding amount from unpaid/overdue invoices (in invoice currency). Only returned in list queries.
+	OutstandingAmount *float64 `json:"outstandingAmount,omitempty"`
+	// Date of the most recent invoice in ISO 8601 format. Only returned in list queries.
+	LastInvoiceDate *string `json:"lastInvoiceDate,omitempty"`
+	// Primary currency used in invoices for this customer. Only returned in list queries.
+	InvoiceCurrency *string `json:"invoiceCurrency,omitempty"`
 	// Array of tags associated with the customer for categorization
 	Tags []CreateCustomerTagResponse `json:"tags"`
+	// AI-generated description of what the company does
+	Description *string `json:"description"`
+	// Primary industry of the company
+	Industry *string `json:"industry"`
+	// Business model type
+	CompanyType *string `json:"companyType"`
+	// Estimated number of employees
+	EmployeeCount *string `json:"employeeCount"`
+	// Year the company was founded
+	FoundedYear *float64 `json:"foundedYear"`
+	// Estimated annual revenue range
+	EstimatedRevenue *string `json:"estimatedRevenue"`
+	// Current funding stage
+	FundingStage *string `json:"fundingStage"`
+	// Total funding raised
+	TotalFunding *string `json:"totalFunding"`
+	// Company headquarters location
+	HeadquartersLocation *string `json:"headquartersLocation"`
+	// IANA timezone of the company headquarters
+	Timezone *string `json:"timezone"`
+	// LinkedIn company page URL
+	LinkedinURL *string `json:"linkedinUrl"`
+	// Twitter/X profile URL
+	TwitterURL *string `json:"twitterUrl"`
+	// Instagram profile URL
+	InstagramURL *string `json:"instagramUrl"`
+	// Facebook page URL
+	FacebookURL *string `json:"facebookUrl"`
+	// URL to the company logo
+	LogoURL *string `json:"logoUrl"`
+	// Name of the CEO or founder
+	CeoName *string `json:"ceoName"`
+	// Name of the finance/AP contact for invoicing
+	FinanceContact *string `json:"financeContact"`
+	// Email of the finance/AP contact
+	FinanceContactEmail *string `json:"financeContactEmail"`
+	// Primary business language (ISO 639-1 code)
+	PrimaryLanguage *string `json:"primaryLanguage"`
+	// Month when the fiscal year ends
+	FiscalYearEnd *string `json:"fiscalYearEnd"`
+	// Status of the enrichment process
+	EnrichmentStatus *string `json:"enrichmentStatus"`
+	// When the customer was last enriched
+	EnrichedAt *string `json:"enrichedAt"`
 }
 
 func (o *CreateCustomerResponseBody) GetID() string {
@@ -390,6 +442,34 @@ func (o *CreateCustomerResponseBody) GetProjectCount() float64 {
 	return o.ProjectCount
 }
 
+func (o *CreateCustomerResponseBody) GetTotalRevenue() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.TotalRevenue
+}
+
+func (o *CreateCustomerResponseBody) GetOutstandingAmount() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.OutstandingAmount
+}
+
+func (o *CreateCustomerResponseBody) GetLastInvoiceDate() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LastInvoiceDate
+}
+
+func (o *CreateCustomerResponseBody) GetInvoiceCurrency() *string {
+	if o == nil {
+		return nil
+	}
+	return o.InvoiceCurrency
+}
+
 func (o *CreateCustomerResponseBody) GetTags() []CreateCustomerTagResponse {
 	if o == nil {
 		return []CreateCustomerTagResponse{}
@@ -397,10 +477,166 @@ func (o *CreateCustomerResponseBody) GetTags() []CreateCustomerTagResponse {
 	return o.Tags
 }
 
+func (o *CreateCustomerResponseBody) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *CreateCustomerResponseBody) GetIndustry() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Industry
+}
+
+func (o *CreateCustomerResponseBody) GetCompanyType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CompanyType
+}
+
+func (o *CreateCustomerResponseBody) GetEmployeeCount() *string {
+	if o == nil {
+		return nil
+	}
+	return o.EmployeeCount
+}
+
+func (o *CreateCustomerResponseBody) GetFoundedYear() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.FoundedYear
+}
+
+func (o *CreateCustomerResponseBody) GetEstimatedRevenue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.EstimatedRevenue
+}
+
+func (o *CreateCustomerResponseBody) GetFundingStage() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FundingStage
+}
+
+func (o *CreateCustomerResponseBody) GetTotalFunding() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TotalFunding
+}
+
+func (o *CreateCustomerResponseBody) GetHeadquartersLocation() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HeadquartersLocation
+}
+
+func (o *CreateCustomerResponseBody) GetTimezone() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Timezone
+}
+
+func (o *CreateCustomerResponseBody) GetLinkedinURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LinkedinURL
+}
+
+func (o *CreateCustomerResponseBody) GetTwitterURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TwitterURL
+}
+
+func (o *CreateCustomerResponseBody) GetInstagramURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.InstagramURL
+}
+
+func (o *CreateCustomerResponseBody) GetFacebookURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FacebookURL
+}
+
+func (o *CreateCustomerResponseBody) GetLogoURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LogoURL
+}
+
+func (o *CreateCustomerResponseBody) GetCeoName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CeoName
+}
+
+func (o *CreateCustomerResponseBody) GetFinanceContact() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FinanceContact
+}
+
+func (o *CreateCustomerResponseBody) GetFinanceContactEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FinanceContactEmail
+}
+
+func (o *CreateCustomerResponseBody) GetPrimaryLanguage() *string {
+	if o == nil {
+		return nil
+	}
+	return o.PrimaryLanguage
+}
+
+func (o *CreateCustomerResponseBody) GetFiscalYearEnd() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FiscalYearEnd
+}
+
+func (o *CreateCustomerResponseBody) GetEnrichmentStatus() *string {
+	if o == nil {
+		return nil
+	}
+	return o.EnrichmentStatus
+}
+
+func (o *CreateCustomerResponseBody) GetEnrichedAt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.EnrichedAt
+}
+
 type CreateCustomerResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Customer created
 	Object *CreateCustomerResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *CreateCustomerResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -415,4 +651,11 @@ func (o *CreateCustomerResponse) GetObject() *CreateCustomerResponseBody {
 		return nil
 	}
 	return o.Object
+}
+
+func (o *CreateCustomerResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }

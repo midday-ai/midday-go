@@ -8,10 +8,15 @@ import (
 )
 
 type SearchRequest struct {
-	SearchTerm         *string  `queryParam:"style=form,explode=true,name=searchTerm"`
-	Language           *string  `queryParam:"style=form,explode=true,name=language"`
-	Limit              *float64 `default:"30" queryParam:"style=form,explode=true,name=limit"`
+	// The term to search for across all data sources.
+	SearchTerm *string `queryParam:"style=form,explode=true,name=searchTerm"`
+	// Language code to use for search relevance and results.
+	Language *string `queryParam:"style=form,explode=true,name=language"`
+	// Maximum number of results to return.
+	Limit *float64 `default:"30" queryParam:"style=form,explode=true,name=limit"`
+	// Maximum number of results to return per table/entity.
 	ItemsPerTableLimit *float64 `default:"5" queryParam:"style=form,explode=true,name=itemsPerTableLimit"`
+	// Minimum relevance score threshold for including a result.
 	RelevanceThreshold *float64 `default:"0.01" queryParam:"style=form,explode=true,name=relevanceThreshold"`
 }
 
@@ -113,6 +118,8 @@ type SearchResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Search results.
 	ResponseBodies []SearchResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *SearchResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -127,4 +134,11 @@ func (o *SearchResponse) GetResponseBodies() []SearchResponseBody {
 		return nil
 	}
 	return o.ResponseBodies
+}
+
+func (o *SearchResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }
