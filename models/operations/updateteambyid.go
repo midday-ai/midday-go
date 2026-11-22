@@ -8,6 +8,154 @@ import (
 	"github.com/midday-ai/midday-go/models/components"
 )
 
+// ExportSettings - Export settings for transactions
+type ExportSettings struct {
+	CsvDelimiter    string  `json:"csvDelimiter"`
+	IncludeCSV      bool    `json:"includeCSV"`
+	IncludeXLSX     bool    `json:"includeXLSX"`
+	SendEmail       bool    `json:"sendEmail"`
+	SendCopyToMe    *bool   `json:"sendCopyToMe,omitempty"`
+	AccountantEmail *string `json:"accountantEmail,omitempty"`
+}
+
+func (o *ExportSettings) GetCsvDelimiter() string {
+	if o == nil {
+		return ""
+	}
+	return o.CsvDelimiter
+}
+
+func (o *ExportSettings) GetIncludeCSV() bool {
+	if o == nil {
+		return false
+	}
+	return o.IncludeCSV
+}
+
+func (o *ExportSettings) GetIncludeXLSX() bool {
+	if o == nil {
+		return false
+	}
+	return o.IncludeXLSX
+}
+
+func (o *ExportSettings) GetSendEmail() bool {
+	if o == nil {
+		return false
+	}
+	return o.SendEmail
+}
+
+func (o *ExportSettings) GetSendCopyToMe() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.SendCopyToMe
+}
+
+func (o *ExportSettings) GetAccountantEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.AccountantEmail
+}
+
+// CompanyType - Type of company or team
+type CompanyType string
+
+const (
+	CompanyTypeFreelancer  CompanyType = "freelancer"
+	CompanyTypeSoloFounder CompanyType = "solo_founder"
+	CompanyTypeSmallTeam   CompanyType = "small_team"
+	CompanyTypeStartup     CompanyType = "startup"
+	CompanyTypeAgency      CompanyType = "agency"
+	CompanyTypeEcommerce   CompanyType = "ecommerce"
+	CompanyTypeCreator     CompanyType = "creator"
+	CompanyTypeNonProfit   CompanyType = "non_profit"
+	CompanyTypeAccountant  CompanyType = "accountant"
+	CompanyTypeExploring   CompanyType = "exploring"
+)
+
+func (e CompanyType) ToPointer() *CompanyType {
+	return &e
+}
+func (e *CompanyType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "freelancer":
+		fallthrough
+	case "solo_founder":
+		fallthrough
+	case "small_team":
+		fallthrough
+	case "startup":
+		fallthrough
+	case "agency":
+		fallthrough
+	case "ecommerce":
+		fallthrough
+	case "creator":
+		fallthrough
+	case "non_profit":
+		fallthrough
+	case "accountant":
+		fallthrough
+	case "exploring":
+		*e = CompanyType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CompanyType: %v", v)
+	}
+}
+
+// HeardAbout - How the user heard about the product
+type HeardAbout string
+
+const (
+	HeardAboutTwitter HeardAbout = "twitter"
+	HeardAboutYoutube HeardAbout = "youtube"
+	HeardAboutFriend  HeardAbout = "friend"
+	HeardAboutGoogle  HeardAbout = "google"
+	HeardAboutBlog    HeardAbout = "blog"
+	HeardAboutPodcast HeardAbout = "podcast"
+	HeardAboutGithub  HeardAbout = "github"
+	HeardAboutOther   HeardAbout = "other"
+)
+
+func (e HeardAbout) ToPointer() *HeardAbout {
+	return &e
+}
+func (e *HeardAbout) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "twitter":
+		fallthrough
+	case "youtube":
+		fallthrough
+	case "friend":
+		fallthrough
+	case "google":
+		fallthrough
+	case "blog":
+		fallthrough
+	case "podcast":
+		fallthrough
+	case "github":
+		fallthrough
+	case "other":
+		*e = HeardAbout(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for HeardAbout: %v", v)
+	}
+}
+
 type UpdateTeamByIDRequestBody struct {
 	// Name of the team or organization. Must be between 2 and 32 characters
 	Name *string `json:"name,omitempty"`
@@ -19,6 +167,14 @@ type UpdateTeamByIDRequestBody struct {
 	BaseCurrency *string `json:"baseCurrency,omitempty"`
 	// Country code for the team
 	CountryCode *string `json:"countryCode,omitempty"`
+	// Month when the fiscal year starts (1-12). Null for trailing 12 months. Defaults based on country if not specified.
+	FiscalYearStartMonth *int64 `json:"fiscalYearStartMonth,omitempty"`
+	// Export settings for transactions
+	ExportSettings *ExportSettings `json:"exportSettings,omitempty"`
+	// Type of company or team
+	CompanyType *CompanyType `json:"companyType,omitempty"`
+	// How the user heard about the product
+	HeardAbout *HeardAbout `json:"heardAbout,omitempty"`
 }
 
 func (o *UpdateTeamByIDRequestBody) GetName() *string {
@@ -56,9 +212,38 @@ func (o *UpdateTeamByIDRequestBody) GetCountryCode() *string {
 	return o.CountryCode
 }
 
+func (o *UpdateTeamByIDRequestBody) GetFiscalYearStartMonth() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.FiscalYearStartMonth
+}
+
+func (o *UpdateTeamByIDRequestBody) GetExportSettings() *ExportSettings {
+	if o == nil {
+		return nil
+	}
+	return o.ExportSettings
+}
+
+func (o *UpdateTeamByIDRequestBody) GetCompanyType() *CompanyType {
+	if o == nil {
+		return nil
+	}
+	return o.CompanyType
+}
+
+func (o *UpdateTeamByIDRequestBody) GetHeardAbout() *HeardAbout {
+	if o == nil {
+		return nil
+	}
+	return o.HeardAbout
+}
+
 type UpdateTeamByIDRequest struct {
-	ID          string                     `pathParam:"style=simple,explode=false,name=id"`
-	RequestBody *UpdateTeamByIDRequestBody `request:"mediaType=application/json"`
+	// Unique identifier of the team
+	ID          string                    `pathParam:"style=simple,explode=false,name=id"`
+	RequestBody UpdateTeamByIDRequestBody `request:"mediaType=application/json"`
 }
 
 func (o *UpdateTeamByIDRequest) GetID() string {
@@ -68,9 +253,9 @@ func (o *UpdateTeamByIDRequest) GetID() string {
 	return o.ID
 }
 
-func (o *UpdateTeamByIDRequest) GetRequestBody() *UpdateTeamByIDRequestBody {
+func (o *UpdateTeamByIDRequest) GetRequestBody() UpdateTeamByIDRequestBody {
 	if o == nil {
-		return nil
+		return UpdateTeamByIDRequestBody{}
 	}
 	return o.RequestBody
 }
@@ -149,6 +334,8 @@ type UpdateTeamByIDResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Team updated
 	Object *UpdateTeamByIDResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *UpdateTeamByIDResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -163,4 +350,11 @@ func (o *UpdateTeamByIDResponse) GetObject() *UpdateTeamByIDResponseBody {
 		return nil
 	}
 	return o.Object
+}
+
+func (o *UpdateTeamByIDResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }

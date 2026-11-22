@@ -7,6 +7,7 @@ import (
 )
 
 type GetTagByIDRequest struct {
+	// The UUID of the tag.
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
@@ -21,6 +22,8 @@ type GetTagByIDResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Retrieve a tag by ID for the authenticated team.
 	TagResponse *components.TagResponse
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *GetTagByIDResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -35,4 +38,11 @@ func (o *GetTagByIDResponse) GetTagResponse() *components.TagResponse {
 		return nil
 	}
 	return o.TagResponse
+}
+
+func (o *GetTagByIDResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }
