@@ -3,6 +3,8 @@
 
 ## Overview
 
+Manage tags
+
 ### Available Operations
 
 * [List](#list) - List all tags
@@ -23,6 +25,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -31,7 +35,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Tags.List(ctx)
@@ -73,8 +79,9 @@ package main
 
 import(
 	"context"
-	middaygo "github.com/midday-ai/midday-go"
+	"os"
 	"github.com/midday-ai/midday-go/models/components"
+	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
 
@@ -82,16 +89,18 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
-    res, err := s.Tags.Create(ctx, &components.CreateTag{
+    res, err := s.Tags.Create(ctx, components.CreateTag{
         Name: "Important",
     })
     if err != nil {
         log.Fatal(err)
     }
-    if res.TagsResponse != nil {
+    if res.TagResponse != nil {
         // handle response
     }
 }
@@ -127,6 +136,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -135,7 +146,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Tags.Get(ctx, "b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f")
@@ -153,7 +166,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      | b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f                     |
+| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | The UUID of the tag.                                     | b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -178,6 +191,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"log"
 )
@@ -186,7 +201,9 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
     res, err := s.Tags.Delete(ctx, "b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f")
@@ -204,7 +221,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      | b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f                     |
+| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | The UUID of the tag to delete.                           | b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -229,6 +246,8 @@ package main
 
 import(
 	"context"
+	"os"
+	"github.com/midday-ai/midday-go/models/components"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/models/operations"
 	"log"
@@ -238,10 +257,12 @@ func main() {
     ctx := context.Background()
 
     s := middaygo.New(
-        middaygo.WithSecurity("MIDDAY_API_KEY"),
+        middaygo.WithSecurity(components.Security{
+            Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+        }),
     )
 
-    res, err := s.Tags.Update(ctx, "b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f", &operations.UpdateTagRequestBody{
+    res, err := s.Tags.Update(ctx, "b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f", operations.UpdateTagRequestBody{
         Name: "Urgent",
     })
     if err != nil {
@@ -255,12 +276,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         | Example                                                                             |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `ctx`                                                                               | [context.Context](https://pkg.go.dev/context#Context)                               | :heavy_check_mark:                                                                  | The context to use for the request.                                                 |                                                                                     |
-| `id`                                                                                | *string*                                                                            | :heavy_check_mark:                                                                  | N/A                                                                                 | b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f                                                |
-| `requestBody`                                                                       | [*operations.UpdateTagRequestBody](../../models/operations/updatetagrequestbody.md) | :heavy_minus_sign:                                                                  | N/A                                                                                 |                                                                                     |
-| `opts`                                                                              | [][operations.Option](../../models/operations/option.md)                            | :heavy_minus_sign:                                                                  | The options for this request.                                                       |                                                                                     |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
+| `id`                                                                               | *string*                                                                           | :heavy_check_mark:                                                                 | The ID of the tag to update.                                                       | b3b7c8e2-1f2a-4c3d-9e4f-5a6b7c8d9e0f                                               |
+| `requestBody`                                                                      | [operations.UpdateTagRequestBody](../../models/operations/updatetagrequestbody.md) | :heavy_check_mark:                                                                 | N/A                                                                                |                                                                                    |
+| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
 
 ### Response
 
