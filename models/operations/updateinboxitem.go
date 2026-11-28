@@ -11,11 +11,15 @@ import (
 type UpdateInboxItemStatus string
 
 const (
-	UpdateInboxItemStatusNew        UpdateInboxItemStatus = "new"
-	UpdateInboxItemStatusArchived   UpdateInboxItemStatus = "archived"
-	UpdateInboxItemStatusProcessing UpdateInboxItemStatus = "processing"
-	UpdateInboxItemStatusDone       UpdateInboxItemStatus = "done"
-	UpdateInboxItemStatusPending    UpdateInboxItemStatus = "pending"
+	UpdateInboxItemStatusNew            UpdateInboxItemStatus = "new"
+	UpdateInboxItemStatusArchived       UpdateInboxItemStatus = "archived"
+	UpdateInboxItemStatusProcessing     UpdateInboxItemStatus = "processing"
+	UpdateInboxItemStatusDone           UpdateInboxItemStatus = "done"
+	UpdateInboxItemStatusPending        UpdateInboxItemStatus = "pending"
+	UpdateInboxItemStatusDeleted        UpdateInboxItemStatus = "deleted"
+	UpdateInboxItemStatusAnalyzing      UpdateInboxItemStatus = "analyzing"
+	UpdateInboxItemStatusSuggestedMatch UpdateInboxItemStatus = "suggested_match"
+	UpdateInboxItemStatusOther          UpdateInboxItemStatus = "other"
 )
 
 func (e UpdateInboxItemStatus) ToPointer() *UpdateInboxItemStatus {
@@ -36,6 +40,14 @@ func (e *UpdateInboxItemStatus) UnmarshalJSON(data []byte) error {
 	case "done":
 		fallthrough
 	case "pending":
+		fallthrough
+	case "deleted":
+		fallthrough
+	case "analyzing":
+		fallthrough
+	case "suggested_match":
+		fallthrough
+	case "other":
 		*e = UpdateInboxItemStatus(v)
 		return nil
 	default:
@@ -271,6 +283,8 @@ type UpdateInboxItemResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Update fields of an inbox item by its unique identifier for the authenticated team.
 	Object *UpdateInboxItemResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *UpdateInboxItemResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -285,4 +299,11 @@ func (o *UpdateInboxItemResponse) GetObject() *UpdateInboxItemResponseBody {
 		return nil
 	}
 	return o.Object
+}
+
+func (o *UpdateInboxItemResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }

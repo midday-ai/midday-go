@@ -13,7 +13,7 @@ Midday is a platform for Invoicing, Time tracking, File reconciliation, Storage,
 <!-- Start Summary [summary] -->
 ## Summary
 
-Midday API: Midday is a platform for Invoicing, Time tracking, File reconciliation, Storage, Financial Overview & your own Assistant.
+Midday API: Midday is a platform for Invoicing, Time tracking, File reconciliation, Storage & Financial Overview.
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
@@ -53,66 +53,41 @@ package main
 import (
 	"context"
 	middaygo "github.com/midday-ai/midday-go"
+	"github.com/midday-ai/midday-go/models/components"
 	"github.com/midday-ai/midday-go/models/operations"
 	"log"
+	"os"
 )
 
 func main() {
 	ctx := context.Background()
 
 	s := middaygo.New(
-		middaygo.WithSecurity("MIDDAY_API_KEY"),
+		middaygo.WithSecurity(components.Security{
+			Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+		}),
 	)
 
-	res, err := s.Transactions.List(ctx, operations.ListTransactionsRequest{
-		Cursor: middaygo.String("eyJpZCI6IjEyMyJ9"),
-		Sort: []string{
-			"date",
-			"desc",
+	res, err := s.OAuth.PostOAuthRegister(ctx, operations.PostOAuthRegisterRequest{
+		ClientName: "ChatGPT",
+		RedirectUris: []string{
+			"https://chatgpt.com/connector/oauth/callback",
 		},
-		PageSize: middaygo.Float64(50),
-		Q:        middaygo.String("office supplies"),
-		Categories: []string{
-			"office-supplies",
-			"travel",
+		GrantTypes: []string{
+			"authorization_code",
+			"refresh_token",
 		},
-		Tags: []string{
-			"tag-1",
-			"tag-2",
+		Scope:     middaygo.String("transactions.read invoices.read"),
+		LogoURI:   middaygo.String("https://example.com/logo.png"),
+		ClientURI: middaygo.String("https://example.com"),
+		ResponseTypes: []string{
+			"code",
 		},
-		Start: middaygo.String("2024-04-01T00:00:00.000Z"),
-		End:   middaygo.String("2024-04-30T23:59:59.999Z"),
-		Accounts: []string{
-			"account-1",
-			"account-2",
-		},
-		Assignees: []string{
-			"user-1",
-			"user-2",
-		},
-		Statuses: []string{
-			"pending",
-			"completed",
-		},
-		Recurring: []string{
-			"monthly",
-			"annually",
-		},
-		Attachments: operations.AttachmentsInclude.ToPointer(),
-		AmountRange: []*float64{
-			middaygo.Float64(100),
-			middaygo.Float64(1000),
-		},
-		Amount: []string{
-			"150.75",
-			"299.99",
-		},
-		Type: operations.ListTransactionsTypeExpense.ToPointer(),
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.Object != nil {
+	if res.TwoHundredApplicationJSONObject != nil {
 		// handle response
 	}
 }
@@ -125,79 +100,55 @@ func main() {
 
 ### Per-Client Security Schemes
 
-This SDK supports the following security scheme globally:
+This SDK supports the following security schemes globally:
 
-| Name    | Type | Scheme      | Environment Variable |
-| ------- | ---- | ----------- | -------------------- |
-| `Token` | http | HTTP Bearer | `MIDDAY_TOKEN`       |
+| Name     | Type   | Scheme       | Environment Variable |
+| -------- | ------ | ------------ | -------------------- |
+| `Oauth2` | oauth2 | OAuth2 token | `MIDDAY_OAUTH2`      |
+| `Token`  | http   | HTTP Bearer  | `MIDDAY_TOKEN`       |
 
-You can configure it using the `WithSecurity` option when initializing the SDK client instance. For example:
+You can set the security parameters through the `WithSecurity` option when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
 ```go
 package main
 
 import (
 	"context"
 	middaygo "github.com/midday-ai/midday-go"
+	"github.com/midday-ai/midday-go/models/components"
 	"github.com/midday-ai/midday-go/models/operations"
 	"log"
+	"os"
 )
 
 func main() {
 	ctx := context.Background()
 
 	s := middaygo.New(
-		middaygo.WithSecurity("MIDDAY_API_KEY"),
+		middaygo.WithSecurity(components.Security{
+			Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+		}),
 	)
 
-	res, err := s.Transactions.List(ctx, operations.ListTransactionsRequest{
-		Cursor: middaygo.String("eyJpZCI6IjEyMyJ9"),
-		Sort: []string{
-			"date",
-			"desc",
+	res, err := s.OAuth.PostOAuthRegister(ctx, operations.PostOAuthRegisterRequest{
+		ClientName: "ChatGPT",
+		RedirectUris: []string{
+			"https://chatgpt.com/connector/oauth/callback",
 		},
-		PageSize: middaygo.Float64(50),
-		Q:        middaygo.String("office supplies"),
-		Categories: []string{
-			"office-supplies",
-			"travel",
+		GrantTypes: []string{
+			"authorization_code",
+			"refresh_token",
 		},
-		Tags: []string{
-			"tag-1",
-			"tag-2",
+		Scope:     middaygo.String("transactions.read invoices.read"),
+		LogoURI:   middaygo.String("https://example.com/logo.png"),
+		ClientURI: middaygo.String("https://example.com"),
+		ResponseTypes: []string{
+			"code",
 		},
-		Start: middaygo.String("2024-04-01T00:00:00.000Z"),
-		End:   middaygo.String("2024-04-30T23:59:59.999Z"),
-		Accounts: []string{
-			"account-1",
-			"account-2",
-		},
-		Assignees: []string{
-			"user-1",
-			"user-2",
-		},
-		Statuses: []string{
-			"pending",
-			"completed",
-		},
-		Recurring: []string{
-			"monthly",
-			"annually",
-		},
-		Attachments: operations.AttachmentsInclude.ToPointer(),
-		AmountRange: []*float64{
-			middaygo.Float64(100),
-			middaygo.Float64(1000),
-		},
-		Amount: []string{
-			"150.75",
-			"299.99",
-		},
-		Type: operations.ListTransactionsTypeExpense.ToPointer(),
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.Object != nil {
+	if res.TwoHundredApplicationJSONObject != nil {
 		// handle response
 	}
 }
@@ -227,11 +178,23 @@ func main() {
 * [Delete](docs/sdks/customers/README.md#delete) - Delete a customer
 * [Update](docs/sdks/customers/README.md#update) - Update a customer
 
+### [Desktop](docs/sdks/desktop/README.md)
+
+* [CheckUpdate](docs/sdks/desktop/README.md#checkupdate) - Check for desktop app updates
+* [DownloadUpdate](docs/sdks/desktop/README.md#downloadupdate) - Download desktop app update artifact
+
 ### [Documents](docs/sdks/documents/README.md)
 
 * [List](docs/sdks/documents/README.md#list) - List all documents
 * [Get](docs/sdks/documents/README.md#get) - Retrieve a document
 * [Delete](docs/sdks/documents/README.md#delete) - Delete a document
+* [GetPreSignedURL](docs/sdks/documents/README.md#getpresignedurl) - Generate pre-signed URL for document
+
+### [Files](docs/sdks/files/README.md)
+
+* [Proxy](docs/sdks/files/README.md#proxy) - Proxy file from storage
+* [DownloadFile](docs/sdks/files/README.md#downloadfile) - Download file from vault
+* [DownloadInvoice](docs/sdks/files/README.md#downloadinvoice) - Download invoice PDF
 
 ### [Inbox](docs/sdks/inbox/README.md)
 
@@ -239,24 +202,66 @@ func main() {
 * [Get](docs/sdks/inbox/README.md#get) - Retrieve a inbox item
 * [Delete](docs/sdks/inbox/README.md#delete) - Delete a inbox item
 * [Update](docs/sdks/inbox/README.md#update) - Update a inbox item
+* [GetPreSignedURL](docs/sdks/inbox/README.md#getpresignedurl) - Generate pre-signed URL for inbox attachment
+
+### [Integrations](docs/sdks/integrations/README.md)
+
+* [SlackOAuthCallback](docs/sdks/integrations/README.md#slackoauthcallback) - Slack OAuth callback
+* [GetSlackInstallURL](docs/sdks/integrations/README.md#getslackinstallurl) - Get Slack install URL
+* [SlackWebhook](docs/sdks/integrations/README.md#slackwebhook) - Slack webhook handler
+* [SlackInteractions](docs/sdks/integrations/README.md#slackinteractions) - Slack interactions handler
+* [GmailOAuthCallback](docs/sdks/integrations/README.md#gmailoauthcallback) - Gmail OAuth callback
+* [GetGmailInstallURL](docs/sdks/integrations/README.md#getgmailinstallurl) - Get Gmail install URL
+* [OutlookOAuthCallback](docs/sdks/integrations/README.md#outlookoauthcallback) - Outlook OAuth callback
+* [GetOutlookInstallURL](docs/sdks/integrations/README.md#getoutlookinstallurl) - Get Outlook install URL
+* [XeroOAuthCallback](docs/sdks/integrations/README.md#xerooauthcallback) - Xero OAuth callback
+* [GetXeroInstallURL](docs/sdks/integrations/README.md#getxeroinstallurl) - Get Xero install URL
+* [QuickBooksOAuthCallback](docs/sdks/integrations/README.md#quickbooksoauthcallback) - QuickBooks OAuth callback
+* [GetQuickBooksInstallURL](docs/sdks/integrations/README.md#getquickbooksinstallurl) - Get QuickBooks install URL
+* [FortnoxOAuthCallback](docs/sdks/integrations/README.md#fortnoxoauthcallback) - Fortnox OAuth callback
+* [GetFortnoxInstallURL](docs/sdks/integrations/README.md#getfortnoxinstallurl) - Get Fortnox install URL
+
+### [InvoicePayments](docs/sdks/invoicepayments/README.md)
+
+* [GetStripeConnectURL](docs/sdks/invoicepayments/README.md#getstripeconnecturl) - Get Stripe Connect URL
+* [StripeConnectCallback](docs/sdks/invoicepayments/README.md#stripeconnectcallback) - Stripe Connect OAuth callback
+* [DisconnectStripe](docs/sdks/invoicepayments/README.md#disconnectstripe) - Disconnect Stripe account
+* [CreateInvoicePaymentIntent](docs/sdks/invoicepayments/README.md#createinvoicepaymentintent) - Create payment intent for invoice
+* [GetStripeConnectStatus](docs/sdks/invoicepayments/README.md#getstripeconnectstatus) - Get Stripe Connect status
 
 ### [Invoices](docs/sdks/invoices/README.md)
 
 * [List](docs/sdks/invoices/README.md#list) - List all invoices
-* [GetInvoicesPaymentStatus](docs/sdks/invoices/README.md#getinvoicespaymentstatus) - Payment status
+* [Create](docs/sdks/invoices/README.md#create) - Create an invoice
+* [PaymentStatus](docs/sdks/invoices/README.md#paymentstatus) - Payment status
 * [Summary](docs/sdks/invoices/README.md#summary) - Invoice summary
 * [Get](docs/sdks/invoices/README.md#get) - Retrieve a invoice
+* [Update](docs/sdks/invoices/README.md#update) - Update an invoice
 * [Delete](docs/sdks/invoices/README.md#delete) - Delete a invoice
 
-### [Metrics](docs/sdks/metrics/README.md)
 
-* [Revenue](docs/sdks/metrics/README.md#revenue) - Revenue metrics
-* [Profit](docs/sdks/metrics/README.md#profit) - Profit metrics
-* [BurnRate](docs/sdks/metrics/README.md#burnrate) - Burn rate metrics
-* [Runway](docs/sdks/metrics/README.md#runway) - Runway metrics
-* [Expenses](docs/sdks/metrics/README.md#expenses) - Expense metrics
-* [Spending](docs/sdks/metrics/README.md#spending) - Spending metrics
+### [Notifications](docs/sdks/notifications/README.md)
 
+* [List](docs/sdks/notifications/README.md#list) - List all notifications
+* [UpdateStatus](docs/sdks/notifications/README.md#updatestatus) - Update notification status
+* [UpdateAllStatus](docs/sdks/notifications/README.md#updateallstatus) - Update status of all notifications
+
+### [OAuth](docs/sdks/oauth/README.md)
+
+* [PostOAuthRegister](docs/sdks/oauth/README.md#postoauthregister) - Dynamic Client Registration
+* [GetOAuthAuthorization](docs/sdks/oauth/README.md#getoauthauthorization) - OAuth Authorization Endpoint
+* [PostOAuthAuthorization](docs/sdks/oauth/README.md#postoauthauthorization) - OAuth Authorization Decision
+* [PostOAuthToken](docs/sdks/oauth/README.md#postoauthtoken) - OAuth Token Exchange
+* [PostOAuthRevoke](docs/sdks/oauth/README.md#postoauthrevoke) - OAuth Token Revocation
+
+### [Reports](docs/sdks/reports/README.md)
+
+* [Revenue](docs/sdks/reports/README.md#revenue) - Revenue reports
+* [Profit](docs/sdks/reports/README.md#profit) - Profit reports
+* [BurnRate](docs/sdks/reports/README.md#burnrate) - Burn rate reports
+* [Runway](docs/sdks/reports/README.md#runway) - Runway reports
+* [Expenses](docs/sdks/reports/README.md#expenses) - Expense reports
+* [Spending](docs/sdks/reports/README.md#spending) - Spending reports
 
 ### [Search](docs/sdks/search/README.md)
 
@@ -307,6 +312,7 @@ func main() {
 * [Get](docs/sdks/transactions/README.md#get) - Retrieve a transaction
 * [Delete](docs/sdks/transactions/README.md#delete) - Delete a transaction
 * [Update](docs/sdks/transactions/README.md#update) - Update a transaction
+* [GetAttachmentPreSignedURL](docs/sdks/transactions/README.md#getattachmentpresignedurl) - Generate pre-signed URL for transaction attachment
 * [CreateMany](docs/sdks/transactions/README.md#createmany) - Bulk create transactions
 * [DeleteMany](docs/sdks/transactions/README.md#deletemany) - Bulk delete transactions
 * [UpdateMany](docs/sdks/transactions/README.md#updatemany) - Bulk update transactions
@@ -315,6 +321,16 @@ func main() {
 
 * [Get](docs/sdks/users/README.md#get) - Retrieve the current user
 * [Update](docs/sdks/users/README.md#update) - Update the current user
+
+### [Webhooks](docs/sdks/webhooks/README.md)
+
+* [InboxWebhook](docs/sdks/webhooks/README.md#inboxwebhook) - Inbox webhook
+* [PlaidWebhook](docs/sdks/webhooks/README.md#plaidwebhook) - Plaid webhook handler
+* [PolarWebhook](docs/sdks/webhooks/README.md#polarwebhook) - Polar webhook handler
+* [StripeWebhook](docs/sdks/webhooks/README.md#stripewebhook) - Stripe webhook handler
+* [TellerWebhook](docs/sdks/webhooks/README.md#tellerwebhook) - Teller webhook handler
+* [WhatsappWebhookVerify](docs/sdks/webhooks/README.md#whatsappwebhookverify) - WhatsApp webhook verification
+* [WhatsappWebhook](docs/sdks/webhooks/README.md#whatsappwebhook) - WhatsApp webhook
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -331,63 +347,38 @@ package main
 import (
 	"context"
 	middaygo "github.com/midday-ai/midday-go"
+	"github.com/midday-ai/midday-go/models/components"
 	"github.com/midday-ai/midday-go/models/operations"
 	"github.com/midday-ai/midday-go/retry"
 	"log"
 	"models/operations"
+	"os"
 )
 
 func main() {
 	ctx := context.Background()
 
 	s := middaygo.New(
-		middaygo.WithSecurity("MIDDAY_API_KEY"),
+		middaygo.WithSecurity(components.Security{
+			Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+		}),
 	)
 
-	res, err := s.Transactions.List(ctx, operations.ListTransactionsRequest{
-		Cursor: middaygo.String("eyJpZCI6IjEyMyJ9"),
-		Sort: []string{
-			"date",
-			"desc",
+	res, err := s.OAuth.PostOAuthRegister(ctx, operations.PostOAuthRegisterRequest{
+		ClientName: "ChatGPT",
+		RedirectUris: []string{
+			"https://chatgpt.com/connector/oauth/callback",
 		},
-		PageSize: middaygo.Float64(50),
-		Q:        middaygo.String("office supplies"),
-		Categories: []string{
-			"office-supplies",
-			"travel",
+		GrantTypes: []string{
+			"authorization_code",
+			"refresh_token",
 		},
-		Tags: []string{
-			"tag-1",
-			"tag-2",
+		Scope:     middaygo.String("transactions.read invoices.read"),
+		LogoURI:   middaygo.String("https://example.com/logo.png"),
+		ClientURI: middaygo.String("https://example.com"),
+		ResponseTypes: []string{
+			"code",
 		},
-		Start: middaygo.String("2024-04-01T00:00:00.000Z"),
-		End:   middaygo.String("2024-04-30T23:59:59.999Z"),
-		Accounts: []string{
-			"account-1",
-			"account-2",
-		},
-		Assignees: []string{
-			"user-1",
-			"user-2",
-		},
-		Statuses: []string{
-			"pending",
-			"completed",
-		},
-		Recurring: []string{
-			"monthly",
-			"annually",
-		},
-		Attachments: operations.AttachmentsInclude.ToPointer(),
-		AmountRange: []*float64{
-			middaygo.Float64(100),
-			middaygo.Float64(1000),
-		},
-		Amount: []string{
-			"150.75",
-			"299.99",
-		},
-		Type: operations.ListTransactionsTypeExpense.ToPointer(),
 	}, operations.WithRetries(
 		retry.Config{
 			Strategy: "backoff",
@@ -402,7 +393,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.Object != nil {
+	if res.TwoHundredApplicationJSONObject != nil {
 		// handle response
 	}
 }
@@ -416,9 +407,11 @@ package main
 import (
 	"context"
 	middaygo "github.com/midday-ai/midday-go"
+	"github.com/midday-ai/midday-go/models/components"
 	"github.com/midday-ai/midday-go/models/operations"
 	"github.com/midday-ai/midday-go/retry"
 	"log"
+	"os"
 )
 
 func main() {
@@ -436,58 +429,31 @@ func main() {
 				},
 				RetryConnectionErrors: false,
 			}),
-		middaygo.WithSecurity("MIDDAY_API_KEY"),
+		middaygo.WithSecurity(components.Security{
+			Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+		}),
 	)
 
-	res, err := s.Transactions.List(ctx, operations.ListTransactionsRequest{
-		Cursor: middaygo.String("eyJpZCI6IjEyMyJ9"),
-		Sort: []string{
-			"date",
-			"desc",
+	res, err := s.OAuth.PostOAuthRegister(ctx, operations.PostOAuthRegisterRequest{
+		ClientName: "ChatGPT",
+		RedirectUris: []string{
+			"https://chatgpt.com/connector/oauth/callback",
 		},
-		PageSize: middaygo.Float64(50),
-		Q:        middaygo.String("office supplies"),
-		Categories: []string{
-			"office-supplies",
-			"travel",
+		GrantTypes: []string{
+			"authorization_code",
+			"refresh_token",
 		},
-		Tags: []string{
-			"tag-1",
-			"tag-2",
+		Scope:     middaygo.String("transactions.read invoices.read"),
+		LogoURI:   middaygo.String("https://example.com/logo.png"),
+		ClientURI: middaygo.String("https://example.com"),
+		ResponseTypes: []string{
+			"code",
 		},
-		Start: middaygo.String("2024-04-01T00:00:00.000Z"),
-		End:   middaygo.String("2024-04-30T23:59:59.999Z"),
-		Accounts: []string{
-			"account-1",
-			"account-2",
-		},
-		Assignees: []string{
-			"user-1",
-			"user-2",
-		},
-		Statuses: []string{
-			"pending",
-			"completed",
-		},
-		Recurring: []string{
-			"monthly",
-			"annually",
-		},
-		Attachments: operations.AttachmentsInclude.ToPointer(),
-		AmountRange: []*float64{
-			middaygo.Float64(100),
-			middaygo.Float64(1000),
-		},
-		Amount: []string{
-			"150.75",
-			"299.99",
-		},
-		Type: operations.ListTransactionsTypeExpense.ToPointer(),
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.Object != nil {
+	if res.TwoHundredApplicationJSONObject != nil {
 		// handle response
 	}
 }
@@ -502,11 +468,12 @@ Handling errors in this SDK should largely match your expectations. All operatio
 
 By Default, an API error will return `apierrors.APIError`. When custom error responses are specified for an operation, the SDK may also return their associated error. You can refer to respective *Errors* tables in SDK docs for more details on possible error types for each operation.
 
-For example, the `List` function may return the following errors:
+For example, the `PostOAuthRegister` function may return the following errors:
 
-| Error Type         | Status Code | Content Type |
-| ------------------ | ----------- | ------------ |
-| apierrors.APIError | 4XX, 5XX    | \*/\*        |
+| Error Type                   | Status Code | Content Type     |
+| ---------------------------- | ----------- | ---------------- |
+| apierrors.OAuthErrorResponse | 400         | application/json |
+| apierrors.APIError           | 4XX, 5XX    | \*/\*            |
 
 ### Example
 
@@ -518,63 +485,44 @@ import (
 	"errors"
 	middaygo "github.com/midday-ai/midday-go"
 	"github.com/midday-ai/midday-go/models/apierrors"
+	"github.com/midday-ai/midday-go/models/components"
 	"github.com/midday-ai/midday-go/models/operations"
 	"log"
+	"os"
 )
 
 func main() {
 	ctx := context.Background()
 
 	s := middaygo.New(
-		middaygo.WithSecurity("MIDDAY_API_KEY"),
+		middaygo.WithSecurity(components.Security{
+			Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+		}),
 	)
 
-	res, err := s.Transactions.List(ctx, operations.ListTransactionsRequest{
-		Cursor: middaygo.String("eyJpZCI6IjEyMyJ9"),
-		Sort: []string{
-			"date",
-			"desc",
+	res, err := s.OAuth.PostOAuthRegister(ctx, operations.PostOAuthRegisterRequest{
+		ClientName: "ChatGPT",
+		RedirectUris: []string{
+			"https://chatgpt.com/connector/oauth/callback",
 		},
-		PageSize: middaygo.Float64(50),
-		Q:        middaygo.String("office supplies"),
-		Categories: []string{
-			"office-supplies",
-			"travel",
+		GrantTypes: []string{
+			"authorization_code",
+			"refresh_token",
 		},
-		Tags: []string{
-			"tag-1",
-			"tag-2",
+		Scope:     middaygo.String("transactions.read invoices.read"),
+		LogoURI:   middaygo.String("https://example.com/logo.png"),
+		ClientURI: middaygo.String("https://example.com"),
+		ResponseTypes: []string{
+			"code",
 		},
-		Start: middaygo.String("2024-04-01T00:00:00.000Z"),
-		End:   middaygo.String("2024-04-30T23:59:59.999Z"),
-		Accounts: []string{
-			"account-1",
-			"account-2",
-		},
-		Assignees: []string{
-			"user-1",
-			"user-2",
-		},
-		Statuses: []string{
-			"pending",
-			"completed",
-		},
-		Recurring: []string{
-			"monthly",
-			"annually",
-		},
-		Attachments: operations.AttachmentsInclude.ToPointer(),
-		AmountRange: []*float64{
-			middaygo.Float64(100),
-			middaygo.Float64(1000),
-		},
-		Amount: []string{
-			"150.75",
-			"299.99",
-		},
-		Type: operations.ListTransactionsTypeExpense.ToPointer(),
 	})
 	if err != nil {
+
+		var e *apierrors.OAuthErrorResponse
+		if errors.As(err, &e) {
+			// handle error
+			log.Fatal(e.Error())
+		}
 
 		var e *apierrors.APIError
 		if errors.As(err, &e) {
@@ -599,8 +547,10 @@ package main
 import (
 	"context"
 	middaygo "github.com/midday-ai/midday-go"
+	"github.com/midday-ai/midday-go/models/components"
 	"github.com/midday-ai/midday-go/models/operations"
 	"log"
+	"os"
 )
 
 func main() {
@@ -608,58 +558,31 @@ func main() {
 
 	s := middaygo.New(
 		middaygo.WithServerURL("https://api.midday.ai"),
-		middaygo.WithSecurity("MIDDAY_API_KEY"),
+		middaygo.WithSecurity(components.Security{
+			Oauth2: middaygo.String(os.Getenv("MIDDAY_OAUTH2")),
+		}),
 	)
 
-	res, err := s.Transactions.List(ctx, operations.ListTransactionsRequest{
-		Cursor: middaygo.String("eyJpZCI6IjEyMyJ9"),
-		Sort: []string{
-			"date",
-			"desc",
+	res, err := s.OAuth.PostOAuthRegister(ctx, operations.PostOAuthRegisterRequest{
+		ClientName: "ChatGPT",
+		RedirectUris: []string{
+			"https://chatgpt.com/connector/oauth/callback",
 		},
-		PageSize: middaygo.Float64(50),
-		Q:        middaygo.String("office supplies"),
-		Categories: []string{
-			"office-supplies",
-			"travel",
+		GrantTypes: []string{
+			"authorization_code",
+			"refresh_token",
 		},
-		Tags: []string{
-			"tag-1",
-			"tag-2",
+		Scope:     middaygo.String("transactions.read invoices.read"),
+		LogoURI:   middaygo.String("https://example.com/logo.png"),
+		ClientURI: middaygo.String("https://example.com"),
+		ResponseTypes: []string{
+			"code",
 		},
-		Start: middaygo.String("2024-04-01T00:00:00.000Z"),
-		End:   middaygo.String("2024-04-30T23:59:59.999Z"),
-		Accounts: []string{
-			"account-1",
-			"account-2",
-		},
-		Assignees: []string{
-			"user-1",
-			"user-2",
-		},
-		Statuses: []string{
-			"pending",
-			"completed",
-		},
-		Recurring: []string{
-			"monthly",
-			"annually",
-		},
-		Attachments: operations.AttachmentsInclude.ToPointer(),
-		AmountRange: []*float64{
-			middaygo.Float64(100),
-			middaygo.Float64(1000),
-		},
-		Amount: []string{
-			"150.75",
-			"299.99",
-		},
-		Type: operations.ListTransactionsTypeExpense.ToPointer(),
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.Object != nil {
+	if res.TwoHundredApplicationJSONObject != nil {
 		// handle response
 	}
 }

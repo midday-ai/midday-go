@@ -7,6 +7,7 @@ import (
 )
 
 type GetBankAccountByIDRequest struct {
+	// The unique identifier of the bank account.
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
@@ -88,6 +89,8 @@ type GetBankAccountByIDResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Bank account details
 	Object *GetBankAccountByIDResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *GetBankAccountByIDResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -102,4 +105,11 @@ func (o *GetBankAccountByIDResponse) GetObject() *GetBankAccountByIDResponseBody
 		return nil
 	}
 	return o.Object
+}
+
+func (o *GetBankAccountByIDResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }

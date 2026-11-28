@@ -108,6 +108,8 @@ type CreateBankAccountResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Bank account created
 	Object *CreateBankAccountResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *CreateBankAccountResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -122,4 +124,11 @@ func (o *CreateBankAccountResponse) GetObject() *CreateBankAccountResponseBody {
 		return nil
 	}
 	return o.Object
+}
+
+func (o *CreateBankAccountResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }

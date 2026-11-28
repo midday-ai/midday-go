@@ -223,8 +223,8 @@ type StartTimerData struct {
 	Duration *float64 `json:"duration"`
 	// Start time of the tracker entry in ISO 8601 format
 	Start string `json:"start"`
-	// Stop time of the tracker entry in ISO 8601 format
-	Stop string `json:"stop"`
+	// Stop time of the tracker entry in ISO 8601 format. Null for running timers.
+	Stop *string `json:"stop"`
 	// Unique identifier of the team that owns this tracker entry
 	TeamID string `json:"teamId"`
 	// Description or notes for the tracker entry
@@ -271,9 +271,9 @@ func (o *StartTimerData) GetStart() string {
 	return o.Start
 }
 
-func (o *StartTimerData) GetStop() string {
+func (o *StartTimerData) GetStop() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Stop
 }
@@ -350,6 +350,8 @@ type StartTimerResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Timer started successfully.
 	Object *StartTimerResponseBody
+	// An error occurred
+	ErrorResponse *components.ErrorResponse
 }
 
 func (o *StartTimerResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -364,4 +366,11 @@ func (o *StartTimerResponse) GetObject() *StartTimerResponseBody {
 		return nil
 	}
 	return o.Object
+}
+
+func (o *StartTimerResponse) GetErrorResponse() *components.ErrorResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorResponse
 }
