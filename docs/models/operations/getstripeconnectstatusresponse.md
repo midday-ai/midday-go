@@ -1,0 +1,9 @@
+# GetStripeConnectStatusResponse
+
+
+## Fields
+
+| Field                                                                                                           | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `HTTPMeta`                                                                                                      | [components.HTTPMetadata](../../models/components/httpmetadata.md)                                              | :heavy_check_mark:                                                                                              | N/A                                                                                                             |
+| `Object`                                                                                                        | [*operations.GetStripeConnectStatusResponseBody](../../models/operations/getstripeconnectstatusresponsebody.md) | :heavy_minus_sign:                                                                                              | Stripe Connect status                                                                                           |
